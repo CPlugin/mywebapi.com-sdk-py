@@ -2,13 +2,14 @@
 
 ## Before the first release
 
-1. **Distribution name** — currently `mywebapi-sdk` (a placeholder in `pyproject.toml`).
-   PyPI names are a global, first-come namespace, so confirm the name is free
-   (https://pypi.org/project/mywebapi-sdk/) or pick another, then update
-   `[project].name`. The import name stays `cplugin_webapi_sdk` regardless.
-2. **Repository URLs** — replace the placeholder `CPlugin/mywebapi.com-sdk-py`
-   in `pyproject.toml` (`[project.urls]`) with the real GitHub org/repo, and
-   the `environment.url` / pending-publisher repo in `.github/workflows/publish.yml`.
+1. **Distribution name** — `mywebapi-sdk` (final). PyPI names are a global,
+   first-come namespace, so verify it is still free
+   (https://pypi.org/project/mywebapi-sdk/) just before the first release.
+   The import name stays `cplugin_webapi_sdk` regardless.
+2. **Repository** — `CPlugin/mywebapi.com-sdk-py` (final, mirrors the JS SDK
+   `CPlugin/mywebapi.com-sdk-js`). Create the GitHub repo under this org/name;
+   the URLs are already set in `pyproject.toml` (`[project.urls]`) and
+   `.github/workflows/publish.yml` (`environment.url` + the pending-publisher repo).
 3. **Authentication: PyPI Trusted Publishing (OIDC) — no token to store or rotate.**
    - Unlike npm, PyPI supports a **pending publisher**, so you do NOT need a
      bootstrap-token first publish. On https://pypi.org, go to your account

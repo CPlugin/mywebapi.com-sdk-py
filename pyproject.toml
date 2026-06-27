@@ -3,8 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-# ! Distribution name is a develop-only placeholder; finalize at the publish step
-# ! (PyPI names are global/first-come — confirm availability before the first release).
+# * Finalized PyPI distribution name. Develop-only: not yet published.
+# ! Verify the name is still free (https://pypi.org/project/mywebapi-sdk/) before
+# !   the first release — PyPI names are a global, first-come namespace.
 name = "mywebapi-sdk"
 version = "0.1.0"
 description = "Python client for the SaaS WebAPI v2 (MT4/MT5 management). Generated endpoints + httpx ergonomic layer."
@@ -44,7 +45,7 @@ codegen = ["openapi-python-client==0.29.0"]
 # ! No official Python SignalR client exists; signalrcore wraps the protocol.
 signalr = ["signalrcore>=0.9.5"]
 
-# ! Placeholder URLs — replace with the real GitHub org/repo before the first release.
+# * Target GitHub repo (create it under this org/name before the first release).
 [project.urls]
 Homepage = "https://github.com/CPlugin/mywebapi.com-sdk-py"
 Repository = "https://github.com/CPlugin/mywebapi.com-sdk-py"
