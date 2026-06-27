@@ -1,0 +1,255 @@
+from http import HTTPStatus
+from typing import Any, cast
+from urllib.parse import quote
+
+import httpx
+
+from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
+from ...models.boolean_api_response import BooleanApiResponse
+from ...types import UNSET, Unset
+from typing import cast
+from uuid import UUID
+
+
+
+def _get_kwargs(
+    trade_platform: UUID,
+    *,
+    orders: list[int] | Unset = UNSET,
+
+) -> dict[str, Any]:
+    
+
+    
+
+    params: dict[str, Any] = {}
+
+    json_orders: list[int] | Unset = UNSET
+    if not isinstance(orders, Unset):
+        json_orders = orders
+
+
+    params["orders"] = json_orders
+
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
+
+    _kwargs: dict[str, Any] = {
+        "method": "post",
+        "url": "/api/v2/MT4/{trade_platform}/AdmTradesDelete".format(trade_platform=quote(str(trade_platform), safe=""),),
+        "params": params,
+    }
+
+
+    return _kwargs
+
+
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> BooleanApiResponse | None:
+    if response.status_code == 200:
+        response_200 = BooleanApiResponse.from_dict(response.json())
+
+
+
+        return response_200
+
+    if client.raise_on_unexpected_status:
+        raise errors.UnexpectedStatus(response.status_code, response.content)
+    else:
+        return None
+
+
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[BooleanApiResponse]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    orders: list[int] | Unset = UNSET,
+
+) -> Response[BooleanApiResponse]:
+    """ Delete trades (admin)
+
+     Bulk-deletes a list of trade tickets (administrative scope). Used for cleanup after reconciliation
+    mistakes, simulator state reset, or compliance-mandated removal.
+
+    Manager-live POST. The wrapper accepts a flat `int[]` of order
+    tickets and a count; we mirror the existing batched-int pattern
+    (repeat `?orders=` per ticket — same convention as
+    `UserRecordsRequest`'s `?logins=`). Empty arrays are
+    rejected with Validation.
+
+    **Destructive.** Each ticket in the array is removed from the
+    server's trade table; this is not reversible from the API side.
+    Pair with `Idempotency-Key` so retries don't re-process partial
+    failures.
+
+    Args:
+        trade_platform (UUID):
+        orders (list[int] | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[BooleanApiResponse]
+     """
+
+
+    kwargs = _get_kwargs(
+        trade_platform=trade_platform,
+orders=orders,
+
+    )
+
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+def sync(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    orders: list[int] | Unset = UNSET,
+
+) -> BooleanApiResponse | None:
+    """ Delete trades (admin)
+
+     Bulk-deletes a list of trade tickets (administrative scope). Used for cleanup after reconciliation
+    mistakes, simulator state reset, or compliance-mandated removal.
+
+    Manager-live POST. The wrapper accepts a flat `int[]` of order
+    tickets and a count; we mirror the existing batched-int pattern
+    (repeat `?orders=` per ticket — same convention as
+    `UserRecordsRequest`'s `?logins=`). Empty arrays are
+    rejected with Validation.
+
+    **Destructive.** Each ticket in the array is removed from the
+    server's trade table; this is not reversible from the API side.
+    Pair with `Idempotency-Key` so retries don't re-process partial
+    failures.
+
+    Args:
+        trade_platform (UUID):
+        orders (list[int] | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        BooleanApiResponse
+     """
+
+
+    return sync_detailed(
+        trade_platform=trade_platform,
+client=client,
+orders=orders,
+
+    ).parsed
+
+async def asyncio_detailed(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    orders: list[int] | Unset = UNSET,
+
+) -> Response[BooleanApiResponse]:
+    """ Delete trades (admin)
+
+     Bulk-deletes a list of trade tickets (administrative scope). Used for cleanup after reconciliation
+    mistakes, simulator state reset, or compliance-mandated removal.
+
+    Manager-live POST. The wrapper accepts a flat `int[]` of order
+    tickets and a count; we mirror the existing batched-int pattern
+    (repeat `?orders=` per ticket — same convention as
+    `UserRecordsRequest`'s `?logins=`). Empty arrays are
+    rejected with Validation.
+
+    **Destructive.** Each ticket in the array is removed from the
+    server's trade table; this is not reversible from the API side.
+    Pair with `Idempotency-Key` so retries don't re-process partial
+    failures.
+
+    Args:
+        trade_platform (UUID):
+        orders (list[int] | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[BooleanApiResponse]
+     """
+
+
+    kwargs = _get_kwargs(
+        trade_platform=trade_platform,
+orders=orders,
+
+    )
+
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
+
+    return _build_response(client=client, response=response)
+
+async def asyncio(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    orders: list[int] | Unset = UNSET,
+
+) -> BooleanApiResponse | None:
+    """ Delete trades (admin)
+
+     Bulk-deletes a list of trade tickets (administrative scope). Used for cleanup after reconciliation
+    mistakes, simulator state reset, or compliance-mandated removal.
+
+    Manager-live POST. The wrapper accepts a flat `int[]` of order
+    tickets and a count; we mirror the existing batched-int pattern
+    (repeat `?orders=` per ticket — same convention as
+    `UserRecordsRequest`'s `?logins=`). Empty arrays are
+    rejected with Validation.
+
+    **Destructive.** Each ticket in the array is removed from the
+    server's trade table; this is not reversible from the API side.
+    Pair with `Idempotency-Key` so retries don't re-process partial
+    failures.
+
+    Args:
+        trade_platform (UUID):
+        orders (list[int] | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        BooleanApiResponse
+     """
+
+
+    return (await asyncio_detailed(
+        trade_platform=trade_platform,
+client=client,
+orders=orders,
+
+    )).parsed

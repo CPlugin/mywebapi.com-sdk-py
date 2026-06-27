@@ -1,0 +1,312 @@
+from http import HTTPStatus
+from typing import Any, cast
+from urllib.parse import quote
+
+import httpx
+
+from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
+from ...models.mt4_gateway_markup import MT4GatewayMarkup
+from ...models.mt4_gateway_markup_api_response import MT4GatewayMarkupApiResponse
+from ...types import UNSET, Unset
+from typing import cast
+from uuid import UUID
+
+
+
+def _get_kwargs(
+    trade_platform: UUID,
+    *,
+    body:    MT4GatewayMarkup  |     MT4GatewayMarkup  |     MT4GatewayMarkup  | Unset = UNSET,
+
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
+
+    
+
+    
+
+    _kwargs: dict[str, Any] = {
+        "method": "post",
+        "url": "/api/v2/MT4/{trade_platform}/CfgUpdateGatewayMarkup".format(trade_platform=quote(str(trade_platform), safe=""),),
+    }
+
+    if isinstance(body, MT4GatewayMarkup):
+        
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "application/json-patch+json"
+    if isinstance(body, MT4GatewayMarkup):
+        
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, MT4GatewayMarkup):
+        
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "application/*+json"
+
+    _kwargs["headers"] = headers
+    return _kwargs
+
+
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT4GatewayMarkupApiResponse | None:
+    if response.status_code == 200:
+        response_200 = MT4GatewayMarkupApiResponse.from_dict(response.json())
+
+
+
+        return response_200
+
+    if client.raise_on_unexpected_status:
+        raise errors.UnexpectedStatus(response.status_code, response.content)
+    else:
+        return None
+
+
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT4GatewayMarkupApiResponse]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    body:    MT4GatewayMarkup  |     MT4GatewayMarkup  |     MT4GatewayMarkup  | Unset = UNSET,
+
+) -> Response[MT4GatewayMarkupApiResponse]:
+    """ Update gateway markup
+
+     Update a gateway markup rule — Type 1 mutator.
+
+    Manager (live) call. Markup rules are paged on the read side (see
+    `CfgRequestGatewayMarkup`); the v2 contract identifies a rule
+    by the composite key `(Source, Symbol)` (same cursor key the
+    read endpoint uses). Same read-modify-write flow as
+    `CfgUpdateGatewayAccount`; the wrapper's 16-int reserved
+    padding is preserved.
+
+    Args:
+        trade_platform (UUID):
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[MT4GatewayMarkupApiResponse]
+     """
+
+
+    kwargs = _get_kwargs(
+        trade_platform=trade_platform,
+body=body,
+
+    )
+
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+def sync(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    body:    MT4GatewayMarkup  |     MT4GatewayMarkup  |     MT4GatewayMarkup  | Unset = UNSET,
+
+) -> MT4GatewayMarkupApiResponse | None:
+    """ Update gateway markup
+
+     Update a gateway markup rule — Type 1 mutator.
+
+    Manager (live) call. Markup rules are paged on the read side (see
+    `CfgRequestGatewayMarkup`); the v2 contract identifies a rule
+    by the composite key `(Source, Symbol)` (same cursor key the
+    read endpoint uses). Same read-modify-write flow as
+    `CfgUpdateGatewayAccount`; the wrapper's 16-int reserved
+    padding is preserved.
+
+    Args:
+        trade_platform (UUID):
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        MT4GatewayMarkupApiResponse
+     """
+
+
+    return sync_detailed(
+        trade_platform=trade_platform,
+client=client,
+body=body,
+
+    ).parsed
+
+async def asyncio_detailed(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    body:    MT4GatewayMarkup  |     MT4GatewayMarkup  |     MT4GatewayMarkup  | Unset = UNSET,
+
+) -> Response[MT4GatewayMarkupApiResponse]:
+    """ Update gateway markup
+
+     Update a gateway markup rule — Type 1 mutator.
+
+    Manager (live) call. Markup rules are paged on the read side (see
+    `CfgRequestGatewayMarkup`); the v2 contract identifies a rule
+    by the composite key `(Source, Symbol)` (same cursor key the
+    read endpoint uses). Same read-modify-write flow as
+    `CfgUpdateGatewayAccount`; the wrapper's 16-int reserved
+    padding is preserved.
+
+    Args:
+        trade_platform (UUID):
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[MT4GatewayMarkupApiResponse]
+     """
+
+
+    kwargs = _get_kwargs(
+        trade_platform=trade_platform,
+body=body,
+
+    )
+
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
+
+    return _build_response(client=client, response=response)
+
+async def asyncio(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    body:    MT4GatewayMarkup  |     MT4GatewayMarkup  |     MT4GatewayMarkup  | Unset = UNSET,
+
+) -> MT4GatewayMarkupApiResponse | None:
+    """ Update gateway markup
+
+     Update a gateway markup rule — Type 1 mutator.
+
+    Manager (live) call. Markup rules are paged on the read side (see
+    `CfgRequestGatewayMarkup`); the v2 contract identifies a rule
+    by the composite key `(Source, Symbol)` (same cursor key the
+    read endpoint uses). Same read-modify-write flow as
+    `CfgUpdateGatewayAccount`; the wrapper's 16-int reserved
+    padding is preserved.
+
+    Args:
+        trade_platform (UUID):
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+        body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
+            subset of the
+            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            Source describes the external symbol (or a wildcard/group mask)
+            being mapped onto Symbol on this server, with per-side spread
+            adjustments BidMarkup and AskMarkup expressed in pips.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        MT4GatewayMarkupApiResponse
+     """
+
+
+    return (await asyncio_detailed(
+        trade_platform=trade_platform,
+client=client,
+body=body,
+
+    )).parsed

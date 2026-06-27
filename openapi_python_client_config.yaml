@@ -1,0 +1,8 @@
+# * openapi-python-client 0.29.0 config. Generated tree is committed under
+#   src/cplugin_webapi_sdk/_generated and is machine-owned.
+project_name_override: cplugin_webapi_sdk
+package_name_override: _generated
+# ! Do not run black/isort/autoflake post-hooks: keep the host hermetic and
+#   the generated output deterministic across machines.
+post_hooks: []
+use_path_prefixes_for_title_model_names: false

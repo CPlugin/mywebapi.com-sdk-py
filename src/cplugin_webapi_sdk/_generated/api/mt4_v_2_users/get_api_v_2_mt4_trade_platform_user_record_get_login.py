@@ -1,0 +1,217 @@
+from http import HTTPStatus
+from typing import Any, cast
+from urllib.parse import quote
+
+import httpx
+
+from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
+from ...models.mt4_user_api_response import MT4UserApiResponse
+from typing import cast
+from uuid import UUID
+
+
+
+def _get_kwargs(
+    trade_platform: UUID,
+    login: int,
+
+) -> dict[str, Any]:
+    
+
+    
+
+    
+
+    _kwargs: dict[str, Any] = {
+        "method": "get",
+        "url": "/api/v2/MT4/{trade_platform}/UserRecordGet/{login}".format(trade_platform=quote(str(trade_platform), safe=""),login=quote(str(login), safe=""),),
+    }
+
+
+    return _kwargs
+
+
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT4UserApiResponse | None:
+    if response.status_code == 200:
+        response_200 = MT4UserApiResponse.from_dict(response.json())
+
+
+
+        return response_200
+
+    if client.raise_on_unexpected_status:
+        raise errors.UnexpectedStatus(response.status_code, response.content)
+    else:
+        return None
+
+
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT4UserApiResponse]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    trade_platform: UUID,
+    login: int,
+    *,
+    client: AuthenticatedClient | Client,
+
+) -> Response[MT4UserApiResponse]:
+    """ Get account (cached)
+
+     Account record for a single login from the pump cache.
+
+    Pump-cached read of the wrapper's `UserRecord`, mapped to the v2
+    `MT4User` DTO. Secrets (passwords, OTP secret, API blob) are
+    stripped at the mapper level — they cannot be exposed via this endpoint
+    regardless of caller permissions. Returns NotFound envelope when the
+    pump cache does not contain the requested login.
+
+    Args:
+        trade_platform (UUID):
+        login (int):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[MT4UserApiResponse]
+     """
+
+
+    kwargs = _get_kwargs(
+        trade_platform=trade_platform,
+login=login,
+
+    )
+
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+def sync(
+    trade_platform: UUID,
+    login: int,
+    *,
+    client: AuthenticatedClient | Client,
+
+) -> MT4UserApiResponse | None:
+    """ Get account (cached)
+
+     Account record for a single login from the pump cache.
+
+    Pump-cached read of the wrapper's `UserRecord`, mapped to the v2
+    `MT4User` DTO. Secrets (passwords, OTP secret, API blob) are
+    stripped at the mapper level — they cannot be exposed via this endpoint
+    regardless of caller permissions. Returns NotFound envelope when the
+    pump cache does not contain the requested login.
+
+    Args:
+        trade_platform (UUID):
+        login (int):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        MT4UserApiResponse
+     """
+
+
+    return sync_detailed(
+        trade_platform=trade_platform,
+login=login,
+client=client,
+
+    ).parsed
+
+async def asyncio_detailed(
+    trade_platform: UUID,
+    login: int,
+    *,
+    client: AuthenticatedClient | Client,
+
+) -> Response[MT4UserApiResponse]:
+    """ Get account (cached)
+
+     Account record for a single login from the pump cache.
+
+    Pump-cached read of the wrapper's `UserRecord`, mapped to the v2
+    `MT4User` DTO. Secrets (passwords, OTP secret, API blob) are
+    stripped at the mapper level — they cannot be exposed via this endpoint
+    regardless of caller permissions. Returns NotFound envelope when the
+    pump cache does not contain the requested login.
+
+    Args:
+        trade_platform (UUID):
+        login (int):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[MT4UserApiResponse]
+     """
+
+
+    kwargs = _get_kwargs(
+        trade_platform=trade_platform,
+login=login,
+
+    )
+
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
+
+    return _build_response(client=client, response=response)
+
+async def asyncio(
+    trade_platform: UUID,
+    login: int,
+    *,
+    client: AuthenticatedClient | Client,
+
+) -> MT4UserApiResponse | None:
+    """ Get account (cached)
+
+     Account record for a single login from the pump cache.
+
+    Pump-cached read of the wrapper's `UserRecord`, mapped to the v2
+    `MT4User` DTO. Secrets (passwords, OTP secret, API blob) are
+    stripped at the mapper level — they cannot be exposed via this endpoint
+    regardless of caller permissions. Returns NotFound envelope when the
+    pump cache does not contain the requested login.
+
+    Args:
+        trade_platform (UUID):
+        login (int):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        MT4UserApiResponse
+     """
+
+
+    return (await asyncio_detailed(
+        trade_platform=trade_platform,
+login=login,
+client=client,
+
+    )).parsed

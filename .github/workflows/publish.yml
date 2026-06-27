@@ -1,0 +1,63 @@
+name: Publish to PyPI
+
+# * Triggered by pushing a version tag (e.g. v0.1.0, v1.2.3).
+# * Uses PyPI Trusted Publishing (OIDC) — NO long-lived PYPI_TOKEN, nothing to rotate.
+# * Unlike npm, PyPI supports a "pending publisher": you can configure the trusted
+# *   publisher BEFORE the first release, so no bootstrap-token publish is needed.
+# *   On pypi.org: Account/Project → Publishing → Add a GitHub Actions publisher →
+# *   owner=<org>, repo=<repo>, workflow=publish.yml, environment=pypi.
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build sdist + wheel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build distributions
+        run: python -m pip install --upgrade build && python -m build
+
+      - name: Twine check
+        run: python -m pip install --upgrade twine && python -m twine check dist/*
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    name: Publish to PyPI (OIDC trusted publishing)
+    needs: build
+    runs-on: ubuntu-latest
+    # * A GitHub Environment named "pypi" lets you add release protection rules
+    #   (required reviewers, tag restrictions) and is the conventional pairing
+    #   with a PyPI trusted publisher scoped to that environment.
+    environment:
+      name: pypi
+      url: https://pypi.org/p/mywebapi-sdk
+    permissions:
+      # ! Required for OIDC trusted publishing — mints the short-lived id-token
+      #   PyPI verifies. No API token is stored anywhere.
+      id-token: write
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Publish
+        # * No password/token input: the action exchanges the workflow's OIDC
+        #   id-token for a short-lived PyPI upload credential.
+        uses: pypa/gh-action-pypi-publish@release/v1

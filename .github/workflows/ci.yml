@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: Test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12', '3.13']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install package + test deps
+        # * Editable install so the package imports as `cplugin_webapi_sdk`.
+        #   signalrcore is NOT installed: the realtime unit tests monkeypatch the
+        #   lazy import, so they run without the optional extra.
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[test]"
+
+      - name: Run tests
+        # * The e2e suite is double-gated (WEBAPI_E2E + credentials, and signalrcore
+        #   for the SignalR smoke); with neither present it skips cleanly, so unit
+        #   and contract tests run hermetically in CI with no extra setup.
+        run: python -m pytest -q
+
+  build:
+    name: Build sdist + wheel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build distributions
+        run: python -m pip install --upgrade build && python -m build
+
+      - name: Twine check
+        run: python -m pip install --upgrade twine && python -m twine check dist/*
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/

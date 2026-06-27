@@ -1,0 +1,339 @@
+from http import HTTPStatus
+from typing import Any, cast
+from urllib.parse import quote
+
+import httpx
+
+from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
+from ...models.mt4_trade_list_api_response import MT4TradeListApiResponse
+from ...types import UNSET, Unset
+from typing import cast
+from uuid import UUID
+import datetime
+
+
+
+def _get_kwargs(
+    trade_platform: UUID,
+    *,
+    from_: datetime.datetime | Unset = UNSET,
+    to: datetime.datetime | Unset = UNSET,
+    logins: list[int] | Unset = UNSET,
+    name: str | Unset = UNSET,
+
+) -> dict[str, Any]:
+    
+
+    
+
+    params: dict[str, Any] = {}
+
+    json_from_: str | Unset = UNSET
+    if not isinstance(from_, Unset):
+        json_from_ = from_.isoformat()
+    params["from"] = json_from_
+
+    json_to: str | Unset = UNSET
+    if not isinstance(to, Unset):
+        json_to = to.isoformat()
+    params["to"] = json_to
+
+    json_logins: list[int] | Unset = UNSET
+    if not isinstance(logins, Unset):
+        json_logins = logins
+
+
+    params["logins"] = json_logins
+
+    params["name"] = name
+
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
+
+    _kwargs: dict[str, Any] = {
+        "method": "get",
+        "url": "/api/v2/MT4/{trade_platform}/ReportsRequest".format(trade_platform=quote(str(trade_platform), safe=""),),
+        "params": params,
+    }
+
+
+    return _kwargs
+
+
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT4TradeListApiResponse | None:
+    if response.status_code == 200:
+        response_200 = MT4TradeListApiResponse.from_dict(response.json())
+
+
+
+        return response_200
+
+    if client.raise_on_unexpected_status:
+        raise errors.UnexpectedStatus(response.status_code, response.content)
+    else:
+        return None
+
+
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT4TradeListApiResponse]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    from_: datetime.datetime | Unset = UNSET,
+    to: datetime.datetime | Unset = UNSET,
+    logins: list[int] | Unset = UNSET,
+    name: str | Unset = UNSET,
+
+) -> Response[MT4TradeListApiResponse]:
+    r""" Get closed-trade reports
+
+     Closed-trade reports for a batch of account logins within a time window — the data set that drives
+    broker financial reporting (PnL, commissions, taxes) and customer trade-history exports.
+
+    Manager-live read (round-trip to MT4 server). Pass logins as repeated
+    query parameters: `?logins=1001&logins=1002&logins=1003`.
+    Server-side billing counts this as one Manager request regardless of
+    batch size — prefer one batched call over a per-login loop.
+
+    The wrapper returns a dictionary keyed by order ticket; the v2 envelope
+    flattens it to a list. Missing logins are silently omitted (no error
+    envelope). The optional name parameter selects a
+    server-defined report template — leave it null/empty to use the
+    default `\"RTL_report\"` template (closed trades within the window).
+
+    Pump cache is NOT consulted — data reflects authoritative server
+    history. Note: the wrapper comment warns that asking for a window
+    where the manager account lacks the `Reports` permission may
+    cause MT4 to drop the manager connection; this endpoint guards that
+    indirectly via the API-side `ResourceAccess` check, but a broker
+    that mis-configured the underlying manager rights can still observe
+    transient connection bounces.
+
+    Args:
+        trade_platform (UUID):
+        from_ (datetime.datetime | Unset):
+        to (datetime.datetime | Unset):
+        logins (list[int] | Unset):
+        name (str | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[MT4TradeListApiResponse]
+     """
+
+
+    kwargs = _get_kwargs(
+        trade_platform=trade_platform,
+from_=from_,
+to=to,
+logins=logins,
+name=name,
+
+    )
+
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+def sync(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    from_: datetime.datetime | Unset = UNSET,
+    to: datetime.datetime | Unset = UNSET,
+    logins: list[int] | Unset = UNSET,
+    name: str | Unset = UNSET,
+
+) -> MT4TradeListApiResponse | None:
+    r""" Get closed-trade reports
+
+     Closed-trade reports for a batch of account logins within a time window — the data set that drives
+    broker financial reporting (PnL, commissions, taxes) and customer trade-history exports.
+
+    Manager-live read (round-trip to MT4 server). Pass logins as repeated
+    query parameters: `?logins=1001&logins=1002&logins=1003`.
+    Server-side billing counts this as one Manager request regardless of
+    batch size — prefer one batched call over a per-login loop.
+
+    The wrapper returns a dictionary keyed by order ticket; the v2 envelope
+    flattens it to a list. Missing logins are silently omitted (no error
+    envelope). The optional name parameter selects a
+    server-defined report template — leave it null/empty to use the
+    default `\"RTL_report\"` template (closed trades within the window).
+
+    Pump cache is NOT consulted — data reflects authoritative server
+    history. Note: the wrapper comment warns that asking for a window
+    where the manager account lacks the `Reports` permission may
+    cause MT4 to drop the manager connection; this endpoint guards that
+    indirectly via the API-side `ResourceAccess` check, but a broker
+    that mis-configured the underlying manager rights can still observe
+    transient connection bounces.
+
+    Args:
+        trade_platform (UUID):
+        from_ (datetime.datetime | Unset):
+        to (datetime.datetime | Unset):
+        logins (list[int] | Unset):
+        name (str | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        MT4TradeListApiResponse
+     """
+
+
+    return sync_detailed(
+        trade_platform=trade_platform,
+client=client,
+from_=from_,
+to=to,
+logins=logins,
+name=name,
+
+    ).parsed
+
+async def asyncio_detailed(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    from_: datetime.datetime | Unset = UNSET,
+    to: datetime.datetime | Unset = UNSET,
+    logins: list[int] | Unset = UNSET,
+    name: str | Unset = UNSET,
+
+) -> Response[MT4TradeListApiResponse]:
+    r""" Get closed-trade reports
+
+     Closed-trade reports for a batch of account logins within a time window — the data set that drives
+    broker financial reporting (PnL, commissions, taxes) and customer trade-history exports.
+
+    Manager-live read (round-trip to MT4 server). Pass logins as repeated
+    query parameters: `?logins=1001&logins=1002&logins=1003`.
+    Server-side billing counts this as one Manager request regardless of
+    batch size — prefer one batched call over a per-login loop.
+
+    The wrapper returns a dictionary keyed by order ticket; the v2 envelope
+    flattens it to a list. Missing logins are silently omitted (no error
+    envelope). The optional name parameter selects a
+    server-defined report template — leave it null/empty to use the
+    default `\"RTL_report\"` template (closed trades within the window).
+
+    Pump cache is NOT consulted — data reflects authoritative server
+    history. Note: the wrapper comment warns that asking for a window
+    where the manager account lacks the `Reports` permission may
+    cause MT4 to drop the manager connection; this endpoint guards that
+    indirectly via the API-side `ResourceAccess` check, but a broker
+    that mis-configured the underlying manager rights can still observe
+    transient connection bounces.
+
+    Args:
+        trade_platform (UUID):
+        from_ (datetime.datetime | Unset):
+        to (datetime.datetime | Unset):
+        logins (list[int] | Unset):
+        name (str | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[MT4TradeListApiResponse]
+     """
+
+
+    kwargs = _get_kwargs(
+        trade_platform=trade_platform,
+from_=from_,
+to=to,
+logins=logins,
+name=name,
+
+    )
+
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
+
+    return _build_response(client=client, response=response)
+
+async def asyncio(
+    trade_platform: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    from_: datetime.datetime | Unset = UNSET,
+    to: datetime.datetime | Unset = UNSET,
+    logins: list[int] | Unset = UNSET,
+    name: str | Unset = UNSET,
+
+) -> MT4TradeListApiResponse | None:
+    r""" Get closed-trade reports
+
+     Closed-trade reports for a batch of account logins within a time window — the data set that drives
+    broker financial reporting (PnL, commissions, taxes) and customer trade-history exports.
+
+    Manager-live read (round-trip to MT4 server). Pass logins as repeated
+    query parameters: `?logins=1001&logins=1002&logins=1003`.
+    Server-side billing counts this as one Manager request regardless of
+    batch size — prefer one batched call over a per-login loop.
+
+    The wrapper returns a dictionary keyed by order ticket; the v2 envelope
+    flattens it to a list. Missing logins are silently omitted (no error
+    envelope). The optional name parameter selects a
+    server-defined report template — leave it null/empty to use the
+    default `\"RTL_report\"` template (closed trades within the window).
+
+    Pump cache is NOT consulted — data reflects authoritative server
+    history. Note: the wrapper comment warns that asking for a window
+    where the manager account lacks the `Reports` permission may
+    cause MT4 to drop the manager connection; this endpoint guards that
+    indirectly via the API-side `ResourceAccess` check, but a broker
+    that mis-configured the underlying manager rights can still observe
+    transient connection bounces.
+
+    Args:
+        trade_platform (UUID):
+        from_ (datetime.datetime | Unset):
+        to (datetime.datetime | Unset):
+        logins (list[int] | Unset):
+        name (str | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        MT4TradeListApiResponse
+     """
+
+
+    return (await asyncio_detailed(
+        trade_platform=trade_platform,
+client=client,
+from_=from_,
+to=to,
+logins=logins,
+name=name,
+
+    )).parsed
