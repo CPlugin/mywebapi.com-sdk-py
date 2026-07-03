@@ -1,6 +1,6 @@
 # CPlugin SaaS WebAPI — Python SDK
 
-Python client for the SaaS WebAPI v2 (MT4/MT5 trading platform management).
+Python client for the MyWebAPI.com trading platform management API (v2).
 
 > **Develop-only.** This package is not published to PyPI. The distribution name `mywebapi-sdk` is a placeholder; do not rely on it. The package will be released to the private registry once the v2 API reaches production maturity.
 
@@ -47,11 +47,11 @@ with CPluginWebApiClient(
     platforms = client.list_trade_platforms()
     tp = platforms[0]["id"]
 
-    # MT4 server time
-    print("MT4 server time:", client.mt4.get_server_time(tp))
+    # server time (mt4 namespace)
+    print("server time (mt4):", client.mt4.get_server_time(tp))
 
-    # MT5 server time
-    print("MT5 server time:", client.mt5.get_server_time(tp))
+    # server time (mt5 namespace)
+    print("server time (mt5):", client.mt5.get_server_time(tp))
 
     # Error handling
     try:
@@ -135,7 +135,7 @@ for tick in rt.stream_ticks("EURUSD"):
 rt.stop()
 ```
 
-MT4 hubs stream ticks, trades, margin-call events, user updates, and symbol config changes. MT5 hubs stream connection status and margin-call updates.
+The `mt4` hubs stream ticks, trades, margin-call events, user updates, and symbol config changes; the `mt5` hubs stream connection status and margin-call updates.
 
 > **Note:** The `realtime` namespace requires `signalrcore` to be installed. The REST surface (`mt4`, `mt5`, `list_trade_platforms`) works without it.
 
@@ -192,3 +192,7 @@ clients/python/
 ├── tests/                 # hermetic unit and contract tests
 └── scripts/               # fetch_spec.py, generate_client.py
 ```
+
+---
+
+MetaTrader, MT4, MT5, and MetaQuotes are trademarks or registered trademarks of MetaQuotes Ltd. This project is not affiliated with, endorsed by, or sponsored by MetaQuotes Ltd.

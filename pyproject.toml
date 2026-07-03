@@ -8,12 +8,12 @@ build-backend = "hatchling.build"
 # !   the first release — PyPI names are a global, first-come namespace.
 name = "mywebapi-sdk"
 version = "0.1.0"
-description = "Python client for the SaaS WebAPI v2 (MT4/MT5 management). Generated endpoints + httpx ergonomic layer."
+description = "Python client for the MyWebAPI.com trading platform management API (v2). Generated endpoints + httpx ergonomic layer."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
 license-files = ["LICENSE"]
-keywords = ["metatrader", "mt4", "mt5", "trading", "webapi", "sdk", "httpx", "signalr"]
+keywords = ["mywebapi", "trading-platform", "trading", "broker", "forex", "webapi", "sdk", "httpx", "signalr"]
 authors = [{ name = "CPlugin" }]
 dependencies = [
   "httpx>=0.27,<1",
