@@ -29,7 +29,9 @@ from cplugin_webapi_sdk._generated.api.mt4_v_2_common import (
 from cplugin_webapi_sdk.timeouts import (
     DEFAULT_TRANSPORT_TIMEOUT,
     TRANSPORT_TIMEOUT_MARGIN,
+    UNDOCUMENTED_OPERATION_TIMEOUT,
     format_seconds,
+    operation_default_timeout,
     validate_idempotency_key,
     validate_request_timeout,
 )
@@ -66,7 +68,8 @@ def test_no_request_timeout_sends_no_header():
         c.mt4.get_server_time(TP)
     request = route.calls.last.request
     assert "x-request-timeout" not in request.headers
-    assert _read_timeout(request) == DEFAULT_TRANSPORT_TIMEOUT
+    # * ServerTime is a read: 10 s server default + margin, above the 30 s floor.
+    assert _read_timeout(request) == 10 + TRANSPORT_TIMEOUT_MARGIN
 
 
 @respx.mock
@@ -110,7 +113,7 @@ def test_raw_accepts_generated_parameter_name():
         c.mt4.raw(server_time_op, trade_platform=TP, x_request_timeout=12)
     request = route.calls.last.request
     assert request.headers["X-Request-Timeout"] == "12"
-    assert _read_timeout(request) == max(DEFAULT_TRANSPORT_TIMEOUT, 12 + TRANSPORT_TIMEOUT_MARGIN)
+    assert _read_timeout(request) == 12 + TRANSPORT_TIMEOUT_MARGIN
 
 
 def test_raw_rejects_disagreeing_timeouts():
@@ -196,7 +199,68 @@ def test_no_http_timeout_stays_unlimited():
 def test_margin_covers_the_server_connect_allowance():
     """The server may add up to 20 s for opening the platform connection; the client must wait longer."""
     assert TRANSPORT_TIMEOUT_MARGIN > 20
-    assert DEFAULT_TRANSPORT_TIMEOUT >= 60 + 20
+    assert DEFAULT_TRANSPORT_TIMEOUT == 30
+
+
+def test_operation_defaults_come_from_the_spec():
+    from cplugin_webapi_sdk._generated.api.mt4_v_2_users import (
+        patch_api_v_2_mt4_trade_platform_user_record_login as patch_op,
+    )
+    from cplugin_webapi_sdk._generated.api.mt4_v_2_sidecar_batch_reads import (
+        get_api_v_2_mt4_trade_platform_users_snapshot as snapshot_op,
+    )
+    assert operation_default_timeout(server_time_op) == 10
+    assert operation_default_timeout(patch_op) == 15
+    # * Sidecar operations document no default: assume the longest server default.
+    assert operation_default_timeout(snapshot_op) == UNDOCUMENTED_OPERATION_TIMEOUT == 60
+    assert operation_default_timeout(object()) == UNDOCUMENTED_OPERATION_TIMEOUT
+
+
+def test_every_documented_default_is_mapped():
+    """The generated table covers every operation whose spec documents a timeout."""
+    import json
+    from pathlib import Path
+
+    from cplugin_webapi_sdk._generated.operation_timeouts import DEFAULTS
+
+    spec = json.loads((Path(__file__).parents[1] / "src/cplugin_webapi_sdk/spec/v2.json").read_text("utf-8"))
+    documented = sorted(
+        p["schema"]["default"]
+        for item in spec["paths"].values()
+        for op in item.values()
+        for p in op.get("parameters", [])
+        if p.get("name") == "X-Request-Timeout" and "default" in p.get("schema", {})
+    )
+    assert sorted(DEFAULTS.values()) == documented
+
+
+@respx.mock
+def test_default_deadline_of_a_write_sets_the_http_timeout():
+    route = respx.patch(MT4_PATCH).mock(return_value=httpx.Response(200, json=envelope_ok({})))
+    with _client() as c:
+        c.mt4.patch_user_record(TP, 1001)
+    assert _read_timeout(route.calls.last.request) == 15 + TRANSPORT_TIMEOUT_MARGIN
+
+
+@respx.mock
+def test_undocumented_operation_waits_for_the_longest_default():
+    from cplugin_webapi_sdk._generated.api.mt4_v_2_sidecar_batch_reads import (
+        get_api_v_2_mt4_trade_platform_users_snapshot as snapshot_op,
+    )
+    route = respx.get(f"{API}/api/v2/MT4/{TP}/UsersSnapshot").mock(
+        return_value=httpx.Response(200, json=envelope_ok([]))
+    )
+    with _client() as c:
+        c.mt4.raw(snapshot_op, trade_platform=TP)
+    assert _read_timeout(route.calls.last.request) == 60 + TRANSPORT_TIMEOUT_MARGIN
+
+
+@respx.mock
+def test_configured_timeout_is_the_floor_for_default_deadlines():
+    route = respx.get(MT4_TIME).mock(return_value=httpx.Response(200, json=envelope_ok("t")))
+    with _client(timeout=100) as c:
+        c.mt4.get_server_time(TP)
+    assert _read_timeout(route.calls.last.request) == 100
 
 
 # ---------------------------------------------------------------------------
@@ -325,7 +389,7 @@ async def test_async_request_timeout_and_outcome():
             await c.mt4.get_server_time(TP, request_timeout=4)
     request = route.calls.last.request
     assert request.headers["X-Request-Timeout"] == "4"
-    assert _read_timeout(request) == max(DEFAULT_TRANSPORT_TIMEOUT, 4 + TRANSPORT_TIMEOUT_MARGIN)
+    assert _read_timeout(request) == 4 + TRANSPORT_TIMEOUT_MARGIN
     assert ei.value.applied_timeout == 4.0 and is_safe_to_retry(ei.value)
 
 

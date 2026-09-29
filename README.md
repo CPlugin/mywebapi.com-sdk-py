@@ -107,7 +107,7 @@ client.mt4.get_server_time(tp, request_timeout=3)  # one call
 resp = client.mt4.raw(op_module, trade_platform=tp, request_timeout=120)  # any generated operation
 ```
 
-The value is sent as the `X-Request-Timeout` header; a value outside 1–300 raises `ValueError` before anything is sent. The HTTP client waits at least 30 s longer than the deadline you set: the server may add up to 20 s for connecting to the trading platform, and the rest covers the network. The server's deadline starts after it has read the request and taken the idempotency key, so on a very slow network or database the client can still give up first — raise `timeout=` for such an environment. The client-wide HTTP timeout (`timeout=`, default 90 s) is never shortened.
+The value is sent as the `X-Request-Timeout` header; a value outside 1–300 raises `ValueError` before anything is sent. The HTTP client waits at least 30 s longer than the deadline you set: the server may add up to 20 s for connecting to the trading platform, and the rest covers the network. The server's deadline starts after it has read the request and taken the idempotency key, so on a very slow network or database the client can still give up first — raise `timeout=` for such an environment. Without `request_timeout` the same margin is added to the operation's default deadline from the API reference (60 s for the few operations that document none). The client-wide HTTP timeout (`timeout=`, default 30 s) is the floor and is never shortened.
 
 When the deadline passes, `ApiError` carries the code and the `X-Request-Outcome` header:
 
@@ -226,7 +226,7 @@ python scripts/fetch_spec.py
 python scripts/generate_client.py
 ```
 
-The regenerated output lands in `src/cplugin_webapi_sdk/_generated/` and is never edited by hand. `generate_client.py` drops the documented default of the `X-Request-Timeout` header before generating, so a generated call sends the header only when a timeout is set.
+The regenerated output lands in `src/cplugin_webapi_sdk/_generated/` and is never edited by hand. `generate_client.py` drops the documented default of the `X-Request-Timeout` header before generating, so a generated call sends the header only when a timeout is set, and writes those defaults to `_generated/operation_timeouts.py`, from which the client sizes its HTTP timeout.
 
 ## Develop
 

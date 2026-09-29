@@ -43,9 +43,13 @@ MAX_IDEMPOTENCY_KEY_LENGTH = 255
 # ?   the idempotency key, and those steps have no deadline of their own.
 TRANSPORT_TIMEOUT_MARGIN = 30.0
 
-# * Default HTTP client timeout: the longest server default (maintenance, 60 s)
-#   plus the same margin, so no default-deadline call is cut off by the client.
-DEFAULT_TRANSPORT_TIMEOUT = 90.0
+# * Default client-wide HTTP timeout. A call to a trade platform waits longer when its
+#   server deadline needs it (see transport_timeout); this is the floor.
+DEFAULT_TRANSPORT_TIMEOUT = 30.0
+
+# * Deadline assumed for an operation whose spec documents no X-Request-Timeout
+#   default (x86 sidecar operations): the longest server default, maintenance.
+UNDOCUMENTED_OPERATION_TIMEOUT = 60.0
 
 
 class ErrorCode:
@@ -132,14 +136,24 @@ def format_seconds(seconds: float) -> str:
     return f"{seconds:.3f}".rstrip("0").rstrip(".")
 
 
-def transport_timeout(base: float | None, request_timeout: float | None) -> float | None:
-    """HTTP client timeout for one call: never shorter than ``request_timeout`` + margin.
+def operation_default_timeout(op_module: object) -> float:
+    """Server default deadline of a generated operation, from the spec; 60 s when it documents none."""
+    from ._generated.operation_timeouts import DEFAULTS
 
+    name = getattr(op_module, "__name__", "")
+    key = ".".join(name.rsplit(".", 2)[-2:])
+    return DEFAULTS.get(key, UNDOCUMENTED_OPERATION_TIMEOUT)
+
+
+def transport_timeout(base: float | None, server_timeout: float) -> float | None:
+    """HTTP client timeout for one call: ``server_timeout`` + margin, never below ``base``.
+
+    ``server_timeout`` is the requested deadline, else the operation's default.
     ``base`` is the client-wide timeout (``None`` = no limit, which already waits long enough).
     """
-    if request_timeout is None or base is None:
-        return base
-    return max(base, request_timeout + TRANSPORT_TIMEOUT_MARGIN)
+    if base is None:
+        return None
+    return max(base, server_timeout + TRANSPORT_TIMEOUT_MARGIN)
 
 
 def _code_and_outcome(error: BaseException) -> tuple[str | None, str | None]:

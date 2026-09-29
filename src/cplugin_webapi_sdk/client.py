@@ -33,6 +33,7 @@ from .timeouts import (
     IDEMPOTENCY_KEY_HEADER,
     REQUEST_TIMEOUT_HEADER,
     format_seconds,
+    operation_default_timeout,
     transport_timeout,
     validate_idempotency_key,
     validate_request_timeout,
@@ -112,9 +113,10 @@ def _request_kwargs(
     """Build the httpx request for a generated op, with timeout and idempotency headers.
 
     ``request_timeout`` (seconds, 1–300) falls back to the client-wide default; when
-    one applies, ``X-Request-Timeout`` is sent and the HTTP timeout of this call is
-    stretched past the server's deadline, so the client never gives up before the
-    server has said whether the operation was applied.
+    one applies, ``X-Request-Timeout`` is sent. The HTTP timeout of the call is
+    stretched past the server's deadline — the one requested, else the operation's
+    default from the spec — so the client does not give up before the server has
+    said whether the operation was applied.
     """
     # Q-3: Guard against op_module that is not a generated endpoint module.
     if not callable(getattr(op_module, "_get_kwargs", None)):
@@ -144,7 +146,8 @@ def _request_kwargs(
     }
     if seconds is not None:
         headers[REQUEST_TIMEOUT_HEADER] = format_seconds(seconds)
-        req_kwargs["timeout"] = transport_timeout(owner._timeout, seconds)
+    server_timeout = seconds if seconds is not None else operation_default_timeout(op_module)
+    req_kwargs["timeout"] = transport_timeout(owner._timeout, server_timeout)
     if key is not None:
         headers[IDEMPOTENCY_KEY_HEADER] = key
     req_kwargs["headers"] = headers
@@ -919,10 +922,11 @@ class CPluginWebApiClient:
         api_base_url: Override API base URL (required when ``env="custom"``).
         authority:    Override OIDC authority URL (required when ``env="custom"``).
         scopes:       OAuth2 scopes to request (default: server-defined).
-        timeout:      HTTP client timeout in seconds (default: 90.0 — longer than the
-                      longest server-side default deadline, 60 s, plus the time the
-                      server may add for connecting to the trade platform). A call
-                      with ``request_timeout`` waits at least ``request_timeout`` + 30 s.
+        timeout:      HTTP client timeout in seconds (default: 30.0). A trade-platform
+                      call waits at least its server deadline + 30 s — the requested
+                      ``request_timeout``, else the operation's default from the spec
+                      (60 s where it documents none) — so it is never cut off before
+                      the server answers; this value is the floor.
         request_timeout: Default server deadline in seconds (1–300) for every call,
                       sent as ``X-Request-Timeout``. ``None`` (default): the server's
                       own per-operation default (trade 5 s, read 10 s, change 15 s,
