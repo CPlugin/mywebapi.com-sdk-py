@@ -20,6 +20,8 @@ First release on PyPI. The version continues the numbering of the JavaScript, .N
 
 - Regenerated from the current server spec (172 paths). Every guarded operation documents its default timeout in its docstring; the generated functions take `x_request_timeout` and send it only when set.
 - Flag fields (user rights, group permissions, symbol, order, position and deal flags) are `str` — the names of the set bits joined by `", "` — instead of single-value enums that rejected every combination. The enum modules `users_rights`, `group_rights`, the `en_*_flags` modules except `en_gateway_account_flags`, `trade_activation_flags`, `trade_modify_flags` and `tick_request_flags` under `_generated.models` are removed.
+- The six v2 `PATCH` operations (MT4 `GroupRecord`, `SymbolConfig`, `UserRecord`; MT5 `GroupRecord`, `UserRecord`, `SymbolRecord`) now take a required `body` — a JSON Merge Patch object with only the fields to change — and `ExternalCommandJSON` takes a required `body` (any JSON value). Previously the spec declared no body, so the generated functions could not send one.
+- `patch_user_record(trade_platform, login, changes)` takes the changed fields as a mapping (wire names, e.g. `{"leverage": 200}`) and sends them; before, it sent no body at all. An empty or non-mapping `changes` is rejected before sending.
 - History calls (30 s server default) and server maintenance (60 s) are no longer cut off by the 30 s client timeout before the server answers.
 - `ApiError` takes an optional fourth argument, the response headers; `unwrap()` passes them from any response that has `.headers`.
 

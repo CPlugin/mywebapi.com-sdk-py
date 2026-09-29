@@ -9,6 +9,7 @@ from ...types import Response, UNSET
 from ... import errors
 
 from ...models.mt4_group_api_response import MT4GroupApiResponse
+from ...models.patch_api_v2mt4_trade_platform_group_record_group_json_body import PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody
 from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
@@ -19,6 +20,7 @@ def _get_kwargs(
     trade_platform: UUID,
     group: str,
     *,
+    body: PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
@@ -38,6 +40,9 @@ def _get_kwargs(
         "url": "/api/v2/MT4/{trade_platform}/GroupRecord/{group}".format(trade_platform=quote(str(trade_platform), safe=""),group=quote(str(group), safe=""),),
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -72,6 +77,7 @@ def sync_detailed(
     group: str,
     *,
     client: AuthenticatedClient | Client,
+    body: PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4GroupApiResponse]:
@@ -88,6 +94,8 @@ def sync_detailed(
         trade_platform (UUID):
         group (str):
         x_request_timeout (float | Unset):
+        body (PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody): Only the fields to change; the
+            rest of the record stays as it is.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -101,6 +109,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 group=group,
+body=body,
 x_request_timeout=x_request_timeout,
 
     )
@@ -116,6 +125,7 @@ def sync(
     group: str,
     *,
     client: AuthenticatedClient | Client,
+    body: PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4GroupApiResponse | None:
@@ -132,6 +142,8 @@ def sync(
         trade_platform (UUID):
         group (str):
         x_request_timeout (float | Unset):
+        body (PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody): Only the fields to change; the
+            rest of the record stays as it is.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -146,6 +158,7 @@ def sync(
         trade_platform=trade_platform,
 group=group,
 client=client,
+body=body,
 x_request_timeout=x_request_timeout,
 
     ).parsed
@@ -155,6 +168,7 @@ async def asyncio_detailed(
     group: str,
     *,
     client: AuthenticatedClient | Client,
+    body: PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4GroupApiResponse]:
@@ -171,6 +185,8 @@ async def asyncio_detailed(
         trade_platform (UUID):
         group (str):
         x_request_timeout (float | Unset):
+        body (PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody): Only the fields to change; the
+            rest of the record stays as it is.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -184,6 +200,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 group=group,
+body=body,
 x_request_timeout=x_request_timeout,
 
     )
@@ -199,6 +216,7 @@ async def asyncio(
     group: str,
     *,
     client: AuthenticatedClient | Client,
+    body: PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4GroupApiResponse | None:
@@ -215,6 +233,8 @@ async def asyncio(
         trade_platform (UUID):
         group (str):
         x_request_timeout (float | Unset):
+        body (PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody): Only the fields to change; the
+            rest of the record stays as it is.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -229,6 +249,7 @@ async def asyncio(
         trade_platform=trade_platform,
 group=group,
 client=client,
+body=body,
 x_request_timeout=x_request_timeout,
 
     )).parsed

@@ -18,6 +18,7 @@ from uuid import UUID
 def _get_kwargs(
     trade_platform: UUID,
     *,
+    body: Any,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
@@ -37,6 +38,9 @@ def _get_kwargs(
         "url": "/api/v2/MT4/{trade_platform}/ExternalCommandJSON".format(trade_platform=quote(str(trade_platform), safe=""),),
     }
 
+    _kwargs["json"] = body
+
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -70,6 +74,7 @@ def sync_detailed(
     trade_platform: UUID,
     *,
     client: AuthenticatedClient | Client,
+    body: Any,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[JsonNodeApiResponse]:
@@ -103,6 +108,7 @@ def sync_detailed(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
+        body (Any): Any JSON value.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -115,6 +121,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
+body=body,
 x_request_timeout=x_request_timeout,
 
     )
@@ -129,6 +136,7 @@ def sync(
     trade_platform: UUID,
     *,
     client: AuthenticatedClient | Client,
+    body: Any,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> JsonNodeApiResponse | None:
@@ -162,6 +170,7 @@ def sync(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
+        body (Any): Any JSON value.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -175,6 +184,7 @@ def sync(
     return sync_detailed(
         trade_platform=trade_platform,
 client=client,
+body=body,
 x_request_timeout=x_request_timeout,
 
     ).parsed
@@ -183,6 +193,7 @@ async def asyncio_detailed(
     trade_platform: UUID,
     *,
     client: AuthenticatedClient | Client,
+    body: Any,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[JsonNodeApiResponse]:
@@ -216,6 +227,7 @@ async def asyncio_detailed(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
+        body (Any): Any JSON value.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -228,6 +240,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
+body=body,
 x_request_timeout=x_request_timeout,
 
     )
@@ -242,6 +255,7 @@ async def asyncio(
     trade_platform: UUID,
     *,
     client: AuthenticatedClient | Client,
+    body: Any,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> JsonNodeApiResponse | None:
@@ -275,6 +289,7 @@ async def asyncio(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
+        body (Any): Any JSON value.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -288,6 +303,7 @@ async def asyncio(
     return (await asyncio_detailed(
         trade_platform=trade_platform,
 client=client,
+body=body,
 x_request_timeout=x_request_timeout,
 
     )).parsed

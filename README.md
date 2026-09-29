@@ -126,7 +126,7 @@ from cplugin_webapi_sdk import ApiError, is_outcome_unknown, is_safe_to_retry
 
 key = str(uuid.uuid4())  # one key per logical operation, kept across repeats
 try:
-    client.mt4.patch_user_record(tp, login, idempotency_key=key)
+    client.mt4.patch_user_record(tp, login, {"leverage": 200}, idempotency_key=key)
 except ApiError as e:
     if is_outcome_unknown(e):
         # * Never repeat blindly — for a trade that means a second trade.

@@ -238,8 +238,26 @@ def test_every_documented_default_is_mapped():
 def test_default_deadline_of_a_write_sets_the_http_timeout():
     route = respx.patch(MT4_PATCH).mock(return_value=httpx.Response(200, json=envelope_ok({})))
     with _client() as c:
-        c.mt4.patch_user_record(TP, 1001)
+        c.mt4.patch_user_record(TP, 1001, {"leverage": 200})
     assert _read_timeout(route.calls.last.request) == 15 + TRANSPORT_TIMEOUT_MARGIN
+
+
+@respx.mock
+def test_patch_user_record_sends_only_the_changed_fields():
+    import json
+
+    route = respx.patch(MT4_PATCH).mock(return_value=httpx.Response(200, json=envelope_ok({"login": 1001})))
+    with _client() as c:
+        assert c.mt4.patch_user_record(TP, 1001, {"leverage": 200, "comment": "vip"}) == {"login": 1001}
+    request = route.calls.last.request
+    assert json.loads(request.content) == {"leverage": 200, "comment": "vip"}
+    assert request.headers["Content-Type"] == "application/json"
+
+
+@pytest.mark.parametrize("changes, exc", [({}, ValueError), ([("leverage", 1)], TypeError)])
+def test_patch_user_record_rejects_empty_or_non_mapping(changes, exc):
+    with _client() as c, pytest.raises(exc):
+        c.mt4.patch_user_record(TP, 1001, changes)
 
 
 @respx.mock
@@ -293,7 +311,7 @@ def test_read_timeout_is_safe_to_retry():
 def test_write_outcome_unknown_is_not_safe_to_retry():
     respx.patch(MT4_PATCH).mock(return_value=_timed_out("OutcomeUnknown", "unknown", "15"))
     with _client() as c, pytest.raises(ApiError) as ei:
-        c.mt4.patch_user_record(TP, 1001)
+        c.mt4.patch_user_record(TP, 1001, {"leverage": 200})
     err = ei.value
     assert err.code == ErrorCode.OUTCOME_UNKNOWN
     assert err.outcome == RequestOutcome.UNKNOWN
@@ -305,7 +323,7 @@ def test_write_outcome_unknown_is_not_safe_to_retry():
 def test_in_progress_idempotent_repeat_is_outcome_unknown():
     route = respx.patch(MT4_PATCH).mock(return_value=_timed_out("OutcomeUnknown", "in-progress", None))
     with _client() as c, pytest.raises(ApiError) as ei:
-        c.mt4.patch_user_record(TP, 1001, idempotency_key="order-42")
+        c.mt4.patch_user_record(TP, 1001, {"leverage": 200}, idempotency_key="order-42")
     assert route.calls.last.request.headers["Idempotency-Key"] == "order-42"
     assert ei.value.outcome == RequestOutcome.IN_PROGRESS
     assert ei.value.applied_timeout is None
@@ -364,7 +382,7 @@ def test_unparseable_gateway_page_keeps_headers():
 def test_outcome_unknown_write_is_sent_once():
     route = respx.patch(MT4_PATCH).mock(return_value=_timed_out("OutcomeUnknown", "unknown"))
     with _client() as c, pytest.raises(ApiError):
-        c.mt4.patch_user_record(TP, 1001)
+        c.mt4.patch_user_record(TP, 1001, {"leverage": 200})
     assert route.call_count == 1
 
 

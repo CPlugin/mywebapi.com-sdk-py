@@ -208,6 +208,12 @@ from .order_time import OrderTime
 from .order_type import OrderType
 from .otp_mode import OTPMode
 from .paging_meta import PagingMeta
+from .patch_api_v2mt4_trade_platform_group_record_group_json_body import PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody
+from .patch_api_v2mt4_trade_platform_symbol_config_symbol_json_body import PatchApiV2MT4TradePlatformSymbolConfigSymbolJsonBody
+from .patch_api_v2mt4_trade_platform_user_record_login_json_body import PatchApiV2MT4TradePlatformUserRecordLoginJsonBody
+from .patch_api_v2mt5_trade_platform_group_record_group_json_body import PatchApiV2MT5TradePlatformGroupRecordGroupJsonBody
+from .patch_api_v2mt5_trade_platform_symbol_record_symbol_json_body import PatchApiV2MT5TradePlatformSymbolRecordSymbolJsonBody
+from .patch_api_v2mt5_trade_platform_user_record_login_json_body import PatchApiV2MT5TradePlatformUserRecordLoginJsonBody
 from .position_actions import PositionActions
 from .position_reasons import PositionReasons
 from .profit_calculation_mode import ProfitCalculationMode
@@ -436,6 +442,12 @@ __all__ = (
     "OrderType",
     "OTPMode",
     "PagingMeta",
+    "PatchApiV2MT4TradePlatformGroupRecordGroupJsonBody",
+    "PatchApiV2MT4TradePlatformSymbolConfigSymbolJsonBody",
+    "PatchApiV2MT4TradePlatformUserRecordLoginJsonBody",
+    "PatchApiV2MT5TradePlatformGroupRecordGroupJsonBody",
+    "PatchApiV2MT5TradePlatformSymbolRecordSymbolJsonBody",
+    "PatchApiV2MT5TradePlatformUserRecordLoginJsonBody",
     "PositionActions",
     "PositionReasons",
     "ProfitCalculationMode",

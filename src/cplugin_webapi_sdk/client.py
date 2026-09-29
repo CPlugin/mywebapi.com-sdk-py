@@ -20,6 +20,7 @@ Usage::
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import Any, Callable, Generator, AsyncGenerator
 from uuid import UUID
 
@@ -51,6 +52,9 @@ from ._generated.api.mt4_v_2_users import (
     get_api_v_2_mt4_trade_platform_users_request as _mt4_users_request,
     get_api_v_2_mt4_trade_platform_user_record_get_login as _mt4_user_record_get,
     patch_api_v_2_mt4_trade_platform_user_record_login as _mt4_user_record_patch,
+)
+from ._generated.models.patch_api_v2mt4_trade_platform_user_record_login_json_body import (
+    PatchApiV2MT4TradePlatformUserRecordLoginJsonBody as _MT4UserRecordPatchBody,
 )
 from ._generated.api.mt4_v_2_symbols import (
     get_api_v_2_mt4_trade_platform_cfg_request_symbol as _mt4_symbols_list,
@@ -215,6 +219,16 @@ def _build_auth(
     )
 
 
+def _patch_body(changes: Mapping[str, Any]) -> _MT4UserRecordPatchBody:
+    """Wrap a mapping of changed fields into the generated merge-patch body."""
+    if not isinstance(changes, Mapping):
+        raise TypeError(f"changes must be a mapping of field names to values, got {type(changes).__name__}")
+    # ! An empty patch would still be a write round-trip to the trade server for nothing.
+    if not changes:
+        raise ValueError("changes must contain at least one field")
+    return _MT4UserRecordPatchBody.from_dict(dict(changes))
+
+
 def _to_uuid(trade_platform: str | UUID) -> UUID:
     """Accept a trade-platform identifier as str or UUID, always return UUID."""
     if isinstance(trade_platform, UUID):
@@ -317,15 +331,18 @@ class _MT4Namespace:
         self,
         trade_platform: str | UUID,
         login: int,
+        changes: Mapping[str, Any],
         *,
         request_timeout: float | None = None,
         idempotency_key: str | None = None,
     ) -> Any:
-        """Apply a server-side read-modify-write patch to a user record.
+        """Change the given fields of a user record (JSON Merge Patch) and return the merged record.
 
-        The server reads the current record, applies any queued mutations,
-        and returns the updated account. Unknown mutations are silently
-        ignored (forward-compatible).
+        ``changes`` holds only the fields to change, with their wire (camelCase)
+        names, e.g. ``{"leverage": 200, "comment": "vip"}``. The server reads the
+        current record from the trade server, overlays the changes and writes it
+        back; unknown keys are ignored. A change that timed out answers
+        ``OutcomeUnknown`` — pass ``idempotency_key`` to repeat it safely.
         """
         return unwrap(
             _call_sync(
@@ -334,6 +351,7 @@ class _MT4Namespace:
                 request_timeout=request_timeout,
                 idempotency_key=idempotency_key,
                 login=login,
+                body=_patch_body(changes),
             )
         )
 
@@ -666,11 +684,12 @@ class _MT4AsyncNamespace:
         self,
         trade_platform: str | UUID,
         login: int,
+        changes: Mapping[str, Any],
         *,
         request_timeout: float | None = None,
         idempotency_key: str | None = None,
     ) -> Any:
-        """Apply a server-side read-modify-write patch to a user record."""
+        """Change the given fields of a user record; see the sync ``patch_user_record``."""
         return unwrap(
             await _call_async(
                 self._o, _mt4_user_record_patch,
@@ -678,6 +697,7 @@ class _MT4AsyncNamespace:
                 request_timeout=request_timeout,
                 idempotency_key=idempotency_key,
                 login=login,
+                body=_patch_body(changes),
             )
         )
 
