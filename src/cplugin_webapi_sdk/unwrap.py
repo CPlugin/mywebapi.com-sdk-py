@@ -60,8 +60,11 @@ def _parse(response: Any) -> tuple[Any, ApiMeta | None]:
     ``http.HTTPStatus``) and ``.content`` (bytes) attributes is accepted.
     This matches the generated ``cplugin_webapi_sdk._generated.types.Response``
     without importing it here and creating a coupling to the generated layer.
+    An optional ``.headers`` mapping is handed to ``ApiError`` so it can report
+    ``X-Request-Outcome`` / ``X-Request-Timeout-Applied``.
     """
     raw: bytes = response.content
+    headers = getattr(response, "headers", None)
     # * Decode bytes → str so json.loads always receives a str/bytes it can handle.
     text = raw.decode("utf-8") if isinstance(raw, (bytes, bytearray)) else raw
 
@@ -79,12 +82,12 @@ def _parse(response: Any) -> tuple[Any, ApiMeta | None]:
             message=f"HTTP {status}: unparseable response body — {preview!r}",
             manager_code=None,
         )
-        raise ApiError(body, None, status) from exc
+        raise ApiError(body, None, status, headers) from exc
 
     if env.error is not None:
         # ! Raise before touching env.data — error payload may carry a non-null
         # ! data field on some future server versions; ignore it on error.
-        raise ApiError(env.error, env.meta, int(response.status_code))
+        raise ApiError(env.error, env.meta, int(response.status_code), headers)
 
     return env.data, env.meta
 

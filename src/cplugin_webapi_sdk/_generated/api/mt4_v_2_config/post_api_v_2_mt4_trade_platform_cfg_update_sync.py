@@ -20,9 +20,14 @@ def _get_kwargs(
     trade_platform: UUID,
     *,
     body:    MT4Sync  |     MT4Sync  |     MT4Sync  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -86,6 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Sync  |     MT4Sync  |     MT4Sync  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4SyncApiResponse]:
     r""" Update sync rule
@@ -103,8 +109,13 @@ def sync_detailed(
             live struct is preserved.</item><item>Write the merged struct back.</item></list>
     Echoes the merged `MT4Sync` in the response.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
             subset of the wrapper's ConSync — drops the Reserved padding, the
@@ -133,6 +144,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -147,6 +159,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Sync  |     MT4Sync  |     MT4Sync  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4SyncApiResponse | None:
     r""" Update sync rule
@@ -164,8 +177,13 @@ def sync(
             live struct is preserved.</item><item>Write the merged struct back.</item></list>
     Echoes the merged `MT4Sync` in the response.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
             subset of the wrapper's ConSync — drops the Reserved padding, the
@@ -195,6 +213,7 @@ def sync(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -203,6 +222,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Sync  |     MT4Sync  |     MT4Sync  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4SyncApiResponse]:
     r""" Update sync rule
@@ -220,8 +240,13 @@ async def asyncio_detailed(
             live struct is preserved.</item><item>Write the merged struct back.</item></list>
     Echoes the merged `MT4Sync` in the response.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
             subset of the wrapper's ConSync — drops the Reserved padding, the
@@ -250,6 +275,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -264,6 +290,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Sync  |     MT4Sync  |     MT4Sync  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4SyncApiResponse | None:
     r""" Update sync rule
@@ -281,8 +308,13 @@ async def asyncio(
             live struct is preserved.</item><item>Write the merged struct back.</item></list>
     Echoes the merged `MT4Sync` in the response.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
             subset of the wrapper's ConSync — drops the Reserved padding, the
@@ -312,5 +344,6 @@ async def asyncio(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

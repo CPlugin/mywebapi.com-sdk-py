@@ -23,9 +23,14 @@ def _get_kwargs(
     *,
     body:    MT4ChartWriteRequest  |     MT4ChartWriteRequest  |     MT4ChartWriteRequest  | Unset = UNSET,
     period: ChartPeriod | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -102,6 +107,7 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     body:    MT4ChartWriteRequest  |     MT4ChartWriteRequest  |     MT4ChartWriteRequest  | Unset = UNSET,
     period: ChartPeriod | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Update chart bars
@@ -114,10 +120,15 @@ def sync_detailed(
 
     Idempotency-Key strongly recommended.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
         period (ChartPeriod | Unset):
+        x_request_timeout (float | Unset):
         body (MT4ChartWriteRequest | Unset): v2 request body for the `ChartAdd` / `ChartUpdate` /
             `ChartDelete`
             trio. Wraps the bars list so the request shape stays extensible — future
@@ -148,6 +159,7 @@ def sync_detailed(
 symbol=symbol,
 body=body,
 period=period,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -164,6 +176,7 @@ def sync(
     client: AuthenticatedClient | Client,
     body:    MT4ChartWriteRequest  |     MT4ChartWriteRequest  |     MT4ChartWriteRequest  | Unset = UNSET,
     period: ChartPeriod | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Update chart bars
@@ -176,10 +189,15 @@ def sync(
 
     Idempotency-Key strongly recommended.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
         period (ChartPeriod | Unset):
+        x_request_timeout (float | Unset):
         body (MT4ChartWriteRequest | Unset): v2 request body for the `ChartAdd` / `ChartUpdate` /
             `ChartDelete`
             trio. Wraps the bars list so the request shape stays extensible — future
@@ -211,6 +229,7 @@ symbol=symbol,
 client=client,
 body=body,
 period=period,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -221,6 +240,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     body:    MT4ChartWriteRequest  |     MT4ChartWriteRequest  |     MT4ChartWriteRequest  | Unset = UNSET,
     period: ChartPeriod | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Update chart bars
@@ -233,10 +253,15 @@ async def asyncio_detailed(
 
     Idempotency-Key strongly recommended.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
         period (ChartPeriod | Unset):
+        x_request_timeout (float | Unset):
         body (MT4ChartWriteRequest | Unset): v2 request body for the `ChartAdd` / `ChartUpdate` /
             `ChartDelete`
             trio. Wraps the bars list so the request shape stays extensible — future
@@ -267,6 +292,7 @@ async def asyncio_detailed(
 symbol=symbol,
 body=body,
 period=period,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -283,6 +309,7 @@ async def asyncio(
     client: AuthenticatedClient | Client,
     body:    MT4ChartWriteRequest  |     MT4ChartWriteRequest  |     MT4ChartWriteRequest  | Unset = UNSET,
     period: ChartPeriod | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Update chart bars
@@ -295,10 +322,15 @@ async def asyncio(
 
     Idempotency-Key strongly recommended.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
         period (ChartPeriod | Unset):
+        x_request_timeout (float | Unset):
         body (MT4ChartWriteRequest | Unset): v2 request body for the `ChartAdd` / `ChartUpdate` /
             `ChartDelete`
             trio. Wraps the bars list so the request shape stays extensible — future
@@ -330,5 +362,6 @@ symbol=symbol,
 client=client,
 body=body,
 period=period,
+x_request_timeout=x_request_timeout,
 
     )).parsed

@@ -52,9 +52,9 @@ class MT4GroupApiResponse:
                     rarely consumed; can be added later once the use case is clear.
 
                 Enums (`OTPMode`, `MarginMode`, `NewsMode`,
-                `GroupRights`, `MarginControllingType`) serialize as strings
-                because CPlugin.SaaSWebApps.WebAPI.Code.Json.V2JsonContext enables
-                `UseStringEnumConverter`.
+                `MarginControllingType`) serialize as strings because
+                CPlugin.SaaSWebApps.WebAPI.Code.Json.V2JsonContext enables `UseStringEnumConverter`;
+                `GroupRights` is a flags string, the names of the set bits.
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an

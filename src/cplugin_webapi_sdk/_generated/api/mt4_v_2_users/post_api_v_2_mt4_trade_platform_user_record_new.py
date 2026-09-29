@@ -20,9 +20,14 @@ def _get_kwargs(
     trade_platform: UUID,
     *,
     body:    MT4UserCreate  |     MT4UserCreate  |     MT4UserCreate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -86,6 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4UserCreate  |     MT4UserCreate  |     MT4UserCreate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4UserApiResponse]:
     """ Create account
@@ -105,8 +111,13 @@ def sync_detailed(
     can land twice when the original response was lost on the wire,
     burning a second login id from the broker's sequence.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
             Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
@@ -162,6 +173,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -176,6 +188,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4UserCreate  |     MT4UserCreate  |     MT4UserCreate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4UserApiResponse | None:
     """ Create account
@@ -195,8 +208,13 @@ def sync(
     can land twice when the original response was lost on the wire,
     burning a second login id from the broker's sequence.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
             Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
@@ -253,6 +271,7 @@ def sync(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -261,6 +280,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4UserCreate  |     MT4UserCreate  |     MT4UserCreate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4UserApiResponse]:
     """ Create account
@@ -280,8 +300,13 @@ async def asyncio_detailed(
     can land twice when the original response was lost on the wire,
     burning a second login id from the broker's sequence.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
             Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
@@ -337,6 +362,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -351,6 +377,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4UserCreate  |     MT4UserCreate  |     MT4UserCreate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4UserApiResponse | None:
     """ Create account
@@ -370,8 +397,13 @@ async def asyncio(
     can land twice when the original response was lost on the wire,
     burning a second login id from the broker's sequence.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
             Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
@@ -428,5 +460,6 @@ async def asyncio(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

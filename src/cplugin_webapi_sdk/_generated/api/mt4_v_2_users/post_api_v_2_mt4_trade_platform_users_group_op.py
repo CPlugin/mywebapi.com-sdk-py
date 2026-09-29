@@ -20,9 +20,14 @@ def _get_kwargs(
     trade_platform: UUID,
     *,
     body:    MT4UsersGroupOp  |     MT4UsersGroupOp  |     MT4UsersGroupOp  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -86,6 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4UsersGroupOp  |     MT4UsersGroupOp  |     MT4UsersGroupOp  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Bulk account operation
@@ -109,8 +115,13 @@ def sync_detailed(
     strongly recommended — bulk Delete / SetGroup operations are
     destructive on customer-visible state.
 
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4UsersGroupOp | Unset): v2 request body for `UsersGroupOp` — bulk group-membership
             / leverage /
             enable-disable / delete operation across a list of account logins.
@@ -133,6 +144,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -147,6 +159,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4UsersGroupOp  |     MT4UsersGroupOp  |     MT4UsersGroupOp  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Bulk account operation
@@ -170,8 +183,13 @@ def sync(
     strongly recommended — bulk Delete / SetGroup operations are
     destructive on customer-visible state.
 
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4UsersGroupOp | Unset): v2 request body for `UsersGroupOp` — bulk group-membership
             / leverage /
             enable-disable / delete operation across a list of account logins.
@@ -195,6 +213,7 @@ def sync(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -203,6 +222,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4UsersGroupOp  |     MT4UsersGroupOp  |     MT4UsersGroupOp  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Bulk account operation
@@ -226,8 +246,13 @@ async def asyncio_detailed(
     strongly recommended — bulk Delete / SetGroup operations are
     destructive on customer-visible state.
 
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4UsersGroupOp | Unset): v2 request body for `UsersGroupOp` — bulk group-membership
             / leverage /
             enable-disable / delete operation across a list of account logins.
@@ -250,6 +275,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -264,6 +290,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4UsersGroupOp  |     MT4UsersGroupOp  |     MT4UsersGroupOp  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Bulk account operation
@@ -287,8 +314,13 @@ async def asyncio(
     strongly recommended — bulk Delete / SetGroup operations are
     destructive on customer-visible state.
 
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4UsersGroupOp | Unset): v2 request body for `UsersGroupOp` — bulk group-membership
             / leverage /
             enable-disable / delete operation across a list of account logins.
@@ -312,5 +344,6 @@ async def asyncio(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

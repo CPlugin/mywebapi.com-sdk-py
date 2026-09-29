@@ -24,48 +24,33 @@ from .en_comm_entry_mode import EnCommEntryMode
 from .en_comm_mode import EnCommMode
 from .en_comm_profit_mode import EnCommProfitMode
 from .en_comm_range_mode import EnCommRangeMode
-from .en_comm_reason_flags import EnCommReasonFlags
 from .en_commission_mode import EnCommissionMode
 from .en_commission_volume_type import EnCommissionVolumeType
 from .en_execution_mode import EnExecutionMode
-from .en_expiration_flags import EnExpirationFlags
-from .en_filling_flags import EnFillingFlags
 from .en_free_margin_mode import EnFreeMarginMode
 from .en_gateway_account_flags import EnGatewayAccountFlags
 from .en_gtc_mode import EnGtcMode
 from .en_history_limit import EnHistoryLimit
 from .en_industries import EnIndustries
-from .en_instant_flags import EnInstantFlags
 from .en_instant_mode import EnInstantMode
 from .en_log_type import EnLogType
 from .en_mail_mode import EnMailMode
 from .en_manager_limit import EnManagerLimit
 from .en_manager_rights import EnManagerRights
-from .en_margin_calc_flags import EnMarginCalcFlags
-from .en_margin_flags import EnMarginFlags
 from .en_margin_mode import EnMarginMode
 from .en_news_mode import EnNewsMode
 from .en_option_mode import EnOptionMode
-from .en_order_flags import EnOrderFlags
-from .en_permissions_flags import EnPermissionsFlags
-from .en_reports_flags import EnReportsFlags
 from .en_reports_mode import EnReportsMode
-from .en_request_flags import EnRequestFlags
 from .en_sectors import EnSectors
 from .en_splice_time_type import EnSpliceTimeType
 from .en_splice_type import EnSpliceType
 from .en_stop_out_mode import EnStopOutMode
 from .en_swap_days import EnSwapDays
-from .en_swap_flags import EnSwapFlags
 from .en_swap_mode import EnSwapMode
-from .en_tick_flags import EnTickFlags
-from .en_trade_flags import EnTradeFlags
 from .en_trade_mode import EnTradeMode
-from .en_trade_rights_flags import EnTradeRightsFlags
 from .en_transfer_mode import EnTransferMode
 from .entry_flag import EntryFlag
 from .export_execution_period import ExportExecutionPeriod
-from .group_rights import GroupRights
 from .gtc_mode import GTCMode
 from .int_32_api_response import Int32ApiResponse
 from .int_32mt4_daily_report_list_dictionary_api_response import Int32MT4DailyReportListDictionaryApiResponse
@@ -234,14 +219,10 @@ from .swap_type import SwapType
 from .symbol_exec_mode import SymbolExecMode
 from .symbol_price_direction import SymbolPriceDirection
 from .synchronization_mode import SynchronizationMode
-from .tick_request_flags import TickRequestFlags
-from .trade_activation_flags import TradeActivationFlags
 from .trade_command import TradeCommand
 from .trade_mode import TradeMode
-from .trade_modify_flags import TradeModifyFlags
 from .trade_record_reason import TradeRecordReason
 from .trade_record_state import TradeRecordState
-from .users_rights import UsersRights
 from .watchdog_failover_mode import WatchdogFailoverMode
 from .watchdog_state import WatchdogState
 from .web_api_error_code import WebApiErrorCode
@@ -273,46 +254,31 @@ __all__ = (
     "EnCommMode",
     "EnCommProfitMode",
     "EnCommRangeMode",
-    "EnCommReasonFlags",
     "EnExecutionMode",
-    "EnExpirationFlags",
-    "EnFillingFlags",
     "EnFreeMarginMode",
     "EnGatewayAccountFlags",
     "EnGtcMode",
     "EnHistoryLimit",
     "EnIndustries",
-    "EnInstantFlags",
     "EnInstantMode",
     "EnLogType",
     "EnMailMode",
     "EnManagerLimit",
     "EnManagerRights",
-    "EnMarginCalcFlags",
-    "EnMarginFlags",
     "EnMarginMode",
     "EnNewsMode",
     "EnOptionMode",
-    "EnOrderFlags",
-    "EnPermissionsFlags",
-    "EnReportsFlags",
     "EnReportsMode",
-    "EnRequestFlags",
     "EnSectors",
     "EnSpliceTimeType",
     "EnSpliceType",
     "EnStopOutMode",
     "EnSwapDays",
-    "EnSwapFlags",
     "EnSwapMode",
-    "EnTickFlags",
-    "EnTradeFlags",
     "EnTradeMode",
-    "EnTradeRightsFlags",
     "EnTransferMode",
     "EntryFlag",
     "ExportExecutionPeriod",
-    "GroupRights",
     "GTCMode",
     "Int32ApiResponse",
     "Int32MT4DailyReportListDictionaryApiResponse",
@@ -481,14 +447,10 @@ __all__ = (
     "SymbolExecMode",
     "SymbolPriceDirection",
     "SynchronizationMode",
-    "TickRequestFlags",
-    "TradeActivationFlags",
     "TradeCommand",
     "TradeMode",
-    "TradeModifyFlags",
     "TradeRecordReason",
     "TradeRecordState",
-    "UsersRights",
     "WatchdogFailoverMode",
     "WatchdogState",
     "WebApiErrorCode",

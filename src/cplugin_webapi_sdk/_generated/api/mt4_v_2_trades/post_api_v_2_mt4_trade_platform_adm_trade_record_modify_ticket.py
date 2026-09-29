@@ -21,9 +21,14 @@ def _get_kwargs(
     ticket: int,
     *,
     body:    MT4TradeUpdate  |     MT4TradeUpdate  |     MT4TradeUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -88,6 +93,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4TradeUpdate  |     MT4TradeUpdate  |     MT4TradeUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4TradeApiResponse]:
     """ Modify trade record (admin)
@@ -111,9 +117,15 @@ def sync_detailed(
     Idempotency-Key strongly recommended. A retried edit without it can
     land twice — usually harmless, but generates audit log noise.
 
+
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         ticket (int):
+        x_request_timeout (float | Unset):
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
             `AdmTradeRecordModify`. Only the fields a back-office tool would
             legitimately need to adjust are exposed; everything else (order id,
@@ -161,6 +173,7 @@ def sync_detailed(
         trade_platform=trade_platform,
 ticket=ticket,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -176,6 +189,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4TradeUpdate  |     MT4TradeUpdate  |     MT4TradeUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4TradeApiResponse | None:
     """ Modify trade record (admin)
@@ -199,9 +213,15 @@ def sync(
     Idempotency-Key strongly recommended. A retried edit without it can
     land twice — usually harmless, but generates audit log noise.
 
+
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         ticket (int):
+        x_request_timeout (float | Unset):
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
             `AdmTradeRecordModify`. Only the fields a back-office tool would
             legitimately need to adjust are exposed; everything else (order id,
@@ -250,6 +270,7 @@ def sync(
 ticket=ticket,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -259,6 +280,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4TradeUpdate  |     MT4TradeUpdate  |     MT4TradeUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4TradeApiResponse]:
     """ Modify trade record (admin)
@@ -282,9 +304,15 @@ async def asyncio_detailed(
     Idempotency-Key strongly recommended. A retried edit without it can
     land twice — usually harmless, but generates audit log noise.
 
+
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         ticket (int):
+        x_request_timeout (float | Unset):
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
             `AdmTradeRecordModify`. Only the fields a back-office tool would
             legitimately need to adjust are exposed; everything else (order id,
@@ -332,6 +360,7 @@ async def asyncio_detailed(
         trade_platform=trade_platform,
 ticket=ticket,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -347,6 +376,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4TradeUpdate  |     MT4TradeUpdate  |     MT4TradeUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4TradeApiResponse | None:
     """ Modify trade record (admin)
@@ -370,9 +400,15 @@ async def asyncio(
     Idempotency-Key strongly recommended. A retried edit without it can
     land twice — usually harmless, but generates audit log noise.
 
+
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         ticket (int):
+        x_request_timeout (float | Unset):
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
             `AdmTradeRecordModify`. Only the fields a back-office tool would
             legitimately need to adjust are exposed; everything else (order id,
@@ -421,5 +457,6 @@ async def asyncio(
 ticket=ticket,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

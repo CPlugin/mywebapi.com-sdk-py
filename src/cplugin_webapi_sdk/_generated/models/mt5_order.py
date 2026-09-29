@@ -13,7 +13,6 @@ from ..models.order_reason import OrderReason
 from ..models.order_state import OrderState
 from ..models.order_time import OrderTime
 from ..models.order_type import OrderType
-from ..models.trade_activation_flags import TradeActivationFlags
 from ..types import UNSET, Unset
 from typing import cast
 import datetime
@@ -72,8 +71,8 @@ class MT5Order:
                 <br />
                 <br />
                             Gets the price, at which the order was activated
-            activation_flags (None | TradeActivationFlags | Unset): <strong>Has No Setter In ManagerAPI, so all you can is
-                to read this value.</strong>
+            activation_flags (None | str | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
+                value.</strong>
                 <br />
                 <br />
             time_setup_msc (datetime.datetime | None | Unset): Gets and sets the order placing time in milliseconds, since
@@ -121,7 +120,7 @@ class MT5Order:
     activation_mode: int | None | Unset = UNSET
     activation_time: datetime.datetime | None | Unset = UNSET
     activation_price: float | None | Unset = UNSET
-    activation_flags: None | TradeActivationFlags | Unset = UNSET
+    activation_flags: None | str | Unset = UNSET
     time_setup_msc: datetime.datetime | None | Unset = UNSET
     time_done_msc: datetime.datetime | None | Unset = UNSET
     rate_margin: float | None | Unset = UNSET
@@ -336,8 +335,6 @@ class MT5Order:
         activation_flags: None | str | Unset
         if isinstance(self.activation_flags, Unset):
             activation_flags = UNSET
-        elif isinstance(self.activation_flags, TradeActivationFlags):
-            activation_flags = self.activation_flags.value
         else:
             activation_flags = self.activation_flags
 
@@ -866,22 +863,12 @@ class MT5Order:
         activation_price = _parse_activation_price(d.pop("activationPrice", UNSET))
 
 
-        def _parse_activation_flags(data: object) -> None | TradeActivationFlags | Unset:
+        def _parse_activation_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                activation_flags_type_1 = TradeActivationFlags(data)
-
-
-
-                return activation_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | TradeActivationFlags | Unset, data)
+            return cast(None | str | Unset, data)
 
         activation_flags = _parse_activation_flags(d.pop("activationFlags", UNSET))
 

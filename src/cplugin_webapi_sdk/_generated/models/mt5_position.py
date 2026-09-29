@@ -11,8 +11,6 @@ from ..types import UNSET, Unset
 from ..models.activation_modes import ActivationModes
 from ..models.position_actions import PositionActions
 from ..models.position_reasons import PositionReasons
-from ..models.trade_activation_flags import TradeActivationFlags
-from ..models.trade_modify_flags import TradeModifyFlags
 from ..types import UNSET, Unset
 from typing import cast
 import datetime
@@ -64,8 +62,8 @@ class MT5Position:
             activation_mode (ActivationModes | None | Unset): order activation state, time and price
             activation_time (datetime.datetime | None | Unset):
             activation_price (float | None | Unset):
-            activation_flags (None | TradeActivationFlags | Unset):
-            modification_flags (None | TradeModifyFlags | Unset): modification flags
+            activation_flags (None | str | Unset):
+            modification_flags (None | str | Unset): modification flags
             reason (None | PositionReasons | Unset): position reason - PositionReason
      """
 
@@ -98,8 +96,8 @@ class MT5Position:
     activation_mode: ActivationModes | None | Unset = UNSET
     activation_time: datetime.datetime | None | Unset = UNSET
     activation_price: float | None | Unset = UNSET
-    activation_flags: None | TradeActivationFlags | Unset = UNSET
-    modification_flags: None | TradeModifyFlags | Unset = UNSET
+    activation_flags: None | str | Unset = UNSET
+    modification_flags: None | str | Unset = UNSET
     reason: None | PositionReasons | Unset = UNSET
 
 
@@ -298,16 +296,12 @@ class MT5Position:
         activation_flags: None | str | Unset
         if isinstance(self.activation_flags, Unset):
             activation_flags = UNSET
-        elif isinstance(self.activation_flags, TradeActivationFlags):
-            activation_flags = self.activation_flags.value
         else:
             activation_flags = self.activation_flags
 
         modification_flags: None | str | Unset
         if isinstance(self.modification_flags, Unset):
             modification_flags = UNSET
-        elif isinstance(self.modification_flags, TradeModifyFlags):
-            modification_flags = self.modification_flags.value
         else:
             modification_flags = self.modification_flags
 
@@ -756,42 +750,22 @@ class MT5Position:
         activation_price = _parse_activation_price(d.pop("activationPrice", UNSET))
 
 
-        def _parse_activation_flags(data: object) -> None | TradeActivationFlags | Unset:
+        def _parse_activation_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                activation_flags_type_1 = TradeActivationFlags(data)
-
-
-
-                return activation_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | TradeActivationFlags | Unset, data)
+            return cast(None | str | Unset, data)
 
         activation_flags = _parse_activation_flags(d.pop("activationFlags", UNSET))
 
 
-        def _parse_modification_flags(data: object) -> None | TradeModifyFlags | Unset:
+        def _parse_modification_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                modification_flags_type_1 = TradeModifyFlags(data)
-
-
-
-                return modification_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | TradeModifyFlags | Unset, data)
+            return cast(None | str | Unset, data)
 
         modification_flags = _parse_modification_flags(d.pop("modificationFlags", UNSET))
 

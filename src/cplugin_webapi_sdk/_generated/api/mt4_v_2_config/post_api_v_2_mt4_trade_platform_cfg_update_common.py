@@ -20,9 +20,14 @@ def _get_kwargs(
     trade_platform: UUID,
     *,
     body:    MT4CommonUpdate  |     MT4CommonUpdate  |     MT4CommonUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -86,6 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4CommonUpdate  |     MT4CommonUpdate  |     MT4CommonUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4CommonApiResponse]:
     r""" Update common config
@@ -110,8 +116,13 @@ def sync_detailed(
     pack, no UnpackObject loop). Idempotency-Key strongly recommended
     — overwriting common settings affects every connected client.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
             subset of the wrapper's `ConCommon` struct — exposes the fields
@@ -143,6 +154,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -157,6 +169,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4CommonUpdate  |     MT4CommonUpdate  |     MT4CommonUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4CommonApiResponse | None:
     r""" Update common config
@@ -181,8 +194,13 @@ def sync(
     pack, no UnpackObject loop). Idempotency-Key strongly recommended
     — overwriting common settings affects every connected client.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
             subset of the wrapper's `ConCommon` struct — exposes the fields
@@ -215,6 +233,7 @@ def sync(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -223,6 +242,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4CommonUpdate  |     MT4CommonUpdate  |     MT4CommonUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4CommonApiResponse]:
     r""" Update common config
@@ -247,8 +267,13 @@ async def asyncio_detailed(
     pack, no UnpackObject loop). Idempotency-Key strongly recommended
     — overwriting common settings affects every connected client.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
             subset of the wrapper's `ConCommon` struct — exposes the fields
@@ -280,6 +305,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -294,6 +320,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4CommonUpdate  |     MT4CommonUpdate  |     MT4CommonUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4CommonApiResponse | None:
     r""" Update common config
@@ -318,8 +345,13 @@ async def asyncio(
     pack, no UnpackObject loop). Idempotency-Key strongly recommended
     — overwriting common settings affects every connected client.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
             subset of the wrapper's `ConCommon` struct — exposes the fields
@@ -352,5 +384,6 @@ async def asyncio(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

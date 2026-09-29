@@ -28,7 +28,17 @@ import httpx
 from .auth import BearerAuth, ClientCredentialsAuth
 from .environments import EnvironmentName, resolve_environment
 from .realtime import RealtimeNamespace
+from .timeouts import (
+    DEFAULT_TRANSPORT_TIMEOUT,
+    IDEMPOTENCY_KEY_HEADER,
+    REQUEST_TIMEOUT_HEADER,
+    format_seconds,
+    transport_timeout,
+    validate_idempotency_key,
+    validate_request_timeout,
+)
 from .unwrap import unwrap, unwrap_async, unwrap_with_meta, unwrap_with_meta_async
+from ._generated.types import Unset
 
 # * Generated op modules — paths verified against ls _generated/api/.
 # * Tag slugs use _v_2_ (with underscores around the digit), e.g. mt4_v_2_common.
@@ -80,48 +90,102 @@ class _RawResponse:
 
     The generated ``_parse_response`` tries to deserialise ``data`` even on
     error envelopes (where ``data`` is ``null``), and crashes on a type error.
-    Since ``unwrap`` reads only ``.content`` (raw bytes) and ``.status_code``,
-    we bypass ``_build_response`` entirely: call ``_get_kwargs`` + httpx.Client
-    directly, and wrap the raw ``httpx.Response`` in this shim.
+    Since ``unwrap`` reads only ``.content`` (raw bytes), ``.status_code`` and
+    ``.headers``, we bypass ``_build_response`` entirely: call ``_get_kwargs`` +
+    httpx.Client directly, and wrap the raw ``httpx.Response`` in this shim.
     """
 
     def __init__(self, raw: httpx.Response) -> None:
         self.content = raw.content
         self.status_code = raw.status_code
+        # * Carried so ApiError can report X-Request-Outcome / X-Request-Timeout-Applied.
+        self.headers = raw.headers
 
 
-def _call_sync(http: httpx.Client, op_module: Any, **kwargs: Any) -> _RawResponse:
-    """Invoke a generated op by calling its ``_get_kwargs`` + the shared httpx client.
+def _request_kwargs(
+    owner: Any,
+    op_module: Any,
+    request_timeout: float | None,
+    idempotency_key: str | None,
+    kwargs: dict[str, Any],
+) -> dict[str, Any]:
+    """Build the httpx request for a generated op, with timeout and idempotency headers.
 
-    This bypasses the generated ``_build_response`` / ``_parse_response`` pipeline,
-    which crashes on error envelopes for typed response models (e.g. datetime fields).
-    ``unwrap`` / ``unwrap_with_meta`` only need ``.content`` and ``.status_code``.
+    ``request_timeout`` (seconds, 1–300) falls back to the client-wide default; when
+    one applies, ``X-Request-Timeout`` is sent and the HTTP timeout of this call is
+    stretched past the server's deadline, so the client never gives up before the
+    server has said whether the operation was applied.
     """
     # Q-3: Guard against op_module that is not a generated endpoint module.
     if not callable(getattr(op_module, "_get_kwargs", None)):
         raise TypeError(
             "op_module must be a generated endpoint module exposing _get_kwargs"
         )
+    # * raw() callers may use the generated parameter name; it means the same thing.
+    generated = kwargs.pop("x_request_timeout", None)
+    if generated is not None and not isinstance(generated, Unset):
+        generated = validate_request_timeout(generated, name="x_request_timeout")
+        if request_timeout is not None and validate_request_timeout(request_timeout) != generated:
+            raise ValueError("request_timeout and x_request_timeout disagree; pass only one")
+        request_timeout = generated
+    seconds = validate_request_timeout(request_timeout)
+    if seconds is None:
+        seconds = owner._request_timeout
+    key = validate_idempotency_key(idempotency_key)
+
     # ! _get_kwargs is a PRIVATE symbol of openapi-python-client. If a generator
     # ! upgrade renames it, this raises AttributeError at call time. Re-verify after
     # ! every regeneration: grep -r '_get_kwargs' src/cplugin_webapi_sdk/_generated/api/
     req_kwargs = op_module._get_kwargs(**kwargs)
-    raw = http.request(**req_kwargs)
+
+    headers = {
+        k: v for k, v in (req_kwargs.get("headers") or {}).items()
+        if k.lower() != REQUEST_TIMEOUT_HEADER.lower()
+    }
+    if seconds is not None:
+        headers[REQUEST_TIMEOUT_HEADER] = format_seconds(seconds)
+        req_kwargs["timeout"] = transport_timeout(owner._timeout, seconds)
+    if key is not None:
+        headers[IDEMPOTENCY_KEY_HEADER] = key
+    req_kwargs["headers"] = headers
+    return req_kwargs
+
+
+def _call_sync(
+    owner: Any,
+    op_module: Any,
+    *,
+    request_timeout: float | None = None,
+    idempotency_key: str | None = None,
+    **kwargs: Any,
+) -> _RawResponse:
+    """Invoke a generated op by calling its ``_get_kwargs`` + the owner's shared httpx client.
+
+    This bypasses the generated ``_build_response`` / ``_parse_response`` pipeline,
+    which crashes on error envelopes for typed response models (e.g. datetime fields).
+    ``unwrap`` / ``unwrap_with_meta`` only need ``.content``, ``.status_code`` and ``.headers``.
+
+    ! Never retried here: a repeated trade or change can be applied twice. The
+    !   transport's ``retries`` only re-attempt opening the connection, before any
+    !   byte of the request is sent; the auth flow re-sends only after a 401, which
+    !   the server answers before running the action.
+    """
+    req_kwargs = _request_kwargs(owner, op_module, request_timeout, idempotency_key, kwargs)
+    raw = owner._http.request(**req_kwargs)
     return _RawResponse(raw)
 
 
-async def _call_async(http: httpx.AsyncClient, op_module: Any, **kwargs: Any) -> _RawResponse:
+async def _call_async(
+    owner: Any,
+    op_module: Any,
+    *,
+    request_timeout: float | None = None,
+    idempotency_key: str | None = None,
+    **kwargs: Any,
+) -> _RawResponse:
     """Async variant of ``_call_sync``."""
-    # Q-3: Guard against op_module that is not a generated endpoint module.
-    if not callable(getattr(op_module, "_get_kwargs", None)):
-        raise TypeError(
-            "op_module must be a generated endpoint module exposing _get_kwargs"
-        )
-    # ! _get_kwargs is a PRIVATE symbol of openapi-python-client. If a generator
-    # ! upgrade renames it, this raises AttributeError at call time. Re-verify after
-    # ! every regeneration: grep -r '_get_kwargs' src/cplugin_webapi_sdk/_generated/api/
-    req_kwargs = op_module._get_kwargs(**kwargs)
-    raw = await http.request(**req_kwargs)
+    req_kwargs = _request_kwargs(owner, op_module, request_timeout, idempotency_key, kwargs)
+    raw = await owner._http.request(**req_kwargs)
     return _RawResponse(raw)
 
 
@@ -163,7 +227,10 @@ class _MT4Namespace:
     """Clean snake_case facade over the generated MT4 v2 endpoint modules.
 
     All methods accept ``trade_platform`` as a ``str`` (UUID string) or
-    ``uuid.UUID`` — both are normalised internally.
+    ``uuid.UUID`` — both are normalised internally, and a keyword-only
+    ``request_timeout`` (seconds, 1–300) that overrides the server deadline for
+    that call (default: the client's ``request_timeout``, else the server's
+    default for the operation). Write methods also take ``idempotency_key``.
 
     Implementation note: we call ``_get_kwargs`` + the shared ``httpx.Client``
     directly (via ``_call_sync``), bypassing the generated ``_build_response`` /
@@ -179,21 +246,23 @@ class _MT4Namespace:
 
     # * ----- common -----
 
-    def get_server_time(self, trade_platform: str | UUID) -> Any:
+    def get_server_time(self, trade_platform: str | UUID, *, request_timeout: float | None = None) -> Any:
         """Return current MT4 server time (ISO 8601 string)."""
         return unwrap(
             _call_sync(
-                self._o._http, _mt4_server_time,
+                self._o, _mt4_server_time,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
             )
         )
 
-    def get_manager_common(self, trade_platform: str | UUID) -> Any:
+    def get_manager_common(self, trade_platform: str | UUID, *, request_timeout: float | None = None) -> Any:
         """Return server-wide MT4 common settings (name, broker, version, tz)."""
         return unwrap(
             _call_sync(
-                self._o._http, _mt4_manager_common,
+                self._o, _mt4_manager_common,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
             )
         )
 
@@ -205,6 +274,7 @@ class _MT4Namespace:
         *,
         cursor: str | None = None,
         limit: int | None = None,
+        request_timeout: float | None = None,
     ) -> tuple[Any, Any]:
         """Return ``(data, meta)`` for a paged list of MT4 user accounts.
 
@@ -215,24 +285,39 @@ class _MT4Namespace:
 
         return unwrap_with_meta(
             _call_sync(
-                self._o._http, _mt4_users_request,
+                self._o, _mt4_users_request,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 limit=limit if limit is not None else UNSET,
                 cursor=cursor if cursor is not None else UNSET,
             )
         )
 
-    def get_user_record(self, trade_platform: str | UUID, login: int) -> Any:
+    def get_user_record(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return a single MT4 user account record from the pump cache."""
         return unwrap(
             _call_sync(
-                self._o._http, _mt4_user_record_get,
+                self._o, _mt4_user_record_get,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 login=login,
             )
         )
 
-    def patch_user_record(self, trade_platform: str | UUID, login: int) -> Any:
+    def patch_user_record(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
         """Apply a server-side read-modify-write patch to a user record.
 
         The server reads the current record, applies any queued mutations,
@@ -241,36 +326,52 @@ class _MT4Namespace:
         """
         return unwrap(
             _call_sync(
-                self._o._http, _mt4_user_record_patch,
+                self._o, _mt4_user_record_patch,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
                 login=login,
             )
         )
 
     # * ----- groups -----
 
-    def group_exists(self, trade_platform: str | UUID, group: str) -> Any:
+    def group_exists(
+        self,
+        trade_platform: str | UUID,
+        group: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return ``True`` if ``group`` is configured on the MT4 server."""
         return unwrap(
             _call_sync(
-                self._o._http, _mt4_group_exists,
+                self._o, _mt4_group_exists,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 group=group,
             )
         )
 
     # * ----- symbols -----
 
-    def list_symbol_configs(self, trade_platform: str | UUID) -> Any:
+    def list_symbol_configs(self, trade_platform: str | UUID, *, request_timeout: float | None = None) -> Any:
         """Return all symbol configuration records from the MT4 server."""
         return unwrap(
             _call_sync(
-                self._o._http, _mt4_symbols_list,
+                self._o, _mt4_symbols_list,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
             )
         )
 
-    def get_symbol_info(self, trade_platform: str | UUID, *, symbol: str | None = None) -> Any:
+    def get_symbol_info(
+        self,
+        trade_platform: str | UUID,
+        *,
+        symbol: str | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return live symbol info snapshot (spread, digits, sessions).
 
         Pass ``symbol`` to filter to a single instrument. Without it, all
@@ -280,8 +381,9 @@ class _MT4Namespace:
 
         return unwrap(
             _call_sync(
-                self._o._http, _mt4_symbol_info,
+                self._o, _mt4_symbol_info,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 symbol=symbol if symbol is not None else UNSET,
             )
         )
@@ -295,6 +397,7 @@ class _MT4Namespace:
         cursor: str | None = None,
         limit: int | None = None,
         group: str | None = None,
+        request_timeout: float | None = None,
     ) -> tuple[Any, Any]:
         """Return ``(data, meta)`` for a paged list of open trades.
 
@@ -305,8 +408,9 @@ class _MT4Namespace:
 
         return unwrap_with_meta(
             _call_sync(
-                self._o._http, _mt4_trades_request,
+                self._o, _mt4_trades_request,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 limit=limit if limit is not None else UNSET,
                 cursor=cursor if cursor is not None else UNSET,
                 group=group if group is not None else UNSET,
@@ -315,11 +419,22 @@ class _MT4Namespace:
 
     # * ----- escape hatch -----
 
-    def raw(self, op_module: Any, **kwargs: Any) -> Any:
+    def raw(
+        self,
+        op_module: Any,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+        **kwargs: Any,
+    ) -> Any:
         """Call any generated MT4 op module via ``_get_kwargs`` + the shared httpx client.
 
         Injects the shared authenticated httpx client automatically.
         Returns a ``_RawResponse`` — call ``unwrap()`` / ``unwrap_with_meta()`` on it.
+
+        ``request_timeout`` (seconds, 1–300) sets the server deadline for this call;
+        ``idempotency_key`` sends ``Idempotency-Key`` so a repeat after
+        ``OutcomeUnknown`` returns the original result instead of executing again.
 
         Example::
 
@@ -330,7 +445,10 @@ class _MT4Namespace:
             resp = client.mt4.raw(history_op, trade_platform=tp_id, from_=..., to_=...)
             data = unwrap(resp)
         """
-        return _call_sync(self._o._http, op_module, **kwargs)
+        return _call_sync(
+            self._o, op_module,
+            request_timeout=request_timeout, idempotency_key=idempotency_key, **kwargs,
+        )
 
 
 class _MT5Namespace:
@@ -345,81 +463,122 @@ class _MT5Namespace:
 
     # * ----- common -----
 
-    def get_server_time(self, trade_platform: str | UUID) -> Any:
+    def get_server_time(self, trade_platform: str | UUID, *, request_timeout: float | None = None) -> Any:
         """Return current MT5 server time (ISO 8601 string)."""
         return unwrap(
             _call_sync(
-                self._o._http, _mt5_server_time,
+                self._o, _mt5_server_time,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
             )
         )
 
-    def get_manager_current(self, trade_platform: str | UUID) -> Any:
+    def get_manager_current(self, trade_platform: str | UUID, *, request_timeout: float | None = None) -> Any:
         """Return the currently-connected MT5 manager record."""
         return unwrap(
             _call_sync(
-                self._o._http, _mt5_manager_current,
+                self._o, _mt5_manager_current,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
             )
         )
 
     # * ----- users -----
 
-    def get_user(self, trade_platform: str | UUID, login: int) -> Any:
+    def get_user(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return a single MT5 user record by login."""
         return unwrap(
             _call_sync(
-                self._o._http, _mt5_user_get,
+                self._o, _mt5_user_get,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 login=login,
             )
         )
 
     # * ----- groups -----
 
-    def get_group(self, trade_platform: str | UUID, group: str) -> Any:
+    def get_group(
+        self,
+        trade_platform: str | UUID,
+        group: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return MT5 group configuration by exact name."""
         return unwrap(
             _call_sync(
-                self._o._http, _mt5_group_get,
+                self._o, _mt5_group_get,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 group=group,
             )
         )
 
     # * ----- symbols -----
 
-    def get_symbol(self, trade_platform: str | UUID, symbol: str) -> Any:
+    def get_symbol(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return MT5 symbol settings by exact symbol name."""
         return unwrap(
             _call_sync(
-                self._o._http, _mt5_symbol_get,
+                self._o, _mt5_symbol_get,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 symbol=symbol,
             )
         )
 
     # * ----- trades -----
 
-    def positions_by_group(self, trade_platform: str | UUID, mask: str) -> Any:
+    def positions_by_group(
+        self,
+        trade_platform: str | UUID,
+        mask: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return open positions for all logins in groups matching ``mask``."""
         return unwrap(
             _call_sync(
-                self._o._http, _mt5_positions_by_group,
+                self._o, _mt5_positions_by_group,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 mask=mask,
             )
         )
 
     # * ----- escape hatch -----
 
-    def raw(self, op_module: Any, **kwargs: Any) -> Any:
+    def raw(
+        self,
+        op_module: Any,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+        **kwargs: Any,
+    ) -> Any:
         """Call any generated MT5 op module via ``_get_kwargs`` + the shared httpx client.
 
         Injects the shared authenticated httpx client automatically.
         Returns a ``_RawResponse`` — call ``unwrap()`` / ``unwrap_with_meta()`` on it.
+        ``request_timeout`` / ``idempotency_key`` as in ``_MT4Namespace.raw``.
         """
-        return _call_sync(self._o._http, op_module, **kwargs)
+        return _call_sync(
+            self._o, op_module,
+            request_timeout=request_timeout, idempotency_key=idempotency_key, **kwargs,
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -432,21 +591,33 @@ class _MT4AsyncNamespace:
     def __init__(self, owner: "CPluginWebApiAsyncClient") -> None:
         self._o = owner
 
-    async def get_server_time(self, trade_platform: str | UUID) -> Any:
+    async def get_server_time(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return current MT4 server time (ISO 8601 string)."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt4_server_time,
+                self._o, _mt4_server_time,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
             )
         )
 
-    async def get_manager_common(self, trade_platform: str | UUID) -> Any:
+    async def get_manager_common(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return server-wide MT4 common settings."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt4_manager_common,
+                self._o, _mt4_manager_common,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
             )
         )
 
@@ -456,59 +627,96 @@ class _MT4AsyncNamespace:
         *,
         cursor: str | None = None,
         limit: int | None = None,
+        request_timeout: float | None = None,
     ) -> tuple[Any, Any]:
         """Return ``(data, meta)`` for a paged list of MT4 user accounts."""
         from ._generated.types import UNSET
 
         return unwrap_with_meta(
             await _call_async(
-                self._o._http, _mt4_users_request,
+                self._o, _mt4_users_request,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 limit=limit if limit is not None else UNSET,
                 cursor=cursor if cursor is not None else UNSET,
             )
         )
 
-    async def get_user_record(self, trade_platform: str | UUID, login: int) -> Any:
+    async def get_user_record(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return a single MT4 user account record from the pump cache."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt4_user_record_get,
+                self._o, _mt4_user_record_get,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 login=login,
             )
         )
 
-    async def patch_user_record(self, trade_platform: str | UUID, login: int) -> Any:
+    async def patch_user_record(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
         """Apply a server-side read-modify-write patch to a user record."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt4_user_record_patch,
+                self._o, _mt4_user_record_patch,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
                 login=login,
             )
         )
 
-    async def group_exists(self, trade_platform: str | UUID, group: str) -> Any:
+    async def group_exists(
+        self,
+        trade_platform: str | UUID,
+        group: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return ``True`` if ``group`` is configured on the MT4 server."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt4_group_exists,
+                self._o, _mt4_group_exists,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 group=group,
             )
         )
 
-    async def list_symbol_configs(self, trade_platform: str | UUID) -> Any:
+    async def list_symbol_configs(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return all symbol configuration records from the MT4 server."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt4_symbols_list,
+                self._o, _mt4_symbols_list,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
             )
         )
 
-    async def get_symbol_info(self, trade_platform: str | UUID, *, symbol: str | None = None) -> Any:
+    async def get_symbol_info(
+        self,
+        trade_platform: str | UUID,
+        *,
+        symbol: str | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return live symbol info snapshot (spread, digits, sessions).
 
         Pass ``symbol`` to filter to a single instrument. Without it, all
@@ -518,8 +726,9 @@ class _MT4AsyncNamespace:
 
         return unwrap(
             await _call_async(
-                self._o._http, _mt4_symbol_info,
+                self._o, _mt4_symbol_info,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 symbol=symbol if symbol is not None else UNSET,
             )
         )
@@ -531,26 +740,39 @@ class _MT4AsyncNamespace:
         cursor: str | None = None,
         limit: int | None = None,
         group: str | None = None,
+        request_timeout: float | None = None,
     ) -> tuple[Any, Any]:
         """Return ``(data, meta)`` for a paged list of open trades."""
         from ._generated.types import UNSET
 
         return unwrap_with_meta(
             await _call_async(
-                self._o._http, _mt4_trades_request,
+                self._o, _mt4_trades_request,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 limit=limit if limit is not None else UNSET,
                 cursor=cursor if cursor is not None else UNSET,
                 group=group if group is not None else UNSET,
             )
         )
 
-    async def raw(self, op_module: Any, **kwargs: Any) -> Any:
+    async def raw(
+        self,
+        op_module: Any,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+        **kwargs: Any,
+    ) -> Any:
         """Call any generated MT4 op module via ``_get_kwargs`` + the shared async httpx client.
 
         Returns a ``_RawResponse`` — call ``unwrap()`` / ``unwrap_with_meta()`` on it.
+        ``request_timeout`` / ``idempotency_key`` as in ``_MT4Namespace.raw``.
         """
-        return await _call_async(self._o._http, op_module, **kwargs)
+        return await _call_async(
+            self._o, op_module,
+            request_timeout=request_timeout, idempotency_key=idempotency_key, **kwargs,
+        )
 
 
 class _MT5AsyncNamespace:
@@ -559,70 +781,121 @@ class _MT5AsyncNamespace:
     def __init__(self, owner: "CPluginWebApiAsyncClient") -> None:
         self._o = owner
 
-    async def get_server_time(self, trade_platform: str | UUID) -> Any:
+    async def get_server_time(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return current MT5 server time (ISO 8601 string)."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt5_server_time,
+                self._o, _mt5_server_time,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
             )
         )
 
-    async def get_manager_current(self, trade_platform: str | UUID) -> Any:
+    async def get_manager_current(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return the currently-connected MT5 manager record."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt5_manager_current,
+                self._o, _mt5_manager_current,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
             )
         )
 
-    async def get_user(self, trade_platform: str | UUID, login: int) -> Any:
+    async def get_user(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return a single MT5 user record by login."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt5_user_get,
+                self._o, _mt5_user_get,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 login=login,
             )
         )
 
-    async def get_group(self, trade_platform: str | UUID, group: str) -> Any:
+    async def get_group(
+        self,
+        trade_platform: str | UUID,
+        group: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return MT5 group configuration by exact name."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt5_group_get,
+                self._o, _mt5_group_get,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 group=group,
             )
         )
 
-    async def get_symbol(self, trade_platform: str | UUID, symbol: str) -> Any:
+    async def get_symbol(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return MT5 symbol settings by exact symbol name."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt5_symbol_get,
+                self._o, _mt5_symbol_get,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 symbol=symbol,
             )
         )
 
-    async def positions_by_group(self, trade_platform: str | UUID, mask: str) -> Any:
+    async def positions_by_group(
+        self,
+        trade_platform: str | UUID,
+        mask: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
         """Return open positions for all logins in groups matching ``mask``."""
         return unwrap(
             await _call_async(
-                self._o._http, _mt5_positions_by_group,
+                self._o, _mt5_positions_by_group,
                 trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
                 mask=mask,
             )
         )
 
-    async def raw(self, op_module: Any, **kwargs: Any) -> Any:
+    async def raw(
+        self,
+        op_module: Any,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+        **kwargs: Any,
+    ) -> Any:
         """Call any generated MT5 op module via ``_get_kwargs`` + the shared async httpx client.
 
         Returns a ``_RawResponse`` — call ``unwrap()`` / ``unwrap_with_meta()`` on it.
+        ``request_timeout`` / ``idempotency_key`` as in ``_MT4Namespace.raw``.
         """
-        return await _call_async(self._o._http, op_module, **kwargs)
+        return await _call_async(
+            self._o, op_module,
+            request_timeout=request_timeout, idempotency_key=idempotency_key, **kwargs,
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -646,8 +919,17 @@ class CPluginWebApiClient:
         api_base_url: Override API base URL (required when ``env="custom"``).
         authority:    Override OIDC authority URL (required when ``env="custom"``).
         scopes:       OAuth2 scopes to request (default: server-defined).
-        timeout:      Per-request timeout in seconds (default: 30.0).
-        retries:      Transport-level retry count on connection errors (default: 2).
+        timeout:      HTTP client timeout in seconds (default: 90.0 — longer than the
+                      longest server-side default deadline, 60 s, plus the time the
+                      server may add for connecting to the trade platform). A call
+                      with ``request_timeout`` waits at least ``request_timeout`` + 30 s.
+        request_timeout: Default server deadline in seconds (1–300) for every call,
+                      sent as ``X-Request-Timeout``. ``None`` (default): the server's
+                      own per-operation default (trade 5 s, read 10 s, change 15 s,
+                      history 30 s, maintenance 60 s).
+        retries:      Transport-level retry count for opening a connection (default: 2).
+                      Only connection attempts are repeated, never a sent request:
+                      a repeated trade could be applied twice.
         transport:    Custom ``httpx.BaseTransport`` (e.g. ``respx.MockTransport``
                       for tests). Overrides ``retries``.
 
@@ -668,11 +950,16 @@ class CPluginWebApiClient:
         api_base_url: str | None = None,
         authority: str | None = None,
         scopes: list[str] | None = None,
-        timeout: float = 30.0,
+        timeout: float | None = DEFAULT_TRANSPORT_TIMEOUT,
+        request_timeout: float | None = None,
         retries: int = 2,
         transport: httpx.BaseTransport | None = None,
     ) -> None:
         resolved = resolve_environment(env, api_base_url=api_base_url, authority=authority)
+
+        # * Validated up front: a bad client-wide default fails here, not on the first call.
+        self._request_timeout: float | None = validate_request_timeout(request_timeout)
+        self._timeout: float | None = timeout
 
         # * Resolved base URL — stored for Task 9 realtime wiring.
         self._api_base: str = resolved.api_base_url
@@ -778,6 +1065,8 @@ class CPluginWebApiAsyncClient:
     """Asynchronous WebAPI v2 client — mirrors ``CPluginWebApiClient`` exactly.
 
     All namespace methods are ``async``; use ``async with`` / ``await aclose()``.
+    Constructor arguments, ``timeout`` / ``request_timeout`` / ``retries`` included,
+    are the same as for ``CPluginWebApiClient``.
 
     Attributes for Task 9 (realtime SignalR wiring):
         _api_base (str):      Resolved API base URL without trailing slash.
@@ -796,11 +1085,16 @@ class CPluginWebApiAsyncClient:
         api_base_url: str | None = None,
         authority: str | None = None,
         scopes: list[str] | None = None,
-        timeout: float = 30.0,
+        timeout: float | None = DEFAULT_TRANSPORT_TIMEOUT,
+        request_timeout: float | None = None,
         retries: int = 2,
         transport: httpx.AsyncBaseTransport | None = None,
     ) -> None:
         resolved = resolve_environment(env, api_base_url=api_base_url, authority=authority)
+
+        # * Validated up front: a bad client-wide default fails here, not on the first call.
+        self._request_timeout: float | None = validate_request_timeout(request_timeout)
+        self._timeout: float | None = timeout
 
         # * Resolved base URL — stored for Task 9 realtime wiring.
         self._api_base: str = resolved.api_base_url

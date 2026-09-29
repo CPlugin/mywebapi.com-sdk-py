@@ -11,24 +11,15 @@ from ..types import UNSET, Unset
 from ..models.en_calc_mode import EnCalcMode
 from ..models.en_chart_mode import EnChartMode
 from ..models.en_execution_mode import EnExecutionMode
-from ..models.en_expiration_flags import EnExpirationFlags
-from ..models.en_filling_flags import EnFillingFlags
 from ..models.en_gtc_mode import EnGtcMode
 from ..models.en_industries import EnIndustries
-from ..models.en_instant_flags import EnInstantFlags
 from ..models.en_instant_mode import EnInstantMode
-from ..models.en_margin_flags import EnMarginFlags
 from ..models.en_option_mode import EnOptionMode
-from ..models.en_order_flags import EnOrderFlags
-from ..models.en_request_flags import EnRequestFlags
 from ..models.en_sectors import EnSectors
 from ..models.en_splice_time_type import EnSpliceTimeType
 from ..models.en_splice_type import EnSpliceType
 from ..models.en_swap_days import EnSwapDays
-from ..models.en_swap_flags import EnSwapFlags
 from ..models.en_swap_mode import EnSwapMode
-from ..models.en_tick_flags import EnTickFlags
-from ..models.en_trade_flags import EnTradeFlags
 from ..models.en_trade_mode import EnTradeMode
 from ..types import UNSET, Unset
 from typing import cast
@@ -82,7 +73,7 @@ class MT5Symbol:
                 value.</strong>
                 <br />
                 <br />
-            tick_flags (EnTickFlags | None | Unset): EnTickFlags
+            tick_flags (None | str | Unset): EnTickFlags
             tick_book_depth (int | None | Unset): Depth of Market depth (both legs)
             filter_soft (int | None | Unset): filtration soft level
             filter_soft_ticks (int | None | Unset): filtration soft level counter
@@ -95,8 +86,8 @@ class MT5Symbol:
             calc_mode (EnCalcMode | None | Unset): EnCalcMode
             exec_mode (EnExecutionMode | None | Unset): EnExecutionMode
             gtc_mode (EnGtcMode | None | Unset): EnGTCMode
-            fill_flags (EnFillingFlags | None | Unset): EnFillingFlags
-            expir_flags (EnExpirationFlags | None | Unset): EnExpirationFlags
+            fill_flags (None | str | Unset): EnFillingFlags
+            expir_flags (None | str | Unset): EnExpirationFlags
             spread (int | None | Unset): symbol spread (0-floating)
             spread_balance (int | None | Unset): spread balance
             spread_diff (int | None | Unset): spread difference
@@ -112,7 +103,7 @@ class MT5Symbol:
             volume_max (int | None | Unset): maximal volume
             volume_step (int | None | Unset): volume step
             volume_limit (int | None | Unset): cumulative positions and orders limit
-            margin_flags (EnMarginFlags | None | Unset): EnMarginFlags
+            margin_flags (None | str | Unset): EnMarginFlags
             margin_initial (float | None | Unset): initial margin
             margin_maintenance (float | None | Unset): maintenance margin
             margin_long (float | None | Unset): long orders and positions margin rate
@@ -138,7 +129,7 @@ class MT5Symbol:
                 information</strong>
                 <br />
                 <br />
-            re_flags (EnRequestFlags | None | Unset): request execution flags
+            re_flags (None | str | Unset): request execution flags
             re_timeout (int | None | Unset): Time in seconds during which the price issued by a dealer in the request
                 execution mode is valid.
             ie_check_mode (EnInstantMode | None | Unset): instant execution check mode
@@ -150,8 +141,8 @@ class MT5Symbol:
             price_settle (float | None | Unset): settle price (for futures)
             price_limit_max (float | None | Unset): price limit max (for futures)
             price_limit_min (float | None | Unset): price limit min (for futures)
-            trade_flags (EnTradeFlags | None | Unset): EnTradeFlags
-            order_flags (EnOrderFlags | None | Unset): EnOrderFlags
+            trade_flags (None | str | Unset): EnTradeFlags
+            order_flags (None | str | Unset): EnOrderFlags
             margin_rate_initial (MT5SymbolMarginRateInitialType0 | None | Unset): orders and positions margin rates
             margin_rate_maintenance (MT5SymbolMarginRateMaintenanceType0 | None | Unset): orders and positions margin rates
             options_mode (EnOptionMode | None | Unset): options mode EnOptionMode
@@ -168,7 +159,7 @@ class MT5Symbol:
             filter_gap (int | None | Unset): gap level
             filter_gap_ticks (int | None | Unset): gap level ticks
             chart_mode (EnChartMode | None | Unset): chart mode
-            ie_flags (EnInstantFlags | None | Unset): instant execution flags with extended accuracy
+            ie_flags (None | str | Unset): instant execution flags with extended accuracy
             volume_min_ext (int | None | Unset): minimal volume with extended accuracy
             volume_max_ext (int | None | Unset): maximal volume with extended accuracy
             volume_step_ext (int | None | Unset): volume step with extended accuracy
@@ -182,7 +173,7 @@ class MT5Symbol:
             country (None | str | Unset): Country - ISO 3166-1 alpha-3 code
             subscriptions_delay (int | None | Unset): Delay for subscriptions
             swap_year_days (int | None | Unset): Days in year
-            swap_flags (EnSwapFlags | None | Unset): swap flags
+            swap_flags (None | str | Unset): swap flags
             swap_rate_sunday (float | None | Unset): swap rate for Sunday
             swap_rate_monday (float | None | Unset): swap rate for Monday
             swap_rate_tuesday (float | None | Unset): swap rate for Tuesday
@@ -211,7 +202,7 @@ class MT5Symbol:
     digits: int | None | Unset = UNSET
     point: float | None | Unset = UNSET
     multiply: float | None | Unset = UNSET
-    tick_flags: EnTickFlags | None | Unset = UNSET
+    tick_flags: None | str | Unset = UNSET
     tick_book_depth: int | None | Unset = UNSET
     filter_soft: int | None | Unset = UNSET
     filter_soft_ticks: int | None | Unset = UNSET
@@ -224,8 +215,8 @@ class MT5Symbol:
     calc_mode: EnCalcMode | None | Unset = UNSET
     exec_mode: EnExecutionMode | None | Unset = UNSET
     gtc_mode: EnGtcMode | None | Unset = UNSET
-    fill_flags: EnFillingFlags | None | Unset = UNSET
-    expir_flags: EnExpirationFlags | None | Unset = UNSET
+    fill_flags: None | str | Unset = UNSET
+    expir_flags: None | str | Unset = UNSET
     spread: int | None | Unset = UNSET
     spread_balance: int | None | Unset = UNSET
     spread_diff: int | None | Unset = UNSET
@@ -240,7 +231,7 @@ class MT5Symbol:
     volume_max: int | None | Unset = UNSET
     volume_step: int | None | Unset = UNSET
     volume_limit: int | None | Unset = UNSET
-    margin_flags: EnMarginFlags | None | Unset = UNSET
+    margin_flags: None | str | Unset = UNSET
     margin_initial: float | None | Unset = UNSET
     margin_maintenance: float | None | Unset = UNSET
     margin_long: float | None | Unset = UNSET
@@ -256,7 +247,7 @@ class MT5Symbol:
     time_expiration: datetime.datetime | None | Unset = UNSET
     session_quote: list[list[MT5SymbolSession]] | None | Unset = UNSET
     session_trade: list[list[MT5SymbolSession]] | None | Unset = UNSET
-    re_flags: EnRequestFlags | None | Unset = UNSET
+    re_flags: None | str | Unset = UNSET
     re_timeout: int | None | Unset = UNSET
     ie_check_mode: EnInstantMode | None | Unset = UNSET
     ie_timeout: int | None | Unset = UNSET
@@ -266,8 +257,8 @@ class MT5Symbol:
     price_settle: float | None | Unset = UNSET
     price_limit_max: float | None | Unset = UNSET
     price_limit_min: float | None | Unset = UNSET
-    trade_flags: EnTradeFlags | None | Unset = UNSET
-    order_flags: EnOrderFlags | None | Unset = UNSET
+    trade_flags: None | str | Unset = UNSET
+    order_flags: None | str | Unset = UNSET
     margin_rate_initial: MT5SymbolMarginRateInitialType0 | None | Unset = UNSET
     margin_rate_maintenance: MT5SymbolMarginRateMaintenanceType0 | None | Unset = UNSET
     options_mode: EnOptionMode | None | Unset = UNSET
@@ -283,7 +274,7 @@ class MT5Symbol:
     filter_gap: int | None | Unset = UNSET
     filter_gap_ticks: int | None | Unset = UNSET
     chart_mode: EnChartMode | None | Unset = UNSET
-    ie_flags: EnInstantFlags | None | Unset = UNSET
+    ie_flags: None | str | Unset = UNSET
     volume_min_ext: int | None | Unset = UNSET
     volume_max_ext: int | None | Unset = UNSET
     volume_step_ext: int | None | Unset = UNSET
@@ -297,7 +288,7 @@ class MT5Symbol:
     country: None | str | Unset = UNSET
     subscriptions_delay: int | None | Unset = UNSET
     swap_year_days: int | None | Unset = UNSET
-    swap_flags: EnSwapFlags | None | Unset = UNSET
+    swap_flags: None | str | Unset = UNSET
     swap_rate_sunday: float | None | Unset = UNSET
     swap_rate_monday: float | None | Unset = UNSET
     swap_rate_tuesday: float | None | Unset = UNSET
@@ -431,8 +422,6 @@ class MT5Symbol:
         tick_flags: None | str | Unset
         if isinstance(self.tick_flags, Unset):
             tick_flags = UNSET
-        elif isinstance(self.tick_flags, EnTickFlags):
-            tick_flags = self.tick_flags.value
         else:
             tick_flags = self.tick_flags
 
@@ -519,16 +508,12 @@ class MT5Symbol:
         fill_flags: None | str | Unset
         if isinstance(self.fill_flags, Unset):
             fill_flags = UNSET
-        elif isinstance(self.fill_flags, EnFillingFlags):
-            fill_flags = self.fill_flags.value
         else:
             fill_flags = self.fill_flags
 
         expir_flags: None | str | Unset
         if isinstance(self.expir_flags, Unset):
             expir_flags = UNSET
-        elif isinstance(self.expir_flags, EnExpirationFlags):
-            expir_flags = self.expir_flags.value
         else:
             expir_flags = self.expir_flags
 
@@ -619,8 +604,6 @@ class MT5Symbol:
         margin_flags: None | str | Unset
         if isinstance(self.margin_flags, Unset):
             margin_flags = UNSET
-        elif isinstance(self.margin_flags, EnMarginFlags):
-            margin_flags = self.margin_flags.value
         else:
             margin_flags = self.margin_flags
 
@@ -749,8 +732,6 @@ class MT5Symbol:
         re_flags: None | str | Unset
         if isinstance(self.re_flags, Unset):
             re_flags = UNSET
-        elif isinstance(self.re_flags, EnRequestFlags):
-            re_flags = self.re_flags.value
         else:
             re_flags = self.re_flags
 
@@ -813,16 +794,12 @@ class MT5Symbol:
         trade_flags: None | str | Unset
         if isinstance(self.trade_flags, Unset):
             trade_flags = UNSET
-        elif isinstance(self.trade_flags, EnTradeFlags):
-            trade_flags = self.trade_flags.value
         else:
             trade_flags = self.trade_flags
 
         order_flags: None | str | Unset
         if isinstance(self.order_flags, Unset):
             order_flags = UNSET
-        elif isinstance(self.order_flags, EnOrderFlags):
-            order_flags = self.order_flags.value
         else:
             order_flags = self.order_flags
 
@@ -931,8 +908,6 @@ class MT5Symbol:
         ie_flags: None | str | Unset
         if isinstance(self.ie_flags, Unset):
             ie_flags = UNSET
-        elif isinstance(self.ie_flags, EnInstantFlags):
-            ie_flags = self.ie_flags.value
         else:
             ie_flags = self.ie_flags
 
@@ -1021,8 +996,6 @@ class MT5Symbol:
         swap_flags: None | str | Unset
         if isinstance(self.swap_flags, Unset):
             swap_flags = UNSET
-        elif isinstance(self.swap_flags, EnSwapFlags):
-            swap_flags = self.swap_flags.value
         else:
             swap_flags = self.swap_flags
 
@@ -1500,22 +1473,12 @@ class MT5Symbol:
         multiply = _parse_multiply(d.pop("multiply", UNSET))
 
 
-        def _parse_tick_flags(data: object) -> EnTickFlags | None | Unset:
+        def _parse_tick_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                tick_flags_type_1 = EnTickFlags(data)
-
-
-
-                return tick_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnTickFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         tick_flags = _parse_tick_flags(d.pop("tickFlags", UNSET))
 
@@ -1680,42 +1643,22 @@ class MT5Symbol:
         gtc_mode = _parse_gtc_mode(d.pop("gtcMode", UNSET))
 
 
-        def _parse_fill_flags(data: object) -> EnFillingFlags | None | Unset:
+        def _parse_fill_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                fill_flags_type_1 = EnFillingFlags(data)
-
-
-
-                return fill_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnFillingFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         fill_flags = _parse_fill_flags(d.pop("fillFlags", UNSET))
 
 
-        def _parse_expir_flags(data: object) -> EnExpirationFlags | None | Unset:
+        def _parse_expir_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                expir_flags_type_1 = EnExpirationFlags(data)
-
-
-
-                return expir_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnExpirationFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         expir_flags = _parse_expir_flags(d.pop("expirFlags", UNSET))
 
@@ -1860,22 +1803,12 @@ class MT5Symbol:
         volume_limit = _parse_volume_limit(d.pop("volumeLimit", UNSET))
 
 
-        def _parse_margin_flags(data: object) -> EnMarginFlags | None | Unset:
+        def _parse_margin_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                margin_flags_type_1 = EnMarginFlags(data)
-
-
-
-                return margin_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnMarginFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         margin_flags = _parse_margin_flags(d.pop("marginFlags", UNSET))
 
@@ -2110,22 +2043,12 @@ class MT5Symbol:
         session_trade = _parse_session_trade(d.pop("sessionTrade", UNSET))
 
 
-        def _parse_re_flags(data: object) -> EnRequestFlags | None | Unset:
+        def _parse_re_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                re_flags_type_1 = EnRequestFlags(data)
-
-
-
-                return re_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnRequestFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         re_flags = _parse_re_flags(d.pop("reFlags", UNSET))
 
@@ -2230,42 +2153,22 @@ class MT5Symbol:
         price_limit_min = _parse_price_limit_min(d.pop("priceLimitMin", UNSET))
 
 
-        def _parse_trade_flags(data: object) -> EnTradeFlags | None | Unset:
+        def _parse_trade_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                trade_flags_type_1 = EnTradeFlags(data)
-
-
-
-                return trade_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnTradeFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         trade_flags = _parse_trade_flags(d.pop("tradeFlags", UNSET))
 
 
-        def _parse_order_flags(data: object) -> EnOrderFlags | None | Unset:
+        def _parse_order_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                order_flags_type_1 = EnOrderFlags(data)
-
-
-
-                return order_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnOrderFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         order_flags = _parse_order_flags(d.pop("orderFlags", UNSET))
 
@@ -2480,22 +2383,12 @@ class MT5Symbol:
         chart_mode = _parse_chart_mode(d.pop("chartMode", UNSET))
 
 
-        def _parse_ie_flags(data: object) -> EnInstantFlags | None | Unset:
+        def _parse_ie_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                ie_flags_type_1 = EnInstantFlags(data)
-
-
-
-                return ie_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnInstantFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         ie_flags = _parse_ie_flags(d.pop("ieFlags", UNSET))
 
@@ -2650,22 +2543,12 @@ class MT5Symbol:
         swap_year_days = _parse_swap_year_days(d.pop("swapYearDays", UNSET))
 
 
-        def _parse_swap_flags(data: object) -> EnSwapFlags | None | Unset:
+        def _parse_swap_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                swap_flags_type_1 = EnSwapFlags(data)
-
-
-
-                return swap_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnSwapFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         swap_flags = _parse_swap_flags(d.pop("swapFlags", UNSET))
 

@@ -3,11 +3,12 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-# * Finalized PyPI distribution name. Develop-only: not yet published.
+# * Finalized PyPI distribution name. Not yet published; the first release is 0.3.0,
+#   aligned with the JS, .NET and PowerShell SDKs.
 # ! Verify the name is still free (https://pypi.org/project/mywebapi-sdk/) before
 # !   the first release — PyPI names are a global, first-come namespace.
 name = "mywebapi-sdk"
-version = "0.1.0"
+version = "0.3.0"
 description = "Python client for the MyWebAPI.com trading platform management API (v2). Generated endpoints + httpx ergonomic layer."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -45,11 +46,11 @@ codegen = ["openapi-python-client==0.29.0"]
 # ! No official Python SignalR client exists; signalrcore wraps the protocol.
 signalr = ["signalrcore>=0.9.5"]
 
-# * Target GitHub repo (create it under this org/name before the first release).
 [project.urls]
 Homepage = "https://github.com/CPlugin/mywebapi.com-sdk-py"
 Repository = "https://github.com/CPlugin/mywebapi.com-sdk-py"
 Issues = "https://github.com/CPlugin/mywebapi.com-sdk-py/issues"
+Changelog = "https://github.com/CPlugin/mywebapi.com-sdk-py/blob/main/CHANGELOG.md"
 
 [tool.pytest.ini_options]
 asyncio_mode = "strict"
@@ -58,3 +59,6 @@ pythonpath = ["src"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/cplugin_webapi_sdk"]
+# * The vendored OpenAPI spec (~0.9 MB) is a codegen input, not needed at runtime;
+#   it stays in the sdist so the generated layer can be rebuilt from it.
+exclude = ["src/cplugin_webapi_sdk/spec"]

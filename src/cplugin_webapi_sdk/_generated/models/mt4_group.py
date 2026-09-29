@@ -8,7 +8,6 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-from ..models.group_rights import GroupRights
 from ..models.margin_controlling_type import MarginControllingType
 from ..models.margin_mode import MarginMode
 from ..models.news_mode import NewsMode
@@ -48,9 +47,9 @@ class MT4Group:
         rarely consumed; can be added later once the use case is clear.
 
     Enums (`OTPMode`, `MarginMode`, `NewsMode`,
-    `GroupRights`, `MarginControllingType`) serialize as strings
-    because CPlugin.SaaSWebApps.WebAPI.Code.Json.V2JsonContext enables
-    `UseStringEnumConverter`.
+    `MarginControllingType`) serialize as strings because
+    CPlugin.SaaSWebApps.WebAPI.Code.Json.V2JsonContext enables `UseStringEnumConverter`;
+    `GroupRights` is a flags string, the names of the set bits.
 
         Attributes:
             group (None | str | Unset): Group name (unique per platform, max 16 chars)
@@ -75,7 +74,10 @@ class MT4Group:
             interest_rate (float | Unset): Annual interest rate (percent)
             use_swap (int | Unset): 0 = no rollovers, non-zero = use rollovers and interest rate
             news_mode (NewsMode | Unset):
-            group_rights (GroupRights | Unset):
+            group_rights (str | Unset): Flags: names of the set bits joined by ", " ("Signals, Trailing"), "None" when none
+                is set; a set bit without a name is "Bit<n>" (bit number). Bits: Signals = 0x1, Trailing = 0x2, Advisor = 0x4,
+                Expiration = 0x8, SignalAll = 0x10, SignalsOwn = 0x20, RiskWarning = 0x40, ForcedOTPUsage = 0x80. Example:
+                Signals, Trailing.
             check_ie_prices (int | Unset): 0 = no IE check, non-zero = check Instant Execution prices
             max_positions (int | Unset): Maximum simultaneous orders and open positions
             close_reopen (int | Unset): 0 = standard close, non-zero = close-and-reopen mode
@@ -111,7 +113,7 @@ class MT4Group:
     interest_rate: float | Unset = UNSET
     use_swap: int | Unset = UNSET
     news_mode: NewsMode | Unset = UNSET
-    group_rights: GroupRights | Unset = UNSET
+    group_rights: str | Unset = UNSET
     check_ie_prices: int | Unset = UNSET
     max_positions: int | Unset = UNSET
     close_reopen: int | Unset = UNSET
@@ -206,10 +208,7 @@ class MT4Group:
             news_mode = self.news_mode.value
 
 
-        group_rights: str | Unset = UNSET
-        if not isinstance(self.group_rights, Unset):
-            group_rights = self.group_rights.value
-
+        group_rights = self.group_rights
 
         check_ie_prices = self.check_ie_prices
 
@@ -433,15 +432,7 @@ class MT4Group:
 
 
 
-        _group_rights = d.pop("groupRights", UNSET)
-        group_rights: GroupRights | Unset
-        if isinstance(_group_rights,  Unset):
-            group_rights = UNSET
-        else:
-            group_rights = GroupRights(_group_rights)
-
-
-
+        group_rights = d.pop("groupRights", UNSET)
 
         check_ie_prices = d.pop("checkIEPrices", UNSET)
 

@@ -20,9 +20,14 @@ def _get_kwargs(
     login: int,
     *,
     body:    str  |     str  |     str  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -84,6 +89,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    str  |     str  |     str  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     r""" Verify account password
@@ -100,9 +106,14 @@ def sync_detailed(
     is supported but rarely useful — pin if your retry policy expects the
     same answer across attempts.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         login (int):
+        x_request_timeout (float | Unset):
         body (str | Unset):
         body (str | Unset):
         body (str | Unset):
@@ -120,6 +131,7 @@ def sync_detailed(
         trade_platform=trade_platform,
 login=login,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -135,6 +147,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    str  |     str  |     str  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     r""" Verify account password
@@ -151,9 +164,14 @@ def sync(
     is supported but rarely useful — pin if your retry policy expects the
     same answer across attempts.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         login (int):
+        x_request_timeout (float | Unset):
         body (str | Unset):
         body (str | Unset):
         body (str | Unset):
@@ -172,6 +190,7 @@ def sync(
 login=login,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -181,6 +200,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    str  |     str  |     str  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     r""" Verify account password
@@ -197,9 +217,14 @@ async def asyncio_detailed(
     is supported but rarely useful — pin if your retry policy expects the
     same answer across attempts.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         login (int):
+        x_request_timeout (float | Unset):
         body (str | Unset):
         body (str | Unset):
         body (str | Unset):
@@ -217,6 +242,7 @@ async def asyncio_detailed(
         trade_platform=trade_platform,
 login=login,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -232,6 +258,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    str  |     str  |     str  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     r""" Verify account password
@@ -248,9 +275,14 @@ async def asyncio(
     is supported but rarely useful — pin if your retry policy expects the
     same answer across attempts.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         login (int):
+        x_request_timeout (float | Unset):
         body (str | Unset):
         body (str | Unset):
         body (str | Unset):
@@ -269,5 +301,6 @@ async def asyncio(
 login=login,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

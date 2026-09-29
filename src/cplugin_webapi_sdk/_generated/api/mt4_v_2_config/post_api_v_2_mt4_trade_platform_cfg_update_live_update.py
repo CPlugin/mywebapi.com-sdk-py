@@ -20,9 +20,14 @@ def _get_kwargs(
     trade_platform: UUID,
     *,
     body:    MT4LiveUpdate  |     MT4LiveUpdate  |     MT4LiveUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -86,6 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4LiveUpdate  |     MT4LiveUpdate  |     MT4LiveUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4LiveUpdateApiResponse]:
     """ Update LiveUpdate config
@@ -100,8 +106,13 @@ def sync_detailed(
     table and the runtime `Connections` counter are preserved
     server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
             subset of the wrapper's ConLiveUpdate — exposes the metadata
@@ -142,6 +153,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -156,6 +168,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4LiveUpdate  |     MT4LiveUpdate  |     MT4LiveUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4LiveUpdateApiResponse | None:
     """ Update LiveUpdate config
@@ -170,8 +183,13 @@ def sync(
     table and the runtime `Connections` counter are preserved
     server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
             subset of the wrapper's ConLiveUpdate — exposes the metadata
@@ -213,6 +231,7 @@ def sync(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -221,6 +240,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4LiveUpdate  |     MT4LiveUpdate  |     MT4LiveUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4LiveUpdateApiResponse]:
     """ Update LiveUpdate config
@@ -235,8 +255,13 @@ async def asyncio_detailed(
     table and the runtime `Connections` counter are preserved
     server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
             subset of the wrapper's ConLiveUpdate — exposes the metadata
@@ -277,6 +302,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -291,6 +317,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4LiveUpdate  |     MT4LiveUpdate  |     MT4LiveUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4LiveUpdateApiResponse | None:
     """ Update LiveUpdate config
@@ -305,8 +332,13 @@ async def asyncio(
     table and the runtime `Connections` counter are preserved
     server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
             subset of the wrapper's ConLiveUpdate — exposes the metadata
@@ -348,5 +380,6 @@ async def asyncio(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

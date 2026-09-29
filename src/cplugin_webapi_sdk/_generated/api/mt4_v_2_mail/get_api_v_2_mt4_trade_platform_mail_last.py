@@ -9,6 +9,7 @@ from ...types import Response, UNSET
 from ... import errors
 
 from ...models.string_api_response import StringApiResponse
+from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
 
@@ -16,9 +17,16 @@ from uuid import UUID
 
 def _get_kwargs(
     trade_platform: UUID,
+    *,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
-    
+    headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
+
 
     
 
@@ -30,6 +38,7 @@ def _get_kwargs(
     }
 
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -61,6 +70,7 @@ def sync_detailed(
     trade_platform: UUID,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[StringApiResponse]:
     """ Get last mail path
@@ -70,8 +80,12 @@ def sync_detailed(
     Pump-cached read — returns the path/identifier of the last mail.
     Empty string when no mail has been received yet on the connection.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -84,6 +98,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -97,6 +112,7 @@ def sync(
     trade_platform: UUID,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> StringApiResponse | None:
     """ Get last mail path
@@ -106,8 +122,12 @@ def sync(
     Pump-cached read — returns the path/identifier of the last mail.
     Empty string when no mail has been received yet on the connection.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -121,6 +141,7 @@ def sync(
     return sync_detailed(
         trade_platform=trade_platform,
 client=client,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -128,6 +149,7 @@ async def asyncio_detailed(
     trade_platform: UUID,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[StringApiResponse]:
     """ Get last mail path
@@ -137,8 +159,12 @@ async def asyncio_detailed(
     Pump-cached read — returns the path/identifier of the last mail.
     Empty string when no mail has been received yet on the connection.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -151,6 +177,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -164,6 +191,7 @@ async def asyncio(
     trade_platform: UUID,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> StringApiResponse | None:
     """ Get last mail path
@@ -173,8 +201,12 @@ async def asyncio(
     Pump-cached read — returns the path/identifier of the last mail.
     Empty string when no mail has been received yet on the connection.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -188,5 +220,6 @@ async def asyncio(
     return (await asyncio_detailed(
         trade_platform=trade_platform,
 client=client,
+x_request_timeout=x_request_timeout,
 
     )).parsed

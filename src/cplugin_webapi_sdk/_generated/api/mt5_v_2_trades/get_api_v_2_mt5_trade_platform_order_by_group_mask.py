@@ -21,9 +21,15 @@ def _get_kwargs(
     *,
     limit: int | Unset = UNSET,
     cursor: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
-    
+    headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
+
 
     
 
@@ -44,6 +50,7 @@ def _get_kwargs(
     }
 
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -78,6 +85,7 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     limit: int | Unset = UNSET,
     cursor: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT5OrderListApiResponse]:
     """ List orders by group
@@ -85,11 +93,15 @@ def sync_detailed(
      Returns active and pending orders for all logins in groups matching the mask,
     ordered by Order ID ascending. Use the cursor for the next page.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         mask (str):
         limit (int | Unset):
         cursor (str | Unset):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -105,6 +117,7 @@ def sync_detailed(
 mask=mask,
 limit=limit,
 cursor=cursor,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -121,6 +134,7 @@ def sync(
     client: AuthenticatedClient | Client,
     limit: int | Unset = UNSET,
     cursor: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT5OrderListApiResponse | None:
     """ List orders by group
@@ -128,11 +142,15 @@ def sync(
      Returns active and pending orders for all logins in groups matching the mask,
     ordered by Order ID ascending. Use the cursor for the next page.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         mask (str):
         limit (int | Unset):
         cursor (str | Unset):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -149,6 +167,7 @@ mask=mask,
 client=client,
 limit=limit,
 cursor=cursor,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -159,6 +178,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     limit: int | Unset = UNSET,
     cursor: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT5OrderListApiResponse]:
     """ List orders by group
@@ -166,11 +186,15 @@ async def asyncio_detailed(
      Returns active and pending orders for all logins in groups matching the mask,
     ordered by Order ID ascending. Use the cursor for the next page.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         mask (str):
         limit (int | Unset):
         cursor (str | Unset):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -186,6 +210,7 @@ async def asyncio_detailed(
 mask=mask,
 limit=limit,
 cursor=cursor,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -202,6 +227,7 @@ async def asyncio(
     client: AuthenticatedClient | Client,
     limit: int | Unset = UNSET,
     cursor: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT5OrderListApiResponse | None:
     """ List orders by group
@@ -209,11 +235,15 @@ async def asyncio(
      Returns active and pending orders for all logins in groups matching the mask,
     ordered by Order ID ascending. Use the cursor for the next page.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         mask (str):
         limit (int | Unset):
         cursor (str | Unset):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -230,5 +260,6 @@ mask=mask,
 client=client,
 limit=limit,
 cursor=cursor,
+x_request_timeout=x_request_timeout,
 
     )).parsed
