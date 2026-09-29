@@ -140,7 +140,7 @@ except ApiError as e:
         raise
 ```
 
-The finished result is kept for the key for a limited time only — by default one minute, counted from the first request — so repeat promptly. A repeat after the stored result has expired is executed again. Without an idempotency key, or when in doubt, check the result yourself (orders, positions, balance, the changed record) before repeating an `OutcomeUnknown` request. If the outcome of a timed-out operation cannot be determined, the server keeps the key taken for one hour; after that, check the outcome and use a new key.
+After `OutcomeUnknown`, repeating with the same key returns the real result for at least one hour after the operation finished on the trading platform. (An answer that arrived in time is kept for the key for one minute.) Without an idempotency key, or when in doubt, check the result yourself (orders, positions, balance, the changed record) before repeating an `OutcomeUnknown` request. If the outcome of a timed-out operation cannot be determined, the server keeps the key taken for one hour; after that, check the outcome and use a new key.
 
 The SDK does not repeat a request because of a timeout or an error code. `retries=` (default 2) only repeats opening the connection, before any byte of the request is sent. With client-credentials auth, a request answered `401` is sent once more with a fresh token; the server refuses an unauthenticated request before running it. An `httpx` transport error (`httpx.ReadTimeout`, a dropped connection) or an `InvalidResponse` error from a proxy page leaves a trade or change just as unknown as `OutcomeUnknown` does — treat it the same way.
 
