@@ -3,10 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-# * Finalized PyPI distribution name. Not yet published; the first release is 0.3.0,
-#   aligned with the JS, .NET and PowerShell SDKs.
-# ! Verify the name is still free (https://pypi.org/project/mywebapi-sdk/) before
-# !   the first release — PyPI names are a global, first-come namespace.
+# * PyPI distribution name (https://pypi.org/project/mywebapi-sdk/), first released as
+#   0.3.0 on 30.09.2026; versions move together with the JS, .NET and PowerShell SDKs.
 name = "mywebapi-sdk"
 version = "0.3.0"
 description = "Python client for the MyWebAPI.com trading platform management API (v2). Generated endpoints + httpx ergonomic layer."

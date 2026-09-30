@@ -1,26 +1,13 @@
 # Publishing
 
-## Before the first release
+## Setup (done)
 
-1. **Distribution name** — `mywebapi-sdk` (final). PyPI names are a global,
-   first-come namespace, so verify it is still free
-   (https://pypi.org/project/mywebapi-sdk/) just before the first release.
-   The import name stays `cplugin_webapi_sdk` regardless.
-2. **Repository** — `CPlugin/mywebapi.com-sdk-py` (final, mirrors the JS SDK
-   `CPlugin/mywebapi.com-sdk-js`). The URLs are set in `pyproject.toml`
-   (`[project.urls]`) and `.github/workflows/publish.yml` (`environment.url`).
-3. **Authentication: PyPI Trusted Publishing (OIDC) — no token to store or rotate.**
-   - Unlike npm, PyPI supports a **pending publisher**, so you do NOT need a
-     bootstrap-token first publish. On https://pypi.org, go to your account
-     (or the project, once it exists) → _Publishing → Add a new pending publisher_
-     and set: PyPI project name = `mywebapi-sdk`, Owner = `<github-org>`,
-     Repository = `<repo>`, Workflow = `publish.yml`, Environment = `pypi`.
-   - Create a GitHub **Environment** named `pypi` (Settings → Environments) and,
-     optionally, add protection rules (required reviewers, restrict to tags).
-   - Every release then publishes via the workflow's OIDC id-token — **no
-     `PYPI_TOKEN` secret, nothing to rotate.**
-   - (TestPyPI: mirror the same setup at https://test.pypi.org and point the
-     publish action at it with `repository-url` to rehearse before going live.)
+The first release, 0.3.0, went out on 30.09.2026. What is in place:
+
+- **Distribution** `mywebapi-sdk` on https://pypi.org/project/mywebapi-sdk/; the import name is `cplugin_webapi_sdk`.
+- **Repository** `CPlugin/mywebapi.com-sdk-py`; the URLs are in `pyproject.toml` (`[project.urls]`) and `.github/workflows/publish.yml` (`environment.url`).
+- **Authentication: PyPI Trusted Publishing (OIDC)** — the publisher is PyPI project `mywebapi-sdk`, owner `CPlugin`, repository `mywebapi.com-sdk-py`, workflow `publish.yml`, environment `pypi`. There is no `PYPI_TOKEN` secret and nothing to rotate. Renaming the workflow file or the environment breaks publishing (`invalid-publisher`) until the publisher on PyPI is changed to match.
+- **GitHub environment** `pypi` (Settings → Environments).
 
 ## Releasing a version
 
