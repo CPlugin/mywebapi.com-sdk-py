@@ -9,6 +9,7 @@ from ...types import Response, UNSET
 from ... import errors
 
 from ...models.boolean_api_response import BooleanApiResponse
+from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
 
@@ -17,9 +18,16 @@ from uuid import UUID
 def _get_kwargs(
     trade_platform: UUID,
     symbol: str,
+    *,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
-    
+    headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
+
 
     
 
@@ -31,6 +39,7 @@ def _get_kwargs(
     }
 
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -63,6 +72,7 @@ def sync_detailed(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Add symbol
@@ -79,9 +89,14 @@ def sync_detailed(
     path stays the same to keep traceability with the underlying wrapper
     method name; only the HTTP verb changes.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -95,6 +110,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 symbol=symbol,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -109,6 +125,7 @@ def sync(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Add symbol
@@ -125,9 +142,14 @@ def sync(
     path stays the same to keep traceability with the underlying wrapper
     method name; only the HTTP verb changes.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -142,6 +164,7 @@ def sync(
         trade_platform=trade_platform,
 symbol=symbol,
 client=client,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -150,6 +173,7 @@ async def asyncio_detailed(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Add symbol
@@ -166,9 +190,14 @@ async def asyncio_detailed(
     path stays the same to keep traceability with the underlying wrapper
     method name; only the HTTP verb changes.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -182,6 +211,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 symbol=symbol,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -196,6 +226,7 @@ async def asyncio(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Add symbol
@@ -212,9 +243,14 @@ async def asyncio(
     path stays the same to keep traceability with the underlying wrapper
     method name; only the HTTP verb changes.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -229,5 +265,6 @@ async def asyncio(
         trade_platform=trade_platform,
 symbol=symbol,
 client=client,
+x_request_timeout=x_request_timeout,
 
     )).parsed

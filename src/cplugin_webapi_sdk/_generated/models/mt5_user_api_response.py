@@ -33,7 +33,7 @@ class MT5UserApiResponse:
         Attributes:
             data (MT5User | None | Unset): MT5 user, v2 read DTO — full field set (A4 expansion). Includes all editable
                             fields mirrored from MT5UserUpdate plus read-only financial/metadata fields.
-                            `Rights` serializes as a string via `V2JsonContext.UseStringEnumConverter`.
+                            `Rights` is a flags string: the names of the set bits, `"Enabled, Password"`.
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an

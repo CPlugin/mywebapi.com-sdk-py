@@ -21,9 +21,14 @@ def _get_kwargs(
     *,
     body:    list[MT4TradeRestoreInput]  |     list[MT4TradeRestoreInput]  |     list[MT4TradeRestoreInput]  | Unset = UNSET,
     confirm: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -110,6 +115,7 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     body:    list[MT4TradeRestoreInput]  |     list[MT4TradeRestoreInput]  |     list[MT4TradeRestoreInput]  | Unset = UNSET,
     confirm: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4TradeRestoreResultListApiResponse]:
     """ Restore orders from backup
@@ -125,9 +131,15 @@ def sync_detailed(
     Idempotency-Key header is <b>strongly recommended</b>. Batch cap:
     10000 records per call.
 
+
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         confirm (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
@@ -145,6 +157,7 @@ def sync_detailed(
         trade_platform=trade_platform,
 body=body,
 confirm=confirm,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -160,6 +173,7 @@ def sync(
     client: AuthenticatedClient | Client,
     body:    list[MT4TradeRestoreInput]  |     list[MT4TradeRestoreInput]  |     list[MT4TradeRestoreInput]  | Unset = UNSET,
     confirm: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4TradeRestoreResultListApiResponse | None:
     """ Restore orders from backup
@@ -175,9 +189,15 @@ def sync(
     Idempotency-Key header is <b>strongly recommended</b>. Batch cap:
     10000 records per call.
 
+
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         confirm (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
@@ -196,6 +216,7 @@ def sync(
 client=client,
 body=body,
 confirm=confirm,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -205,6 +226,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     body:    list[MT4TradeRestoreInput]  |     list[MT4TradeRestoreInput]  |     list[MT4TradeRestoreInput]  | Unset = UNSET,
     confirm: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4TradeRestoreResultListApiResponse]:
     """ Restore orders from backup
@@ -220,9 +242,15 @@ async def asyncio_detailed(
     Idempotency-Key header is <b>strongly recommended</b>. Batch cap:
     10000 records per call.
 
+
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         confirm (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
@@ -240,6 +268,7 @@ async def asyncio_detailed(
         trade_platform=trade_platform,
 body=body,
 confirm=confirm,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -255,6 +284,7 @@ async def asyncio(
     client: AuthenticatedClient | Client,
     body:    list[MT4TradeRestoreInput]  |     list[MT4TradeRestoreInput]  |     list[MT4TradeRestoreInput]  | Unset = UNSET,
     confirm: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4TradeRestoreResultListApiResponse | None:
     """ Restore orders from backup
@@ -270,9 +300,15 @@ async def asyncio(
     Idempotency-Key header is <b>strongly recommended</b>. Batch cap:
     10000 records per call.
 
+
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         confirm (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
         body (list[MT4TradeRestoreInput] | Unset):
@@ -291,5 +327,6 @@ async def asyncio(
 client=client,
 body=body,
 confirm=confirm,
+x_request_timeout=x_request_timeout,
 
     )).parsed

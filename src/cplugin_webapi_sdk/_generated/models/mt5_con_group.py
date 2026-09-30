@@ -13,14 +13,10 @@ from ..models.en_auth_otp_mode import EnAuthOTPMode
 from ..models.en_free_margin_mode import EnFreeMarginMode
 from ..models.en_history_limit import EnHistoryLimit
 from ..models.en_mail_mode import EnMailMode
-from ..models.en_margin_calc_flags import EnMarginCalcFlags
 from ..models.en_margin_mode import EnMarginMode
 from ..models.en_news_mode import EnNewsMode
-from ..models.en_permissions_flags import EnPermissionsFlags
-from ..models.en_reports_flags import EnReportsFlags
 from ..models.en_reports_mode import EnReportsMode
 from ..models.en_stop_out_mode import EnStopOutMode
-from ..models.en_trade_rights_flags import EnTradeRightsFlags
 from ..models.en_transfer_mode import EnTransferMode
 from ..types import UNSET, Unset
 from typing import cast
@@ -42,7 +38,7 @@ class MT5ConGroup:
         Attributes:
             group (None | str | Unset): group name
             server (int | None | Unset): group trade server ID
-            permissions_flags (EnPermissionsFlags | None | Unset): EnPermissionsFlags
+            permissions_flags (None | str | Unset): EnPermissionsFlags
             auth_mode (EnAuthMode | None | Unset): EnAuthMode
             auth_password_min (int | None | Unset): minimal password length
             company (None | str | Unset): company name
@@ -54,7 +50,7 @@ class MT5ConGroup:
             currency (None | str | Unset): deposit currency
             currency_digits (int | None | Unset):
             reports_mode (EnReportsMode | None | Unset): EnReportsMode
-            reports_flags (EnReportsFlags | None | Unset): EnReportsFlags
+            reports_flags (None | str | Unset): EnReportsFlags
             reports_smtp (None | str | Unset): reports SMTP server address:ports
             reports_smtp_login (None | str | Unset): reports SMTP server login
             reports_smtp_pass (None | str | Unset): reports SMTP server password
@@ -66,7 +62,7 @@ class MT5ConGroup:
                 <br />
                             allowed news languages (Windows API LANGID used)
             mail_mode (EnMailMode | None | Unset): EnMailMode
-            trade_flags (EnTradeRightsFlags | None | Unset): EnTradeFlags
+            trade_flags (None | str | Unset): EnTradeFlags
             trade_interest_rate (float | None | Unset): interest rate for free deposit money
             trade_virtual_credit (float | None | Unset): virtual credit
             margin_free_mode (EnFreeMarginMode | None | Unset): EnFreeMarginMode
@@ -85,7 +81,7 @@ class MT5ConGroup:
             margin_mode (EnMarginMode | None | Unset): group risk management mode - EnMarginMode
             auth_otp_mode (EnAuthOTPMode | None | Unset): OTP authentication mode - EnAuthOTPMode
             trade_transfer_mode (EnTransferMode | None | Unset): deposit transfer mode - EnTransferMode
-            margin_flags (EnMarginCalcFlags | None | Unset): margin calculation flags EnMarginFlags
+            margin_flags (None | str | Unset): margin calculation flags EnMarginFlags
             limit_positions (int | None | Unset): max. positions limit
             reports_email (None | str | Unset): reports SMTP email account
             company_deposit_page (None | str | Unset): company deposit URL
@@ -96,7 +92,7 @@ class MT5ConGroup:
 
     group: None | str | Unset = UNSET
     server: int | None | Unset = UNSET
-    permissions_flags: EnPermissionsFlags | None | Unset = UNSET
+    permissions_flags: None | str | Unset = UNSET
     auth_mode: EnAuthMode | None | Unset = UNSET
     auth_password_min: int | None | Unset = UNSET
     company: None | str | Unset = UNSET
@@ -108,7 +104,7 @@ class MT5ConGroup:
     currency: None | str | Unset = UNSET
     currency_digits: int | None | Unset = UNSET
     reports_mode: EnReportsMode | None | Unset = UNSET
-    reports_flags: EnReportsFlags | None | Unset = UNSET
+    reports_flags: None | str | Unset = UNSET
     reports_smtp: None | str | Unset = UNSET
     reports_smtp_login: None | str | Unset = UNSET
     reports_smtp_pass: None | str | Unset = UNSET
@@ -116,7 +112,7 @@ class MT5ConGroup:
     news_category: None | str | Unset = UNSET
     news_lang: list[int] | None | Unset = UNSET
     mail_mode: EnMailMode | None | Unset = UNSET
-    trade_flags: EnTradeRightsFlags | None | Unset = UNSET
+    trade_flags: None | str | Unset = UNSET
     trade_interest_rate: float | None | Unset = UNSET
     trade_virtual_credit: float | None | Unset = UNSET
     margin_free_mode: EnFreeMarginMode | None | Unset = UNSET
@@ -133,7 +129,7 @@ class MT5ConGroup:
     margin_mode: EnMarginMode | None | Unset = UNSET
     auth_otp_mode: EnAuthOTPMode | None | Unset = UNSET
     trade_transfer_mode: EnTransferMode | None | Unset = UNSET
-    margin_flags: EnMarginCalcFlags | None | Unset = UNSET
+    margin_flags: None | str | Unset = UNSET
     limit_positions: int | None | Unset = UNSET
     reports_email: None | str | Unset = UNSET
     company_deposit_page: None | str | Unset = UNSET
@@ -161,8 +157,6 @@ class MT5ConGroup:
         permissions_flags: None | str | Unset
         if isinstance(self.permissions_flags, Unset):
             permissions_flags = UNSET
-        elif isinstance(self.permissions_flags, EnPermissionsFlags):
-            permissions_flags = self.permissions_flags.value
         else:
             permissions_flags = self.permissions_flags
 
@@ -239,8 +233,6 @@ class MT5ConGroup:
         reports_flags: None | str | Unset
         if isinstance(self.reports_flags, Unset):
             reports_flags = UNSET
-        elif isinstance(self.reports_flags, EnReportsFlags):
-            reports_flags = self.reports_flags.value
         else:
             reports_flags = self.reports_flags
 
@@ -297,8 +289,6 @@ class MT5ConGroup:
         trade_flags: None | str | Unset
         if isinstance(self.trade_flags, Unset):
             trade_flags = UNSET
-        elif isinstance(self.trade_flags, EnTradeRightsFlags):
-            trade_flags = self.trade_flags.value
         else:
             trade_flags = self.trade_flags
 
@@ -415,8 +405,6 @@ class MT5ConGroup:
         margin_flags: None | str | Unset
         if isinstance(self.margin_flags, Unset):
             margin_flags = UNSET
-        elif isinstance(self.margin_flags, EnMarginCalcFlags):
-            margin_flags = self.margin_flags.value
         else:
             margin_flags = self.margin_flags
 
@@ -574,22 +562,12 @@ class MT5ConGroup:
         server = _parse_server(d.pop("server", UNSET))
 
 
-        def _parse_permissions_flags(data: object) -> EnPermissionsFlags | None | Unset:
+        def _parse_permissions_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                permissions_flags_type_1 = EnPermissionsFlags(data)
-
-
-
-                return permissions_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnPermissionsFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         permissions_flags = _parse_permissions_flags(d.pop("permissionsFlags", UNSET))
 
@@ -724,22 +702,12 @@ class MT5ConGroup:
         reports_mode = _parse_reports_mode(d.pop("reportsMode", UNSET))
 
 
-        def _parse_reports_flags(data: object) -> EnReportsFlags | None | Unset:
+        def _parse_reports_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                reports_flags_type_1 = EnReportsFlags(data)
-
-
-
-                return reports_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnReportsFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         reports_flags = _parse_reports_flags(d.pop("reportsFlags", UNSET))
 
@@ -842,22 +810,12 @@ class MT5ConGroup:
         mail_mode = _parse_mail_mode(d.pop("mailMode", UNSET))
 
 
-        def _parse_trade_flags(data: object) -> EnTradeRightsFlags | None | Unset:
+        def _parse_trade_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                trade_flags_type_1 = EnTradeRightsFlags(data)
-
-
-
-                return trade_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnTradeRightsFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         trade_flags = _parse_trade_flags(d.pop("tradeFlags", UNSET))
 
@@ -1092,22 +1050,12 @@ class MT5ConGroup:
         trade_transfer_mode = _parse_trade_transfer_mode(d.pop("tradeTransferMode", UNSET))
 
 
-        def _parse_margin_flags(data: object) -> EnMarginCalcFlags | None | Unset:
+        def _parse_margin_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                margin_flags_type_1 = EnMarginCalcFlags(data)
-
-
-
-                return margin_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnMarginCalcFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         margin_flags = _parse_margin_flags(d.pop("marginFlags", UNSET))
 

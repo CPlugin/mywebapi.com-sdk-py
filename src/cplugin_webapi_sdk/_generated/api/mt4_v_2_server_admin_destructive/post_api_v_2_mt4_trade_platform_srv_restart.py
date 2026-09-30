@@ -19,9 +19,15 @@ def _get_kwargs(
     trade_platform: UUID,
     *,
     confirm: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
-    
+    headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
+
 
     
 
@@ -40,6 +46,7 @@ def _get_kwargs(
     }
 
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -72,6 +79,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     confirm: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Restart server
@@ -88,9 +96,15 @@ def sync_detailed(
     query string. It is a deliberateness signal, NOT an authorization
     mechanism — admin rights are still enforced separately.
 
+
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         confirm (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -104,6 +118,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 confirm=confirm,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -118,6 +133,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     confirm: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Restart server
@@ -134,9 +150,15 @@ def sync(
     query string. It is a deliberateness signal, NOT an authorization
     mechanism — admin rights are still enforced separately.
 
+
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         confirm (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -151,6 +173,7 @@ def sync(
         trade_platform=trade_platform,
 client=client,
 confirm=confirm,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -159,6 +182,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     confirm: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Restart server
@@ -175,9 +199,15 @@ async def asyncio_detailed(
     query string. It is a deliberateness signal, NOT an authorization
     mechanism — admin rights are still enforced separately.
 
+
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         confirm (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -191,6 +221,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 confirm=confirm,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -205,6 +236,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     confirm: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Restart server
@@ -221,9 +253,15 @@ async def asyncio(
     query string. It is a deliberateness signal, NOT an authorization
     mechanism — admin rights are still enforced separately.
 
+
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         confirm (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -238,5 +276,6 @@ async def asyncio(
         trade_platform=trade_platform,
 client=client,
 confirm=confirm,
+x_request_timeout=x_request_timeout,
 
     )).parsed

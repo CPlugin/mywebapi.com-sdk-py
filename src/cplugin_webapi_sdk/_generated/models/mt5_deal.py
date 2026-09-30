@@ -11,7 +11,6 @@ from ..types import UNSET, Unset
 from ..models.deal_action import DealAction
 from ..models.deal_reason import DealReason
 from ..models.entry_flag import EntryFlag
-from ..models.trade_modify_flags import TradeModifyFlags
 from ..types import UNSET, Unset
 from typing import cast
 import datetime
@@ -86,8 +85,8 @@ class MT5Deal:
                 <br />
                 <br />
                             Get the market Last price as at the time of deal execution by the server
-            modification_flags (None | TradeModifyFlags | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to
-                read this value.</strong>
+            modification_flags (None | str | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
+                value.</strong>
                 <br />
                 <br />
                             modification flags
@@ -136,7 +135,7 @@ class MT5Deal:
     market_bid: float | None | Unset = UNSET
     market_ask: float | None | Unset = UNSET
     market_last: float | None | Unset = UNSET
-    modification_flags: None | TradeModifyFlags | Unset = UNSET
+    modification_flags: None | str | Unset = UNSET
 
 
 
@@ -410,8 +409,6 @@ class MT5Deal:
         modification_flags: None | str | Unset
         if isinstance(self.modification_flags, Unset):
             modification_flags = UNSET
-        elif isinstance(self.modification_flags, TradeModifyFlags):
-            modification_flags = self.modification_flags.value
         else:
             modification_flags = self.modification_flags
 
@@ -987,22 +984,12 @@ class MT5Deal:
         market_last = _parse_market_last(d.pop("marketLast", UNSET))
 
 
-        def _parse_modification_flags(data: object) -> None | TradeModifyFlags | Unset:
+        def _parse_modification_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                modification_flags_type_1 = TradeModifyFlags(data)
-
-
-
-                return modification_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | TradeModifyFlags | Unset, data)
+            return cast(None | str | Unset, data)
 
         modification_flags = _parse_modification_flags(d.pop("modificationFlags", UNSET))
 

@@ -20,9 +20,14 @@ def _get_kwargs(
     trade_platform: UUID,
     *,
     body:    MT4SymbolChangeRequest  |     MT4SymbolChangeRequest  |     MT4SymbolChangeRequest  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -86,6 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4SymbolChangeRequest  |     MT4SymbolChangeRequest  |     MT4SymbolChangeRequest  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Change symbol attributes
@@ -105,8 +111,13 @@ def sync_detailed(
     (currency, calc mode, margin, swap) that requires admin privileges
     and broker-side coordination.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
             wrapper's `SymbolProperties` struct (the public properties, not the
@@ -150,6 +161,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -164,6 +176,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4SymbolChangeRequest  |     MT4SymbolChangeRequest  |     MT4SymbolChangeRequest  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Change symbol attributes
@@ -183,8 +196,13 @@ def sync(
     (currency, calc mode, margin, swap) that requires admin privileges
     and broker-side coordination.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
             wrapper's `SymbolProperties` struct (the public properties, not the
@@ -229,6 +247,7 @@ def sync(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -237,6 +256,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4SymbolChangeRequest  |     MT4SymbolChangeRequest  |     MT4SymbolChangeRequest  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Change symbol attributes
@@ -256,8 +276,13 @@ async def asyncio_detailed(
     (currency, calc mode, margin, swap) that requires admin privileges
     and broker-side coordination.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
             wrapper's `SymbolProperties` struct (the public properties, not the
@@ -301,6 +326,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -315,6 +341,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4SymbolChangeRequest  |     MT4SymbolChangeRequest  |     MT4SymbolChangeRequest  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Change symbol attributes
@@ -334,8 +361,13 @@ async def asyncio(
     (currency, calc mode, margin, swap) that requires admin privileges
     and broker-side coordination.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
             wrapper's `SymbolProperties` struct (the public properties, not the
@@ -380,5 +412,6 @@ async def asyncio(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

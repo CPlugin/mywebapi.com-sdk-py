@@ -8,7 +8,6 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-from ..models.users_rights import UsersRights
 from ..types import UNSET, Unset
 from typing import cast
 import datetime
@@ -26,7 +25,7 @@ T = TypeVar("T", bound="MT5User")
 class MT5User:
     """ MT5 user, v2 read DTO — full field set (A4 expansion). Includes all editable
                 fields mirrored from MT5UserUpdate plus read-only financial/metadata fields.
-                `Rights` serializes as a string via `V2JsonContext.UseStringEnumConverter`.
+                `Rights` is a flags string: the names of the set bits, `"Enabled, Password"`.
 
         Attributes:
             login (int | Unset): User login (identity, read-only).
@@ -54,8 +53,12 @@ class MT5User:
             first_name (None | str | Unset): Given name (first name).
             last_name (None | str | Unset): Family name (last name).
             middle_name (None | str | Unset): Patronymic / middle name.
-            rights (UsersRights | Unset): MT5 user permission flags. Values mirror CIMTUser.EnUsersRights.
-                            Serializes as a string (not a number) via V2JsonContext.UseStringEnumConverter.
+            rights (str | Unset): MT5 user permission flags. Values mirror CIMTUser.EnUsersRights.<br/>Flags: names of the
+                set bits joined by ", " ("Enabled, Password"), "None" when none is set; a set bit without a name is "Bit<n>"
+                (bit number). Bits: Enabled = 0x1, Password = 0x2, TradeDisabled = 0x4, Investor = 0x8, Confirmed = 0x10,
+                Trailing = 0x20, Expert = 0x40, Obsolete = 0x80, Reports = 0x100, Readonly = 0x200, ResetPass = 0x400,
+                OTPEnabled = 0x800, SponsoredHosting = 0x2000, APIEnabled = 0x4000, PushNotification = 0x8000, Technical =
+                0x10000, ExcludeReports = 0x20000. Example: Enabled, Password.
             cert_serial_number (int | Unset): SSL certificate serial number (read-only).
             registration (datetime.datetime | None | Unset): Account registration timestamp (UTC). Null when not set (unix
                 0).
@@ -100,7 +103,7 @@ class MT5User:
     first_name: None | str | Unset = UNSET
     last_name: None | str | Unset = UNSET
     middle_name: None | str | Unset = UNSET
-    rights: UsersRights | Unset = UNSET
+    rights: str | Unset = UNSET
     cert_serial_number: int | Unset = UNSET
     registration: datetime.datetime | None | Unset = UNSET
     last_access: datetime.datetime | None | Unset = UNSET
@@ -249,10 +252,7 @@ class MT5User:
         else:
             middle_name = self.middle_name
 
-        rights: str | Unset = UNSET
-        if not isinstance(self.rights, Unset):
-            rights = self.rights.value
-
+        rights = self.rights
 
         cert_serial_number = self.cert_serial_number
 
@@ -607,15 +607,7 @@ class MT5User:
         middle_name = _parse_middle_name(d.pop("middleName", UNSET))
 
 
-        _rights = d.pop("rights", UNSET)
-        rights: UsersRights | Unset
-        if isinstance(_rights,  Unset):
-            rights = UNSET
-        else:
-            rights = UsersRights(_rights)
-
-
-
+        rights = d.pop("rights", UNSET)
 
         cert_serial_number = d.pop("certSerialNumber", UNSET)
 

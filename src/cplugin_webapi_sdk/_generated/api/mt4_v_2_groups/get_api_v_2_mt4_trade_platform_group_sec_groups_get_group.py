@@ -9,6 +9,7 @@ from ...types import Response, UNSET
 from ... import errors
 
 from ...models.mt4_group_sec_list_api_response import MT4GroupSecListApiResponse
+from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
 
@@ -17,9 +18,16 @@ from uuid import UUID
 def _get_kwargs(
     trade_platform: UUID,
     group: str,
+    *,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
-    
+    headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
+
 
     
 
@@ -31,6 +39,7 @@ def _get_kwargs(
     }
 
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -63,6 +72,7 @@ def sync_detailed(
     group: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4GroupSecListApiResponse]:
     """ Get group security entries
@@ -74,9 +84,13 @@ def sync_detailed(
     reserves the slot for the symbol-group regardless of whether the
     group is configured to trade it). Filter on the client side.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         group (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,6 +104,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 group=group,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -104,6 +119,7 @@ def sync(
     group: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4GroupSecListApiResponse | None:
     """ Get group security entries
@@ -115,9 +131,13 @@ def sync(
     reserves the slot for the symbol-group regardless of whether the
     group is configured to trade it). Filter on the client side.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         group (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,6 +152,7 @@ def sync(
         trade_platform=trade_platform,
 group=group,
 client=client,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -140,6 +161,7 @@ async def asyncio_detailed(
     group: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4GroupSecListApiResponse]:
     """ Get group security entries
@@ -151,9 +173,13 @@ async def asyncio_detailed(
     reserves the slot for the symbol-group regardless of whether the
     group is configured to trade it). Filter on the client side.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         group (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -167,6 +193,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 group=group,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -181,6 +208,7 @@ async def asyncio(
     group: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4GroupSecListApiResponse | None:
     """ Get group security entries
@@ -192,9 +220,13 @@ async def asyncio(
     reserves the slot for the symbol-group regardless of whether the
     group is configured to trade it). Filter on the client side.
 
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         group (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -209,5 +241,6 @@ async def asyncio(
         trade_platform=trade_platform,
 group=group,
 client=client,
+x_request_timeout=x_request_timeout,
 
     )).parsed

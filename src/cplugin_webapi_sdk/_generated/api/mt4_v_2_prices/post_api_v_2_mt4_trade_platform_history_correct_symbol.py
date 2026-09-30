@@ -9,6 +9,7 @@ from ...types import Response, UNSET
 from ... import errors
 
 from ...models.int_32_api_response import Int32ApiResponse
+from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
 
@@ -17,9 +18,16 @@ from uuid import UUID
 def _get_kwargs(
     trade_platform: UUID,
     symbol: str,
+    *,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
-    
+    headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
+
 
     
 
@@ -31,6 +39,7 @@ def _get_kwargs(
     }
 
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -63,6 +72,7 @@ def sync_detailed(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[Int32ApiResponse]:
     """ Repair chart history
@@ -80,9 +90,14 @@ def sync_detailed(
     `Idempotency-Key` for retry safety so a TCP retry doesn't
     kick off a second full sweep.
 
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -96,6 +111,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 symbol=symbol,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -110,6 +126,7 @@ def sync(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Int32ApiResponse | None:
     """ Repair chart history
@@ -127,9 +144,14 @@ def sync(
     `Idempotency-Key` for retry safety so a TCP retry doesn't
     kick off a second full sweep.
 
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -144,6 +166,7 @@ def sync(
         trade_platform=trade_platform,
 symbol=symbol,
 client=client,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -152,6 +175,7 @@ async def asyncio_detailed(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[Int32ApiResponse]:
     """ Repair chart history
@@ -169,9 +193,14 @@ async def asyncio_detailed(
     `Idempotency-Key` for retry safety so a TCP retry doesn't
     kick off a second full sweep.
 
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -185,6 +214,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 symbol=symbol,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -199,6 +229,7 @@ async def asyncio(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Int32ApiResponse | None:
     """ Repair chart history
@@ -216,9 +247,14 @@ async def asyncio(
     `Idempotency-Key` for retry safety so a TCP retry doesn't
     kick off a second full sweep.
 
+    **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -233,5 +269,6 @@ async def asyncio(
         trade_platform=trade_platform,
 symbol=symbol,
 client=client,
+x_request_timeout=x_request_timeout,
 
     )).parsed

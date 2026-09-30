@@ -14,7 +14,6 @@ from ..models.en_comm_entry_mode import EnCommEntryMode
 from ..models.en_comm_mode import EnCommMode
 from ..models.en_comm_profit_mode import EnCommProfitMode
 from ..models.en_comm_range_mode import EnCommRangeMode
-from ..models.en_comm_reason_flags import EnCommReasonFlags
 from ..types import UNSET, Unset
 from typing import cast
 
@@ -45,7 +44,7 @@ class MT5ConCommission:
             entry_mode (EnCommEntryMode | None | Unset): EnCommEntryMode
             action_mode (EnCommActionMode | None | Unset): EnCommActionMode
             profit_mode (EnCommProfitMode | None | Unset): EnCommProfitMode
-            reason_flags (EnCommReasonFlags | None | Unset): EnCommReasonFlags
+            reason_flags (None | str | Unset): EnCommReasonFlags
      """
 
     name: None | str | Unset = UNSET
@@ -59,7 +58,7 @@ class MT5ConCommission:
     entry_mode: EnCommEntryMode | None | Unset = UNSET
     action_mode: EnCommActionMode | None | Unset = UNSET
     profit_mode: EnCommProfitMode | None | Unset = UNSET
-    reason_flags: EnCommReasonFlags | None | Unset = UNSET
+    reason_flags: None | str | Unset = UNSET
 
 
 
@@ -155,8 +154,6 @@ class MT5ConCommission:
         reason_flags: None | str | Unset
         if isinstance(self.reason_flags, Unset):
             reason_flags = UNSET
-        elif isinstance(self.reason_flags, EnCommReasonFlags):
-            reason_flags = self.reason_flags.value
         else:
             reason_flags = self.reason_flags
 
@@ -383,22 +380,12 @@ class MT5ConCommission:
         profit_mode = _parse_profit_mode(d.pop("profitMode", UNSET))
 
 
-        def _parse_reason_flags(data: object) -> EnCommReasonFlags | None | Unset:
+        def _parse_reason_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                reason_flags_type_1 = EnCommReasonFlags(data)
-
-
-
-                return reason_flags_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(EnCommReasonFlags | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         reason_flags = _parse_reason_flags(d.pop("reasonFlags", UNSET))
 

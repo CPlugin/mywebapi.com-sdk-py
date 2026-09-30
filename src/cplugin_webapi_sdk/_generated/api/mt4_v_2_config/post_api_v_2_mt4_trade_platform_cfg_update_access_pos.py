@@ -21,9 +21,14 @@ def _get_kwargs(
     pos: int,
     *,
     body:    MT4Access  |     MT4Access  |     MT4Access  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -88,6 +93,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Access  |     MT4Access  |     MT4Access  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4AccessApiResponse]:
     r""" Update IP firewall rule
@@ -109,9 +115,14 @@ def sync_detailed(
     — out-of-range values are rejected with `errorCode=Validation`
     before the Mapperly checked-narrowing cast can throw.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         pos (int):
+        x_request_timeout (float | Unset):
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
             the wrapper's ConAccess struct — drops the 17-int Reserved padding.
@@ -141,6 +152,7 @@ def sync_detailed(
         trade_platform=trade_platform,
 pos=pos,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -156,6 +168,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Access  |     MT4Access  |     MT4Access  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4AccessApiResponse | None:
     r""" Update IP firewall rule
@@ -177,9 +190,14 @@ def sync(
     — out-of-range values are rejected with `errorCode=Validation`
     before the Mapperly checked-narrowing cast can throw.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         pos (int):
+        x_request_timeout (float | Unset):
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
             the wrapper's ConAccess struct — drops the 17-int Reserved padding.
@@ -210,6 +228,7 @@ def sync(
 pos=pos,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -219,6 +238,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Access  |     MT4Access  |     MT4Access  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4AccessApiResponse]:
     r""" Update IP firewall rule
@@ -240,9 +260,14 @@ async def asyncio_detailed(
     — out-of-range values are rejected with `errorCode=Validation`
     before the Mapperly checked-narrowing cast can throw.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         pos (int):
+        x_request_timeout (float | Unset):
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
             the wrapper's ConAccess struct — drops the 17-int Reserved padding.
@@ -272,6 +297,7 @@ async def asyncio_detailed(
         trade_platform=trade_platform,
 pos=pos,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -287,6 +313,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Access  |     MT4Access  |     MT4Access  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4AccessApiResponse | None:
     r""" Update IP firewall rule
@@ -308,9 +335,14 @@ async def asyncio(
     — out-of-range values are rejected with `errorCode=Validation`
     before the Mapperly checked-narrowing cast can throw.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         pos (int):
+        x_request_timeout (float | Unset):
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
             the wrapper's ConAccess struct — drops the 17-int Reserved padding.
@@ -341,5 +373,6 @@ async def asyncio(
 pos=pos,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

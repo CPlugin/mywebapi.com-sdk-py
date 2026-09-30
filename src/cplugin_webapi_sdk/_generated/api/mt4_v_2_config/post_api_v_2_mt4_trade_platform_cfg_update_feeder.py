@@ -20,9 +20,14 @@ def _get_kwargs(
     trade_platform: UUID,
     *,
     body:    MT4Feeder  |     MT4Feeder  |     MT4Feeder  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -86,6 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Feeder  |     MT4Feeder  |     MT4Feeder  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4FeederApiResponse]:
     """ Update feeder config
@@ -98,8 +104,13 @@ def sync_detailed(
     `CfgUpdateSync`; the datafeed credential (`Password`)
     is preserved server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
             subset of the wrapper's ConFeeder — drops the wrapper's Unused
             reserved blob AND the `Password` field (datafeed credentials).
@@ -122,6 +133,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -136,6 +148,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Feeder  |     MT4Feeder  |     MT4Feeder  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4FeederApiResponse | None:
     """ Update feeder config
@@ -148,8 +161,13 @@ def sync(
     `CfgUpdateSync`; the datafeed credential (`Password`)
     is preserved server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
             subset of the wrapper's ConFeeder — drops the wrapper's Unused
             reserved blob AND the `Password` field (datafeed credentials).
@@ -173,6 +191,7 @@ def sync(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -181,6 +200,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Feeder  |     MT4Feeder  |     MT4Feeder  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4FeederApiResponse]:
     """ Update feeder config
@@ -193,8 +213,13 @@ async def asyncio_detailed(
     `CfgUpdateSync`; the datafeed credential (`Password`)
     is preserved server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
             subset of the wrapper's ConFeeder — drops the wrapper's Unused
             reserved blob AND the `Password` field (datafeed credentials).
@@ -217,6 +242,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -231,6 +257,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4Feeder  |     MT4Feeder  |     MT4Feeder  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4FeederApiResponse | None:
     """ Update feeder config
@@ -243,8 +270,13 @@ async def asyncio(
     `CfgUpdateSync`; the datafeed credential (`Password`)
     is preserved server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
             subset of the wrapper's ConFeeder — drops the wrapper's Unused
             reserved blob AND the `Password` field (datafeed credentials).
@@ -268,5 +300,6 @@ async def asyncio(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

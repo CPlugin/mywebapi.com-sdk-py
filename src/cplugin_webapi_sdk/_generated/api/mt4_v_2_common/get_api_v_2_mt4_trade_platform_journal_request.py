@@ -24,9 +24,15 @@ def _get_kwargs(
     to: datetime.datetime | Unset = UNSET,
     mode: EnLogType | Unset = UNSET,
     filter_: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
-    
+    headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
+
 
     
 
@@ -61,6 +67,7 @@ def _get_kwargs(
     }
 
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -96,6 +103,7 @@ def sync_detailed(
     to: datetime.datetime | Unset = UNSET,
     mode: EnLogType | Unset = UNSET,
     filter_: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4ServerLogListApiResponse]:
     """ Get server journal
@@ -111,12 +119,16 @@ def sync_detailed(
     reasonable `from`/`to` bounds; consider `Idempotency-Key`
     for retry safety on slow links.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         from_ (datetime.datetime | Unset):
         to (datetime.datetime | Unset):
         mode (EnLogType | Unset):
         filter_ (str | Unset):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -133,6 +145,7 @@ from_=from_,
 to=to,
 mode=mode,
 filter_=filter_,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -150,6 +163,7 @@ def sync(
     to: datetime.datetime | Unset = UNSET,
     mode: EnLogType | Unset = UNSET,
     filter_: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4ServerLogListApiResponse | None:
     """ Get server journal
@@ -165,12 +179,16 @@ def sync(
     reasonable `from`/`to` bounds; consider `Idempotency-Key`
     for retry safety on slow links.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         from_ (datetime.datetime | Unset):
         to (datetime.datetime | Unset):
         mode (EnLogType | Unset):
         filter_ (str | Unset):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -188,6 +206,7 @@ from_=from_,
 to=to,
 mode=mode,
 filter_=filter_,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -199,6 +218,7 @@ async def asyncio_detailed(
     to: datetime.datetime | Unset = UNSET,
     mode: EnLogType | Unset = UNSET,
     filter_: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4ServerLogListApiResponse]:
     """ Get server journal
@@ -214,12 +234,16 @@ async def asyncio_detailed(
     reasonable `from`/`to` bounds; consider `Idempotency-Key`
     for retry safety on slow links.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         from_ (datetime.datetime | Unset):
         to (datetime.datetime | Unset):
         mode (EnLogType | Unset):
         filter_ (str | Unset):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -236,6 +260,7 @@ from_=from_,
 to=to,
 mode=mode,
 filter_=filter_,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -253,6 +278,7 @@ async def asyncio(
     to: datetime.datetime | Unset = UNSET,
     mode: EnLogType | Unset = UNSET,
     filter_: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4ServerLogListApiResponse | None:
     """ Get server journal
@@ -268,12 +294,16 @@ async def asyncio(
     reasonable `from`/`to` bounds; consider `Idempotency-Key`
     for retry safety on slow links.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         from_ (datetime.datetime | Unset):
         to (datetime.datetime | Unset):
         mode (EnLogType | Unset):
         filter_ (str | Unset):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -291,5 +321,6 @@ from_=from_,
 to=to,
 mode=mode,
 filter_=filter_,
+x_request_timeout=x_request_timeout,
 
     )).parsed

@@ -19,6 +19,15 @@ from .pagination import (
     PageFetcherAsync,
 )
 from .realtime import MT4RealtimeClient, MT5RealtimeClient, SignalRNotInstalledError
+from .flags import parse_flags, format_flags, has_flag, with_flag
+from .timeouts import (
+    ErrorCode,
+    RequestOutcome,
+    is_outcome_unknown,
+    is_safe_to_retry,
+    MIN_REQUEST_TIMEOUT,
+    MAX_REQUEST_TIMEOUT,
+)
 
 __all__ = [
     # * Primary client classes
@@ -26,6 +35,13 @@ __all__ = [
     "CPluginWebApiAsyncClient",
     # * Error surface
     "ApiError",
+    # * Timeouts and retries — error codes, X-Request-Outcome values, retry classification
+    "ErrorCode",
+    "RequestOutcome",
+    "is_outcome_unknown",
+    "is_safe_to_retry",
+    "MIN_REQUEST_TIMEOUT",
+    "MAX_REQUEST_TIMEOUT",
     # * Envelope types (for typed access to response metadata)
     "ApiEnvelope",
     "ApiMeta",
@@ -51,6 +67,11 @@ __all__ = [
     "collect_all_async",
     "PageFetcherSync",
     "PageFetcherAsync",
+    # * Flag fields ("Enabled, Password") — user rights, group and symbol flags
+    "parse_flags",
+    "format_flags",
+    "has_flag",
+    "with_flag",
     # * Real-time SignalR clients (optional signalrcore extra)
     "MT4RealtimeClient",
     "MT5RealtimeClient",

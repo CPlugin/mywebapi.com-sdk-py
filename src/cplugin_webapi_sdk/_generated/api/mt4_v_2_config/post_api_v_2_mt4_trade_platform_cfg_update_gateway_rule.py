@@ -20,9 +20,14 @@ def _get_kwargs(
     trade_platform: UUID,
     *,
     body:    MT4GatewayRule  |     MT4GatewayRule  |     MT4GatewayRule  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -86,6 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4GatewayRule  |     MT4GatewayRule  |     MT4GatewayRule  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4GatewayRuleApiResponse]:
     """ Update gateway rule
@@ -98,8 +104,13 @@ def sync_detailed(
     wrapper reserved padding blocks (`RequestRreserved` 32-int,
     `ExeReserved` 25-int) are preserved server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
             policy). Curated subset of the wrapper's ConGatewayRule — drops the
@@ -140,6 +151,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -154,6 +166,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4GatewayRule  |     MT4GatewayRule  |     MT4GatewayRule  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4GatewayRuleApiResponse | None:
     """ Update gateway rule
@@ -166,8 +179,13 @@ def sync(
     wrapper reserved padding blocks (`RequestRreserved` 32-int,
     `ExeReserved` 25-int) are preserved server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
             policy). Curated subset of the wrapper's ConGatewayRule — drops the
@@ -209,6 +227,7 @@ def sync(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -217,6 +236,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4GatewayRule  |     MT4GatewayRule  |     MT4GatewayRule  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4GatewayRuleApiResponse]:
     """ Update gateway rule
@@ -229,8 +249,13 @@ async def asyncio_detailed(
     wrapper reserved padding blocks (`RequestRreserved` 32-int,
     `ExeReserved` 25-int) are preserved server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
             policy). Curated subset of the wrapper's ConGatewayRule — drops the
@@ -271,6 +296,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -285,6 +311,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4GatewayRule  |     MT4GatewayRule  |     MT4GatewayRule  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4GatewayRuleApiResponse | None:
     """ Update gateway rule
@@ -297,8 +324,13 @@ async def asyncio(
     wrapper reserved padding blocks (`RequestRreserved` 32-int,
     `ExeReserved` 25-int) are preserved server-side.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
             policy). Curated subset of the wrapper's ConGatewayRule — drops the
@@ -340,5 +372,6 @@ async def asyncio(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

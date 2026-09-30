@@ -20,9 +20,14 @@ def _get_kwargs(
     trade_platform: UUID,
     *,
     body:    MT4TradeTransaction  |     MT4TradeTransaction  |     MT4TradeTransaction  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -86,6 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4TradeTransaction  |     MT4TradeTransaction  |     MT4TradeTransaction  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4TradeTransactionApiResponse]:
     """ Submit trade transaction
@@ -107,8 +113,14 @@ def sync_detailed(
     close, or apply a balance op twice. With the header the second call
     returns the cached envelope from the first.
 
+
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -158,6 +170,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -172,6 +185,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4TradeTransaction  |     MT4TradeTransaction  |     MT4TradeTransaction  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4TradeTransactionApiResponse | None:
     """ Submit trade transaction
@@ -193,8 +207,14 @@ def sync(
     close, or apply a balance op twice. With the header the second call
     returns the cached envelope from the first.
 
+
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -245,6 +265,7 @@ def sync(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -253,6 +274,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4TradeTransaction  |     MT4TradeTransaction  |     MT4TradeTransaction  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4TradeTransactionApiResponse]:
     """ Submit trade transaction
@@ -274,8 +296,14 @@ async def asyncio_detailed(
     close, or apply a balance op twice. With the header the second call
     returns the cached envelope from the first.
 
+
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -325,6 +353,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -339,6 +368,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4TradeTransaction  |     MT4TradeTransaction  |     MT4TradeTransaction  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4TradeTransactionApiResponse | None:
     """ Submit trade transaction
@@ -360,8 +390,14 @@ async def asyncio(
     close, or apply a balance op twice. With the header the second call
     returns the cached envelope from the first.
 
+
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
+        x_request_timeout (float | Unset):
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -412,5 +448,6 @@ async def asyncio(
         trade_platform=trade_platform,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed

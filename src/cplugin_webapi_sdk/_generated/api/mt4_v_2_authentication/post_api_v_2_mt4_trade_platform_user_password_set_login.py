@@ -22,9 +22,14 @@ def _get_kwargs(
     body:    str  |     str  |     str  | Unset = UNSET,
     change_investor: bool | Unset = False,
     clean_pubkey: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -97,6 +102,7 @@ def sync_detailed(
     body:    str  |     str  |     str  | Unset = UNSET,
     change_investor: bool | Unset = False,
     clean_pubkey: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     r""" Set account password
@@ -121,11 +127,17 @@ def sync_detailed(
     noise. With the header, the second call short-circuits to the cached
     response.
 
+
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         login (int):
         change_investor (bool | Unset):  Default: False.
         clean_pubkey (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
         body (str | Unset):
         body (str | Unset):
         body (str | Unset):
@@ -145,6 +157,7 @@ login=login,
 body=body,
 change_investor=change_investor,
 clean_pubkey=clean_pubkey,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -162,6 +175,7 @@ def sync(
     body:    str  |     str  |     str  | Unset = UNSET,
     change_investor: bool | Unset = False,
     clean_pubkey: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     r""" Set account password
@@ -186,11 +200,17 @@ def sync(
     noise. With the header, the second call short-circuits to the cached
     response.
 
+
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         login (int):
         change_investor (bool | Unset):  Default: False.
         clean_pubkey (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
         body (str | Unset):
         body (str | Unset):
         body (str | Unset):
@@ -211,6 +231,7 @@ client=client,
 body=body,
 change_investor=change_investor,
 clean_pubkey=clean_pubkey,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -222,6 +243,7 @@ async def asyncio_detailed(
     body:    str  |     str  |     str  | Unset = UNSET,
     change_investor: bool | Unset = False,
     clean_pubkey: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     r""" Set account password
@@ -246,11 +268,17 @@ async def asyncio_detailed(
     noise. With the header, the second call short-circuits to the cached
     response.
 
+
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         login (int):
         change_investor (bool | Unset):  Default: False.
         clean_pubkey (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
         body (str | Unset):
         body (str | Unset):
         body (str | Unset):
@@ -270,6 +298,7 @@ login=login,
 body=body,
 change_investor=change_investor,
 clean_pubkey=clean_pubkey,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -287,6 +316,7 @@ async def asyncio(
     body:    str  |     str  |     str  | Unset = UNSET,
     change_investor: bool | Unset = False,
     clean_pubkey: bool | Unset = False,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     r""" Set account password
@@ -311,11 +341,17 @@ async def asyncio(
     noise. With the header, the second call short-circuits to the cached
     response.
 
+
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         login (int):
         change_investor (bool | Unset):  Default: False.
         clean_pubkey (bool | Unset):  Default: False.
+        x_request_timeout (float | Unset):
         body (str | Unset):
         body (str | Unset):
         body (str | Unset):
@@ -336,5 +372,6 @@ client=client,
 body=body,
 change_investor=change_investor,
 clean_pubkey=clean_pubkey,
+x_request_timeout=x_request_timeout,
 
     )).parsed

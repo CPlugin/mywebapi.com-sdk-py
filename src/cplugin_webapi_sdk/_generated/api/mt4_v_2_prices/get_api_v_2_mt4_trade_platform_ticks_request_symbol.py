@@ -9,7 +9,6 @@ from ...types import Response, UNSET
 from ... import errors
 
 from ...models.mt4_tick_record_list_api_response import MT4TickRecordListApiResponse
-from ...models.tick_request_flags import TickRequestFlags
 from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
@@ -23,10 +22,16 @@ def _get_kwargs(
     *,
     start: datetime.datetime | Unset = UNSET,
     end: datetime.datetime | Unset = UNSET,
-    flags: TickRequestFlags | Unset = UNSET,
+    flags: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
-    
+    headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
+
 
     
 
@@ -42,11 +47,7 @@ def _get_kwargs(
         json_end = end.isoformat()
     params["end"] = json_end
 
-    json_flags: str | Unset = UNSET
-    if not isinstance(flags, Unset):
-        json_flags = flags.value
-
-    params["flags"] = json_flags
+    params["flags"] = flags
 
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
@@ -59,6 +60,7 @@ def _get_kwargs(
     }
 
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -93,7 +95,8 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     start: datetime.datetime | Unset = UNSET,
     end: datetime.datetime | Unset = UNSET,
-    flags: TickRequestFlags | Unset = UNSET,
+    flags: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4TickRecordListApiResponse]:
     """ Get historical ticks
@@ -105,12 +108,18 @@ def sync_detailed(
     included (defaults to `All`). Heavy endpoint — pair with
     `Idempotency-Key` for retry safety.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         symbol (str):
         start (datetime.datetime | Unset):
         end (datetime.datetime | Unset):
-        flags (TickRequestFlags | Unset):
+        flags (str | Unset): Flags: names of the set bits joined by ", " ("Raw, Normal"), "None"
+            when none is set; a set bit without a name is "Bit<n>" (bit number). Bits: Raw = 0x1,
+            Normal = 0x2. Accepted on input, never written: All = Raw, Normal. Example: Raw, Normal.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -127,6 +136,7 @@ symbol=symbol,
 start=start,
 end=end,
 flags=flags,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -143,7 +153,8 @@ def sync(
     client: AuthenticatedClient | Client,
     start: datetime.datetime | Unset = UNSET,
     end: datetime.datetime | Unset = UNSET,
-    flags: TickRequestFlags | Unset = UNSET,
+    flags: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4TickRecordListApiResponse | None:
     """ Get historical ticks
@@ -155,12 +166,18 @@ def sync(
     included (defaults to `All`). Heavy endpoint — pair with
     `Idempotency-Key` for retry safety.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         symbol (str):
         start (datetime.datetime | Unset):
         end (datetime.datetime | Unset):
-        flags (TickRequestFlags | Unset):
+        flags (str | Unset): Flags: names of the set bits joined by ", " ("Raw, Normal"), "None"
+            when none is set; a set bit without a name is "Bit<n>" (bit number). Bits: Raw = 0x1,
+            Normal = 0x2. Accepted on input, never written: All = Raw, Normal. Example: Raw, Normal.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -178,6 +195,7 @@ client=client,
 start=start,
 end=end,
 flags=flags,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -188,7 +206,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     start: datetime.datetime | Unset = UNSET,
     end: datetime.datetime | Unset = UNSET,
-    flags: TickRequestFlags | Unset = UNSET,
+    flags: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4TickRecordListApiResponse]:
     """ Get historical ticks
@@ -200,12 +219,18 @@ async def asyncio_detailed(
     included (defaults to `All`). Heavy endpoint — pair with
     `Idempotency-Key` for retry safety.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         symbol (str):
         start (datetime.datetime | Unset):
         end (datetime.datetime | Unset):
-        flags (TickRequestFlags | Unset):
+        flags (str | Unset): Flags: names of the set bits joined by ", " ("Raw, Normal"), "None"
+            when none is set; a set bit without a name is "Bit<n>" (bit number). Bits: Raw = 0x1,
+            Normal = 0x2. Accepted on input, never written: All = Raw, Normal. Example: Raw, Normal.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -222,6 +247,7 @@ symbol=symbol,
 start=start,
 end=end,
 flags=flags,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -238,7 +264,8 @@ async def asyncio(
     client: AuthenticatedClient | Client,
     start: datetime.datetime | Unset = UNSET,
     end: datetime.datetime | Unset = UNSET,
-    flags: TickRequestFlags | Unset = UNSET,
+    flags: str | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4TickRecordListApiResponse | None:
     """ Get historical ticks
@@ -250,12 +277,18 @@ async def asyncio(
     included (defaults to `All`). Heavy endpoint — pair with
     `Idempotency-Key` for retry safety.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         symbol (str):
         start (datetime.datetime | Unset):
         end (datetime.datetime | Unset):
-        flags (TickRequestFlags | Unset):
+        flags (str | Unset): Flags: names of the set bits joined by ", " ("Raw, Normal"), "None"
+            when none is set; a set bit without a name is "Bit<n>" (bit number). Bits: Raw = 0x1,
+            Normal = 0x2. Accepted on input, never written: All = Raw, Normal. Example: Raw, Normal.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -273,5 +306,6 @@ client=client,
 start=start,
 end=end,
 flags=flags,
+x_request_timeout=x_request_timeout,
 
     )).parsed

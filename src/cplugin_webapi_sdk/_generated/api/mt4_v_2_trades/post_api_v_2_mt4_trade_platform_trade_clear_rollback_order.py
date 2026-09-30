@@ -9,6 +9,7 @@ from ...types import Response, UNSET
 from ... import errors
 
 from ...models.boolean_api_response import BooleanApiResponse
+from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
 
@@ -17,9 +18,16 @@ from uuid import UUID
 def _get_kwargs(
     trade_platform: UUID,
     order: int,
+    *,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
-    
+    headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
+
 
     
 
@@ -31,6 +39,7 @@ def _get_kwargs(
     }
 
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -63,6 +72,7 @@ def sync_detailed(
     order: int,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Roll back trade transaction
@@ -77,9 +87,14 @@ def sync_detailed(
 
     Idempotent on already-committed/already-rolled-back tickets.
 
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         order (int):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -93,6 +108,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 order=order,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -107,6 +123,7 @@ def sync(
     order: int,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Roll back trade transaction
@@ -121,9 +138,14 @@ def sync(
 
     Idempotent on already-committed/already-rolled-back tickets.
 
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         order (int):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -138,6 +160,7 @@ def sync(
         trade_platform=trade_platform,
 order=order,
 client=client,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -146,6 +169,7 @@ async def asyncio_detailed(
     order: int,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
     """ Roll back trade transaction
@@ -160,9 +184,14 @@ async def asyncio_detailed(
 
     Idempotent on already-committed/already-rolled-back tickets.
 
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         order (int):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -176,6 +205,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 order=order,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -190,6 +220,7 @@ async def asyncio(
     order: int,
     *,
     client: AuthenticatedClient | Client,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
     """ Roll back trade transaction
@@ -204,9 +235,14 @@ async def asyncio(
 
     Idempotent on already-committed/already-rolled-back tickets.
 
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         order (int):
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -221,5 +257,6 @@ async def asyncio(
         trade_platform=trade_platform,
 order=order,
 client=client,
+x_request_timeout=x_request_timeout,
 
     )).parsed

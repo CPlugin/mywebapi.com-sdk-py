@@ -17,8 +17,9 @@ T = TypeVar("T")
 
 # * Stable transport-level error codes (WebApiErrorCode). Kept as a plain str
 #   so unknown future codes never raise on parse. The spec defines a fixed enum
-#   (Unauthorized, Forbidden, NotFound, Internal, …) but the wire type is a
-#   string — new codes would otherwise be rejected by a Literal union.
+#   (Ok, NoConnect, Validation, …, Timeout, OutcomeUnknown, Busy, Internal) but the
+#   wire type is a string — new codes would otherwise be rejected by a Literal union.
+#   Named constants: timeouts.ErrorCode.
 WebApiErrorCode = str
 
 

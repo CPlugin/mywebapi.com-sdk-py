@@ -21,9 +21,14 @@ def _get_kwargs(
     symbol: str,
     *,
     body:    MT4SymbolConfigUpdate  |     MT4SymbolConfigUpdate  |     MT4SymbolConfigUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
 
 
     
@@ -88,6 +93,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4SymbolConfigUpdate  |     MT4SymbolConfigUpdate  |     MT4SymbolConfigUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4SymbolConfigApiResponse]:
     """ Update symbol config
@@ -105,9 +111,14 @@ def sync_detailed(
 
     Idempotency-Key strongly recommended.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
             DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
@@ -179,6 +190,7 @@ def sync_detailed(
         trade_platform=trade_platform,
 symbol=symbol,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -194,6 +206,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4SymbolConfigUpdate  |     MT4SymbolConfigUpdate  |     MT4SymbolConfigUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4SymbolConfigApiResponse | None:
     """ Update symbol config
@@ -211,9 +224,14 @@ def sync(
 
     Idempotency-Key strongly recommended.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
             DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
@@ -286,6 +304,7 @@ def sync(
 symbol=symbol,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -295,6 +314,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4SymbolConfigUpdate  |     MT4SymbolConfigUpdate  |     MT4SymbolConfigUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4SymbolConfigApiResponse]:
     """ Update symbol config
@@ -312,9 +332,14 @@ async def asyncio_detailed(
 
     Idempotency-Key strongly recommended.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
             DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
@@ -386,6 +411,7 @@ async def asyncio_detailed(
         trade_platform=trade_platform,
 symbol=symbol,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -401,6 +427,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     body:    MT4SymbolConfigUpdate  |     MT4SymbolConfigUpdate  |     MT4SymbolConfigUpdate  | Unset = UNSET,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4SymbolConfigApiResponse | None:
     """ Update symbol config
@@ -418,9 +445,14 @@ async def asyncio(
 
     Idempotency-Key strongly recommended.
 
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
+
     Args:
         trade_platform (UUID):
         symbol (str):
+        x_request_timeout (float | Unset):
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
             DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
@@ -493,5 +525,6 @@ async def asyncio(
 symbol=symbol,
 client=client,
 body=body,
+x_request_timeout=x_request_timeout,
 
     )).parsed
