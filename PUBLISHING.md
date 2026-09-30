@@ -26,7 +26,7 @@
 
 1. Bump `version` in `pyproject.toml` following [semver](https://semver.org/)
    and add a section for it to `CHANGELOG.md`.
-2. Commit and push the version bump to `main`.
+2. Open a pull request to `main` with the change and the version bump, and merge it once CI is green — `main` accepts changes only through a pull request with passing CI.
 3. Tag the commit and push the tag — the tag must equal `v` + the `pyproject.toml` version:
    ```sh
    git tag v0.3.0
@@ -54,3 +54,9 @@ python scripts/fetch_spec.py        # refresh the vendored src/cplugin_webapi_sd
 python scripts/generate_client.py   # rewrite _generated/ from the vendored spec
 python -m pytest -q                 # verify nothing broke
 ```
+
+## Release gate
+
+- Only repository admins can create `v*` tags; nobody can move or delete one (repository rulesets), so a published version always points at the commit it was built from.
+- `main` accepts changes only through a pull request whose CI passed. Merging that pull request is the review of what will be released.
+- The first job of `publish.yml` (`Release gate`) refuses a tag whose commit is not on `main` or has no successful CI run; nothing is built or published then. Fix it by merging the commit into `main` and tagging the merged commit — a refused tag cannot be moved, so the next version number is used.
