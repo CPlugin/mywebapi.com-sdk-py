@@ -48,7 +48,9 @@ TRANSPORT_TIMEOUT_MARGIN = 30.0
 DEFAULT_TRANSPORT_TIMEOUT = 30.0
 
 # * Deadline assumed for an operation whose spec documents no X-Request-Timeout
-#   default (x86 sidecar operations): the longest server default, maintenance.
+#   default: the longest server default, maintenance. Every operation of the
+#   current spec documents one; this covers a server that adds an operation
+#   before the SDK is regenerated.
 UNDOCUMENTED_OPERATION_TIMEOUT = 60.0
 
 

@@ -211,9 +211,10 @@ def test_operation_defaults_come_from_the_spec():
     )
     assert operation_default_timeout(server_time_op) == 10
     assert operation_default_timeout(patch_op) == 15
-    # * Sidecar operations document no default: assume the longest server default.
-    assert operation_default_timeout(snapshot_op) == UNDOCUMENTED_OPERATION_TIMEOUT == 60
-    assert operation_default_timeout(object()) == UNDOCUMENTED_OPERATION_TIMEOUT
+    # * x86 sidecar operations document their defaults like the rest (history: 30 s).
+    assert operation_default_timeout(snapshot_op) == 30
+    # * An operation missing from the table: assume the longest server default.
+    assert operation_default_timeout(object()) == UNDOCUMENTED_OPERATION_TIMEOUT == 60
 
 
 def test_every_documented_default_is_mapped():
@@ -260,17 +261,81 @@ def test_patch_user_record_rejects_empty_or_non_mapping(changes, exc):
         c.mt4.patch_user_record(TP, 1001, changes)
 
 
+def test_every_operation_documents_a_default():
+    """No operation of the vendored spec falls back to the assumed 60 s."""
+    import json
+    from pathlib import Path
+
+    spec = json.loads((Path(__file__).parents[1] / "src/cplugin_webapi_sdk/spec/v2.json").read_text("utf-8"))
+    missing = [
+        f"{method.upper()} {path}"
+        for path, item in spec["paths"].items()
+        for method, op in item.items()
+        if not any(p.get("name") == "X-Request-Timeout" for p in op.get("parameters", []))
+    ]
+    assert missing == []
+
+
 @respx.mock
 def test_undocumented_operation_waits_for_the_longest_default():
+    from types import SimpleNamespace
+
+    route = respx.get(MT4_TIME).mock(return_value=httpx.Response(200, json=envelope_ok("t")))
+    op = SimpleNamespace(
+        __name__="cplugin_webapi_sdk._generated.api.future.get_something_new",
+        _get_kwargs=lambda **_: {"method": "get", "url": f"/api/v2/MT4/{TP}/ServerTime"},
+    )
+    with _client() as c:
+        c.mt4.raw(op)
+    assert _read_timeout(route.calls.last.request) == UNDOCUMENTED_OPERATION_TIMEOUT + TRANSPORT_TIMEOUT_MARGIN
+
+
+# ---------------------------------------------------------------------------
+# x86 sidecar operations: the same X-Request-Timeout contract
+# ---------------------------------------------------------------------------
+
+MT4_USERS_SNAPSHOT = f"{API}/api/v2/MT4/{TP}/UsersSnapshot"
+
+
+@respx.mock
+def test_sidecar_operation_default_deadline_sets_the_http_timeout():
     from cplugin_webapi_sdk._generated.api.mt4_v_2_sidecar_batch_reads import (
         get_api_v_2_mt4_trade_platform_users_snapshot as snapshot_op,
     )
-    route = respx.get(f"{API}/api/v2/MT4/{TP}/UsersSnapshot").mock(
-        return_value=httpx.Response(200, json=envelope_ok([]))
-    )
+    route = respx.get(MT4_USERS_SNAPSHOT).mock(return_value=httpx.Response(200, json=envelope_ok([])))
     with _client() as c:
         c.mt4.raw(snapshot_op, trade_platform=TP)
-    assert _read_timeout(route.calls.last.request) == 60 + TRANSPORT_TIMEOUT_MARGIN
+    request = route.calls.last.request
+    assert "x-request-timeout" not in request.headers
+    assert _read_timeout(request) == 30 + TRANSPORT_TIMEOUT_MARGIN
+
+
+@respx.mock
+def test_sidecar_operation_request_timeout_sends_one_header():
+    from cplugin_webapi_sdk._generated.api.mt4_v_2_sidecar_batch_reads import (
+        get_api_v_2_mt4_trade_platform_users_snapshot as snapshot_op,
+    )
+    route = respx.get(MT4_USERS_SNAPSHOT).mock(return_value=httpx.Response(200, json=envelope_ok([])))
+    with _client(request_timeout=20) as c:
+        c.mt4.raw(snapshot_op, trade_platform=TP, request_timeout=120)
+    request = route.calls.last.request
+    assert request.headers.get_list("X-Request-Timeout") == ["120"]
+    assert _read_timeout(request) == 120 + TRANSPORT_TIMEOUT_MARGIN
+
+
+@respx.mock
+def test_sidecar_operation_generated_parameter_matches_request_timeout():
+    """The generated x_request_timeout of a sidecar op is formatted by the client, not str(float)."""
+    from cplugin_webapi_sdk._generated.api.mt4_v_2_sidecar_batch_reads import (
+        get_api_v_2_mt4_trade_platform_users_snapshot as snapshot_op,
+    )
+    assert "X-Request-Timeout" not in snapshot_op._get_kwargs(trade_platform=TP)["headers"]
+    route = respx.get(MT4_USERS_SNAPSHOT).mock(return_value=httpx.Response(200, json=envelope_ok([])))
+    with _client() as c:
+        c.mt4.raw(snapshot_op, trade_platform=TP, request_timeout=45.0, x_request_timeout=45)
+    assert route.calls.last.request.headers.get_list("X-Request-Timeout") == ["45"]
+    with _client() as c, pytest.raises(ValueError, match="disagree"):
+        c.mt4.raw(snapshot_op, trade_platform=TP, request_timeout=45, x_request_timeout=46)
 
 
 @respx.mock

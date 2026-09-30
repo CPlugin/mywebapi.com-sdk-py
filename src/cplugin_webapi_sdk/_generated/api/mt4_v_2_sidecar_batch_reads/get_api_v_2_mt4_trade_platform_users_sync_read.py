@@ -19,9 +19,15 @@ def _get_kwargs(
     trade_platform: UUID,
     *,
     limit: int | Unset = 100000,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
-    
+    headers: dict[str, Any] = {}
+    if not isinstance(x_request_timeout, Unset):
+        headers["X-Request-Timeout"] = str(x_request_timeout)
+
+
+
 
     
 
@@ -40,6 +46,7 @@ def _get_kwargs(
     }
 
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -72,6 +79,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     limit: int | Unset = 100000,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4UserListApiResponse]:
     """ Read user-records sync
@@ -83,9 +91,13 @@ def sync_detailed(
     API to seed the server-side snapshot. Same UnpackObject hazard
     as `UsersSnapshot` — sidecar-only.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         limit (int | Unset):  Default: 100000.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -99,6 +111,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 limit=limit,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -113,6 +126,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     limit: int | Unset = 100000,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4UserListApiResponse | None:
     """ Read user-records sync
@@ -124,9 +138,13 @@ def sync(
     API to seed the server-side snapshot. Same UnpackObject hazard
     as `UsersSnapshot` — sidecar-only.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         limit (int | Unset):  Default: 100000.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -141,6 +159,7 @@ def sync(
         trade_platform=trade_platform,
 client=client,
 limit=limit,
+x_request_timeout=x_request_timeout,
 
     ).parsed
 
@@ -149,6 +168,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     limit: int | Unset = 100000,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4UserListApiResponse]:
     """ Read user-records sync
@@ -160,9 +180,13 @@ async def asyncio_detailed(
     API to seed the server-side snapshot. Same UnpackObject hazard
     as `UsersSnapshot` — sidecar-only.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         limit (int | Unset):  Default: 100000.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -176,6 +200,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 limit=limit,
+x_request_timeout=x_request_timeout,
 
     )
 
@@ -190,6 +215,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     limit: int | Unset = 100000,
+    x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4UserListApiResponse | None:
     """ Read user-records sync
@@ -201,9 +227,13 @@ async def asyncio(
     API to seed the server-side snapshot. Same UnpackObject hazard
     as `UsersSnapshot` — sidecar-only.
 
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+
     Args:
         trade_platform (UUID):
         limit (int | Unset):  Default: 100000.
+        x_request_timeout (float | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -218,5 +248,6 @@ async def asyncio(
         trade_platform=trade_platform,
 client=client,
 limit=limit,
+x_request_timeout=x_request_timeout,
 
     )).parsed
