@@ -2,6 +2,14 @@
 
 All notable changes to `mywebapi-sdk` (import name `cplugin_webapi_sdk`). The package follows [semver](https://semver.org/); while it is at `0.x`, a minor release may contain breaking changes.
 
+## Unreleased
+
+### Documentation
+
+- README: "What brokers do with it" — eight common back-office tasks (open positions of a group, trade stream, account creation, deposits and withdrawals, group and leverage changes, trade history, margin levels, symbol swaps), each with the SDK call that performs it; links to the product site, API reference and pricing; the trademark notice is now a section of its own.
+- Package metadata: the PyPI homepage is now <https://mywebapi.com>, with documentation, API reference and pricing links; the description, keywords and classifiers name the compatible trading platforms and the financial audience. Reaches PyPI with the next release.
+- The `raw()` docstring example imported a generated module that does not exist; it now uses `TradesUserHistory`.
+
 ## 0.3.0
 
 First release on PyPI. The version continues the numbering of the JavaScript, .NET and PowerShell SDKs, which ship the same features as 0.3.0. Request timeouts need a server that answers with `X-Request-Outcome`; older servers ignore the new header and keep working.
