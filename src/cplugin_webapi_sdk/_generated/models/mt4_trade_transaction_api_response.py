@@ -40,9 +40,11 @@ class MT4TradeTransactionApiResponse:
 
                 Enum fields (`TradeTransactionType`, `TradeCommand`,
                 `TradeRequestFlags`) are exposed as plain strings. Clients submit
-                the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+                the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
                 echoes the names back. This dodges the leaf-enum nested-generic STJ
                 source-gen quirk documented in feedback-stj-enum-leaf-nested.
+                The valid names in the API reference are generated from the enums
+                (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the summaries.
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
