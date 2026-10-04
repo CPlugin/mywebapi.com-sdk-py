@@ -2,7 +2,7 @@
 
 Python client for the MyWebAPI.com trading platform management API (v2).
 
-The WebAPI works with MetaTrader 4 and MetaTrader 5 servers through their Manager API, so a Python script or back-office service gets REST and WebSocket (SignalR) access to a broker's trade server without the native Windows Manager API libraries.
+The WebAPI works with MetaTrader 4 and MetaTrader 5 servers, so a Python script or back-office service gets REST and WebSocket (SignalR) access to a broker's trade server without installing native Windows platform libraries.
 
 - Product and sign-up: <https://mywebapi.com>
 - API reference: <https://cplugin.com/docs/webapi> · interactive: <https://cloud.mywebapi.com/swagger>
@@ -100,7 +100,7 @@ pip install mywebapi-sdk            # REST client
 pip install "mywebapi-sdk[signalr]" # plus the experimental real-time client
 ```
 
-The package is on [PyPI](https://pypi.org/project/mywebapi-sdk/) and needs Python 3.10 or later. The distribution is `mywebapi-sdk`; the import name is `cplugin_webapi_sdk`. While it is at `0.x`, a minor release may break compatibility, so pin an exact version (`mywebapi-sdk==0.3.0`).
+The package is on [PyPI](https://pypi.org/project/mywebapi-sdk/) and needs Python 3.10 or later. The distribution is `mywebapi-sdk`; the import name is `cplugin_webapi_sdk`. While it is at `0.x`, a minor release may break compatibility, so pin an exact version (`mywebapi-sdk==0.3.1`).
 
 To work on the SDK itself, install from a checkout of this repository:
 
