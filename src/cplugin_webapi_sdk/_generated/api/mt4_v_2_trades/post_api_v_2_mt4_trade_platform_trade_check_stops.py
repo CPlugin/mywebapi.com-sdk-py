@@ -135,9 +135,12 @@ def sync_detailed(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -147,9 +150,12 @@ def sync_detailed(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -159,9 +165,12 @@ def sync_detailed(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -227,9 +236,12 @@ def sync(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -239,9 +251,12 @@ def sync(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -251,9 +266,12 @@ def sync(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -314,9 +332,12 @@ async def asyncio_detailed(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -326,9 +347,12 @@ async def asyncio_detailed(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -338,9 +362,12 @@ async def asyncio_detailed(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -406,9 +433,12 @@ async def asyncio(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -418,9 +448,12 @@ async def asyncio(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
             The wrapper's `TradeTransInfo` is in/out: the caller fills the request
@@ -430,9 +463,12 @@ async def asyncio(
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
             `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
+            the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
             echoes the names back. This dodges the leaf-enum nested-generic STJ
             source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            The valid names in the API reference are generated from the enums
+            (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the
+            summaries.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

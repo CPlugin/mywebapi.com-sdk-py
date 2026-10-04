@@ -2,6 +2,97 @@
 
 Python client for the MyWebAPI.com trading platform management API (v2).
 
+The WebAPI works with MetaTrader 4 and MetaTrader 5 servers, so a Python script or back-office service gets REST and WebSocket (SignalR) access to a broker's trade server without installing native Windows platform libraries.
+
+- Product and sign-up: <https://mywebapi.com>
+- API reference: <https://cplugin.com/docs/webapi> · interactive: <https://cloud.mywebapi.com/swagger>
+- Pricing: <https://cplugin.com/docs/pricing-and-terms>
+
+## What brokers do with it
+
+Typical back-office tasks, each with the SDK call that performs it. `client` is created as in [Quick start](#quick-start) and `tp` is the trade platform id. Endpoints without a convenience method are called through `raw()` with the generated operation module; `unwrap()` returns the response data.
+
+**List open positions of a group** (MT4 `TradesRequest`, MT5 `PositionByGroup`):
+
+```python
+trades, meta = client.mt4.trades_request(tp, group="real-usd")
+positions = client.mt5.positions_by_group(tp, "real\\*")
+for p in positions:
+    print(p["login"], p["symbol"], p["volume"], p["profit"])
+```
+
+**Stream trades in real time** (SignalR, `pip install "mywebapi-sdk[signalr]"`; the MT4 hub streams trades, ticks, account and symbol changes and margin calls):
+
+```python
+rt = client.realtime.mt4(tp)
+rt.start()
+rt.stream_trades().subscribe({
+    "next": lambda t: print(t),
+    "error": lambda err: print("error:", err),
+})
+```
+
+**Open an account from a CRM** (`UserRecordNew`, then `UserPasswordSet`):
+
+```python
+from cplugin_webapi_sdk._generated.api.mt4_v_2_users import post_api_v_2_mt4_trade_platform_user_record_new as user_new
+from cplugin_webapi_sdk._generated.api.mt4_v_2_authentication import post_api_v_2_mt4_trade_platform_user_password_set_login as password_set
+from cplugin_webapi_sdk._generated.models import MT4UserCreate
+
+body = MT4UserCreate(login=0, group="real-usd", name="John Smith", email="john@example.com", leverage=100)
+user = unwrap(client.mt4.raw(user_new, trade_platform=tp, body=body, idempotency_key=crm_request_id))
+unwrap(client.mt4.raw(password_set, trade_platform=tp, login=user["login"], body=new_password))
+```
+
+**Post a deposit or a withdrawal** (`TradeTransaction` balance operation; a negative amount withdraws):
+
+```python
+from cplugin_webapi_sdk._generated.api.mt4_v_2_trades import post_api_v_2_mt4_trade_platform_trade_transaction as trade_tx
+from cplugin_webapi_sdk._generated.models import MT4TradeTransaction
+
+deposit = MT4TradeTransaction(trade_transaction_type="BrBalance", trade_command="Balance",
+                              order_by=1001, price=500.0, comment="Deposit #8812")
+unwrap(client.mt4.raw(trade_tx, trade_platform=tp, body=deposit, idempotency_key=payment_id))
+```
+
+**Move an account to another group or change its leverage** (JSON Merge Patch):
+
+```python
+client.mt4.patch_user_record(tp, 1001, {"group": "real-vip", "leverage": 200})
+```
+
+**Read trade history for reports and statements** (`TradesUserHistory`):
+
+```python
+from datetime import datetime, timezone
+from cplugin_webapi_sdk._generated.api.mt4_v_2_history import get_api_v_2_mt4_trade_platform_trades_user_history_login as history
+
+closed = unwrap(client.mt4.raw(history, trade_platform=tp, login=1001,
+                               from_time=datetime(2026, 9, 1, tzinfo=timezone.utc),
+                               to_time=datetime(2026, 10, 1, tzinfo=timezone.utc)))
+```
+
+**Watch margin levels** (cached snapshot of every account; the live stream is `rt.stream_margin_call_updates()`):
+
+```python
+from cplugin_webapi_sdk._generated.api.mt4_v_2_margins import get_api_v_2_mt4_trade_platform_margins_get as margins_get
+
+margins = unwrap(client.mt4.raw(margins_get, trade_platform=tp))
+at_risk = [m for m in margins if 0 < m["level"] < 100]
+```
+
+**Change symbol settings, for example swaps** (`SymbolConfig`, JSON Merge Patch):
+
+```python
+from cplugin_webapi_sdk._generated.api.mt4_v_2_symbols import patch_api_v_2_mt4_trade_platform_symbol_config_symbol as symbol_patch
+from cplugin_webapi_sdk._generated.models import PatchApiV2MT4TradePlatformSymbolConfigSymbolJsonBody as SymbolPatch
+
+unwrap(client.mt4.raw(symbol_patch, trade_platform=tp, symbol="EURUSD",
+                      body=SymbolPatch.from_dict({"swapLong": -6.1, "swapShort": 1.2})))
+```
+
+`unwrap` is imported from `cplugin_webapi_sdk`. Every other endpoint (trading groups, server configuration, backups, journal, charts, news) has a generated module under `cplugin_webapi_sdk._generated.api`; the full list is in the [API reference](https://cplugin.com/docs/webapi).
+
 ## Install
 
 ```bash
@@ -9,7 +100,7 @@ pip install mywebapi-sdk            # REST client
 pip install "mywebapi-sdk[signalr]" # plus the experimental real-time client
 ```
 
-The package is on [PyPI](https://pypi.org/project/mywebapi-sdk/) and needs Python 3.10 or later. The distribution is `mywebapi-sdk`; the import name is `cplugin_webapi_sdk`. While it is at `0.x`, a minor release may break compatibility, so pin an exact version (`mywebapi-sdk==0.3.0`).
+The package is on [PyPI](https://pypi.org/project/mywebapi-sdk/) and needs Python 3.10 or later. The distribution is `mywebapi-sdk`; the import name is `cplugin_webapi_sdk`. While it is at `0.x`, a minor release may break compatibility, so pin an exact version (`mywebapi-sdk==0.3.1`).
 
 To work on the SDK itself, install from a checkout of this repository:
 
@@ -270,6 +361,6 @@ WEBAPI_E2E=1 \
 └── scripts/               # fetch_spec.py, generate_client.py
 ```
 
----
+## Trademarks
 
 MetaTrader, MT4, MT5, and MetaQuotes are trademarks or registered trademarks of MetaQuotes Ltd. This project is not affiliated with, endorsed by, or sponsored by MetaQuotes Ltd.

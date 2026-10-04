@@ -460,10 +460,10 @@ class _MT4Namespace:
         Example::
 
             from cplugin_webapi_sdk._generated.api.mt4_v_2_history import (
-                get_api_v_2_mt4_trade_platform_history_request as history_op,
+                get_api_v_2_mt4_trade_platform_trades_user_history_login as history_op,
             )
             from cplugin_webapi_sdk import unwrap
-            resp = client.mt4.raw(history_op, trade_platform=tp_id, from_=..., to_=...)
+            resp = client.mt4.raw(history_op, trade_platform=tp_id, login=1001, from_time=..., to_time=...)
             data = unwrap(resp)
         """
         return _call_sync(

@@ -2,6 +2,22 @@
 
 All notable changes to `mywebapi-sdk` (import name `cplugin_webapi_sdk`). The package follows [semver](https://semver.org/); while it is at `0.x`, a minor release may contain breaking changes.
 
+## 0.3.1
+
+Regenerated from the WebAPI v2 specification of 03.10.2026; no change to the API surface or to the generated models' fields and types.
+
+### Changed
+
+- The MT4 enum fields of `MT4TradeTransaction` (`trade_transaction_type`, `trade_command`, `trade_request_flags`, used by the TradeTransaction and TradeCheckStops operations) and `MT4UsersGroupOp.command` now document the values the server accepts; the old docstrings listed names such as `ModifyTrade` and `BalanceAdd` that the server does not know. Values are case-insensitive, and the numeric value is accepted too.
+- An unknown value in `trade_transaction_type`, `trade_command` or `MT4UsersGroupOp.command` is now refused by the server with `ApiError` code `Validation`; until 03.10.2026 it was silently replaced by the enum's default. The behaviour belongs to the server, so it applies to every SDK version; check code that builds these values from user input.
+- The vendored `spec/v2.json` is the specification of 03.10.2026.
+
+### Documentation
+
+- README: "What brokers do with it" — eight common back-office tasks (open positions of a group, trade stream, account creation, deposits and withdrawals, group and leverage changes, trade history, margin levels, symbol swaps), each with the SDK call that performs it; links to the product site, API reference and pricing; the trademark notice is now a section of its own.
+- Package metadata: the PyPI homepage is now <https://mywebapi.com>, with documentation, API reference and pricing links; the description, keywords and classifiers name the compatible trading platforms (MetaTrader 4 and MetaTrader 5) and the financial audience.
+- The `raw()` docstring example imported a generated module that does not exist; it now uses `TradesUserHistory`.
+
 ## 0.3.0
 
 First release on PyPI. The version continues the numbering of the JavaScript, .NET and PowerShell SDKs, which ship the same features as 0.3.0. Request timeouts need a server that answers with `X-Request-Outcome`; older servers ignore the new header and keep working.

@@ -103,7 +103,7 @@ def sync_detailed(
     <br>
     Low-level back-office override that writes directly to the trade
     record. For SL/TP edits prefer
-    `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+    `POST TradeTransaction` with `tradeTransactionType=BrModify`
     — that route goes through the wrapper's audited path. Use this
     endpoint for manual accounting corrections (commission/storage/taxes/
     profit, comment, magic) that the standard TradeTransaction path
@@ -134,7 +134,7 @@ def sync_detailed(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
@@ -145,7 +145,7 @@ def sync_detailed(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
@@ -156,7 +156,7 @@ def sync_detailed(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
 
@@ -199,7 +199,7 @@ def sync(
     <br>
     Low-level back-office override that writes directly to the trade
     record. For SL/TP edits prefer
-    `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+    `POST TradeTransaction` with `tradeTransactionType=BrModify`
     — that route goes through the wrapper's audited path. Use this
     endpoint for manual accounting corrections (commission/storage/taxes/
     profit, comment, magic) that the standard TradeTransaction path
@@ -230,7 +230,7 @@ def sync(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
@@ -241,7 +241,7 @@ def sync(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
@@ -252,7 +252,7 @@ def sync(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
 
@@ -290,7 +290,7 @@ async def asyncio_detailed(
     <br>
     Low-level back-office override that writes directly to the trade
     record. For SL/TP edits prefer
-    `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+    `POST TradeTransaction` with `tradeTransactionType=BrModify`
     — that route goes through the wrapper's audited path. Use this
     endpoint for manual accounting corrections (commission/storage/taxes/
     profit, comment, magic) that the standard TradeTransaction path
@@ -321,7 +321,7 @@ async def asyncio_detailed(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
@@ -332,7 +332,7 @@ async def asyncio_detailed(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
@@ -343,7 +343,7 @@ async def asyncio_detailed(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
 
@@ -386,7 +386,7 @@ async def asyncio(
     <br>
     Low-level back-office override that writes directly to the trade
     record. For SL/TP edits prefer
-    `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+    `POST TradeTransaction` with `tradeTransactionType=BrModify`
     — that route goes through the wrapper's audited path. Use this
     endpoint for manual accounting corrections (commission/storage/taxes/
     profit, comment, magic) that the standard TradeTransaction path
@@ -417,7 +417,7 @@ async def asyncio(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
@@ -428,7 +428,7 @@ async def asyncio(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
         body (MT4TradeUpdate | Unset): Type 1 mutator input for the admin direct-edit endpoint
@@ -439,7 +439,7 @@ async def asyncio(
 
             <br>
             For typical stop-loss / take-profit edits prefer
-            `POST TradeTransaction` with `tradeTransactionType=ModifyTrade`
+            `POST TradeTransaction` with `tradeTransactionType=BrModify`
             — that goes through the wrapper's audited path. This endpoint is the
             low-level admin override for back-office corrections.
 
