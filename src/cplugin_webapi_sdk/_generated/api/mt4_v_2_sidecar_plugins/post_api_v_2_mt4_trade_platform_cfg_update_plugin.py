@@ -98,7 +98,7 @@ def sync_detailed(
 
      Update plugin configuration (Manager-live).
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `CfgUpdatePlugin(ConPlugin cp, PluginCfg[] cfgs)`. Body is
     `MT4PluginParam` — the plugin metadata plus its parameter
     array. Returns a bare-bool envelope.
@@ -112,13 +112,13 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -154,7 +154,7 @@ def sync(
 
      Update plugin configuration (Manager-live).
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `CfgUpdatePlugin(ConPlugin cp, PluginCfg[] cfgs)`. Body is
     `MT4PluginParam` — the plugin metadata plus its parameter
     array. Returns a bare-bool envelope.
@@ -168,13 +168,13 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -205,7 +205,7 @@ async def asyncio_detailed(
 
      Update plugin configuration (Manager-live).
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `CfgUpdatePlugin(ConPlugin cp, PluginCfg[] cfgs)`. Body is
     `MT4PluginParam` — the plugin metadata plus its parameter
     array. Returns a bare-bool envelope.
@@ -219,13 +219,13 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -261,7 +261,7 @@ async def asyncio(
 
      Update plugin configuration (Manager-live).
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `CfgUpdatePlugin(ConPlugin cp, PluginCfg[] cfgs)`. Body is
     `MT4PluginParam` — the plugin metadata plus its parameter
     array. Returns a bare-bool envelope.
@@ -275,13 +275,13 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -88,7 +88,7 @@ def sync_detailed(
 
     Pump-cached read — Bid/Ask/High/Low/Spread/Digits and last-tick time
     for the requested instrument. Returns NotFound-shaped envelope (the
-    wrapper-level result code surfaces in ManagerAPICode / ErrorCode)
+    platform-level result code surfaces in ManagerAPICode / ErrorCode)
     when the symbol is not loaded on the connected server.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -135,7 +135,7 @@ def sync(
 
     Pump-cached read — Bid/Ask/High/Low/Spread/Digits and last-tick time
     for the requested instrument. Returns NotFound-shaped envelope (the
-    wrapper-level result code surfaces in ManagerAPICode / ErrorCode)
+    platform-level result code surfaces in ManagerAPICode / ErrorCode)
     when the symbol is not loaded on the connected server.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -177,7 +177,7 @@ async def asyncio_detailed(
 
     Pump-cached read — Bid/Ask/High/Low/Spread/Digits and last-tick time
     for the requested instrument. Returns NotFound-shaped envelope (the
-    wrapper-level result code surfaces in ManagerAPICode / ErrorCode)
+    platform-level result code surfaces in ManagerAPICode / ErrorCode)
     when the symbol is not loaded on the connected server.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -224,7 +224,7 @@ async def asyncio(
 
     Pump-cached read — Bid/Ask/High/Low/Spread/Digits and last-tick time
     for the requested instrument. Returns NotFound-shaped envelope (the
-    wrapper-level result code surfaces in ManagerAPICode / ErrorCode)
+    platform-level result code surfaces in ManagerAPICode / ErrorCode)
     when the symbol is not loaded on the connected server.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the

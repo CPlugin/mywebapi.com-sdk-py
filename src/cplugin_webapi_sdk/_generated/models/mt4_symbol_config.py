@@ -27,10 +27,9 @@ class MT4SymbolConfig:
     `ConSymbol`; drops reserved / unused arrays and the nested
     `Sessions` table (planned as its own endpoint).
 
-    Seven wrapper enum fields (`TradeMode`, `ProfitCalculationMode`,
+    Seven platform enum fields (`TradeMode`, `ProfitCalculationMode`,
     `SymbolExecMode`, `SwapType`, `GTCMode`,
-    `MarginCalculationMode`) are exposed as strings; see
-    feedback-stj-enum-leaf-nested for why the conversion happens at the mapper.
+    `MarginCalculationMode`) are returned as their names.
 
         Attributes:
             symbol (None | str | Unset): Symbol name (max 12 chars)

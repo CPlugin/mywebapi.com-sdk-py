@@ -92,8 +92,8 @@ def sync_detailed(
 
      Read user records out of a backup file (does NOT restore — read-only).
 
-    Manager (live) call to the wrapper's
-    `BackupRequestUsers(string file, string request)`. The wrapper
+    Manager (live) call to the platform's
+    `BackupRequestUsers(string file, string request)`. The platform
     extracts records from the named backup file but does NOT write
     them back to the live DB — that requires a separate (destructive)
     `BackupRestoreUsers` call which is part of Wave 4b.
@@ -102,9 +102,9 @@ def sync_detailed(
     file names. The optional `request` query
     is a server-defined filter string; empty string returns all users.
     <br><b>Heavy operation:</b> backup files can contain millions of
-    records — the wrapper returns the full set in one shot. The
+    records — the platform returns the full set in one shot. The
     optional `limit` query truncates the response server-side
-    (default 10000, max 100000). The wrapper still loads the full
+    (default 10000, max 100000). The platform still loads the full
     file regardless of limit — limit only caps the JSON response size.
 
 
@@ -156,8 +156,8 @@ def sync(
 
      Read user records out of a backup file (does NOT restore — read-only).
 
-    Manager (live) call to the wrapper's
-    `BackupRequestUsers(string file, string request)`. The wrapper
+    Manager (live) call to the platform's
+    `BackupRequestUsers(string file, string request)`. The platform
     extracts records from the named backup file but does NOT write
     them back to the live DB — that requires a separate (destructive)
     `BackupRestoreUsers` call which is part of Wave 4b.
@@ -166,9 +166,9 @@ def sync(
     file names. The optional `request` query
     is a server-defined filter string; empty string returns all users.
     <br><b>Heavy operation:</b> backup files can contain millions of
-    records — the wrapper returns the full set in one shot. The
+    records — the platform returns the full set in one shot. The
     optional `limit` query truncates the response server-side
-    (default 10000, max 100000). The wrapper still loads the full
+    (default 10000, max 100000). The platform still loads the full
     file regardless of limit — limit only caps the JSON response size.
 
 
@@ -215,8 +215,8 @@ async def asyncio_detailed(
 
      Read user records out of a backup file (does NOT restore — read-only).
 
-    Manager (live) call to the wrapper's
-    `BackupRequestUsers(string file, string request)`. The wrapper
+    Manager (live) call to the platform's
+    `BackupRequestUsers(string file, string request)`. The platform
     extracts records from the named backup file but does NOT write
     them back to the live DB — that requires a separate (destructive)
     `BackupRestoreUsers` call which is part of Wave 4b.
@@ -225,9 +225,9 @@ async def asyncio_detailed(
     file names. The optional `request` query
     is a server-defined filter string; empty string returns all users.
     <br><b>Heavy operation:</b> backup files can contain millions of
-    records — the wrapper returns the full set in one shot. The
+    records — the platform returns the full set in one shot. The
     optional `limit` query truncates the response server-side
-    (default 10000, max 100000). The wrapper still loads the full
+    (default 10000, max 100000). The platform still loads the full
     file regardless of limit — limit only caps the JSON response size.
 
 
@@ -279,8 +279,8 @@ async def asyncio(
 
      Read user records out of a backup file (does NOT restore — read-only).
 
-    Manager (live) call to the wrapper's
-    `BackupRequestUsers(string file, string request)`. The wrapper
+    Manager (live) call to the platform's
+    `BackupRequestUsers(string file, string request)`. The platform
     extracts records from the named backup file but does NOT write
     them back to the live DB — that requires a separate (destructive)
     `BackupRestoreUsers` call which is part of Wave 4b.
@@ -289,9 +289,9 @@ async def asyncio(
     file names. The optional `request` query
     is a server-defined filter string; empty string returns all users.
     <br><b>Heavy operation:</b> backup files can contain millions of
-    records — the wrapper returns the full set in one shot. The
+    records — the platform returns the full set in one shot. The
     optional `limit` query truncates the response server-side
-    (default 10000, max 100000). The wrapper still loads the full
+    (default 10000, max 100000). The platform still loads the full
     file regardless of limit — limit only caps the JSON response size.
 
 

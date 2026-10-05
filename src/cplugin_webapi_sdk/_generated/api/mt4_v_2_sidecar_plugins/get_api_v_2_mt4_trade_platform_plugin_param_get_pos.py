@@ -79,7 +79,7 @@ def sync_detailed(
 
      Get a single plugin's parameters by position in the `PluginsGet` list.
 
-    Manager-pump call to the wrapper's `PluginParamGet(pos, out ConPluginParam)`.
+    Manager-pump call to the platform's `PluginParamGet(pos, out ConPluginParam)`.
     The `ConPluginParam.Params` auto-dereferences a 32-bit pointer —
     safe on x86, sign-extension hazard on x64. Sidecar-only.
 
@@ -125,7 +125,7 @@ def sync(
 
      Get a single plugin's parameters by position in the `PluginsGet` list.
 
-    Manager-pump call to the wrapper's `PluginParamGet(pos, out ConPluginParam)`.
+    Manager-pump call to the platform's `PluginParamGet(pos, out ConPluginParam)`.
     The `ConPluginParam.Params` auto-dereferences a 32-bit pointer —
     safe on x86, sign-extension hazard on x64. Sidecar-only.
 
@@ -166,7 +166,7 @@ async def asyncio_detailed(
 
      Get a single plugin's parameters by position in the `PluginsGet` list.
 
-    Manager-pump call to the wrapper's `PluginParamGet(pos, out ConPluginParam)`.
+    Manager-pump call to the platform's `PluginParamGet(pos, out ConPluginParam)`.
     The `ConPluginParam.Params` auto-dereferences a 32-bit pointer —
     safe on x86, sign-extension hazard on x64. Sidecar-only.
 
@@ -212,7 +212,7 @@ async def asyncio(
 
      Get a single plugin's parameters by position in the `PluginsGet` list.
 
-    Manager-pump call to the wrapper's `PluginParamGet(pos, out ConPluginParam)`.
+    Manager-pump call to the platform's `PluginParamGet(pos, out ConPluginParam)`.
     The `ConPluginParam.Params` auto-dereferences a 32-bit pointer —
     safe on x86, sign-extension hazard on x64. Sidecar-only.
 

@@ -23,9 +23,9 @@ T = TypeVar("T", bound="MT4ChartBar")
 
 @_attrs_define
 class MT4ChartBar:
-    """ v2 DTO for one OHLC chart bar. Curated from the wrapper's `RateInfoEx`;
+    """ v2 DTO for one OHLC chart bar. Curated from the platform's `RateInfoEx`;
     drops the internal `SymbolMultiply`/`Digits` scaling helpers
-    (callers don't need them — the wrapper's `buildRI` already
+    (callers don't need them — the platform's `buildRI` already
     normalised Open/High/Low/Close from raw int prices into floating point).
 
         Attributes:

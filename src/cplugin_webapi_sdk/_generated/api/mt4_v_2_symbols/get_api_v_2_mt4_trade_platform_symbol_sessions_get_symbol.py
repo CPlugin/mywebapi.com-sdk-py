@@ -79,13 +79,11 @@ def sync_detailed(
 
      Trading session windows for a symbol, per weekday.
 
-    Returns the wrapper's `ConSymbol.Sessions[7]` array (one entry
+    Returns the platform's `ConSymbol.Sessions[7]` array (one entry
     per weekday, 0=Sunday). Each weekday entry carries up to three Quote
     (price) windows and up to three Trade (order acceptance) windows
-    plus overnight flags. Closes the TODO documented in
-    `MT4SymbolConfig`: the parent `CfgRequestSymbol` endpoint
-    drops the nested Sessions array to keep the DTO manageable; this
-    dedicated endpoint exposes it.
+    plus overnight flags. `CfgRequestSymbol` leaves the sessions out
+    to keep its response compact; this endpoint returns them.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -129,13 +127,11 @@ def sync(
 
      Trading session windows for a symbol, per weekday.
 
-    Returns the wrapper's `ConSymbol.Sessions[7]` array (one entry
+    Returns the platform's `ConSymbol.Sessions[7]` array (one entry
     per weekday, 0=Sunday). Each weekday entry carries up to three Quote
     (price) windows and up to three Trade (order acceptance) windows
-    plus overnight flags. Closes the TODO documented in
-    `MT4SymbolConfig`: the parent `CfgRequestSymbol` endpoint
-    drops the nested Sessions array to keep the DTO manageable; this
-    dedicated endpoint exposes it.
+    plus overnight flags. `CfgRequestSymbol` leaves the sessions out
+    to keep its response compact; this endpoint returns them.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -174,13 +170,11 @@ async def asyncio_detailed(
 
      Trading session windows for a symbol, per weekday.
 
-    Returns the wrapper's `ConSymbol.Sessions[7]` array (one entry
+    Returns the platform's `ConSymbol.Sessions[7]` array (one entry
     per weekday, 0=Sunday). Each weekday entry carries up to three Quote
     (price) windows and up to three Trade (order acceptance) windows
-    plus overnight flags. Closes the TODO documented in
-    `MT4SymbolConfig`: the parent `CfgRequestSymbol` endpoint
-    drops the nested Sessions array to keep the DTO manageable; this
-    dedicated endpoint exposes it.
+    plus overnight flags. `CfgRequestSymbol` leaves the sessions out
+    to keep its response compact; this endpoint returns them.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -224,13 +218,11 @@ async def asyncio(
 
      Trading session windows for a symbol, per weekday.
 
-    Returns the wrapper's `ConSymbol.Sessions[7]` array (one entry
+    Returns the platform's `ConSymbol.Sessions[7]` array (one entry
     per weekday, 0=Sunday). Each weekday entry carries up to three Quote
     (price) windows and up to three Trade (order acceptance) windows
-    plus overnight flags. Closes the TODO documented in
-    `MT4SymbolConfig`: the parent `CfgRequestSymbol` endpoint
-    drops the nested Sessions array to keep the DTO manageable; this
-    dedicated endpoint exposes it.
+    plus overnight flags. `CfgRequestSymbol` leaves the sessions out
+    to keep its response compact; this endpoint returns them.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.

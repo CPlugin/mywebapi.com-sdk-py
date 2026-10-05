@@ -80,7 +80,7 @@ def sync_detailed(
      Special-securities margin overrides (`SecMargins`) for one group.
 
     Pump-cached read. Returns the first `SecMarginsTotal` entries of
-    the wrapper's 128-element `SecMargins` array — the trailing
+    the platform's 128-element `SecMargins` array — the trailing
     slots are always uninitialised padding. `SecMarginsTotal` itself
     is part of the parent `MT4Group` DTO.
 
@@ -127,7 +127,7 @@ def sync(
      Special-securities margin overrides (`SecMargins`) for one group.
 
     Pump-cached read. Returns the first `SecMarginsTotal` entries of
-    the wrapper's 128-element `SecMargins` array — the trailing
+    the platform's 128-element `SecMargins` array — the trailing
     slots are always uninitialised padding. `SecMarginsTotal` itself
     is part of the parent `MT4Group` DTO.
 
@@ -169,7 +169,7 @@ async def asyncio_detailed(
      Special-securities margin overrides (`SecMargins`) for one group.
 
     Pump-cached read. Returns the first `SecMarginsTotal` entries of
-    the wrapper's 128-element `SecMargins` array — the trailing
+    the platform's 128-element `SecMargins` array — the trailing
     slots are always uninitialised padding. `SecMarginsTotal` itself
     is part of the parent `MT4Group` DTO.
 
@@ -216,7 +216,7 @@ async def asyncio(
      Special-securities margin overrides (`SecMargins`) for one group.
 
     Pump-cached read. Returns the first `SecMarginsTotal` entries of
-    the wrapper's 128-element `SecMargins` array — the trailing
+    the platform's 128-element `SecMargins` array — the trailing
     slots are always uninitialised padding. `SecMarginsTotal` itself
     is part of the parent `MT4Group` DTO.
 

@@ -99,11 +99,10 @@ def sync_detailed(
      Adjusts the per-symbol trading attributes that dealers manage from the MT4 Manager UI — spread,
     stops-level, smoothing, quote color, execution mode.
 
-    Manager-live POST. Maps 1:1 to the wrapper's `SymbolChange`
+    Manager-live POST. Maps 1:1 to the platform's `SymbolChange`
     call which marshals an entire `SymbolProperties` struct down
     to the native server. Only the seven editable fields are exposed
-    on the v2 contract — the wrapper's 8-int reserved padding is
-    filled with zeros by Mapperly automatically.
+    on the v2 contract; the reserved fields are sent as zeros.
 
     This is intentionally separate from the heavier `CfgUpdateSymbol`
     Type 1 mutator: `SymbolChange` is the dealer-tier adjustment
@@ -120,7 +119,7 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 
@@ -130,7 +129,7 @@ def sync_detailed(
             margin, swap) live on the separate `CfgUpdateSymbol` Type 1 mutator.
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 
@@ -140,7 +139,7 @@ def sync_detailed(
             margin, swap) live on the separate `CfgUpdateSymbol` Type 1 mutator.
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 
@@ -184,11 +183,10 @@ def sync(
      Adjusts the per-symbol trading attributes that dealers manage from the MT4 Manager UI — spread,
     stops-level, smoothing, quote color, execution mode.
 
-    Manager-live POST. Maps 1:1 to the wrapper's `SymbolChange`
+    Manager-live POST. Maps 1:1 to the platform's `SymbolChange`
     call which marshals an entire `SymbolProperties` struct down
     to the native server. Only the seven editable fields are exposed
-    on the v2 contract — the wrapper's 8-int reserved padding is
-    filled with zeros by Mapperly automatically.
+    on the v2 contract; the reserved fields are sent as zeros.
 
     This is intentionally separate from the heavier `CfgUpdateSymbol`
     Type 1 mutator: `SymbolChange` is the dealer-tier adjustment
@@ -205,7 +203,7 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 
@@ -215,7 +213,7 @@ def sync(
             margin, swap) live on the separate `CfgUpdateSymbol` Type 1 mutator.
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 
@@ -225,7 +223,7 @@ def sync(
             margin, swap) live on the separate `CfgUpdateSymbol` Type 1 mutator.
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 
@@ -264,11 +262,10 @@ async def asyncio_detailed(
      Adjusts the per-symbol trading attributes that dealers manage from the MT4 Manager UI — spread,
     stops-level, smoothing, quote color, execution mode.
 
-    Manager-live POST. Maps 1:1 to the wrapper's `SymbolChange`
+    Manager-live POST. Maps 1:1 to the platform's `SymbolChange`
     call which marshals an entire `SymbolProperties` struct down
     to the native server. Only the seven editable fields are exposed
-    on the v2 contract — the wrapper's 8-int reserved padding is
-    filled with zeros by Mapperly automatically.
+    on the v2 contract; the reserved fields are sent as zeros.
 
     This is intentionally separate from the heavier `CfgUpdateSymbol`
     Type 1 mutator: `SymbolChange` is the dealer-tier adjustment
@@ -285,7 +282,7 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 
@@ -295,7 +292,7 @@ async def asyncio_detailed(
             margin, swap) live on the separate `CfgUpdateSymbol` Type 1 mutator.
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 
@@ -305,7 +302,7 @@ async def asyncio_detailed(
             margin, swap) live on the separate `CfgUpdateSymbol` Type 1 mutator.
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 
@@ -349,11 +346,10 @@ async def asyncio(
      Adjusts the per-symbol trading attributes that dealers manage from the MT4 Manager UI — spread,
     stops-level, smoothing, quote color, execution mode.
 
-    Manager-live POST. Maps 1:1 to the wrapper's `SymbolChange`
+    Manager-live POST. Maps 1:1 to the platform's `SymbolChange`
     call which marshals an entire `SymbolProperties` struct down
     to the native server. Only the seven editable fields are exposed
-    on the v2 contract — the wrapper's 8-int reserved padding is
-    filled with zeros by Mapperly automatically.
+    on the v2 contract; the reserved fields are sent as zeros.
 
     This is intentionally separate from the heavier `CfgUpdateSymbol`
     Type 1 mutator: `SymbolChange` is the dealer-tier adjustment
@@ -370,7 +366,7 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 
@@ -380,7 +376,7 @@ async def asyncio(
             margin, swap) live on the separate `CfgUpdateSymbol` Type 1 mutator.
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 
@@ -390,7 +386,7 @@ async def asyncio(
             margin, swap) live on the separate `CfgUpdateSymbol` Type 1 mutator.
         body (MT4SymbolChangeRequest | Unset): POST body for the Manager-live `SymbolChange`
             endpoint. Maps 1:1 to the
-            wrapper's `SymbolProperties` struct (the public properties, not the
+            the platform's `SymbolProperties` struct (the public properties, not the
             underscore-prefixed backing fields). The struct's 8-int `Reserved`
             padding is dropped from the v2 contract.
 

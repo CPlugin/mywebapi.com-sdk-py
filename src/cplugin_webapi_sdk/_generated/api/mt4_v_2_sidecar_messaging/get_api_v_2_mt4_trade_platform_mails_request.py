@@ -77,10 +77,10 @@ def sync_detailed(
 
      List all mail messages currently stored on the MT4 server.
 
-    Manager (live) call to the wrapper's `MailsRequest()`.
+    Manager (live) call to the platform's `MailsRequest()`.
     Returns the server-side mailbox store as a flat list of
     `MT4MailBox` entries. Read-only; no batching parameters
-    (the wrapper has no native pagination).
+    (the platform has no native pagination).
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -121,10 +121,10 @@ def sync(
 
      List all mail messages currently stored on the MT4 server.
 
-    Manager (live) call to the wrapper's `MailsRequest()`.
+    Manager (live) call to the platform's `MailsRequest()`.
     Returns the server-side mailbox store as a flat list of
     `MT4MailBox` entries. Read-only; no batching parameters
-    (the wrapper has no native pagination).
+    (the platform has no native pagination).
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -160,10 +160,10 @@ async def asyncio_detailed(
 
      List all mail messages currently stored on the MT4 server.
 
-    Manager (live) call to the wrapper's `MailsRequest()`.
+    Manager (live) call to the platform's `MailsRequest()`.
     Returns the server-side mailbox store as a flat list of
     `MT4MailBox` entries. Read-only; no batching parameters
-    (the wrapper has no native pagination).
+    (the platform has no native pagination).
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -204,10 +204,10 @@ async def asyncio(
 
      List all mail messages currently stored on the MT4 server.
 
-    Manager (live) call to the wrapper's `MailsRequest()`.
+    Manager (live) call to the platform's `MailsRequest()`.
     Returns the server-side mailbox store as a flat list of
     `MT4MailBox` entries. Read-only; no batching parameters
-    (the wrapper has no native pagination).
+    (the platform has no native pagination).
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.

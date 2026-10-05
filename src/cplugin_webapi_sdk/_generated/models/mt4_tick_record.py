@@ -24,10 +24,9 @@ T = TypeVar("T", bound="MT4TickRecord")
 @_attrs_define
 class MT4TickRecord:
     """ v2 DTO for one historical tick from `TicksRequest`. Same fields as the
-    wrapper's `TickRecord`; `Ctm` is renamed to `Time` at the API
-    boundary (consistent with CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4TickInfo). The wrapper's
-    `TickRequestFlags` enum is exposed as a string to avoid the leaf-enum
-    nested-generic serialization issue documented in feedback-stj-enum-leaf-nested.
+    the platform's `TickRecord`; `Ctm` is renamed to `Time` at the API
+    boundary (consistent with MT4TickInfo). The tick flags are
+    returned as their names.
 
         Attributes:
             time (datetime.datetime | Unset): Server-side tick timestamp (UTC)
@@ -35,7 +34,6 @@ class MT4TickRecord:
             ask (float | Unset): Ask price
             data_feed (int | Unset): Index of the data feed source
             flags (None | str | Unset): Tick flags as string — combination of `Raw`, `Normal`, `All`.
-                String-typed for the same STJ source-gen reason as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4ServerLog.Code.
      """
 
     time: datetime.datetime | Unset = UNSET

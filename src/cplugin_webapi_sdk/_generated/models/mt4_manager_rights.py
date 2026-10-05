@@ -23,7 +23,7 @@ T = TypeVar("T", bound="MT4ManagerRights")
 @_attrs_define
 class MT4ManagerRights:
     """ v2 DTO for an MT4 manager-account configuration entry. Curated subset
-    of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+    of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
     the 19 boolean permission rights, IP-filter fields, and InfoDepth.
     Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
     IPFrom/IPTo are widened from uint to long so the JSON-serialized value
@@ -31,7 +31,7 @@ class MT4ManagerRights:
 
         Attributes:
             login (int | Unset): Manager account login (read-only)
-            name (None | str | Unset): Display name of the manager (read-only on the wrapper side)
+            name (None | str | Unset): Display name of the manager (read-only on the platform side)
             groups (None | str | Unset): Comma-separated list of managed group names (wildcard '*' allowed)
             mail_box (None | str | Unset): Internal mailbox name used for manager mail
             info_depth (int | Unset): Maximum reportable history depth, in days
@@ -54,7 +54,7 @@ class MT4ManagerRights:
             notifications (bool | Unset):
             server_reports (bool | Unset):
             tech_support (bool | Unset):
-            ip_filter (int | Unset): IP filtering mode (0 = disabled; non-zero = enabled — raw MT4 wrapper value, semantics
+            ip_filter (int | Unset): IP filtering mode (0 = disabled; non-zero = enabled — raw MT4 platform value, semantics
                 preserved)
             ip_from (int | Unset): IP range start (uint widened to long for safe JSON numeric serialization)
             ip_to (int | Unset): IP range end (uint widened to long for safe JSON numeric serialization)

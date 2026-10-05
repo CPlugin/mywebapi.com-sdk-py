@@ -24,9 +24,7 @@ T = TypeVar("T", bound="MT4GroupSec")
 class MT4GroupSec:
     """ v2 DTO for one entry in a group's `SecGroups` array (32 elements
     indexed by symbol-group). Curated from `ConGroupSec`; drops the
-    `Reserved` int[3] padding. Enum fields are typed as string for
-    the leaf-nested-generic STJ source-gen reason — see
-    feedback-stj-enum-leaf-nested.
+    `Reserved` int[3] padding. Enum fields are returned as their names.
 
         Attributes:
             show (int | Unset): 0 = security group hidden from clients, non-zero = visible

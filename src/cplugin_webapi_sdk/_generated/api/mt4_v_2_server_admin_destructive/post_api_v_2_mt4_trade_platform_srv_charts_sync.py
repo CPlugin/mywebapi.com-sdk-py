@@ -86,7 +86,7 @@ def sync_detailed(
 
      Force chart-history resync across the plugin set. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvChartsSync()`. Forces
+    Manager (live) call to the platform's `SrvChartsSync()`. Forces
     the MT4 server to walk every plugin's chart-history feed and bring
     the local cache in sync. Idempotent — running twice is a no-op
     against an already-synced state.
@@ -134,7 +134,7 @@ def sync(
 
      Force chart-history resync across the plugin set. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvChartsSync()`. Forces
+    Manager (live) call to the platform's `SrvChartsSync()`. Forces
     the MT4 server to walk every plugin's chart-history feed and bring
     the local cache in sync. Idempotent — running twice is a no-op
     against an already-synced state.
@@ -177,7 +177,7 @@ async def asyncio_detailed(
 
      Force chart-history resync across the plugin set. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvChartsSync()`. Forces
+    Manager (live) call to the platform's `SrvChartsSync()`. Forces
     the MT4 server to walk every plugin's chart-history feed and bring
     the local cache in sync. Idempotent — running twice is a no-op
     against an already-synced state.
@@ -225,7 +225,7 @@ async def asyncio(
 
      Force chart-history resync across the plugin set. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvChartsSync()`. Forces
+    Manager (live) call to the platform's `SrvChartsSync()`. Forces
     the MT4 server to walk every plugin's chart-history feed and bring
     the local cache in sync. Idempotent — running twice is a no-op
     against an already-synced state.

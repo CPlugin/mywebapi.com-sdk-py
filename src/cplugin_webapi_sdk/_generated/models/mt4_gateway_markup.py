@@ -23,7 +23,7 @@ T = TypeVar("T", bound="MT4GatewayMarkup")
 @_attrs_define
 class MT4GatewayMarkup:
     """ v2 DTO for a single MT4 gateway markup rule. Curated subset of the
-    wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+    the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
     Source describes the external symbol (or a wildcard/group mask)
     being mapped onto Symbol on this server, with per-side spread
     adjustments BidMarkup and AskMarkup expressed in pips.

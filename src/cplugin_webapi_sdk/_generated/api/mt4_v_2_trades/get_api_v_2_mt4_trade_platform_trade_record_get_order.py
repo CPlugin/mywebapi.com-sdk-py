@@ -79,7 +79,7 @@ def sync_detailed(
 
      Single trade record by order ticket from the pump cache.
 
-    Pump-cached lookup of one order. Wrapper-level failures (unknown
+    Pump-cached lookup of one order. Platform-level failures (unknown
     ticket, cache miss) surface in the envelope's ManagerAPICode /
     ErrorCode pair — clients must branch on isError before dereferencing
     payload.
@@ -126,7 +126,7 @@ def sync(
 
      Single trade record by order ticket from the pump cache.
 
-    Pump-cached lookup of one order. Wrapper-level failures (unknown
+    Pump-cached lookup of one order. Platform-level failures (unknown
     ticket, cache miss) surface in the envelope's ManagerAPICode /
     ErrorCode pair — clients must branch on isError before dereferencing
     payload.
@@ -168,7 +168,7 @@ async def asyncio_detailed(
 
      Single trade record by order ticket from the pump cache.
 
-    Pump-cached lookup of one order. Wrapper-level failures (unknown
+    Pump-cached lookup of one order. Platform-level failures (unknown
     ticket, cache miss) surface in the envelope's ManagerAPICode /
     ErrorCode pair — clients must branch on isError before dereferencing
     payload.
@@ -215,7 +215,7 @@ async def asyncio(
 
      Single trade record by order ticket from the pump cache.
 
-    Pump-cached lookup of one order. Wrapper-level failures (unknown
+    Pump-cached lookup of one order. Platform-level failures (unknown
     ticket, cache miss) surface in the envelope's ManagerAPICode /
     ErrorCode pair — clients must branch on isError before dereferencing
     payload.

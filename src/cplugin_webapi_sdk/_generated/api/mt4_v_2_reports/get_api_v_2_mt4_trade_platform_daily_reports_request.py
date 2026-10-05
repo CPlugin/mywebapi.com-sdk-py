@@ -121,7 +121,7 @@ def sync_detailed(
     local time zone, **not** UTC — clients should treat `Ctm` as
     \"broker day boundary\" and convert as appropriate.
 
-    Note: the wrapper warns that asking for a window where the manager
+    Note: the platform warns that asking for a window where the manager
     account lacks the `Automatic server reports` permission may
     cause MT4 to drop the manager connection. The API-side
     `ResourceAccess` check is an indirect guard; a broker that
@@ -190,7 +190,7 @@ def sync(
     local time zone, **not** UTC — clients should treat `Ctm` as
     \"broker day boundary\" and convert as appropriate.
 
-    Note: the wrapper warns that asking for a window where the manager
+    Note: the platform warns that asking for a window where the manager
     account lacks the `Automatic server reports` permission may
     cause MT4 to drop the manager connection. The API-side
     `ResourceAccess` check is an indirect guard; a broker that
@@ -254,7 +254,7 @@ async def asyncio_detailed(
     local time zone, **not** UTC — clients should treat `Ctm` as
     \"broker day boundary\" and convert as appropriate.
 
-    Note: the wrapper warns that asking for a window where the manager
+    Note: the platform warns that asking for a window where the manager
     account lacks the `Automatic server reports` permission may
     cause MT4 to drop the manager connection. The API-side
     `ResourceAccess` check is an indirect guard; a broker that
@@ -323,7 +323,7 @@ async def asyncio(
     local time zone, **not** UTC — clients should treat `Ctm` as
     \"broker day boundary\" and convert as appropriate.
 
-    Note: the wrapper warns that asking for a window where the manager
+    Note: the platform warns that asking for a window where the manager
     account lacks the `Automatic server reports` permission may
     cause MT4 to drop the manager connection. The API-side
     `ResourceAccess` check is an indirect guard; a broker that

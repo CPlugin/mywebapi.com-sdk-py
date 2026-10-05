@@ -33,26 +33,22 @@ class MT4TradeTransactionApiResponse:
         Attributes:
             data (MT4TradeTransaction | None | Unset): v2 DTO for a trade transaction — input AND output of
                 `TradeTransaction`.
-                The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+                The platform's `TradeTransInfo` is in/out: the caller fills the request
                 fields (operation type, command, symbol, volume, price), submits via POST,
                 and the server populates the resulting `Order` id (for Open) or
                 echoes the modified record (for Modify/Close).
 
                 Enum fields (`TradeTransactionType`, `TradeCommand`,
-                `TradeRequestFlags`) are exposed as plain strings. Clients submit
-                the enum name (e.g. `"Buy"`, `"PendingOpen"`); the response
-                echoes the names back. This dodges the leaf-enum nested-generic STJ
-                source-gen quirk documented in feedback-stj-enum-leaf-nested.
-                The valid names in the API reference are generated from the enums
-                (CPlugin.SaaSWebApps.WebAPI.Code.EnumStringSchemaFilter), so keep them out of the summaries.
+                `TradeRequestFlags`) are plain strings. Clients submit the name
+                (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+                back. Each field lists its valid names.
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4TradeTransaction | None | Unset = UNSET

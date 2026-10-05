@@ -31,19 +31,16 @@ class MT4BackupApiResponse:
     (activityId and optional paging). HTTP status is always 200.
 
         Attributes:
-            data (MT4Backup | None | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's ConBackup).
-                Curated subset — drops the WatchPassword field (slave-server credential)
-                for security. All other wrapper public fields are preserved, enums are
-                surfaced as enum types (V2JsonContext serializes them as strings via
-                UseStringEnumConverter=true).
+            data (MT4Backup | None | Unset): Backup configuration of the MT4 server. All fields except the slave-server
+                password, which is never
+                returned. Enumerations are returned as their names.
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4Backup | None | Unset = UNSET

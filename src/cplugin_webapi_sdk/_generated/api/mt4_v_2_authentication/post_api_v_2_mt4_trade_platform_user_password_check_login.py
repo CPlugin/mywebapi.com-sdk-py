@@ -98,7 +98,7 @@ def sync_detailed(
 
     POST body: the candidate password as a JSON string (e.g. `\"secret123\"`).
     Returns envelope with bool payload — `true` if MT4 server accepts
-    the password, `false` when wrapper returns InvalidLoginOrPassword
+    the password, `false` when platform returns InvalidLoginOrPassword
     (envelope marked as MT4Error with the underlying ResultCode in
     managerAPICode).
 
@@ -156,7 +156,7 @@ def sync(
 
     POST body: the candidate password as a JSON string (e.g. `\"secret123\"`).
     Returns envelope with bool payload — `true` if MT4 server accepts
-    the password, `false` when wrapper returns InvalidLoginOrPassword
+    the password, `false` when platform returns InvalidLoginOrPassword
     (envelope marked as MT4Error with the underlying ResultCode in
     managerAPICode).
 
@@ -209,7 +209,7 @@ async def asyncio_detailed(
 
     POST body: the candidate password as a JSON string (e.g. `\"secret123\"`).
     Returns envelope with bool payload — `true` if MT4 server accepts
-    the password, `false` when wrapper returns InvalidLoginOrPassword
+    the password, `false` when platform returns InvalidLoginOrPassword
     (envelope marked as MT4Error with the underlying ResultCode in
     managerAPICode).
 
@@ -267,7 +267,7 @@ async def asyncio(
 
     POST body: the candidate password as a JSON string (e.g. `\"secret123\"`).
     Returns envelope with bool payload — `true` if MT4 server accepts
-    the password, `false` when wrapper returns InvalidLoginOrPassword
+    the password, `false` when platform returns InvalidLoginOrPassword
     (envelope marked as MT4Error with the underlying ResultCode in
     managerAPICode).
 

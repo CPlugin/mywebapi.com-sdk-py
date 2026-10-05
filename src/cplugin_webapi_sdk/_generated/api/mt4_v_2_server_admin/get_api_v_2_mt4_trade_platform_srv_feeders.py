@@ -90,7 +90,7 @@ def sync_detailed(
 
      List of running data feeders on the MT4 server (admin-only read).
 
-    Manager (live) call to the wrapper's `SrvFeeders`. Returns the
+    Manager (live) call to the platform's `SrvFeeders`. Returns the
     current set of running feeder configurations as opposed to
     `CfgRequestFeeder` which returns the static configuration. The
     data shape is the same as `CfgRequestFeeder` — `MT4Feeder`
@@ -145,7 +145,7 @@ def sync(
 
      List of running data feeders on the MT4 server (admin-only read).
 
-    Manager (live) call to the wrapper's `SrvFeeders`. Returns the
+    Manager (live) call to the platform's `SrvFeeders`. Returns the
     current set of running feeder configurations as opposed to
     `CfgRequestFeeder` which returns the static configuration. The
     data shape is the same as `CfgRequestFeeder` — `MT4Feeder`
@@ -195,7 +195,7 @@ async def asyncio_detailed(
 
      List of running data feeders on the MT4 server (admin-only read).
 
-    Manager (live) call to the wrapper's `SrvFeeders`. Returns the
+    Manager (live) call to the platform's `SrvFeeders`. Returns the
     current set of running feeder configurations as opposed to
     `CfgRequestFeeder` which returns the static configuration. The
     data shape is the same as `CfgRequestFeeder` — `MT4Feeder`
@@ -250,7 +250,7 @@ async def asyncio(
 
      List of running data feeders on the MT4 server (admin-only read).
 
-    Manager (live) call to the wrapper's `SrvFeeders`. Returns the
+    Manager (live) call to the platform's `SrvFeeders`. Returns the
     current set of running feeder configurations as opposed to
     `CfgRequestFeeder` which returns the static configuration. The
     data shape is the same as `CfgRequestFeeder` — `MT4Feeder`

@@ -24,13 +24,12 @@ T = TypeVar("T", bound="ApiMeta")
 
 @_attrs_define
 class ApiMeta:
-    """ Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-    Paging is present only on paginated list responses; otherwise it is omitted —
-    the global JSON context policy serialises null fields, so we override that here
-    with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+    """ Response metadata. ActivityId identifies the request — quote it when you contact support.
+    Paging is present only on paginated list responses; otherwise it is omitted.
 
         Attributes:
-            activity_id (None | str | Unset): W3C trace id for correlating this response in logs and tracing (Seq/SigNoz).
+            activity_id (None | str | Unset): W3C trace id of the request. Quote it when you contact support: it finds this
+                exact call in the server logs.
             paging (None | PagingMeta | Unset): Pagination info; present only on list responses, omitted otherwise.
      """
 

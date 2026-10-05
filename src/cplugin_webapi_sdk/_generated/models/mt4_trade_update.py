@@ -31,7 +31,7 @@ class MT4TradeUpdate:
     <br>
     For typical stop-loss / take-profit edits prefer
     `POST TradeTransaction` with `tradeTransactionType=BrModify`
-    — that goes through the wrapper's audited path. This endpoint is the
+    — that goes through the platform's audited path. This endpoint is the
     low-level admin override for back-office corrections.
 
         Attributes:

@@ -27,16 +27,13 @@ T = TypeVar("T", bound="MT4Trade")
 
 @_attrs_define
 class MT4Trade:
-    """ v2 DTO mirroring the wrapper's TradeRecord. The set of fields is curated
+    """ v2 DTO mirroring the platform's TradeRecord. The set of fields is curated
     for typical client use-cases — order monitoring, P&L reporting, trade
     history reconciliation. Internal padding/reserved/gateway-internal/raw
-    underscore-prefixed fields are intentionally excluded. Span<>-typed
-    helpers (ConvRates, ConvReserv, APIData) are excluded because System.Text.Json
-    cannot serialize ref-struct-backed properties — those would force callers
-    onto a custom converter for marginal value.
+    underscore-prefixed fields are intentionally excluded, as are the raw
+    conversion-rate and API data blocks (ConvRates, ConvReserv, APIData).
     Enum members (TradeCommand, TradeRecordState, TradeRecordReason,
-    ActivationType) serialize as string names via V2JsonContext
-    UseStringEnumConverter — e.g. "Buy" rather than 0.
+    ActivationType) are returned as their names — e.g. "Buy" rather than 0.
 
         Attributes:
             order (int | Unset): Order ticket number

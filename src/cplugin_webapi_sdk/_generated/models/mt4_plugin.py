@@ -22,11 +22,11 @@ T = TypeVar("T", bound="MT4Plugin")
 
 @_attrs_define
 class MT4Plugin:
-    """ v2 DTO for MT4 plugin metadata (sidecar-only). Mirrors wrapper's
+    """ v2 DTO for MT4 plugin metadata (sidecar-only). Mirrors the platform's
     `ConPlugin` with its embedded `PluginInfo` flattened.
 
         Attributes:
-            file (None | str | Unset): Plugin DLL filename (max 256 chars on the wrapper side)
+            file (None | str | Unset): Plugin DLL filename (max 256 chars on the platform side)
             name (None | str | Unset): Plugin display name (from `PluginInfo.Name`)
             version (int | Unset): Plugin version (from `PluginInfo.Version`)
             copyright_ (None | str | Unset): Plugin copyright string

@@ -86,7 +86,7 @@ def sync_detailed(
 
      Read trade records buffered by a prior `TradesSyncStart` call.
 
-    Manager (live) call to the wrapper's `TradesSyncRead()`.
+    Manager (live) call to the platform's `TradesSyncRead()`.
     Must be preceded by `POST TradesSyncStart` on the main x64
     API. Same UnpackObject hazard — sidecar-only.
 
@@ -132,7 +132,7 @@ def sync(
 
      Read trade records buffered by a prior `TradesSyncStart` call.
 
-    Manager (live) call to the wrapper's `TradesSyncRead()`.
+    Manager (live) call to the platform's `TradesSyncRead()`.
     Must be preceded by `POST TradesSyncStart` on the main x64
     API. Same UnpackObject hazard — sidecar-only.
 
@@ -173,7 +173,7 @@ async def asyncio_detailed(
 
      Read trade records buffered by a prior `TradesSyncStart` call.
 
-    Manager (live) call to the wrapper's `TradesSyncRead()`.
+    Manager (live) call to the platform's `TradesSyncRead()`.
     Must be preceded by `POST TradesSyncStart` on the main x64
     API. Same UnpackObject hazard — sidecar-only.
 
@@ -219,7 +219,7 @@ async def asyncio(
 
      Read trade records buffered by a prior `TradesSyncStart` call.
 
-    Manager (live) call to the wrapper's `TradesSyncRead()`.
+    Manager (live) call to the platform's `TradesSyncRead()`.
     Must be preceded by `POST TradesSyncStart` on the main x64
     API. Same UnpackObject hazard — sidecar-only.
 

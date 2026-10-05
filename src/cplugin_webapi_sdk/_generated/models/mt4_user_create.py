@@ -23,22 +23,22 @@ T = TypeVar("T", bound="MT4UserCreate")
 @_attrs_define
 class MT4UserCreate:
     """ Type 1 mutator input — full create shape for `UserRecordNew`.
-    Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the explicit
+    Same writable fields as MT4UserUpdate minus the explicit
     `Balance`/`Credit` (those should come through dedicated balance
-    operations after the account exists). The wrapper allocates the next free
+    operations after the account exists). The platform allocates the next free
     login id when `Login = 0`; clients may also request a specific id by
     setting `Login > 0` (the server rejects collisions).
 
     Password / OTP / API-data fields are NOT on this DTO. After successful
     creation, set the initial password via a separate
-    `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+    `POST UserPasswordSet/{login}` call. The platform accepts the new
     account with empty password bytes; the password endpoint lifts it to
     usable credentials.
 
         Attributes:
             login (int | Unset): Optional preferred login. `0` = let server assign the next free
                 id. `> 0` = request this exact id (server rejects collisions
-                via wrapper error code).
+                via platform error code).
             group (None | str | Unset):
             name (None | str | Unset):
             external_id (None | str | Unset):

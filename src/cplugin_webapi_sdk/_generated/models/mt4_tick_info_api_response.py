@@ -33,18 +33,17 @@ class MT4TickInfoApiResponse:
         Attributes:
             data (MT4TickInfo | None | Unset): v2 DTO describing the last known tick for a trading symbol. Pump-cached
                 snapshot of bid/ask quote — for sub-second updates, prefer the SignalR
-                tick stream over polling this endpoint. The wrapper's `TickInfo`
+                tick stream over polling this endpoint. The platform's `TickInfo`
                 has no additional fields; the curated DTO is 1:1 on field semantics
-                with the wrapper, only the timestamp source field is renamed for
+                with the platform, only the timestamp source field is renamed for
                 readability (`Ctm` → `Time`).
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4TickInfo | None | Unset = UNSET

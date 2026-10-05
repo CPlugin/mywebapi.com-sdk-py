@@ -31,24 +31,20 @@ class MT4TradeApiResponse:
     (activityId and optional paging). HTTP status is always 200.
 
         Attributes:
-            data (MT4Trade | None | Unset): v2 DTO mirroring the wrapper's TradeRecord. The set of fields is curated
+            data (MT4Trade | None | Unset): v2 DTO mirroring the platform's TradeRecord. The set of fields is curated
                 for typical client use-cases — order monitoring, P&L reporting, trade
                 history reconciliation. Internal padding/reserved/gateway-internal/raw
-                underscore-prefixed fields are intentionally excluded. Span<>-typed
-                helpers (ConvRates, ConvReserv, APIData) are excluded because System.Text.Json
-                cannot serialize ref-struct-backed properties — those would force callers
-                onto a custom converter for marginal value.
+                underscore-prefixed fields are intentionally excluded, as are the raw
+                conversion-rate and API data blocks (ConvRates, ConvReserv, APIData).
                 Enum members (TradeCommand, TradeRecordState, TradeRecordReason,
-                ActivationType) serialize as string names via V2JsonContext
-                UseStringEnumConverter — e.g. "Buy" rather than 0.
+                ActivationType) are returned as their names — e.g. "Buy" rather than 0.
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4Trade | None | Unset = UNSET

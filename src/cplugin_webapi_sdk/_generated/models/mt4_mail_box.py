@@ -24,7 +24,7 @@ T = TypeVar("T", bound="MT4MailBox")
 @_attrs_define
 class MT4MailBox:
     """ v2 DTO for a single mailbox entry returned by `GET MailsRequest`
-    (sidecar-only). Curated subset of the wrapper's `MailBox` —
+    (sidecar-only). Curated subset of the platform's `MailBox` —
     keeps the consumer-facing fields, drops the internal
     `ReceiversCount` bookkeeping.
 

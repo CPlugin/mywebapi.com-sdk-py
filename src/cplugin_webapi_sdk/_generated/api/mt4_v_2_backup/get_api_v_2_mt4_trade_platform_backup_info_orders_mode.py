@@ -79,7 +79,7 @@ def sync_detailed(
 
      List backup order files available on the MT4 server for a given mode.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupInfoOrders(int mode)`. Order-side counterpart of
     `BackupInfoUsers` — same shape, different catalog.
     Read-only operation.
@@ -126,7 +126,7 @@ def sync(
 
      List backup order files available on the MT4 server for a given mode.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupInfoOrders(int mode)`. Order-side counterpart of
     `BackupInfoUsers` — same shape, different catalog.
     Read-only operation.
@@ -168,7 +168,7 @@ async def asyncio_detailed(
 
      List backup order files available on the MT4 server for a given mode.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupInfoOrders(int mode)`. Order-side counterpart of
     `BackupInfoUsers` — same shape, different catalog.
     Read-only operation.
@@ -215,7 +215,7 @@ async def asyncio(
 
      List backup order files available on the MT4 server for a given mode.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupInfoOrders(int mode)`. Order-side counterpart of
     `BackupInfoUsers` — same shape, different catalog.
     Read-only operation.

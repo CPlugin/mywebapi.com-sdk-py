@@ -115,7 +115,7 @@ def sync_detailed(
     the password (caller's RSA-protected secondary auth).
 
     <br>
-    This is a Type 1 mutator — full-replace semantics. The wrapper accepts
+    This is a Type 1 mutator — full-replace semantics. The platform accepts
     the new password directly without a read-modify-write loop. There is no
     Type 2 (\"set only this field, leave the rest alone\") variant of password
     change because the password is itself a single field — the read step
@@ -188,7 +188,7 @@ def sync(
     the password (caller's RSA-protected secondary auth).
 
     <br>
-    This is a Type 1 mutator — full-replace semantics. The wrapper accepts
+    This is a Type 1 mutator — full-replace semantics. The platform accepts
     the new password directly without a read-modify-write loop. There is no
     Type 2 (\"set only this field, leave the rest alone\") variant of password
     change because the password is itself a single field — the read step
@@ -256,7 +256,7 @@ async def asyncio_detailed(
     the password (caller's RSA-protected secondary auth).
 
     <br>
-    This is a Type 1 mutator — full-replace semantics. The wrapper accepts
+    This is a Type 1 mutator — full-replace semantics. The platform accepts
     the new password directly without a read-modify-write loop. There is no
     Type 2 (\"set only this field, leave the rest alone\") variant of password
     change because the password is itself a single field — the read step
@@ -329,7 +329,7 @@ async def asyncio(
     the password (caller's RSA-protected secondary auth).
 
     <br>
-    This is a Type 1 mutator — full-replace semantics. The wrapper accepts
+    This is a Type 1 mutator — full-replace semantics. The platform accepts
     the new password directly without a read-modify-write loop. There is no
     Type 2 (\"set only this field, leave the rest alone\") variant of password
     change because the password is itself a single field — the read step

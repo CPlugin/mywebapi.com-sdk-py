@@ -23,9 +23,9 @@ T = TypeVar("T", bound="MT4CommonUpdate")
 @_attrs_define
 class MT4CommonUpdate:
     """ v2 Type 1 mutator DTO for MT4 server-wide common settings. Curated
-    subset of the wrapper's `ConCommon` struct — exposes the fields
+    subset of the platform's `ConCommon` struct — exposes the fields
     most likely to need adjustment from a SaaS surface while leaving
-    runtime counters, derived state, and the wrapper's internal arrays
+    runtime counters, derived state, and the platform's internal arrays
     to the secret-preservation overlay on the controller side.
 
         Attributes:
@@ -36,7 +36,7 @@ class MT4CommonUpdate:
             time_zone_real (int | Unset): Real time-zone (no DST) offset from UTC, in hours.
             time_sync (None | str | Unset): NTP server hostname for clock sync.
             min_client (int | Unset): Minimum acceptable client build number.
-            min_api (int | Unset): Minimum acceptable Manager API build number.
+            min_api (int | Unset): Minimum client API build the trade server accepts.
             keep_emails (int | Unset): How long (days) to keep mailbox messages.
             keep_ticks (int | Unset): How long (days) to keep tick history.
             anti_flood (int | Unset): Anti-flood threshold (requests per second).

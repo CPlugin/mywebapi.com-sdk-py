@@ -77,7 +77,7 @@ def sync_detailed(
 
      Read the plugin configuration (Manager-live).
 
-    Manager (live) call to the wrapper's `CfgRequestPlugin()`.
+    Manager (live) call to the platform's `CfgRequestPlugin()`.
     Returns the full plugin set with their parameter arrays — the
     Manager-side equivalent of `PluginsGet` + per-plugin
     `PluginParamGet` in one round-trip.
@@ -121,7 +121,7 @@ def sync(
 
      Read the plugin configuration (Manager-live).
 
-    Manager (live) call to the wrapper's `CfgRequestPlugin()`.
+    Manager (live) call to the platform's `CfgRequestPlugin()`.
     Returns the full plugin set with their parameter arrays — the
     Manager-side equivalent of `PluginsGet` + per-plugin
     `PluginParamGet` in one round-trip.
@@ -160,7 +160,7 @@ async def asyncio_detailed(
 
      Read the plugin configuration (Manager-live).
 
-    Manager (live) call to the wrapper's `CfgRequestPlugin()`.
+    Manager (live) call to the platform's `CfgRequestPlugin()`.
     Returns the full plugin set with their parameter arrays — the
     Manager-side equivalent of `PluginsGet` + per-plugin
     `PluginParamGet` in one round-trip.
@@ -204,7 +204,7 @@ async def asyncio(
 
      Read the plugin configuration (Manager-live).
 
-    Manager (live) call to the wrapper's `CfgRequestPlugin()`.
+    Manager (live) call to the platform's `CfgRequestPlugin()`.
     Returns the full plugin set with their parameter arrays — the
     Manager-side equivalent of `PluginsGet` + per-plugin
     `PluginParamGet` in one round-trip.

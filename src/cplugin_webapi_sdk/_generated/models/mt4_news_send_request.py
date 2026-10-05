@@ -24,7 +24,7 @@ T = TypeVar("T", bound="MT4NewsSendRequest")
 class MT4NewsSendRequest:
     """ v2 request DTO for `POST NewsSend` — pushes a single news item
     to the MT4 server, which fans it out to all connected client
-    terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+    terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
 
         Attributes:
             topic (None | str | Unset): News headline (required, up to 256 chars)

@@ -23,16 +23,16 @@ T = TypeVar("T", bound="MT4DataServer")
 @_attrs_define
 class MT4DataServer:
     """ v2 DTO for a single MT4 access-server (DataServer) configuration entry.
-    Curated subset of the wrapper's ConDataServer — drops the internal
+    Curated subset of the platform's ConDataServer — drops the internal
     Reserved1/Reserved2 padding and the Next pointer chain. Loading and
     IpInternal are widened from uint to long for JSON-safe numeric
     serialization.
 
         Attributes:
             server (None | str | Unset): Server address as "host:port" or "host"
-            ip (int | Unset): Server IP (raw wrapper int — sign-preserved; high-bit IPs may serialize as negative)
+            ip (int | Unset): Server IP (raw platform int — sign-preserved; high-bit IPs may serialize as negative)
             description (None | str | Unset): Free-form server description
-            is_proxy (int | Unset): Whether the server can act as a proxy (0/1; raw wrapper int preserved)
+            is_proxy (int | Unset): Whether the server can act as a proxy (0/1; raw platform int preserved)
             priority (int | Unset): Connection priority: 0-7 base, 255 = idle
             loading (int | Unset): Reported server load (UINT_MAX = no information reported)
             ip_internal (int | Unset): Internal IP address (widened uint → long)

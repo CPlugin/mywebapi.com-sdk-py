@@ -92,7 +92,7 @@ def sync_detailed(
     omitted the response contains all users in one page (back-compat). Set `?limit=N` to bound page
     size; the response's `paging.nextCursor` drives the next call.
 
-    Wrapper-side this still fetches the full users dictionary — paging
+    Platform-side this still fetches the full users dictionary — paging
     reduces only the wire payload, not MT4 server load. Items are sorted
     by login ascending; pages are stable across concurrent inserts as
     long as the new login is greater than the previous page's last login.
@@ -144,7 +144,7 @@ def sync(
     omitted the response contains all users in one page (back-compat). Set `?limit=N` to bound page
     size; the response's `paging.nextCursor` drives the next call.
 
-    Wrapper-side this still fetches the full users dictionary — paging
+    Platform-side this still fetches the full users dictionary — paging
     reduces only the wire payload, not MT4 server load. Items are sorted
     by login ascending; pages are stable across concurrent inserts as
     long as the new login is greater than the previous page's last login.
@@ -191,7 +191,7 @@ async def asyncio_detailed(
     omitted the response contains all users in one page (back-compat). Set `?limit=N` to bound page
     size; the response's `paging.nextCursor` drives the next call.
 
-    Wrapper-side this still fetches the full users dictionary — paging
+    Platform-side this still fetches the full users dictionary — paging
     reduces only the wire payload, not MT4 server load. Items are sorted
     by login ascending; pages are stable across concurrent inserts as
     long as the new login is greater than the previous page's last login.
@@ -243,7 +243,7 @@ async def asyncio(
     omitted the response contains all users in one page (back-compat). Set `?limit=N` to bound page
     size; the response's `paging.nextCursor` drives the next call.
 
-    Wrapper-side this still fetches the full users dictionary — paging
+    Platform-side this still fetches the full users dictionary — paging
     reduces only the wire payload, not MT4 server load. Items are sorted
     by login ascending; pages are stable across concurrent inserts as
     long as the new login is greater than the previous page's last login.

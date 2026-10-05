@@ -25,7 +25,7 @@ T = TypeVar("T", bound="MT4SymbolInfo")
 @_attrs_define
 class MT4SymbolInfo:
     """ v2 DTO describing a single symbol's market data and metadata as held in
-    the wrapper's pumping cache. Curated subset of the wrapper's SymbolInfo:
+    the platform's pumping cache. Curated subset of the platform's SymbolInfo:
     covers what clients monitoring tick feeds / building a quote panel
     actually need — current Bid/Ask, session High/Low, tick precision
     (Digits, Point), current Spread (in points), last-tick direction, and

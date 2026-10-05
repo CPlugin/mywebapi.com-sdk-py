@@ -23,7 +23,7 @@ T = TypeVar("T", bound="MT4GroupMargin")
 @_attrs_define
 class MT4GroupMargin:
     """ v2 DTO for one of a group's "special securities" margin overrides. Curated
-    from `ConGroupMargin` — the wrapper's per-symbol swap/margin overrides
+    from `ConGroupMargin` — the platform's per-symbol swap/margin overrides
     stored as a 128-element array on `ConGroup.SecMargins`. The
     `Reserved` int[7] padding is dropped.
 

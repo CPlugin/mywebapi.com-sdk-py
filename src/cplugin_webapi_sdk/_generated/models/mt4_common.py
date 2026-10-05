@@ -23,7 +23,7 @@ T = TypeVar("T", bound="MT4Common")
 @_attrs_define
 class MT4Common:
     """ v2 DTO for MT4 server-wide common settings. Curated subset of the
-    wrapper's ConCommon struct — exposes fields useful to clients while
+    the platform's ConCommon struct — exposes fields useful to clients while
     shielding the v2 contract from MetaQuotes schema drift.
 
         Attributes:

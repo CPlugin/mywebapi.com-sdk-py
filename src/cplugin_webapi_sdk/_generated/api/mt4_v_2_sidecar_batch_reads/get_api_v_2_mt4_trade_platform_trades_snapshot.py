@@ -86,7 +86,7 @@ def sync_detailed(
 
      Atomic snapshot of all open/pending trades on the MT4 server.
 
-    Manager (live) call to the wrapper's `TradesSnapshot()`.
+    Manager (live) call to the platform's `TradesSnapshot()`.
     Same UnpackObject-loop hazard as the user batch reads. Sidecar-only.
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -131,7 +131,7 @@ def sync(
 
      Atomic snapshot of all open/pending trades on the MT4 server.
 
-    Manager (live) call to the wrapper's `TradesSnapshot()`.
+    Manager (live) call to the platform's `TradesSnapshot()`.
     Same UnpackObject-loop hazard as the user batch reads. Sidecar-only.
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -171,7 +171,7 @@ async def asyncio_detailed(
 
      Atomic snapshot of all open/pending trades on the MT4 server.
 
-    Manager (live) call to the wrapper's `TradesSnapshot()`.
+    Manager (live) call to the platform's `TradesSnapshot()`.
     Same UnpackObject-loop hazard as the user batch reads. Sidecar-only.
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -216,7 +216,7 @@ async def asyncio(
 
      Atomic snapshot of all open/pending trades on the MT4 server.
 
-    Manager (live) call to the wrapper's `TradesSnapshot()`.
+    Manager (live) call to the platform's `TradesSnapshot()`.
     Same UnpackObject-loop hazard as the user batch reads. Sidecar-only.
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the

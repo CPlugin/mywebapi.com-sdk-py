@@ -96,9 +96,9 @@ def sync_detailed(
 ) -> Response[BooleanApiResponse]:
     """ Update plugin parameter
 
-     Apply a plugin parameter update via the pump-side wrapper. Requires admin rights.
+     Apply a plugin parameter update via the pump-side platform. Requires admin rights.
 
-    Manager-live call to the wrapper's `PluginUpdate(ConPluginParam cpp)`.
+    Manager-live call to the platform's `PluginUpdate(ConPluginParam cpp)`.
     Body is `MT4PluginParam` (the same shape `PluginParamGet` returns).
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -110,13 +110,13 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -150,9 +150,9 @@ def sync(
 ) -> BooleanApiResponse | None:
     """ Update plugin parameter
 
-     Apply a plugin parameter update via the pump-side wrapper. Requires admin rights.
+     Apply a plugin parameter update via the pump-side platform. Requires admin rights.
 
-    Manager-live call to the wrapper's `PluginUpdate(ConPluginParam cpp)`.
+    Manager-live call to the platform's `PluginUpdate(ConPluginParam cpp)`.
     Body is `MT4PluginParam` (the same shape `PluginParamGet` returns).
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -164,13 +164,13 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -199,9 +199,9 @@ async def asyncio_detailed(
 ) -> Response[BooleanApiResponse]:
     """ Update plugin parameter
 
-     Apply a plugin parameter update via the pump-side wrapper. Requires admin rights.
+     Apply a plugin parameter update via the pump-side platform. Requires admin rights.
 
-    Manager-live call to the wrapper's `PluginUpdate(ConPluginParam cpp)`.
+    Manager-live call to the platform's `PluginUpdate(ConPluginParam cpp)`.
     Body is `MT4PluginParam` (the same shape `PluginParamGet` returns).
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -213,13 +213,13 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -253,9 +253,9 @@ async def asyncio(
 ) -> BooleanApiResponse | None:
     """ Update plugin parameter
 
-     Apply a plugin parameter update via the pump-side wrapper. Requires admin rights.
+     Apply a plugin parameter update via the pump-side platform. Requires admin rights.
 
-    Manager-live call to the wrapper's `PluginUpdate(ConPluginParam cpp)`.
+    Manager-live call to the platform's `PluginUpdate(ConPluginParam cpp)`.
     Body is `MT4PluginParam` (the same shape `PluginParamGet` returns).
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -267,13 +267,13 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
         body (MT4PluginParam | Unset): v2 DTO for an MT4 plugin together with its parameter set
             (sidecar-only).
-            Mirrors wrapper's `ConPluginParam`.
+            Mirrors the platform's `ConPluginParam`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

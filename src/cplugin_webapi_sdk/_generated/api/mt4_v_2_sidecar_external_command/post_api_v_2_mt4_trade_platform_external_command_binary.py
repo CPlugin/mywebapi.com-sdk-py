@@ -99,7 +99,7 @@ def sync_detailed(
      Pass arbitrary binary payload to the MT4 server's plugin pipeline.
 
     <br>
-    Manager (live) call via the wrapper's
+    Manager (live) call via the platform's
     `ExternalCommandCustom<byte[], byte[]>` overload with a
     pass-through byte-array marshaller. The first installed plugin
     that returns `RET_OK` wins; its response bytes become the
@@ -107,14 +107,14 @@ def sync_detailed(
     <br>
     Wire format: `byte[]` serializes as base64 in JSON. Clients
     agree with the plugin author on the binary layout.
-    <br><b>Why sidecar-only:</b> the wrapper's binary variants rely on
+    <br><b>Why sidecar-only:</b> the platform's binary variants rely on
     `Marshal.SizeOf` + native `ExternalCommand` dispatch.
     On `mtmanapi64.dll` the signed/unsigned marshalling
     diverges from `mtmanapi.dll` — same payload byte-for-byte
     can decode differently on x64. The x86 sidecar process loads the
     32-bit DLL where the marshalling is the original one.
     <br>
-    The wrapper's third `ExternalCommandCustom` overload that
+    The platform's third `ExternalCommandCustom` overload that
     takes an `ICustomSerializer` interface is genuinely not
     REST-translatable — it requires the caller to provide C#
     serialization logic in-process. Not exposed.
@@ -178,7 +178,7 @@ def sync(
      Pass arbitrary binary payload to the MT4 server's plugin pipeline.
 
     <br>
-    Manager (live) call via the wrapper's
+    Manager (live) call via the platform's
     `ExternalCommandCustom<byte[], byte[]>` overload with a
     pass-through byte-array marshaller. The first installed plugin
     that returns `RET_OK` wins; its response bytes become the
@@ -186,14 +186,14 @@ def sync(
     <br>
     Wire format: `byte[]` serializes as base64 in JSON. Clients
     agree with the plugin author on the binary layout.
-    <br><b>Why sidecar-only:</b> the wrapper's binary variants rely on
+    <br><b>Why sidecar-only:</b> the platform's binary variants rely on
     `Marshal.SizeOf` + native `ExternalCommand` dispatch.
     On `mtmanapi64.dll` the signed/unsigned marshalling
     diverges from `mtmanapi.dll` — same payload byte-for-byte
     can decode differently on x64. The x86 sidecar process loads the
     32-bit DLL where the marshalling is the original one.
     <br>
-    The wrapper's third `ExternalCommandCustom` overload that
+    The platform's third `ExternalCommandCustom` overload that
     takes an `ICustomSerializer` interface is genuinely not
     REST-translatable — it requires the caller to provide C#
     serialization logic in-process. Not exposed.
@@ -252,7 +252,7 @@ async def asyncio_detailed(
      Pass arbitrary binary payload to the MT4 server's plugin pipeline.
 
     <br>
-    Manager (live) call via the wrapper's
+    Manager (live) call via the platform's
     `ExternalCommandCustom<byte[], byte[]>` overload with a
     pass-through byte-array marshaller. The first installed plugin
     that returns `RET_OK` wins; its response bytes become the
@@ -260,14 +260,14 @@ async def asyncio_detailed(
     <br>
     Wire format: `byte[]` serializes as base64 in JSON. Clients
     agree with the plugin author on the binary layout.
-    <br><b>Why sidecar-only:</b> the wrapper's binary variants rely on
+    <br><b>Why sidecar-only:</b> the platform's binary variants rely on
     `Marshal.SizeOf` + native `ExternalCommand` dispatch.
     On `mtmanapi64.dll` the signed/unsigned marshalling
     diverges from `mtmanapi.dll` — same payload byte-for-byte
     can decode differently on x64. The x86 sidecar process loads the
     32-bit DLL where the marshalling is the original one.
     <br>
-    The wrapper's third `ExternalCommandCustom` overload that
+    The platform's third `ExternalCommandCustom` overload that
     takes an `ICustomSerializer` interface is genuinely not
     REST-translatable — it requires the caller to provide C#
     serialization logic in-process. Not exposed.
@@ -331,7 +331,7 @@ async def asyncio(
      Pass arbitrary binary payload to the MT4 server's plugin pipeline.
 
     <br>
-    Manager (live) call via the wrapper's
+    Manager (live) call via the platform's
     `ExternalCommandCustom<byte[], byte[]>` overload with a
     pass-through byte-array marshaller. The first installed plugin
     that returns `RET_OK` wins; its response bytes become the
@@ -339,14 +339,14 @@ async def asyncio(
     <br>
     Wire format: `byte[]` serializes as base64 in JSON. Clients
     agree with the plugin author on the binary layout.
-    <br><b>Why sidecar-only:</b> the wrapper's binary variants rely on
+    <br><b>Why sidecar-only:</b> the platform's binary variants rely on
     `Marshal.SizeOf` + native `ExternalCommand` dispatch.
     On `mtmanapi64.dll` the signed/unsigned marshalling
     diverges from `mtmanapi.dll` — same payload byte-for-byte
     can decode differently on x64. The x86 sidecar process loads the
     32-bit DLL where the marshalling is the original one.
     <br>
-    The wrapper's third `ExternalCommandCustom` overload that
+    The platform's third `ExternalCommandCustom` overload that
     takes an `ICustomSerializer` interface is genuinely not
     REST-translatable — it requires the caller to provide C#
     serialization logic in-process. Not exposed.

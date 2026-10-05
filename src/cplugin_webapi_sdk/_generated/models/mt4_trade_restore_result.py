@@ -22,7 +22,7 @@ T = TypeVar("T", bound="MT4TradeRestoreResult")
 @_attrs_define
 class MT4TradeRestoreResult:
     """ v2 DTO for a single per-order result of a backup-restore operation.
-    Mirrors the wrapper's `TradeRestoreResult` — order ticket plus
+    Mirrors the platform's `TradeRestoreResult` — order ticket plus
     a 1-byte status flag.
 
         Attributes:

@@ -2,6 +2,14 @@
 
 All notable changes to `mywebapi-sdk` (import name `cplugin_webapi_sdk`). The package follows [semver](https://semver.org/); while it is at `0.x`, a minor release may contain breaking changes.
 
+## 0.3.3
+
+Regenerated from the WebAPI v2 specification of 05.10.2026; no change to the API surface or to the generated models' fields and types.
+
+### Changed
+
+- The docstrings of the generated operations and models, and the vendored `spec/v2.json` header they come from, no longer name the server's internal library; the texts speak about the trading platform itself. Documentation only; no change in behaviour.
+
 ## 0.3.1
 
 Regenerated from the WebAPI v2 specification of 03.10.2026; no change to the API surface or to the generated models' fields and types.

@@ -86,7 +86,7 @@ def sync_detailed(
 
      Atomic snapshot of all registered users on the MT4 server.
 
-    Manager (live) call to the wrapper's `UsersSnapshot()`.
+    Manager (live) call to the platform's `UsersSnapshot()`.
     Iterates `UnpackObject<UserRecord>(i)` over the native
     array — on mtmanapi64.dll the per-struct cost combined with
     ASLR alignment triggers access violations after some iterations,
@@ -134,7 +134,7 @@ def sync(
 
      Atomic snapshot of all registered users on the MT4 server.
 
-    Manager (live) call to the wrapper's `UsersSnapshot()`.
+    Manager (live) call to the platform's `UsersSnapshot()`.
     Iterates `UnpackObject<UserRecord>(i)` over the native
     array — on mtmanapi64.dll the per-struct cost combined with
     ASLR alignment triggers access violations after some iterations,
@@ -177,7 +177,7 @@ async def asyncio_detailed(
 
      Atomic snapshot of all registered users on the MT4 server.
 
-    Manager (live) call to the wrapper's `UsersSnapshot()`.
+    Manager (live) call to the platform's `UsersSnapshot()`.
     Iterates `UnpackObject<UserRecord>(i)` over the native
     array — on mtmanapi64.dll the per-struct cost combined with
     ASLR alignment triggers access violations after some iterations,
@@ -225,7 +225,7 @@ async def asyncio(
 
      Atomic snapshot of all registered users on the MT4 server.
 
-    Manager (live) call to the wrapper's `UsersSnapshot()`.
+    Manager (live) call to the platform's `UsersSnapshot()`.
     Iterates `UnpackObject<UserRecord>(i)` over the native
     array — on mtmanapi64.dll the per-struct cost combined with
     ASLR alignment triggers access violations after some iterations,

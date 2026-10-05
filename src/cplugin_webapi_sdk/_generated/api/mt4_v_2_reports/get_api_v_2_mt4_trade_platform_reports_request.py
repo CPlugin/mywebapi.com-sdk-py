@@ -116,14 +116,14 @@ def sync_detailed(
     Server-side billing counts this as one Manager request regardless of
     batch size — prefer one batched call over a per-login loop.
 
-    The wrapper returns a dictionary keyed by order ticket; the v2 envelope
+    The platform returns a dictionary keyed by order ticket; the v2 envelope
     flattens it to a list. Missing logins are silently omitted (no error
     envelope). The optional name parameter selects a
     server-defined report template — leave it null/empty to use the
     default `\"RTL_report\"` template (closed trades within the window).
 
     Pump cache is NOT consulted — data reflects authoritative server
-    history. Note: the wrapper comment warns that asking for a window
+    history. Note: the platform comment warns that asking for a window
     where the manager account lacks the `Reports` permission may
     cause MT4 to drop the manager connection; this endpoint guards that
     indirectly via the API-side `ResourceAccess` check, but a broker
@@ -187,14 +187,14 @@ def sync(
     Server-side billing counts this as one Manager request regardless of
     batch size — prefer one batched call over a per-login loop.
 
-    The wrapper returns a dictionary keyed by order ticket; the v2 envelope
+    The platform returns a dictionary keyed by order ticket; the v2 envelope
     flattens it to a list. Missing logins are silently omitted (no error
     envelope). The optional name parameter selects a
     server-defined report template — leave it null/empty to use the
     default `\"RTL_report\"` template (closed trades within the window).
 
     Pump cache is NOT consulted — data reflects authoritative server
-    history. Note: the wrapper comment warns that asking for a window
+    history. Note: the platform comment warns that asking for a window
     where the manager account lacks the `Reports` permission may
     cause MT4 to drop the manager connection; this endpoint guards that
     indirectly via the API-side `ResourceAccess` check, but a broker
@@ -253,14 +253,14 @@ async def asyncio_detailed(
     Server-side billing counts this as one Manager request regardless of
     batch size — prefer one batched call over a per-login loop.
 
-    The wrapper returns a dictionary keyed by order ticket; the v2 envelope
+    The platform returns a dictionary keyed by order ticket; the v2 envelope
     flattens it to a list. Missing logins are silently omitted (no error
     envelope). The optional name parameter selects a
     server-defined report template — leave it null/empty to use the
     default `\"RTL_report\"` template (closed trades within the window).
 
     Pump cache is NOT consulted — data reflects authoritative server
-    history. Note: the wrapper comment warns that asking for a window
+    history. Note: the platform comment warns that asking for a window
     where the manager account lacks the `Reports` permission may
     cause MT4 to drop the manager connection; this endpoint guards that
     indirectly via the API-side `ResourceAccess` check, but a broker
@@ -324,14 +324,14 @@ async def asyncio(
     Server-side billing counts this as one Manager request regardless of
     batch size — prefer one batched call over a per-login loop.
 
-    The wrapper returns a dictionary keyed by order ticket; the v2 envelope
+    The platform returns a dictionary keyed by order ticket; the v2 envelope
     flattens it to a list. Missing logins are silently omitted (no error
     envelope). The optional name parameter selects a
     server-defined report template — leave it null/empty to use the
     default `\"RTL_report\"` template (closed trades within the window).
 
     Pump cache is NOT consulted — data reflects authoritative server
-    history. Note: the wrapper comment warns that asking for a window
+    history. Note: the platform comment warns that asking for a window
     where the manager account lacks the `Reports` permission may
     cause MT4 to drop the manager connection; this endpoint guards that
     indirectly via the API-side `ResourceAccess` check, but a broker

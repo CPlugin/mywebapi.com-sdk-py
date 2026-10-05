@@ -24,14 +24,14 @@ T = TypeVar("T", bound="MT4BackupInfo")
 @_attrs_define
 class MT4BackupInfo:
     """ v2 DTO for a single MT4 backup file descriptor. Curated subset of
-    the wrapper's `BackupInfo` — drops the 6-int reserved blob and
+    the platform's `BackupInfo` — drops the 6-int reserved blob and
     keeps only the three consumer-facing fields.
 
         Attributes:
             file (None | str | Unset): Backup file name (basename, server-relative)
             size (int | Unset): File size in bytes. Source field is a 32-bit signed int —
                 widened to `long` here to give the client JSON-safe
-                numeric range without re-shaping after a future wrapper fix.
+                numeric range without re-shaping after a future platform fix.
             time (datetime.datetime | Unset): File modification time (UTC, from MetaQuotes `__time32_t`)
      """
 

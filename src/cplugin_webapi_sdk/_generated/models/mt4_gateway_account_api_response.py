@@ -32,18 +32,17 @@ class MT4GatewayAccountApiResponse:
 
         Attributes:
             data (MT4GatewayAccount | None | Unset): v2 DTO for a single MT4 STP gateway-account configuration entry.
-                Curated subset of the wrapper's ConGatewayAccount — drops the
+                Curated subset of the platform's ConGatewayAccount — drops the
                 23-int Reserved block AND the `Password` field (STP MT4
                 credential to the external server). NotifyLogins is preserved
-                as int[8] because the wrapper exposes a fixed-size 8-slot array.
+                as int[8] because the platform exposes a fixed-size 8-slot array.
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4GatewayAccount | None | Unset = UNSET

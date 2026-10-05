@@ -82,7 +82,7 @@ def sync_detailed(
     a flat 168-element `AccessHours` array; each element is 0
     (denied) or 1 (allowed) for one hour of the week. Layout:
     `index = day*24 + hour`, day 0 = Sunday (MT4 convention).
-    Internal `DaysControl` and `Reserved` wrapper fields
+    Internal `DaysControl` and `Reserved` platform fields
     are not surfaced.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -129,7 +129,7 @@ def sync(
     a flat 168-element `AccessHours` array; each element is 0
     (denied) or 1 (allowed) for one hour of the week. Layout:
     `index = day*24 + hour`, day 0 = Sunday (MT4 convention).
-    Internal `DaysControl` and `Reserved` wrapper fields
+    Internal `DaysControl` and `Reserved` platform fields
     are not surfaced.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -171,7 +171,7 @@ async def asyncio_detailed(
     a flat 168-element `AccessHours` array; each element is 0
     (denied) or 1 (allowed) for one hour of the week. Layout:
     `index = day*24 + hour`, day 0 = Sunday (MT4 convention).
-    Internal `DaysControl` and `Reserved` wrapper fields
+    Internal `DaysControl` and `Reserved` platform fields
     are not surfaced.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -218,7 +218,7 @@ async def asyncio(
     a flat 168-element `AccessHours` array; each element is 0
     (denied) or 1 (allowed) for one hour of the week. Layout:
     `index = day*24 + hour`, day 0 = Sunday (MT4 convention).
-    Internal `DaysControl` and `Reserved` wrapper fields
+    Internal `DaysControl` and `Reserved` platform fields
     are not surfaced.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the

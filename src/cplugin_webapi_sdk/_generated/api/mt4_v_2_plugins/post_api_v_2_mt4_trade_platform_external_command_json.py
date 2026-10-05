@@ -89,12 +89,12 @@ def sync_detailed(
     (no field renaming, no schema enforcement) so the plugin author
     owns the over-the-wire contract on both ends.
 
-    The wrapper trio (`ExternalCommand<TIn,TOut>` for binary
+    The platform trio (`ExternalCommand<TIn,TOut>` for binary
     marshal, `ExternalCommandCustom<T>` for caller-supplied
     serializer) is intentionally not exposed in v2 — those variants
     require compile-time struct layouts shared between client and
     plugin, which a REST surface cannot guarantee. Plugin developers
-    who need binary transport should keep using the wrapper directly
+    who need binary transport should keep using the platform directly
     from the WebAPI process or build a dedicated binary endpoint.
 
     Idempotency-Key is strongly recommended — plugins may have side
@@ -151,12 +151,12 @@ def sync(
     (no field renaming, no schema enforcement) so the plugin author
     owns the over-the-wire contract on both ends.
 
-    The wrapper trio (`ExternalCommand<TIn,TOut>` for binary
+    The platform trio (`ExternalCommand<TIn,TOut>` for binary
     marshal, `ExternalCommandCustom<T>` for caller-supplied
     serializer) is intentionally not exposed in v2 — those variants
     require compile-time struct layouts shared between client and
     plugin, which a REST surface cannot guarantee. Plugin developers
-    who need binary transport should keep using the wrapper directly
+    who need binary transport should keep using the platform directly
     from the WebAPI process or build a dedicated binary endpoint.
 
     Idempotency-Key is strongly recommended — plugins may have side
@@ -208,12 +208,12 @@ async def asyncio_detailed(
     (no field renaming, no schema enforcement) so the plugin author
     owns the over-the-wire contract on both ends.
 
-    The wrapper trio (`ExternalCommand<TIn,TOut>` for binary
+    The platform trio (`ExternalCommand<TIn,TOut>` for binary
     marshal, `ExternalCommandCustom<T>` for caller-supplied
     serializer) is intentionally not exposed in v2 — those variants
     require compile-time struct layouts shared between client and
     plugin, which a REST surface cannot guarantee. Plugin developers
-    who need binary transport should keep using the wrapper directly
+    who need binary transport should keep using the platform directly
     from the WebAPI process or build a dedicated binary endpoint.
 
     Idempotency-Key is strongly recommended — plugins may have side
@@ -270,12 +270,12 @@ async def asyncio(
     (no field renaming, no schema enforcement) so the plugin author
     owns the over-the-wire contract on both ends.
 
-    The wrapper trio (`ExternalCommand<TIn,TOut>` for binary
+    The platform trio (`ExternalCommand<TIn,TOut>` for binary
     marshal, `ExternalCommandCustom<T>` for caller-supplied
     serializer) is intentionally not exposed in v2 — those variants
     require compile-time struct layouts shared between client and
     plugin, which a REST surface cannot guarantee. Plugin developers
-    who need binary transport should keep using the wrapper directly
+    who need binary transport should keep using the platform directly
     from the WebAPI process or build a dedicated binary endpoint.
 
     Idempotency-Key is strongly recommended — plugins may have side

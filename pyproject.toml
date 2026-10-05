@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 # * PyPI distribution name (https://pypi.org/project/mywebapi-sdk/), first released as
 #   0.3.0 on 30.09.2026; versions move together with the JS, .NET and PowerShell SDKs.
 name = "mywebapi-sdk"
-version = "0.3.1"
+version = "0.3.3"
 description = "Python SDK for CPlugin WebAPI: REST and WebSocket client that works with MetaTrader 4 and MetaTrader 5 servers - accounts, positions, deposits, trade history, groups and symbols for brokers. MetaTrader is a trademark of MetaQuotes Ltd.; not affiliated with MetaQuotes."
 readme = "README.md"
 requires-python = ">=3.10"

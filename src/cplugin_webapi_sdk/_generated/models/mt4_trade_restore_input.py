@@ -30,7 +30,7 @@ class MT4TradeRestoreInput:
         Attributes:
             order (int | Unset): Order ticket (the input array position is the binding key for the result)
             login (int | Unset): Owner's login
-            symbol (None | str | Unset): Symbol (e.g. `EURUSD`; max 12 ASCII chars on the wrapper side)
+            symbol (None | str | Unset): Symbol (e.g. `EURUSD`; max 12 ASCII chars on the platform side)
             trade_command (TradeCommand | Unset):
             volume (int | Unset): Volume in 1/100 lots (15 = 0.15 lot)
             open_price (float | Unset): Open price
@@ -44,7 +44,7 @@ class MT4TradeRestoreInput:
             close_time (datetime.datetime | Unset): Close time (UTC; default for still-open)
             expiration (datetime.datetime | Unset): Expiration time (UTC; default for non-pending orders)
             magic (int | Unset): Magic number (EA identifier)
-            comment (None | str | Unset): Free-form comment (max ~31 ASCII chars on the wrapper side)
+            comment (None | str | Unset): Free-form comment (max ~31 ASCII chars on the platform side)
      """
 
     order: int | Unset = UNSET
