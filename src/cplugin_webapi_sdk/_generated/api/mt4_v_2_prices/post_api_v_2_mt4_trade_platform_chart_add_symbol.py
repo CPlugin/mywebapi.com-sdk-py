@@ -115,7 +115,7 @@ def sync_detailed(
      Append OHLC bars to a symbol's chart history — POST destructive.
 
     Manager (live) call that appends the provided bars to the symbol's
-    historical chart for the given `period`. The wrapper looks up the
+    historical chart for the given `period`. The platform looks up the
     symbol's scale (`Multiply`/`Digits`) internally to encode the
     float OHLC values back into native integer prices.
 
@@ -186,7 +186,7 @@ def sync(
      Append OHLC bars to a symbol's chart history — POST destructive.
 
     Manager (live) call that appends the provided bars to the symbol's
-    historical chart for the given `period`. The wrapper looks up the
+    historical chart for the given `period`. The platform looks up the
     symbol's scale (`Multiply`/`Digits`) internally to encode the
     float OHLC values back into native integer prices.
 
@@ -252,7 +252,7 @@ async def asyncio_detailed(
      Append OHLC bars to a symbol's chart history — POST destructive.
 
     Manager (live) call that appends the provided bars to the symbol's
-    historical chart for the given `period`. The wrapper looks up the
+    historical chart for the given `period`. The platform looks up the
     symbol's scale (`Multiply`/`Digits`) internally to encode the
     float OHLC values back into native integer prices.
 
@@ -323,7 +323,7 @@ async def asyncio(
      Append OHLC bars to a symbol's chart history — POST destructive.
 
     Manager (live) call that appends the provided bars to the symbol's
-    historical chart for the given `period`. The wrapper looks up the
+    historical chart for the given `period`. The platform looks up the
     symbol's scale (`Multiply`/`Digits`) internally to encode the
     float OHLC values back into native integer prices.
 

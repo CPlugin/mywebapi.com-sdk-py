@@ -35,7 +35,7 @@ class MT4UserRestoreInput:
             leverage (int | Unset): Trading leverage (e.g. 100 for 1:100)
             balance (float | Unset): Account balance (broker base currency)
             credit (float | Unset): Account credit (e.g. promotional bonus)
-            enable (int | Unset): Account enabled flag (0 = disabled, 1 = enabled — raw wrapper int)
+            enable (int | Unset): Account enabled flag (0 = disabled, 1 = enabled — raw platform int)
             enable_read_only (int | Unset): Read-only flag (1 = cannot open positions)
      """
 

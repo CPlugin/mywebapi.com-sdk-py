@@ -23,7 +23,7 @@ T = TypeVar("T", bound="MT4MailSendRequest")
 @_attrs_define
 class MT4MailSendRequest:
     """ v2 request DTO for `POST MailSend` (sidecar-only). Sends an
-    email to one or more client logins. Wrapper signature:
+    email to one or more client logins. Platform signature:
     `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
 
         Attributes:

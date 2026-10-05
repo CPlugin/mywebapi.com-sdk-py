@@ -32,7 +32,7 @@ class MT4GroupApiResponse:
 
         Attributes:
             data (MT4Group | None | Unset): v2 DTO describing a trading group configuration. Curated subset of the
-                wrapper's `ConGroup` — exposes the configuration fields that callers
+                the platform's `ConGroup` — exposes the configuration fields that callers
                 need to inspect margin/leverage/rights settings.
 
                 Deliberately omitted from v2 (vs v1's full ConGroup shape):
@@ -42,7 +42,7 @@ class MT4GroupApiResponse:
                     is rarely useful without its credentials and exposes infra topology.
                   * `Templates` — server-side filesystem path, irrelevant to API
                     consumers and a minor information-disclosure risk.
-                  * `SecuritiesHash` — opaque byte[], wrapper bookkeeping.
+                  * `SecuritiesHash` — opaque byte[], platform bookkeeping.
                   * `Reserved`, `UnusedRights`, `SecGroups[32]`,
                     `SecMargins[128]` — reserved/internal arrays. The two nested
                     arrays (SecGroups, SecMargins) deserve their own dedicated v2
@@ -52,17 +52,15 @@ class MT4GroupApiResponse:
                     rarely consumed; can be added later once the use case is clear.
 
                 Enums (`OTPMode`, `MarginMode`, `NewsMode`,
-                `MarginControllingType`) serialize as strings because
-                CPlugin.SaaSWebApps.WebAPI.Code.Json.V2JsonContext enables `UseStringEnumConverter`;
+                `MarginControllingType`) are returned as their names;
                 `GroupRights` is a flags string, the names of the set bits.
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4Group | None | Unset = UNSET

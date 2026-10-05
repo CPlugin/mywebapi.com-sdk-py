@@ -100,7 +100,7 @@ def sync_detailed(
 
      Update an IP firewall rule at a given list position — Type 1 mutator.
 
-    Manager (live) call. The wrapper's `CfgUpdateAccess(cfg, pos)`
+    Manager (live) call. The platform's `CfgUpdateAccess(cfg, pos)`
     signature requires a position rather than a unique-key lookup (the
     rule table has no stable identifiers — multiple rules can carry the
     same range/action/comment). The v2 endpoint exposes the position as
@@ -113,7 +113,7 @@ def sync_detailed(
     `list[pos]`.</item><item>Write back with `CfgUpdateAccess(merged,
     pos)`.</item></list>`IpFrom`/`IpTo` in the body must fit in `[0, uint.MaxValue]`
     — out-of-range values are rejected with `errorCode=Validation`
-    before the Mapperly checked-narrowing cast can throw.
+    before anything is written.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -125,17 +125,17 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
 
@@ -175,7 +175,7 @@ def sync(
 
      Update an IP firewall rule at a given list position — Type 1 mutator.
 
-    Manager (live) call. The wrapper's `CfgUpdateAccess(cfg, pos)`
+    Manager (live) call. The platform's `CfgUpdateAccess(cfg, pos)`
     signature requires a position rather than a unique-key lookup (the
     rule table has no stable identifiers — multiple rules can carry the
     same range/action/comment). The v2 endpoint exposes the position as
@@ -188,7 +188,7 @@ def sync(
     `list[pos]`.</item><item>Write back with `CfgUpdateAccess(merged,
     pos)`.</item></list>`IpFrom`/`IpTo` in the body must fit in `[0, uint.MaxValue]`
     — out-of-range values are rejected with `errorCode=Validation`
-    before the Mapperly checked-narrowing cast can throw.
+    before anything is written.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -200,17 +200,17 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
 
@@ -245,7 +245,7 @@ async def asyncio_detailed(
 
      Update an IP firewall rule at a given list position — Type 1 mutator.
 
-    Manager (live) call. The wrapper's `CfgUpdateAccess(cfg, pos)`
+    Manager (live) call. The platform's `CfgUpdateAccess(cfg, pos)`
     signature requires a position rather than a unique-key lookup (the
     rule table has no stable identifiers — multiple rules can carry the
     same range/action/comment). The v2 endpoint exposes the position as
@@ -258,7 +258,7 @@ async def asyncio_detailed(
     `list[pos]`.</item><item>Write back with `CfgUpdateAccess(merged,
     pos)`.</item></list>`IpFrom`/`IpTo` in the body must fit in `[0, uint.MaxValue]`
     — out-of-range values are rejected with `errorCode=Validation`
-    before the Mapperly checked-narrowing cast can throw.
+    before anything is written.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -270,17 +270,17 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
 
@@ -320,7 +320,7 @@ async def asyncio(
 
      Update an IP firewall rule at a given list position — Type 1 mutator.
 
-    Manager (live) call. The wrapper's `CfgUpdateAccess(cfg, pos)`
+    Manager (live) call. The platform's `CfgUpdateAccess(cfg, pos)`
     signature requires a position rather than a unique-key lookup (the
     rule table has no stable identifiers — multiple rules can carry the
     same range/action/comment). The v2 endpoint exposes the position as
@@ -333,7 +333,7 @@ async def asyncio(
     `list[pos]`.</item><item>Write back with `CfgUpdateAccess(merged,
     pos)`.</item></list>`IpFrom`/`IpTo` in the body must fit in `[0, uint.MaxValue]`
     — out-of-range values are rejected with `errorCode=Validation`
-    before the Mapperly checked-narrowing cast can throw.
+    before anything is written.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -345,17 +345,17 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
         body (MT4Access | Unset): v2 DTO for a single MT4 firewall (access) rule. Curated subset
             of
-            the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+            the platform's ConAccess struct — drops the 17-int Reserved padding.
             IpFrom/IpTo are widened from uint to long so the JSON-serialized
             numeric value fits inside JS Number safely (no precision loss).
 

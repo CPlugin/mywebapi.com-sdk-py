@@ -77,9 +77,9 @@ def sync_detailed(
 
      MT4 server backup configuration (full + archive + export schedules, watchdog HA pair settings).
 
-    Manager-live read (round-trip). Returns the wrapper's ConBackup as
+    Manager-live read (round-trip). Returns the platform's ConBackup as
     MT4Backup DTO — full/archive/export schedule enums and paths, last
-    completion timestamps, and HA-watchdog fields. The wrapper's
+    completion timestamps, and HA-watchdog fields. The platform's
     `WatchPassword` (slave-server credential) is intentionally
     dropped from the v2 contract for security and is NOT present in
     the response payload.
@@ -123,9 +123,9 @@ def sync(
 
      MT4 server backup configuration (full + archive + export schedules, watchdog HA pair settings).
 
-    Manager-live read (round-trip). Returns the wrapper's ConBackup as
+    Manager-live read (round-trip). Returns the platform's ConBackup as
     MT4Backup DTO — full/archive/export schedule enums and paths, last
-    completion timestamps, and HA-watchdog fields. The wrapper's
+    completion timestamps, and HA-watchdog fields. The platform's
     `WatchPassword` (slave-server credential) is intentionally
     dropped from the v2 contract for security and is NOT present in
     the response payload.
@@ -164,9 +164,9 @@ async def asyncio_detailed(
 
      MT4 server backup configuration (full + archive + export schedules, watchdog HA pair settings).
 
-    Manager-live read (round-trip). Returns the wrapper's ConBackup as
+    Manager-live read (round-trip). Returns the platform's ConBackup as
     MT4Backup DTO — full/archive/export schedule enums and paths, last
-    completion timestamps, and HA-watchdog fields. The wrapper's
+    completion timestamps, and HA-watchdog fields. The platform's
     `WatchPassword` (slave-server credential) is intentionally
     dropped from the v2 contract for security and is NOT present in
     the response payload.
@@ -210,9 +210,9 @@ async def asyncio(
 
      MT4 server backup configuration (full + archive + export schedules, watchdog HA pair settings).
 
-    Manager-live read (round-trip). Returns the wrapper's ConBackup as
+    Manager-live read (round-trip). Returns the platform's ConBackup as
     MT4Backup DTO — full/archive/export schedule enums and paths, last
-    completion timestamps, and HA-watchdog fields. The wrapper's
+    completion timestamps, and HA-watchdog fields. The platform's
     `WatchPassword` (slave-server credential) is intentionally
     dropped from the v2 contract for security and is NOT present in
     the response payload.

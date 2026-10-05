@@ -75,7 +75,7 @@ def sync_detailed(
 ) -> Response[MT4CommonApiResponse]:
     """ Get common config (live)
 
-     Server-wide MT4 common configuration via the wrapper's `CfgRequestCommon` Manager-live read.
+     Server-wide MT4 common configuration via the platform's `CfgRequestCommon` Manager-live read.
 
     Manager-live read (round-trip to MT4 server) — sibling of
     `ManagerCommon`. Returns the same curated `MT4Common` DTO
@@ -120,7 +120,7 @@ def sync(
 ) -> MT4CommonApiResponse | None:
     """ Get common config (live)
 
-     Server-wide MT4 common configuration via the wrapper's `CfgRequestCommon` Manager-live read.
+     Server-wide MT4 common configuration via the platform's `CfgRequestCommon` Manager-live read.
 
     Manager-live read (round-trip to MT4 server) — sibling of
     `ManagerCommon`. Returns the same curated `MT4Common` DTO
@@ -160,7 +160,7 @@ async def asyncio_detailed(
 ) -> Response[MT4CommonApiResponse]:
     """ Get common config (live)
 
-     Server-wide MT4 common configuration via the wrapper's `CfgRequestCommon` Manager-live read.
+     Server-wide MT4 common configuration via the platform's `CfgRequestCommon` Manager-live read.
 
     Manager-live read (round-trip to MT4 server) — sibling of
     `ManagerCommon`. Returns the same curated `MT4Common` DTO
@@ -205,7 +205,7 @@ async def asyncio(
 ) -> MT4CommonApiResponse | None:
     """ Get common config (live)
 
-     Server-wide MT4 common configuration via the wrapper's `CfgRequestCommon` Manager-live read.
+     Server-wide MT4 common configuration via the platform's `CfgRequestCommon` Manager-live read.
 
     Manager-live read (round-trip to MT4 server) — sibling of
     `ManagerCommon`. Returns the same curated `MT4Common` DTO

@@ -23,11 +23,11 @@ T = TypeVar("T", bound="MT4Online")
 @_attrs_define
 class MT4Online:
     """ v2 DTO describing an online user session entry. Curated subset of the
-    wrapper's OnlineRecord — exposes the login id and group name, which is
+    the platform's OnlineRecord — exposes the login id and group name, which is
     what callers actually need to know who is connected. IP, Counter and
     internal Reserved fields are intentionally omitted: IP is potentially
     PII and not always meaningful (NAT, proxies), Counter/Reserved are
-    wrapper bookkeeping.
+    platform bookkeeping.
 
         Attributes:
             login (int | Unset): Trading account number (login)

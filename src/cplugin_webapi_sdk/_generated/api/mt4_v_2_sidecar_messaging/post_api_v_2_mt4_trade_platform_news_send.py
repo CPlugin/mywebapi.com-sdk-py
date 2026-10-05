@@ -98,7 +98,7 @@ def sync_detailed(
 
      Push a news item to all connected client terminals. Requires 'Send news' admin right.
 
-    Manager (live) call to the wrapper's `NewsSend(NewsTopic news)`.
+    Manager (live) call to the platform's `NewsSend(NewsTopic news)`.
     Sidecar-only because `mtmanapi64.dll` throws
     `PlatformNotSupportedException` on the body setter.
 
@@ -112,15 +112,15 @@ def sync_detailed(
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -156,7 +156,7 @@ def sync(
 
      Push a news item to all connected client terminals. Requires 'Send news' admin right.
 
-    Manager (live) call to the wrapper's `NewsSend(NewsTopic news)`.
+    Manager (live) call to the platform's `NewsSend(NewsTopic news)`.
     Sidecar-only because `mtmanapi64.dll` throws
     `PlatformNotSupportedException` on the body setter.
 
@@ -170,15 +170,15 @@ def sync(
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -209,7 +209,7 @@ async def asyncio_detailed(
 
      Push a news item to all connected client terminals. Requires 'Send news' admin right.
 
-    Manager (live) call to the wrapper's `NewsSend(NewsTopic news)`.
+    Manager (live) call to the platform's `NewsSend(NewsTopic news)`.
     Sidecar-only because `mtmanapi64.dll` throws
     `PlatformNotSupportedException` on the body setter.
 
@@ -223,15 +223,15 @@ async def asyncio_detailed(
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -267,7 +267,7 @@ async def asyncio(
 
      Push a news item to all connected client terminals. Requires 'Send news' admin right.
 
-    Manager (live) call to the wrapper's `NewsSend(NewsTopic news)`.
+    Manager (live) call to the platform's `NewsSend(NewsTopic news)`.
     Sidecar-only because `mtmanapi64.dll` throws
     `PlatformNotSupportedException` on the body setter.
 
@@ -281,15 +281,15 @@ async def asyncio(
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
         body (MT4NewsSendRequest | Unset): v2 request DTO for `POST NewsSend` — pushes a single
             news item
             to the MT4 server, which fans it out to all connected client
-            terminals. Wrapper signature: `ResultCode NewsSend(NewsTopic news)`.
+            terminals. Platform signature: `ResultCode NewsSend(NewsTopic news)`.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

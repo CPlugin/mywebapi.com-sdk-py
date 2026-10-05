@@ -23,7 +23,7 @@ T = TypeVar("T", bound="MT4PluginConfig")
 @_attrs_define
 class MT4PluginConfig:
     """ v2 DTO for a single plugin parameter pair (sidecar-only).
-    Mirrors wrapper's `PluginCfg`.
+    Mirrors the platform's `PluginCfg`.
 
         Attributes:
             name (None | str | Unset): Parameter name

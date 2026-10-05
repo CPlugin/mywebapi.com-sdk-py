@@ -101,7 +101,7 @@ def sync_detailed(
     Manager (live) call. Gateway rules are paged on the read side (see
     `CfgRequestGatewayRule`); the v2 contract identifies a rule
     by its public `Name`. Same read-modify-write flow; the two
-    wrapper reserved padding blocks (`RequestRreserved` 32-int,
+    platform reserved padding blocks (`RequestRreserved` 32-int,
     `ExeReserved` 25-int) are preserved server-side.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -113,7 +113,7 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -122,7 +122,7 @@ def sync_detailed(
             expressed in pips and lots.
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -131,7 +131,7 @@ def sync_detailed(
             expressed in pips and lots.
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -176,7 +176,7 @@ def sync(
     Manager (live) call. Gateway rules are paged on the read side (see
     `CfgRequestGatewayRule`); the v2 contract identifies a rule
     by its public `Name`. Same read-modify-write flow; the two
-    wrapper reserved padding blocks (`RequestRreserved` 32-int,
+    platform reserved padding blocks (`RequestRreserved` 32-int,
     `ExeReserved` 25-int) are preserved server-side.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -188,7 +188,7 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -197,7 +197,7 @@ def sync(
             expressed in pips and lots.
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -206,7 +206,7 @@ def sync(
             expressed in pips and lots.
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -246,7 +246,7 @@ async def asyncio_detailed(
     Manager (live) call. Gateway rules are paged on the read side (see
     `CfgRequestGatewayRule`); the v2 contract identifies a rule
     by its public `Name`. Same read-modify-write flow; the two
-    wrapper reserved padding blocks (`RequestRreserved` 32-int,
+    platform reserved padding blocks (`RequestRreserved` 32-int,
     `ExeReserved` 25-int) are preserved server-side.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -258,7 +258,7 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -267,7 +267,7 @@ async def asyncio_detailed(
             expressed in pips and lots.
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -276,7 +276,7 @@ async def asyncio_detailed(
             expressed in pips and lots.
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -321,7 +321,7 @@ async def asyncio(
     Manager (live) call. Gateway rules are paged on the read side (see
     `CfgRequestGatewayRule`); the v2 contract identifies a rule
     by its public `Name`. Same read-modify-write flow; the two
-    wrapper reserved padding blocks (`RequestRreserved` 32-int,
+    platform reserved padding blocks (`RequestRreserved` 32-int,
     `ExeReserved` 25-int) are preserved server-side.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -333,7 +333,7 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -342,7 +342,7 @@ async def asyncio(
             expressed in pips and lots.
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -351,7 +351,7 @@ async def asyncio(
             expressed in pips and lots.
         body (MT4GatewayRule | Unset): v2 DTO for a single MT4 gateway-rule entry (STP execution
             routing
-            policy). Curated subset of the wrapper's ConGatewayRule — drops the
+            policy). Curated subset of the platform's ConGatewayRule — drops the
             internal RequestRreserved/ExeReserved padding blocks.
             <br>
             Each rule selects orders by RequestSymbol and RequestGroup (each can

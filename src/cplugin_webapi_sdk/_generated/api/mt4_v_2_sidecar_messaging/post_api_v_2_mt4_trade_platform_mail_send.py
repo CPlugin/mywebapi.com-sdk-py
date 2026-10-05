@@ -94,14 +94,13 @@ def sync_detailed(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
-    r""" Send mail to accounts
+    """ Send mail to accounts
 
      Send an email to one or more client logins. Requires 'Email' admin right.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `MailSend(MailBox mail, ICollection<int> logins)`.
-    The wrapper itself refuses to run on x64 (
-    `throw new WrapperException(\"MailSend cannot be called in x64 environment\")`),
+    The call is not available in the 64-bit build,
     so this endpoint exists only in the sidecar build.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -113,15 +112,15 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
 
     Raises:
@@ -154,14 +153,13 @@ def sync(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
-    r""" Send mail to accounts
+    """ Send mail to accounts
 
      Send an email to one or more client logins. Requires 'Email' admin right.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `MailSend(MailBox mail, ICollection<int> logins)`.
-    The wrapper itself refuses to run on x64 (
-    `throw new WrapperException(\"MailSend cannot be called in x64 environment\")`),
+    The call is not available in the 64-bit build,
     so this endpoint exists only in the sidecar build.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -173,15 +171,15 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
 
     Raises:
@@ -209,14 +207,13 @@ async def asyncio_detailed(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
-    r""" Send mail to accounts
+    """ Send mail to accounts
 
      Send an email to one or more client logins. Requires 'Email' admin right.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `MailSend(MailBox mail, ICollection<int> logins)`.
-    The wrapper itself refuses to run on x64 (
-    `throw new WrapperException(\"MailSend cannot be called in x64 environment\")`),
+    The call is not available in the 64-bit build,
     so this endpoint exists only in the sidecar build.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -228,15 +225,15 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
 
     Raises:
@@ -269,14 +266,13 @@ async def asyncio(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
-    r""" Send mail to accounts
+    """ Send mail to accounts
 
      Send an email to one or more client logins. Requires 'Email' admin right.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `MailSend(MailBox mail, ICollection<int> logins)`.
-    The wrapper itself refuses to run on x64 (
-    `throw new WrapperException(\"MailSend cannot be called in x64 environment\")`),
+    The call is not available in the 64-bit build,
     so this endpoint exists only in the sidecar build.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -288,15 +284,15 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
         body (MT4MailSendRequest | Unset): v2 request DTO for `POST MailSend` (sidecar-only).
             Sends an
-            email to one or more client logins. Wrapper signature:
+            email to one or more client logins. Platform signature:
             `ResultCode MailSend(MailBox mail, ICollection<int> logins)`.
 
     Raises:

@@ -27,7 +27,7 @@ T = TypeVar("T", bound="MT4GroupUpdate")
 @_attrs_define
 class MT4GroupUpdate:
     """ Type 1 mutator input — full-replace shape for `GroupRecordUpdate`.
-    Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the immutable
+    Same field set as the read DTO MT4Group minus the immutable
     group name (path parameter) and the derived `SecMarginsTotal`
     (computed from SecMargins length).
 
@@ -36,7 +36,7 @@ class MT4GroupUpdate:
       * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
         never client-controlled.
       * `Templates` — server-side filesystem path.
-      * `SecuritiesHash` — opaque wrapper bookkeeping.
+      * `SecuritiesHash` — opaque platform bookkeeping.
       * `Reserved`, `UnusedRights` — reserved arrays.
       * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
         as dedicated v2 endpoints.

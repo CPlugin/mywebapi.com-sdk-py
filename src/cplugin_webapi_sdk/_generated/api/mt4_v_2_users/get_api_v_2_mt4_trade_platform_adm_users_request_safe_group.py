@@ -81,12 +81,12 @@ def sync_detailed(
     server-side.
 
     Manager (live) call. Returns the curated `MT4User` projection
-    for every account in the specified group. The wrapper's \"Safe\" suffix
+    for every account in the specified group. The platform's \"Safe\" suffix
     indicates it runs through `RunSafe` with the `Admin` rights
     guard — a manager lacking that permission receives a sensible error
     rather than a connection drop.
 
-    Comma-separated group lists are accepted by the wrapper (it strips
+    Comma-separated group lists are accepted by the platform (it strips
     commas and trims whitespace internally); the simplest call pattern
     is a single group name. Large groups may return substantial
     payloads — pair with `Idempotency-Key` on retry.
@@ -135,12 +135,12 @@ def sync(
     server-side.
 
     Manager (live) call. Returns the curated `MT4User` projection
-    for every account in the specified group. The wrapper's \"Safe\" suffix
+    for every account in the specified group. The platform's \"Safe\" suffix
     indicates it runs through `RunSafe` with the `Admin` rights
     guard — a manager lacking that permission receives a sensible error
     rather than a connection drop.
 
-    Comma-separated group lists are accepted by the wrapper (it strips
+    Comma-separated group lists are accepted by the platform (it strips
     commas and trims whitespace internally); the simplest call pattern
     is a single group name. Large groups may return substantial
     payloads — pair with `Idempotency-Key` on retry.
@@ -184,12 +184,12 @@ async def asyncio_detailed(
     server-side.
 
     Manager (live) call. Returns the curated `MT4User` projection
-    for every account in the specified group. The wrapper's \"Safe\" suffix
+    for every account in the specified group. The platform's \"Safe\" suffix
     indicates it runs through `RunSafe` with the `Admin` rights
     guard — a manager lacking that permission receives a sensible error
     rather than a connection drop.
 
-    Comma-separated group lists are accepted by the wrapper (it strips
+    Comma-separated group lists are accepted by the platform (it strips
     commas and trims whitespace internally); the simplest call pattern
     is a single group name. Large groups may return substantial
     payloads — pair with `Idempotency-Key` on retry.
@@ -238,12 +238,12 @@ async def asyncio(
     server-side.
 
     Manager (live) call. Returns the curated `MT4User` projection
-    for every account in the specified group. The wrapper's \"Safe\" suffix
+    for every account in the specified group. The platform's \"Safe\" suffix
     indicates it runs through `RunSafe` with the `Admin` rights
     guard — a manager lacking that permission receives a sensible error
     rather than a connection drop.
 
-    Comma-separated group lists are accepted by the wrapper (it strips
+    Comma-separated group lists are accepted by the platform (it strips
     commas and trims whitespace internally); the simplest call pattern
     is a single group name. Large groups may return substantial
     payloads — pair with `Idempotency-Key` on retry.

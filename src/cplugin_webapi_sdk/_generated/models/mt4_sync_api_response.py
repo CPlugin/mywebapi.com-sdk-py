@@ -32,17 +32,16 @@ class MT4SyncApiResponse:
 
         Attributes:
             data (MT4Sync | None | Unset): v2 DTO for a single MT4 chart-history synchronization rule. Curated
-                subset of the wrapper's ConSync — drops the Reserved padding, the
+                subset of the platform's ConSync — drops the Reserved padding, the
                 Next pointer chain, the unused port slot, AND the `Password`
                 field (replication credentials to the upstream sync source).
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4Sync | None | Unset = UNSET

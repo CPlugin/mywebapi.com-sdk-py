@@ -24,14 +24,14 @@ T = TypeVar("T", bound="MT4Sync")
 @_attrs_define
 class MT4Sync:
     """ v2 DTO for a single MT4 chart-history synchronization rule. Curated
-    subset of the wrapper's ConSync — drops the Reserved padding, the
+    subset of the platform's ConSync — drops the Reserved padding, the
     Next pointer chain, the unused port slot, AND the `Password`
     field (replication credentials to the upstream sync source).
 
         Attributes:
             server (None | str | Unset): Upstream sync server address (used as cursor key)
             login (None | str | Unset): Replication login (upstream credential identifier)
-            enable (int | Unset): Enable flag (0 = disabled, 1 = enabled — raw wrapper int)
+            enable (int | Unset): Enable flag (0 = disabled, 1 = enabled — raw platform int)
             mode (SynchronizationMode | Unset):
             from_ (int | Unset): Sync range start (negative = whole chart)
             to (int | Unset): Sync range end (negative = whole chart)

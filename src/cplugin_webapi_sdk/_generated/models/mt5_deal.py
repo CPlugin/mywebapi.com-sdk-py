@@ -70,23 +70,23 @@ class MT5Deal:
             reason (DealReason | None | Unset): DealReason
             gateway (None | str | Unset): source gateway name
             price_gateway (float | None | Unset): deal price on gateway
-            market_bid (float | None | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
-                value.</strong>
+            market_bid (float | None | Unset): <strong>Read-only: the trade server does not let this value be
+                changed.</strong>
                 <br />
                 <br />
                             Get the market Bid price as at the time of deal execution by the server
-            market_ask (float | None | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
-                value.</strong>
+            market_ask (float | None | Unset): <strong>Read-only: the trade server does not let this value be
+                changed.</strong>
                 <br />
                 <br />
                             Get the market Ask price as at the time of deal execution by the server
-            market_last (float | None | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
-                value.</strong>
+            market_last (float | None | Unset): <strong>Read-only: the trade server does not let this value be
+                changed.</strong>
                 <br />
                 <br />
                             Get the market Last price as at the time of deal execution by the server
-            modification_flags (None | str | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
-                value.</strong>
+            modification_flags (None | str | Unset): <strong>Read-only: the trade server does not let this value be
+                changed.</strong>
                 <br />
                 <br />
                             modification flags

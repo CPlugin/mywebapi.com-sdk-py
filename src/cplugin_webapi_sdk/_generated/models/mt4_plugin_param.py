@@ -26,7 +26,7 @@ T = TypeVar("T", bound="MT4PluginParam")
 @_attrs_define
 class MT4PluginParam:
     """ v2 DTO for an MT4 plugin together with its parameter set (sidecar-only).
-    Mirrors wrapper's `ConPluginParam`.
+    Mirrors the platform's `ConPluginParam`.
 
         Attributes:
             plugin (MT4Plugin | None | Unset): Plugin metadata

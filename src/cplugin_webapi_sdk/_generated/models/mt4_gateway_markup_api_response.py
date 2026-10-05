@@ -32,7 +32,7 @@ class MT4GatewayMarkupApiResponse:
 
         Attributes:
             data (MT4GatewayMarkup | None | Unset): v2 DTO for a single MT4 gateway markup rule. Curated subset of the
-                wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+                the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
                 Source describes the external symbol (or a wildcard/group mask)
                 being mapped onto Symbol on this server, with per-side spread
                 adjustments BidMarkup and AskMarkup expressed in pips.
@@ -40,10 +40,9 @@ class MT4GatewayMarkupApiResponse:
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4GatewayMarkup | None | Unset = UNSET

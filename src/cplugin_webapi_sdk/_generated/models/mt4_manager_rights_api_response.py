@@ -32,7 +32,7 @@ class MT4ManagerRightsApiResponse:
 
         Attributes:
             data (MT4ManagerRights | None | Unset): v2 DTO for an MT4 manager-account configuration entry. Curated subset
-                of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+                of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
                 the 19 boolean permission rights, IP-filter fields, and InfoDepth.
                 Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
                 IPFrom/IPTo are widened from uint to long so the JSON-serialized value
@@ -41,10 +41,9 @@ class MT4ManagerRightsApiResponse:
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4ManagerRights | None | Unset = UNSET

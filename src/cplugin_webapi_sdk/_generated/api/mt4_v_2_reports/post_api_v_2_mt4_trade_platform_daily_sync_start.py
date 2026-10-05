@@ -93,7 +93,7 @@ def sync_detailed(
     `timestamp=0` to request all records.
 
     `timestamp` is a Unix epoch second (int32) in MT4 server-local
-    time, not UTC. Wrapper marshals it directly to `__time32_t` —
+    time, not UTC. Platform marshals it directly to `__time32_t` —
     pre-1970 / post-2038 values are out of range.
 
     Returns a bare success envelope (no payload); the actual data comes
@@ -149,7 +149,7 @@ def sync(
     `timestamp=0` to request all records.
 
     `timestamp` is a Unix epoch second (int32) in MT4 server-local
-    time, not UTC. Wrapper marshals it directly to `__time32_t` —
+    time, not UTC. Platform marshals it directly to `__time32_t` —
     pre-1970 / post-2038 values are out of range.
 
     Returns a bare success envelope (no payload); the actual data comes
@@ -200,7 +200,7 @@ async def asyncio_detailed(
     `timestamp=0` to request all records.
 
     `timestamp` is a Unix epoch second (int32) in MT4 server-local
-    time, not UTC. Wrapper marshals it directly to `__time32_t` —
+    time, not UTC. Platform marshals it directly to `__time32_t` —
     pre-1970 / post-2038 values are out of range.
 
     Returns a bare success envelope (no payload); the actual data comes
@@ -256,7 +256,7 @@ async def asyncio(
     `timestamp=0` to request all records.
 
     `timestamp` is a Unix epoch second (int32) in MT4 server-local
-    time, not UTC. Wrapper marshals it directly to `__time32_t` —
+    time, not UTC. Platform marshals it directly to `__time32_t` —
     pre-1970 / post-2038 values are out of range.
 
     Returns a bare success envelope (no payload); the actual data comes

@@ -86,9 +86,8 @@ def sync_detailed(
 
      Opens a server-side incremental sync session for trade records modified at or after timestamp.
 
-    Manager-live POST (modifies server-side session state). The
-    follow-up `TradesSyncRead` drain is deferred under wine x64
-    (see deferral note in the Users section above). Pass
+    Manager-live POST (modifies server-side session state). The API does
+    not offer the follow-up read of the session yet. Pass
     `timestamp=0` to request all trades. The timestamp is Unix
     epoch seconds (int32) in MT4 server-local time, not UTC.
 
@@ -135,9 +134,8 @@ def sync(
 
      Opens a server-side incremental sync session for trade records modified at or after timestamp.
 
-    Manager-live POST (modifies server-side session state). The
-    follow-up `TradesSyncRead` drain is deferred under wine x64
-    (see deferral note in the Users section above). Pass
+    Manager-live POST (modifies server-side session state). The API does
+    not offer the follow-up read of the session yet. Pass
     `timestamp=0` to request all trades. The timestamp is Unix
     epoch seconds (int32) in MT4 server-local time, not UTC.
 
@@ -179,9 +177,8 @@ async def asyncio_detailed(
 
      Opens a server-side incremental sync session for trade records modified at or after timestamp.
 
-    Manager-live POST (modifies server-side session state). The
-    follow-up `TradesSyncRead` drain is deferred under wine x64
-    (see deferral note in the Users section above). Pass
+    Manager-live POST (modifies server-side session state). The API does
+    not offer the follow-up read of the session yet. Pass
     `timestamp=0` to request all trades. The timestamp is Unix
     epoch seconds (int32) in MT4 server-local time, not UTC.
 
@@ -228,9 +225,8 @@ async def asyncio(
 
      Opens a server-side incremental sync session for trade records modified at or after timestamp.
 
-    Manager-live POST (modifies server-side session state). The
-    follow-up `TradesSyncRead` drain is deferred under wine x64
-    (see deferral note in the Users section above). Pass
+    Manager-live POST (modifies server-side session state). The API does
+    not offer the follow-up read of the session yet. Pass
     `timestamp=0` to request all trades. The timestamp is Unix
     epoch seconds (int32) in MT4 server-local time, not UTC.
 

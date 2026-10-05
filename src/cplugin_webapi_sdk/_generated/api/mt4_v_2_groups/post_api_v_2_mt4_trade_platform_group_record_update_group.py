@@ -109,9 +109,9 @@ def sync_detailed(
     arrays, and NewsLanguages — none of those are on the input DTO so
     they survive untouched.
     <br>
-    Wraps the wrapper's `CfgUpdateGroup` — v2 renames to
+    Wraps the platform's `CfgUpdateGroup` — v2 renames to
     `GroupRecordUpdate` for consistency with
-    `UserRecordUpdate`; the underlying wrapper call is the same as
+    `UserRecordUpdate`; the underlying platform call is the same as
     v1's `POST CfgUpdateGroup` endpoint.
     <br>
     Idempotency-Key strongly recommended for safe retries.
@@ -127,8 +127,7 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -137,7 +136,7 @@ def sync_detailed(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.
@@ -145,8 +144,7 @@ def sync_detailed(
               * `SecMarginsTotal` — derived from SecMargins length.
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -155,7 +153,7 @@ def sync_detailed(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.
@@ -163,8 +161,7 @@ def sync_detailed(
               * `SecMarginsTotal` — derived from SecMargins length.
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -173,7 +170,7 @@ def sync_detailed(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.
@@ -225,9 +222,9 @@ def sync(
     arrays, and NewsLanguages — none of those are on the input DTO so
     they survive untouched.
     <br>
-    Wraps the wrapper's `CfgUpdateGroup` — v2 renames to
+    Wraps the platform's `CfgUpdateGroup` — v2 renames to
     `GroupRecordUpdate` for consistency with
-    `UserRecordUpdate`; the underlying wrapper call is the same as
+    `UserRecordUpdate`; the underlying platform call is the same as
     v1's `POST CfgUpdateGroup` endpoint.
     <br>
     Idempotency-Key strongly recommended for safe retries.
@@ -243,8 +240,7 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -253,7 +249,7 @@ def sync(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.
@@ -261,8 +257,7 @@ def sync(
               * `SecMarginsTotal` — derived from SecMargins length.
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -271,7 +266,7 @@ def sync(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.
@@ -279,8 +274,7 @@ def sync(
               * `SecMarginsTotal` — derived from SecMargins length.
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -289,7 +283,7 @@ def sync(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.
@@ -336,9 +330,9 @@ async def asyncio_detailed(
     arrays, and NewsLanguages — none of those are on the input DTO so
     they survive untouched.
     <br>
-    Wraps the wrapper's `CfgUpdateGroup` — v2 renames to
+    Wraps the platform's `CfgUpdateGroup` — v2 renames to
     `GroupRecordUpdate` for consistency with
-    `UserRecordUpdate`; the underlying wrapper call is the same as
+    `UserRecordUpdate`; the underlying platform call is the same as
     v1's `POST CfgUpdateGroup` endpoint.
     <br>
     Idempotency-Key strongly recommended for safe retries.
@@ -354,8 +348,7 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -364,7 +357,7 @@ async def asyncio_detailed(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.
@@ -372,8 +365,7 @@ async def asyncio_detailed(
               * `SecMarginsTotal` — derived from SecMargins length.
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -382,7 +374,7 @@ async def asyncio_detailed(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.
@@ -390,8 +382,7 @@ async def asyncio_detailed(
               * `SecMarginsTotal` — derived from SecMargins length.
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -400,7 +391,7 @@ async def asyncio_detailed(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.
@@ -452,9 +443,9 @@ async def asyncio(
     arrays, and NewsLanguages — none of those are on the input DTO so
     they survive untouched.
     <br>
-    Wraps the wrapper's `CfgUpdateGroup` — v2 renames to
+    Wraps the platform's `CfgUpdateGroup` — v2 renames to
     `GroupRecordUpdate` for consistency with
-    `UserRecordUpdate`; the underlying wrapper call is the same as
+    `UserRecordUpdate`; the underlying platform call is the same as
     v1's `POST CfgUpdateGroup` endpoint.
     <br>
     Idempotency-Key strongly recommended for safe retries.
@@ -470,8 +461,7 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -480,7 +470,7 @@ async def asyncio(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.
@@ -488,8 +478,7 @@ async def asyncio(
               * `SecMarginsTotal` — derived from SecMargins length.
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -498,7 +487,7 @@ async def asyncio(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.
@@ -506,8 +495,7 @@ async def asyncio(
               * `SecMarginsTotal` — derived from SecMargins length.
         body (MT4GroupUpdate | Unset): Type 1 mutator input — full-replace shape for
             `GroupRecordUpdate`.
-            Same field set as the read DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Group minus the
-            immutable
+            Same field set as the read DTO MT4Group minus the immutable
             group name (path parameter) and the derived `SecMarginsTotal`
             (computed from SecMargins length).
 
@@ -516,7 +504,7 @@ async def asyncio(
               * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
                 never client-controlled.
               * `Templates` — server-side filesystem path.
-              * `SecuritiesHash` — opaque wrapper bookkeeping.
+              * `SecuritiesHash` — opaque platform bookkeeping.
               * `Reserved`, `UnusedRights` — reserved arrays.
               * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
                 as dedicated v2 endpoints.

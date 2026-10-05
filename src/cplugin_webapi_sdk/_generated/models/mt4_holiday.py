@@ -23,9 +23,9 @@ T = TypeVar("T", bound="MT4Holiday")
 @_attrs_define
 class MT4Holiday:
     """ v2 DTO for a single MT4 holiday-calendar entry. Curated subset of the
-    wrapper's ConHoliday struct — exposes the broker-facing fields and
+    the platform's ConHoliday struct — exposes the broker-facing fields and
     drops the internal Reserved/Next pointer block. Date is split into
-    Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+    Year/Month/Day ints (wire-compatible with the platform, no DateTime
     conversion to avoid timezone ambiguity for date-only entries).
 
         Attributes:

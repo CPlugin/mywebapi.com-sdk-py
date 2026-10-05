@@ -31,23 +31,22 @@ class MT4ServerTimeApiResponse:
     (activityId and optional paging). HTTP status is always 200.
 
         Attributes:
-            data (MT4ServerTime | None | Unset): v2 DTO for the MT4 server's per-hour access matrix (wrapper's
+            data (MT4ServerTime | None | Unset): v2 DTO for the MT4 server's per-hour access matrix (the platform's
                 `ConTime.Days` field). 168-element flat array; each element
                 is `0` (denied) or `1` (allowed) for one hour of the
                 week. Layout: `index = day * 24 + hour`, day-of-week 0..6
                 matches MT4's native convention where day 0 = Sunday.
                 <br>
                 Example: `AccessHours[24..47]` covers Monday's 24 hours.
-                Internal `DaysControl` and `Reserved` wrapper fields
+                Internal `DaysControl` and `Reserved` platform fields
                 are not part of the v2 contract.
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4ServerTime | None | Unset = UNSET

@@ -121,13 +121,11 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.
@@ -140,13 +138,11 @@ def sync_detailed(
                 overwrite-with-stale.
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.
@@ -159,13 +155,11 @@ def sync_detailed(
                 overwrite-with-stale.
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.
@@ -234,13 +228,11 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.
@@ -253,13 +245,11 @@ def sync(
                 overwrite-with-stale.
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.
@@ -272,13 +262,11 @@ def sync(
                 overwrite-with-stale.
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.
@@ -342,13 +330,11 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.
@@ -361,13 +347,11 @@ async def asyncio_detailed(
                 overwrite-with-stale.
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.
@@ -380,13 +364,11 @@ async def asyncio_detailed(
                 overwrite-with-stale.
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.
@@ -455,13 +437,11 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.
@@ -474,13 +454,11 @@ async def asyncio(
                 overwrite-with-stale.
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.
@@ -493,13 +471,11 @@ async def asyncio(
                 overwrite-with-stale.
         body (MT4SymbolConfigUpdate | Unset): Type 1 mutator input for `CfgUpdateSymbol`. Same
             field set as the read
-            DTO CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolConfig minus:
+            DTO MT4SymbolConfig minus:
               * `Symbol` (path parameter, immutable identity);
               * `Count`, `CountOriginal`, `FilterCounter` — server-side
                 counters, derived;
-              * Stringified enum fields are submitted as their original wrapper enum
-                types here (one-way deserialisation accepts JsonStringEnumConverter
-                via the existing global STJ options).
+              * Enum fields are submitted as their names.
 
             Fields preserved by the server-side read step (NOT on this DTO):
               * `Symbol` identity.

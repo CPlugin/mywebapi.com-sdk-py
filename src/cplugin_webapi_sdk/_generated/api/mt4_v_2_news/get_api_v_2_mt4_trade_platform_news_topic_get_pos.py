@@ -81,7 +81,7 @@ def sync_detailed(
 
     Pump-cached read — useful for paginating news without re-marshalling
     the whole array. Pair with `NewsTotal` to bound the index.
-    Returns a wrapper-failure envelope when pos is
+    Returns a platform-failure envelope when pos is
     out of range.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -128,7 +128,7 @@ def sync(
 
     Pump-cached read — useful for paginating news without re-marshalling
     the whole array. Pair with `NewsTotal` to bound the index.
-    Returns a wrapper-failure envelope when pos is
+    Returns a platform-failure envelope when pos is
     out of range.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -170,7 +170,7 @@ async def asyncio_detailed(
 
     Pump-cached read — useful for paginating news without re-marshalling
     the whole array. Pair with `NewsTotal` to bound the index.
-    Returns a wrapper-failure envelope when pos is
+    Returns a platform-failure envelope when pos is
     out of range.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -217,7 +217,7 @@ async def asyncio(
 
     Pump-cached read — useful for paginating news without re-marshalling
     the whole array. Pair with `NewsTotal` to bound the index.
-    Returns a wrapper-failure envelope when pos is
+    Returns a platform-failure envelope when pos is
     out of range.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the

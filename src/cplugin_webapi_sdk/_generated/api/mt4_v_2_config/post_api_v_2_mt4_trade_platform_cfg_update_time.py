@@ -100,14 +100,14 @@ def sync_detailed(
 
     Manager (live) call. Reads the current `ConTime`, replaces the
     168-hour access matrix with the supplied `AccessHours`, and
-    writes back. The wrapper's internal `DaysControl` (server
+    writes back. The platform's internal `DaysControl` (server
     housekeeping) and `Reserved` (forward-compat padding) fields
     are preserved across the round-trip.
 
     `AccessHours` must be exactly 168 entries long; index =
     `day * 24 + hour` with day 0 = Sunday. Each value is
     `0` (denied) or `1` (allowed) — any other value is
-    passed through verbatim (the wrapper does not validate, and
+    passed through verbatim (the platform does not validate, and
     MT4 may treat anything non-zero as allowed depending on build).
 
     Echoes the merged `MT4ServerTime` in the response.
@@ -119,35 +119,35 @@ def sync_detailed(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
 
     Raises:
@@ -186,14 +186,14 @@ def sync(
 
     Manager (live) call. Reads the current `ConTime`, replaces the
     168-hour access matrix with the supplied `AccessHours`, and
-    writes back. The wrapper's internal `DaysControl` (server
+    writes back. The platform's internal `DaysControl` (server
     housekeeping) and `Reserved` (forward-compat padding) fields
     are preserved across the round-trip.
 
     `AccessHours` must be exactly 168 entries long; index =
     `day * 24 + hour` with day 0 = Sunday. Each value is
     `0` (denied) or `1` (allowed) — any other value is
-    passed through verbatim (the wrapper does not validate, and
+    passed through verbatim (the platform does not validate, and
     MT4 may treat anything non-zero as allowed depending on build).
 
     Echoes the merged `MT4ServerTime` in the response.
@@ -205,35 +205,35 @@ def sync(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
 
     Raises:
@@ -267,14 +267,14 @@ async def asyncio_detailed(
 
     Manager (live) call. Reads the current `ConTime`, replaces the
     168-hour access matrix with the supplied `AccessHours`, and
-    writes back. The wrapper's internal `DaysControl` (server
+    writes back. The platform's internal `DaysControl` (server
     housekeeping) and `Reserved` (forward-compat padding) fields
     are preserved across the round-trip.
 
     `AccessHours` must be exactly 168 entries long; index =
     `day * 24 + hour` with day 0 = Sunday. Each value is
     `0` (denied) or `1` (allowed) — any other value is
-    passed through verbatim (the wrapper does not validate, and
+    passed through verbatim (the platform does not validate, and
     MT4 may treat anything non-zero as allowed depending on build).
 
     Echoes the merged `MT4ServerTime` in the response.
@@ -286,35 +286,35 @@ async def asyncio_detailed(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
 
     Raises:
@@ -353,14 +353,14 @@ async def asyncio(
 
     Manager (live) call. Reads the current `ConTime`, replaces the
     168-hour access matrix with the supplied `AccessHours`, and
-    writes back. The wrapper's internal `DaysControl` (server
+    writes back. The platform's internal `DaysControl` (server
     housekeeping) and `Reserved` (forward-compat padding) fields
     are preserved across the round-trip.
 
     `AccessHours` must be exactly 168 entries long; index =
     `day * 24 + hour` with day 0 = Sunday. Each value is
     `0` (denied) or `1` (allowed) — any other value is
-    passed through verbatim (the wrapper does not validate, and
+    passed through verbatim (the platform does not validate, and
     MT4 may treat anything non-zero as allowed depending on build).
 
     Echoes the merged `MT4ServerTime` in the response.
@@ -372,35 +372,35 @@ async def asyncio(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
-        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix
-            (wrapper's
+        body (MT4ServerTime | Unset): v2 DTO for the MT4 server's per-hour access matrix (the
+            platform's
             `ConTime.Days` field). 168-element flat array; each element
             is `0` (denied) or `1` (allowed) for one hour of the
             week. Layout: `index = day * 24 + hour`, day-of-week 0..6
             matches MT4's native convention where day 0 = Sunday.
             <br>
             Example: `AccessHours[24..47]` covers Monday's 24 hours.
-            Internal `DaysControl` and `Reserved` wrapper fields
+            Internal `DaysControl` and `Reserved` platform fields
             are not part of the v2 contract.
 
     Raises:

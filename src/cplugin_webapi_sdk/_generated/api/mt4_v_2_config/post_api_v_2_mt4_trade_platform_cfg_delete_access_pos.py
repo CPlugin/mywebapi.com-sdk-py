@@ -80,7 +80,7 @@ def sync_detailed(
      Deletes an entry from the server's IP firewall (Access) configuration table by zero-based row
     position.
 
-    Manager-live POST. Maps to the wrapper's `CfgDeleteAccess(int pos)`.
+    Manager-live POST. Maps to the platform's `CfgDeleteAccess(int pos)`.
     Read the current table via `CfgRequestAccess`, find the target
     row's index, then delete. Destructive — pair with `Idempotency-Key`
     on retry.
@@ -129,7 +129,7 @@ def sync(
      Deletes an entry from the server's IP firewall (Access) configuration table by zero-based row
     position.
 
-    Manager-live POST. Maps to the wrapper's `CfgDeleteAccess(int pos)`.
+    Manager-live POST. Maps to the platform's `CfgDeleteAccess(int pos)`.
     Read the current table via `CfgRequestAccess`, find the target
     row's index, then delete. Destructive — pair with `Idempotency-Key`
     on retry.
@@ -173,7 +173,7 @@ async def asyncio_detailed(
      Deletes an entry from the server's IP firewall (Access) configuration table by zero-based row
     position.
 
-    Manager-live POST. Maps to the wrapper's `CfgDeleteAccess(int pos)`.
+    Manager-live POST. Maps to the platform's `CfgDeleteAccess(int pos)`.
     Read the current table via `CfgRequestAccess`, find the target
     row's index, then delete. Destructive — pair with `Idempotency-Key`
     on retry.
@@ -222,7 +222,7 @@ async def asyncio(
      Deletes an entry from the server's IP firewall (Access) configuration table by zero-based row
     position.
 
-    Manager-live POST. Maps to the wrapper's `CfgDeleteAccess(int pos)`.
+    Manager-live POST. Maps to the platform's `CfgDeleteAccess(int pos)`.
     Read the current table via `CfgRequestAccess`, find the target
     row's index, then delete. Destructive — pair with `Idempotency-Key`
     on retry.

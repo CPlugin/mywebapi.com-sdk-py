@@ -103,7 +103,7 @@ def sync_detailed(
     <br>
     Surface-level Type 1 semantics: client submits the full `MT4UserUpdate`
     DTO and the server writes it back. Implementation requires an extra
-    read step because the wrapper `UserRecord` struct contains
+    read step because the platform `UserRecord` struct contains
     secret/computed/read-only fields the v2 input DTO deliberately omits
     (Password, OTPSecret, LastDate, etc.). Without the read step those
     would be zeroed out by the write.
@@ -152,10 +152,10 @@ def sync_detailed(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.
@@ -179,10 +179,10 @@ def sync_detailed(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.
@@ -206,10 +206,10 @@ def sync_detailed(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.
@@ -253,7 +253,7 @@ def sync(
     <br>
     Surface-level Type 1 semantics: client submits the full `MT4UserUpdate`
     DTO and the server writes it back. Implementation requires an extra
-    read step because the wrapper `UserRecord` struct contains
+    read step because the platform `UserRecord` struct contains
     secret/computed/read-only fields the v2 input DTO deliberately omits
     (Password, OTPSecret, LastDate, etc.). Without the read step those
     would be zeroed out by the write.
@@ -302,10 +302,10 @@ def sync(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.
@@ -329,10 +329,10 @@ def sync(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.
@@ -356,10 +356,10 @@ def sync(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.
@@ -398,7 +398,7 @@ async def asyncio_detailed(
     <br>
     Surface-level Type 1 semantics: client submits the full `MT4UserUpdate`
     DTO and the server writes it back. Implementation requires an extra
-    read step because the wrapper `UserRecord` struct contains
+    read step because the platform `UserRecord` struct contains
     secret/computed/read-only fields the v2 input DTO deliberately omits
     (Password, OTPSecret, LastDate, etc.). Without the read step those
     would be zeroed out by the write.
@@ -447,10 +447,10 @@ async def asyncio_detailed(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.
@@ -474,10 +474,10 @@ async def asyncio_detailed(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.
@@ -501,10 +501,10 @@ async def asyncio_detailed(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.
@@ -548,7 +548,7 @@ async def asyncio(
     <br>
     Surface-level Type 1 semantics: client submits the full `MT4UserUpdate`
     DTO and the server writes it back. Implementation requires an extra
-    read step because the wrapper `UserRecord` struct contains
+    read step because the platform `UserRecord` struct contains
     secret/computed/read-only fields the v2 input DTO deliberately omits
     (Password, OTPSecret, LastDate, etc.). Without the read step those
     would be zeroed out by the write.
@@ -597,10 +597,10 @@ async def asyncio(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.
@@ -624,10 +624,10 @@ async def asyncio(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.
@@ -651,10 +651,10 @@ async def asyncio(
               * `Password`, `PasswordInvestor`, `PasswordPhone` —
                 change via `POST UserPasswordSet`.
               * `OTPSecret` — provisioned via separate admin flow.
-              * `APIData` — wrapper-internal blob, never client-controlled.
+              * `APIData` — platform-internal blob, never client-controlled.
 
             <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-            wrapper `UserRecordUpdate` writes them directly. However, the audit-
+            platform `UserRecordUpdate` writes them directly. However, the audit-
             trail-preserving way to move money is the dedicated balance operation
             endpoints (forthcoming) — submitting Balance via this DTO bypasses the
             audit log on MT4 server side.

@@ -112,7 +112,7 @@ def sync_detailed(
     clients that pivot the data per-account (per-day rollups, account dashboards).
 
     Manager-live read — single round-trip to MT4 server, identical billing
-    cost to `DailyReportsRequest`. The wrapper returns a sorted-list
+    cost to `DailyReportsRequest`. The platform returns a sorted-list
     of sorted-lists (by login, then by date); the v2 envelope flattens
     the inner list to a chronologically-ordered `MT4DailyReport`
     array, leaving the outer keying by login.
@@ -174,7 +174,7 @@ def sync(
     clients that pivot the data per-account (per-day rollups, account dashboards).
 
     Manager-live read — single round-trip to MT4 server, identical billing
-    cost to `DailyReportsRequest`. The wrapper returns a sorted-list
+    cost to `DailyReportsRequest`. The platform returns a sorted-list
     of sorted-lists (by login, then by date); the v2 envelope flattens
     the inner list to a chronologically-ordered `MT4DailyReport`
     array, leaving the outer keying by login.
@@ -231,7 +231,7 @@ async def asyncio_detailed(
     clients that pivot the data per-account (per-day rollups, account dashboards).
 
     Manager-live read — single round-trip to MT4 server, identical billing
-    cost to `DailyReportsRequest`. The wrapper returns a sorted-list
+    cost to `DailyReportsRequest`. The platform returns a sorted-list
     of sorted-lists (by login, then by date); the v2 envelope flattens
     the inner list to a chronologically-ordered `MT4DailyReport`
     array, leaving the outer keying by login.
@@ -293,7 +293,7 @@ async def asyncio(
     clients that pivot the data per-account (per-day rollups, account dashboards).
 
     Manager-live read — single round-trip to MT4 server, identical billing
-    cost to `DailyReportsRequest`. The wrapper returns a sorted-list
+    cost to `DailyReportsRequest`. The platform returns a sorted-list
     of sorted-lists (by login, then by date); the v2 envelope flattens
     the inner list to a chronologically-ordered `MT4DailyReport`
     array, leaving the outer keying by login.

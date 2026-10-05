@@ -94,7 +94,7 @@ def sync_detailed(
     MT4 server connection used for STP order routing: public Name, an
     internal Id (stable identifier — used as the cursor key), the
     external server Login + Address, a NotifyLogins fixed-size array
-    of 8 broker-side recipients, and a Flags bitmap. The wrapper's
+    of 8 broker-side recipients, and a Flags bitmap. The platform's
     `Password` field (STP MT4 credential) is intentionally
     excluded from the v2 contract.
 
@@ -147,7 +147,7 @@ def sync(
     MT4 server connection used for STP order routing: public Name, an
     internal Id (stable identifier — used as the cursor key), the
     external server Login + Address, a NotifyLogins fixed-size array
-    of 8 broker-side recipients, and a Flags bitmap. The wrapper's
+    of 8 broker-side recipients, and a Flags bitmap. The platform's
     `Password` field (STP MT4 credential) is intentionally
     excluded from the v2 contract.
 
@@ -195,7 +195,7 @@ async def asyncio_detailed(
     MT4 server connection used for STP order routing: public Name, an
     internal Id (stable identifier — used as the cursor key), the
     external server Login + Address, a NotifyLogins fixed-size array
-    of 8 broker-side recipients, and a Flags bitmap. The wrapper's
+    of 8 broker-side recipients, and a Flags bitmap. The platform's
     `Password` field (STP MT4 credential) is intentionally
     excluded from the v2 contract.
 
@@ -248,7 +248,7 @@ async def asyncio(
     MT4 server connection used for STP order routing: public Name, an
     internal Id (stable identifier — used as the cursor key), the
     external server Login + Address, a NotifyLogins fixed-size array
-    of 8 broker-side recipients, and a Flags bitmap. The wrapper's
+    of 8 broker-side recipients, and a Flags bitmap. The platform's
     `Password` field (STP MT4 credential) is intentionally
     excluded from the v2 contract.
 

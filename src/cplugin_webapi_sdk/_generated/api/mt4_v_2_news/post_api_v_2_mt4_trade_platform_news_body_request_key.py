@@ -80,7 +80,7 @@ def sync_detailed(
      Ask the pump to fetch the body for the given news key (fire-and-forget).
 
     POST because this is a side-effect on the pump (it queues a fetch).
-    The wrapper method returns `void` — there is no synchronous
+    The platform method returns `void` — there is no synchronous
     success/failure to surface. A subsequent `NewsBodyGet(key)` will
     see the body once the pump has retrieved it. The payload is a sentinel
     `true` meaning \"request dispatched\".
@@ -129,7 +129,7 @@ def sync(
      Ask the pump to fetch the body for the given news key (fire-and-forget).
 
     POST because this is a side-effect on the pump (it queues a fetch).
-    The wrapper method returns `void` — there is no synchronous
+    The platform method returns `void` — there is no synchronous
     success/failure to surface. A subsequent `NewsBodyGet(key)` will
     see the body once the pump has retrieved it. The payload is a sentinel
     `true` meaning \"request dispatched\".
@@ -173,7 +173,7 @@ async def asyncio_detailed(
      Ask the pump to fetch the body for the given news key (fire-and-forget).
 
     POST because this is a side-effect on the pump (it queues a fetch).
-    The wrapper method returns `void` — there is no synchronous
+    The platform method returns `void` — there is no synchronous
     success/failure to surface. A subsequent `NewsBodyGet(key)` will
     see the body once the pump has retrieved it. The payload is a sentinel
     `true` meaning \"request dispatched\".
@@ -222,7 +222,7 @@ async def asyncio(
      Ask the pump to fetch the body for the given news key (fire-and-forget).
 
     POST because this is a side-effect on the pump (it queues a fetch).
-    The wrapper method returns `void` — there is no synchronous
+    The platform method returns `void` — there is no synchronous
     success/failure to surface. A subsequent `NewsBodyGet(key)` will
     see the body once the pump has retrieved it. The payload is a sentinel
     `true` meaning \"request dispatched\".

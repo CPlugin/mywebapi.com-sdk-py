@@ -77,8 +77,8 @@ def sync_detailed(
 
      List MT4 server plugins currently configured (pump-side cache).
 
-    Manager-pump call to the wrapper's `PluginsGet()`. The
-    wrapper marks this `[Obsolete]` on x64 (mtmanapi64.dll has
+    Manager-pump call to the platform's `PluginsGet()`. The
+    platform marks this `[Obsolete]` on x64 (mtmanapi64.dll has
     silently-changing plugin layouts); the x86 sidecar process loads
     mtmanapi.dll where the layout is stable, so the call is safe.
 
@@ -121,8 +121,8 @@ def sync(
 
      List MT4 server plugins currently configured (pump-side cache).
 
-    Manager-pump call to the wrapper's `PluginsGet()`. The
-    wrapper marks this `[Obsolete]` on x64 (mtmanapi64.dll has
+    Manager-pump call to the platform's `PluginsGet()`. The
+    platform marks this `[Obsolete]` on x64 (mtmanapi64.dll has
     silently-changing plugin layouts); the x86 sidecar process loads
     mtmanapi.dll where the layout is stable, so the call is safe.
 
@@ -160,8 +160,8 @@ async def asyncio_detailed(
 
      List MT4 server plugins currently configured (pump-side cache).
 
-    Manager-pump call to the wrapper's `PluginsGet()`. The
-    wrapper marks this `[Obsolete]` on x64 (mtmanapi64.dll has
+    Manager-pump call to the platform's `PluginsGet()`. The
+    platform marks this `[Obsolete]` on x64 (mtmanapi64.dll has
     silently-changing plugin layouts); the x86 sidecar process loads
     mtmanapi.dll where the layout is stable, so the call is safe.
 
@@ -204,8 +204,8 @@ async def asyncio(
 
      List MT4 server plugins currently configured (pump-side cache).
 
-    Manager-pump call to the wrapper's `PluginsGet()`. The
-    wrapper marks this `[Obsolete]` on x64 (mtmanapi64.dll has
+    Manager-pump call to the platform's `PluginsGet()`. The
+    platform marks this `[Obsolete]` on x64 (mtmanapi64.dll has
     silently-changing plugin layouts); the x86 sidecar process loads
     mtmanapi.dll where the layout is stable, so the call is safe.
 

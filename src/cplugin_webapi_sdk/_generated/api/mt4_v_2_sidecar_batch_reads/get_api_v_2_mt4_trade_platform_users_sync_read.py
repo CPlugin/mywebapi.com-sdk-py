@@ -86,7 +86,7 @@ def sync_detailed(
 
      Read user records buffered by a prior `UsersSyncStart` call.
 
-    Manager (live) call to the wrapper's `UsersSyncRead()`.
+    Manager (live) call to the platform's `UsersSyncRead()`.
     Must be preceded by `POST UsersSyncStart` on the main x64
     API to seed the server-side snapshot. Same UnpackObject hazard
     as `UsersSnapshot` — sidecar-only.
@@ -133,7 +133,7 @@ def sync(
 
      Read user records buffered by a prior `UsersSyncStart` call.
 
-    Manager (live) call to the wrapper's `UsersSyncRead()`.
+    Manager (live) call to the platform's `UsersSyncRead()`.
     Must be preceded by `POST UsersSyncStart` on the main x64
     API to seed the server-side snapshot. Same UnpackObject hazard
     as `UsersSnapshot` — sidecar-only.
@@ -175,7 +175,7 @@ async def asyncio_detailed(
 
      Read user records buffered by a prior `UsersSyncStart` call.
 
-    Manager (live) call to the wrapper's `UsersSyncRead()`.
+    Manager (live) call to the platform's `UsersSyncRead()`.
     Must be preceded by `POST UsersSyncStart` on the main x64
     API to seed the server-side snapshot. Same UnpackObject hazard
     as `UsersSnapshot` — sidecar-only.
@@ -222,7 +222,7 @@ async def asyncio(
 
      Read user records buffered by a prior `UsersSyncStart` call.
 
-    Manager (live) call to the wrapper's `UsersSyncRead()`.
+    Manager (live) call to the platform's `UsersSyncRead()`.
     Must be preceded by `POST UsersSyncStart` on the main x64
     API to seed the server-side snapshot. Same UnpackObject hazard
     as `UsersSnapshot` — sidecar-only.

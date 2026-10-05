@@ -94,7 +94,7 @@ def sync_detailed(
     from an upstream source — Server (cursor key) + Login identify
     the source, Mode/From/To/Securities define the sync scope, and
     TimeCorrection (minutes) adjusts incoming bar timestamps. The
-    wrapper's `Password` (replication credentials) is
+    the platform's `Password` (replication credentials) is
     intentionally excluded from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -146,7 +146,7 @@ def sync(
     from an upstream source — Server (cursor key) + Login identify
     the source, Mode/From/To/Securities define the sync scope, and
     TimeCorrection (minutes) adjusts incoming bar timestamps. The
-    wrapper's `Password` (replication credentials) is
+    the platform's `Password` (replication credentials) is
     intentionally excluded from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -193,7 +193,7 @@ async def asyncio_detailed(
     from an upstream source — Server (cursor key) + Login identify
     the source, Mode/From/To/Securities define the sync scope, and
     TimeCorrection (minutes) adjusts incoming bar timestamps. The
-    wrapper's `Password` (replication credentials) is
+    the platform's `Password` (replication credentials) is
     intentionally excluded from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -245,7 +245,7 @@ async def asyncio(
     from an upstream source — Server (cursor key) + Login identify
     the source, Mode/From/To/Securities define the sync scope, and
     TimeCorrection (minutes) adjusts incoming bar timestamps. The
-    wrapper's `Password` (replication credentials) is
+    the platform's `Password` (replication credentials) is
     intentionally excluded from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the

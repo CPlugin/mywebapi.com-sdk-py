@@ -79,7 +79,7 @@ def sync_detailed(
 
      Account record for a single login from the pump cache.
 
-    Pump-cached read of the wrapper's `UserRecord`, mapped to the v2
+    Pump-cached read of the platform's `UserRecord`, mapped to the v2
     `MT4User` DTO. Secrets (passwords, OTP secret, API blob) are
     stripped at the mapper level — they cannot be exposed via this endpoint
     regardless of caller permissions. Returns NotFound envelope when the
@@ -127,7 +127,7 @@ def sync(
 
      Account record for a single login from the pump cache.
 
-    Pump-cached read of the wrapper's `UserRecord`, mapped to the v2
+    Pump-cached read of the platform's `UserRecord`, mapped to the v2
     `MT4User` DTO. Secrets (passwords, OTP secret, API blob) are
     stripped at the mapper level — they cannot be exposed via this endpoint
     regardless of caller permissions. Returns NotFound envelope when the
@@ -170,7 +170,7 @@ async def asyncio_detailed(
 
      Account record for a single login from the pump cache.
 
-    Pump-cached read of the wrapper's `UserRecord`, mapped to the v2
+    Pump-cached read of the platform's `UserRecord`, mapped to the v2
     `MT4User` DTO. Secrets (passwords, OTP secret, API blob) are
     stripped at the mapper level — they cannot be exposed via this endpoint
     regardless of caller permissions. Returns NotFound envelope when the
@@ -218,7 +218,7 @@ async def asyncio(
 
      Account record for a single login from the pump cache.
 
-    Pump-cached read of the wrapper's `UserRecord`, mapped to the v2
+    Pump-cached read of the platform's `UserRecord`, mapped to the v2
     `MT4User` DTO. Secrets (passwords, OTP secret, API blob) are
     stripped at the mapper level — they cannot be exposed via this endpoint
     regardless of caller permissions. Returns NotFound envelope when the

@@ -24,11 +24,10 @@ T = TypeVar("T", bound="MT4MarginLevel")
 
 @_attrs_define
 class MT4MarginLevel:
-    """ v2 DTO mirroring the wrapper's MarginLevel record. All fields are kept
+    """ v2 DTO mirroring the platform's MarginLevel record. All fields are kept
     because clients monitoring margin call / stop-out conditions need the
-    complete state. ControllingType and LevelType remain as MT4 enums and
-    serialize as string names via the V2JsonContext UseStringEnumConverter
-    option (e.g. "Percent" rather than 0).
+    complete state. ControllingType and LevelType are returned as their names
+    (e.g. "Percent" rather than 0).
 
         Attributes:
             login (int | Unset): Trading account number

@@ -93,7 +93,7 @@ def sync_detailed(
     Manager-live read (round-trip). Each entry surfaces the manager's
     Login/Name/Groups/MailBox, the 19 boolean permission rights (Manager,
     Money, Broker, Admin, Reports, Trades, MarketWatch, etc.), IP-filter
-    range, and InfoDepth. Internal wrapper fields (SecGroups, Unused,
+    range, and InfoDepth. Internal platform fields (SecGroups, Unused,
     ExpTime, Reserved) are dropped from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -144,7 +144,7 @@ def sync(
     Manager-live read (round-trip). Each entry surfaces the manager's
     Login/Name/Groups/MailBox, the 19 boolean permission rights (Manager,
     Money, Broker, Admin, Reports, Trades, MarketWatch, etc.), IP-filter
-    range, and InfoDepth. Internal wrapper fields (SecGroups, Unused,
+    range, and InfoDepth. Internal platform fields (SecGroups, Unused,
     ExpTime, Reserved) are dropped from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -190,7 +190,7 @@ async def asyncio_detailed(
     Manager-live read (round-trip). Each entry surfaces the manager's
     Login/Name/Groups/MailBox, the 19 boolean permission rights (Manager,
     Money, Broker, Admin, Reports, Trades, MarketWatch, etc.), IP-filter
-    range, and InfoDepth. Internal wrapper fields (SecGroups, Unused,
+    range, and InfoDepth. Internal platform fields (SecGroups, Unused,
     ExpTime, Reserved) are dropped from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -241,7 +241,7 @@ async def asyncio(
     Manager-live read (round-trip). Each entry surfaces the manager's
     Login/Name/Groups/MailBox, the 19 boolean permission rights (Manager,
     Money, Broker, Admin, Reports, Trades, MarketWatch, etc.), IP-filter
-    range, and InfoDepth. Internal wrapper fields (SecGroups, Unused,
+    range, and InfoDepth. Internal platform fields (SecGroups, Unused,
     ExpTime, Reserved) are dropped from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the

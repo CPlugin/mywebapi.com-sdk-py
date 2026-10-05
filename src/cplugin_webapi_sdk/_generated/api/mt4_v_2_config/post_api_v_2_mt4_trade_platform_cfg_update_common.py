@@ -112,9 +112,8 @@ def sync_detailed(
     rollover/statement modes
             (sensitive admin areas with separate endpoints).</item></list>
 
-    Wine x64 safe: wrapper uses `cpp.AllocSafe()` (single struct
-    pack, no UnpackObject loop). Idempotency-Key strongly recommended
-    — overwriting common settings affects every connected client.
+    Idempotency-Key strongly recommended — overwriting common settings
+    affects every connected client.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -125,21 +124,21 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
 
     Raises:
@@ -190,9 +189,8 @@ def sync(
     rollover/statement modes
             (sensitive admin areas with separate endpoints).</item></list>
 
-    Wine x64 safe: wrapper uses `cpp.AllocSafe()` (single struct
-    pack, no UnpackObject loop). Idempotency-Key strongly recommended
-    — overwriting common settings affects every connected client.
+    Idempotency-Key strongly recommended — overwriting common settings
+    affects every connected client.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -203,21 +201,21 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
 
     Raises:
@@ -263,9 +261,8 @@ async def asyncio_detailed(
     rollover/statement modes
             (sensitive admin areas with separate endpoints).</item></list>
 
-    Wine x64 safe: wrapper uses `cpp.AllocSafe()` (single struct
-    pack, no UnpackObject loop). Idempotency-Key strongly recommended
-    — overwriting common settings affects every connected client.
+    Idempotency-Key strongly recommended — overwriting common settings
+    affects every connected client.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -276,21 +273,21 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
 
     Raises:
@@ -341,9 +338,8 @@ async def asyncio(
     rollover/statement modes
             (sensitive admin areas with separate endpoints).</item></list>
 
-    Wine x64 safe: wrapper uses `cpp.AllocSafe()` (single struct
-    pack, no UnpackObject loop). Idempotency-Key strongly recommended
-    — overwriting common settings affects every connected client.
+    Idempotency-Key strongly recommended — overwriting common settings
+    affects every connected client.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -354,21 +350,21 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
         body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
             Curated
-            subset of the wrapper's `ConCommon` struct — exposes the fields
+            subset of the platform's `ConCommon` struct — exposes the fields
             most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the wrapper's internal arrays
+            runtime counters, derived state, and the platform's internal arrays
             to the secret-preservation overlay on the controller side.
 
     Raises:

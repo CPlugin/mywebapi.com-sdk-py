@@ -57,22 +57,22 @@ class MT5Order:
             expert_id (int | None | Unset): expert id (filled by expert advisor)
             position_id (int | None | Unset): position id
             comment (None | str | Unset): order comment
-            activation_mode (int | None | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
-                value.</strong>
+            activation_mode (int | None | Unset): <strong>Read-only: the trade server does not let this value be
+                changed.</strong>
                 <br />
                 <br />
                             order activation state, time and price
-            activation_time (datetime.datetime | None | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to
-                read this value.</strong>
+            activation_time (datetime.datetime | None | Unset): <strong>Read-only: the trade server does not let this value
+                be changed.</strong>
                 <br />
                 <br />
-            activation_price (float | None | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
-                value.</strong>
+            activation_price (float | None | Unset): <strong>Read-only: the trade server does not let this value be
+                changed.</strong>
                 <br />
                 <br />
                             Gets the price, at which the order was activated
-            activation_flags (None | str | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
-                value.</strong>
+            activation_flags (None | str | Unset): <strong>Read-only: the trade server does not let this value be
+                changed.</strong>
                 <br />
                 <br />
             time_setup_msc (datetime.datetime | None | Unset): Gets and sets the order placing time in milliseconds, since

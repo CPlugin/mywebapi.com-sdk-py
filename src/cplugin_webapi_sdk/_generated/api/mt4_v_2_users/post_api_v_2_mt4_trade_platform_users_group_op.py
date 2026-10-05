@@ -102,16 +102,12 @@ def sync_detailed(
     Manager (live) call. Wraps `UsersGroupOp(GroupCommandInfo, ICollection<int>)`.
     The body specifies the command and its parameter (NewGroup for
     SetGroup, Leverage for Leverage; both ignored for Delete/Enable/
-    Disable) plus the list of target logins. The wrapper auto-fills
+    Disable) plus the list of target logins. The platform auto-fills
     the internal `Len` field from the logins array — clients do
     not set it.
 
-    Wine x64 safe: the wrapper uses `AllocArraySafe` on the int
-    login array (single contiguous pack, no UnpackObject loop) and
-    `AllocSafe` on the GroupCommandInfo struct.
-
     Requires Manager or Administrator access rights on the manager
-    account; the wrapper enforces this server-side. Idempotency-Key
+    account; the platform enforces this server-side. Idempotency-Key
     strongly recommended — bulk Delete / SetGroup operations are
     destructive on customer-visible state.
 
@@ -170,16 +166,12 @@ def sync(
     Manager (live) call. Wraps `UsersGroupOp(GroupCommandInfo, ICollection<int>)`.
     The body specifies the command and its parameter (NewGroup for
     SetGroup, Leverage for Leverage; both ignored for Delete/Enable/
-    Disable) plus the list of target logins. The wrapper auto-fills
+    Disable) plus the list of target logins. The platform auto-fills
     the internal `Len` field from the logins array — clients do
     not set it.
 
-    Wine x64 safe: the wrapper uses `AllocArraySafe` on the int
-    login array (single contiguous pack, no UnpackObject loop) and
-    `AllocSafe` on the GroupCommandInfo struct.
-
     Requires Manager or Administrator access rights on the manager
-    account; the wrapper enforces this server-side. Idempotency-Key
+    account; the platform enforces this server-side. Idempotency-Key
     strongly recommended — bulk Delete / SetGroup operations are
     destructive on customer-visible state.
 
@@ -233,16 +225,12 @@ async def asyncio_detailed(
     Manager (live) call. Wraps `UsersGroupOp(GroupCommandInfo, ICollection<int>)`.
     The body specifies the command and its parameter (NewGroup for
     SetGroup, Leverage for Leverage; both ignored for Delete/Enable/
-    Disable) plus the list of target logins. The wrapper auto-fills
+    Disable) plus the list of target logins. The platform auto-fills
     the internal `Len` field from the logins array — clients do
     not set it.
 
-    Wine x64 safe: the wrapper uses `AllocArraySafe` on the int
-    login array (single contiguous pack, no UnpackObject loop) and
-    `AllocSafe` on the GroupCommandInfo struct.
-
     Requires Manager or Administrator access rights on the manager
-    account; the wrapper enforces this server-side. Idempotency-Key
+    account; the platform enforces this server-side. Idempotency-Key
     strongly recommended — bulk Delete / SetGroup operations are
     destructive on customer-visible state.
 
@@ -301,16 +289,12 @@ async def asyncio(
     Manager (live) call. Wraps `UsersGroupOp(GroupCommandInfo, ICollection<int>)`.
     The body specifies the command and its parameter (NewGroup for
     SetGroup, Leverage for Leverage; both ignored for Delete/Enable/
-    Disable) plus the list of target logins. The wrapper auto-fills
+    Disable) plus the list of target logins. The platform auto-fills
     the internal `Len` field from the logins array — clients do
     not set it.
 
-    Wine x64 safe: the wrapper uses `AllocArraySafe` on the int
-    login array (single contiguous pack, no UnpackObject loop) and
-    `AllocSafe` on the GroupCommandInfo struct.
-
     Requires Manager or Administrator access rights on the manager
-    account; the wrapper enforces this server-side. Idempotency-Key
+    account; the platform enforces this server-side. Idempotency-Key
     strongly recommended — bulk Delete / SetGroup operations are
     destructive on customer-visible state.
 

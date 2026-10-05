@@ -80,7 +80,7 @@ def sync_detailed(
      Single trading group configuration by name (pump-cached).
 
     Pump-cached lookup. Returns NotFound envelope if no group with the
-    given name exists. Group names are case-sensitive — the wrapper does
+    given name exists. Group names are case-sensitive — the platform does
     an exact dictionary lookup.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -126,7 +126,7 @@ def sync(
      Single trading group configuration by name (pump-cached).
 
     Pump-cached lookup. Returns NotFound envelope if no group with the
-    given name exists. Group names are case-sensitive — the wrapper does
+    given name exists. Group names are case-sensitive — the platform does
     an exact dictionary lookup.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -167,7 +167,7 @@ async def asyncio_detailed(
      Single trading group configuration by name (pump-cached).
 
     Pump-cached lookup. Returns NotFound envelope if no group with the
-    given name exists. Group names are case-sensitive — the wrapper does
+    given name exists. Group names are case-sensitive — the platform does
     an exact dictionary lookup.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -213,7 +213,7 @@ async def asyncio(
      Single trading group configuration by name (pump-cached).
 
     Pump-cached lookup. Returns NotFound envelope if no group with the
-    given name exists. Group names are case-sensitive — the wrapper does
+    given name exists. Group names are case-sensitive — the platform does
     an exact dictionary lookup.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the

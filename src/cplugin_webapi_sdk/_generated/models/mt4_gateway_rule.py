@@ -23,7 +23,7 @@ T = TypeVar("T", bound="MT4GatewayRule")
 @_attrs_define
 class MT4GatewayRule:
     """ v2 DTO for a single MT4 gateway-rule entry (STP execution routing
-    policy). Curated subset of the wrapper's ConGatewayRule — drops the
+    policy). Curated subset of the platform's ConGatewayRule — drops the
     internal RequestRreserved/ExeReserved padding blocks.
     <br>
     Each rule selects orders by RequestSymbol and RequestGroup (each can
@@ -45,7 +45,7 @@ class MT4GatewayRule:
             exe_max_losing_slippage_lots (int | Unset): Maximum slippage volume in lots on losing-side execution
             exe_account_pos (int | Unset): Current open position on the execution account
             exe_volume_percent (int | Unset): Coverage percentage (volume routed externally vs. internal book)
-            exe_flags (int | Unset): Execution flags bitmap (raw wrapper int)
+            exe_flags (int | Unset): Execution flags bitmap (raw platform int)
      """
 
     enable: bool | Unset = UNSET

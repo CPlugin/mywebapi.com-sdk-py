@@ -32,9 +32,9 @@ class MT4LiveUpdateApiResponse:
 
         Attributes:
             data (MT4LiveUpdate | None | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry. Curated
-                subset of the wrapper's ConLiveUpdate — exposes the metadata
+                subset of the platform's ConLiveUpdate — exposes the metadata
                 (Company, Path, Version/Build, connection limits and counters,
-                Type, Enable, TotalFiles). The wrapper's `Files` array
+                Type, Enable, TotalFiles). The platform's `Files` array
                 (128-element LiveInfoFile descriptor table) is intentionally
                 deferred to a future endpoint to keep this payload tractable; v2
                 callers needing per-file detail will get a separate
@@ -43,10 +43,9 @@ class MT4LiveUpdateApiResponse:
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4LiveUpdate | None | Unset = UNSET
