@@ -27,7 +27,7 @@ T = TypeVar("T", bound="MT4Group")
 @_attrs_define
 class MT4Group:
     """ v2 DTO describing a trading group configuration. Curated subset of the
-    wrapper's `ConGroup` — exposes the configuration fields that callers
+    the platform's `ConGroup` — exposes the configuration fields that callers
     need to inspect margin/leverage/rights settings.
 
     Deliberately omitted from v2 (vs v1's full ConGroup shape):
@@ -37,7 +37,7 @@ class MT4Group:
         is rarely useful without its credentials and exposes infra topology.
       * `Templates` — server-side filesystem path, irrelevant to API
         consumers and a minor information-disclosure risk.
-      * `SecuritiesHash` — opaque byte[], wrapper bookkeeping.
+      * `SecuritiesHash` — opaque byte[], platform bookkeeping.
       * `Reserved`, `UnusedRights`, `SecGroups[32]`,
         `SecMargins[128]` — reserved/internal arrays. The two nested
         arrays (SecGroups, SecMargins) deserve their own dedicated v2
@@ -47,8 +47,7 @@ class MT4Group:
         rarely consumed; can be added later once the use case is clear.
 
     Enums (`OTPMode`, `MarginMode`, `NewsMode`,
-    `MarginControllingType`) serialize as strings because
-    CPlugin.SaaSWebApps.WebAPI.Code.Json.V2JsonContext enables `UseStringEnumConverter`;
+    `MarginControllingType`) are returned as their names;
     `GroupRights` is a flags string, the names of the set bits.
 
         Attributes:

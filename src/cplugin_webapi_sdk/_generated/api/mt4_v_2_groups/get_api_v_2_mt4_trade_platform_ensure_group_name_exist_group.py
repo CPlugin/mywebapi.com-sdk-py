@@ -80,12 +80,12 @@ def sync_detailed(
      Checks whether a trading group exists on the connected MT4 server. Useful as a validation pre-flight
     before creating users, moving users between groups, or wiring up automated provisioning.
 
-    Manager-live read. The wrapper's `EnsureGroupNameExist` helper
+    Manager-live read. The platform's `EnsureGroupNameExist` helper
     is internal/private, so this v2 endpoint re-implements the check
     directly: enumerate the full group catalog via
     `GroupsRequest` and look up the key. The same Manager request
     is incurred either way; there is no cheaper \"exists\" call in the
-    MT4 ManagerAPI surface.
+    MT4 trade-server surface.
 
     Returns `true` if the group is configured on the server,
     `false` otherwise. Group lookup is case-sensitive (MT4 group
@@ -134,12 +134,12 @@ def sync(
      Checks whether a trading group exists on the connected MT4 server. Useful as a validation pre-flight
     before creating users, moving users between groups, or wiring up automated provisioning.
 
-    Manager-live read. The wrapper's `EnsureGroupNameExist` helper
+    Manager-live read. The platform's `EnsureGroupNameExist` helper
     is internal/private, so this v2 endpoint re-implements the check
     directly: enumerate the full group catalog via
     `GroupsRequest` and look up the key. The same Manager request
     is incurred either way; there is no cheaper \"exists\" call in the
-    MT4 ManagerAPI surface.
+    MT4 trade-server surface.
 
     Returns `true` if the group is configured on the server,
     `false` otherwise. Group lookup is case-sensitive (MT4 group
@@ -183,12 +183,12 @@ async def asyncio_detailed(
      Checks whether a trading group exists on the connected MT4 server. Useful as a validation pre-flight
     before creating users, moving users between groups, or wiring up automated provisioning.
 
-    Manager-live read. The wrapper's `EnsureGroupNameExist` helper
+    Manager-live read. The platform's `EnsureGroupNameExist` helper
     is internal/private, so this v2 endpoint re-implements the check
     directly: enumerate the full group catalog via
     `GroupsRequest` and look up the key. The same Manager request
     is incurred either way; there is no cheaper \"exists\" call in the
-    MT4 ManagerAPI surface.
+    MT4 trade-server surface.
 
     Returns `true` if the group is configured on the server,
     `false` otherwise. Group lookup is case-sensitive (MT4 group
@@ -237,12 +237,12 @@ async def asyncio(
      Checks whether a trading group exists on the connected MT4 server. Useful as a validation pre-flight
     before creating users, moving users between groups, or wiring up automated provisioning.
 
-    Manager-live read. The wrapper's `EnsureGroupNameExist` helper
+    Manager-live read. The platform's `EnsureGroupNameExist` helper
     is internal/private, so this v2 endpoint re-implements the check
     directly: enumerate the full group catalog via
     `GroupsRequest` and look up the key. The same Manager request
     is incurred either way; there is no cheaper \"exists\" call in the
-    MT4 ManagerAPI surface.
+    MT4 trade-server surface.
 
     Returns `true` if the group is configured on the server,
     `false` otherwise. Group lookup is case-sensitive (MT4 group

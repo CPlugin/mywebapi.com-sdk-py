@@ -24,15 +24,15 @@ T = TypeVar("T", bound="MT4Performance")
 @_attrs_define
 class MT4Performance:
     """ v2 DTO for a single MT4 server performance snapshot — one row in the
-    time-series that `PerformanceRequest` returns. Mirrors the wrapper's
+    time-series that `PerformanceRequest` returns. Mirrors the platform's
     `PerformanceInfo` struct: a periodic resource sample (server-defined
     cadence, typically every 5 minutes) covering CPU, memory, network, socket
-    count, and connected-user count at CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Performance.Ctm. Used for capacity
-    planning, dashboards, and incident timelines. The wrapper's private
-    underscore-prefixed unix-time field is masked by CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4Performance.Ctm.
+    count, and connected-user count at MT4Performance.Ctm. Used for capacity
+    planning, dashboards, and incident timelines. The platform's private
+    underscore-prefixed unix-time field is masked by MT4Performance.Ctm.
 
         Attributes:
-            ctm (datetime.datetime | Unset): Snapshot timestamp (wrapper internal: __time32_t)
+            ctm (datetime.datetime | Unset): Snapshot timestamp (platform internal: __time32_t)
             users (int | Unset): Connected-users count at the snapshot
             cpu (int | Unset): CPU load, percent (0..100)
             free_mem (int | Unset): Free memory at the snapshot, in kilobytes

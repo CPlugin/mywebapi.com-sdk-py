@@ -41,10 +41,10 @@ class MT4UserUpdate:
       * `Password`, `PasswordInvestor`, `PasswordPhone` —
         change via `POST UserPasswordSet`.
       * `OTPSecret` — provisioned via separate admin flow.
-      * `APIData` — wrapper-internal blob, never client-controlled.
+      * `APIData` — platform-internal blob, never client-controlled.
 
     <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-    wrapper `UserRecordUpdate` writes them directly. However, the audit-
+    platform `UserRecordUpdate` writes them directly. However, the audit-
     trail-preserving way to move money is the dedicated balance operation
     endpoints (forthcoming) — submitting Balance via this DTO bypasses the
     audit log on MT4 server side.

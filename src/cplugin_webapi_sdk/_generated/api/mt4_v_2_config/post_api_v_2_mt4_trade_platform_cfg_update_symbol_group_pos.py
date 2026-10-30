@@ -113,19 +113,19 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.
@@ -179,19 +179,19 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.
@@ -240,19 +240,19 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.
@@ -306,19 +306,19 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.
         body (MT4SymbolGroup | Unset): v2 DTO describing a single MT4 symbol group (security
             category).
-            Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+            Mirrors the platform's ConSymbolGroup — which only carries Name and
             Description as fixed-size ANSI fields. There is no ProfitCurrency on
             the MT4-side group struct (that lives on per-symbol settings, not on
             the group level), so the DTO faithfully exposes only what exists.

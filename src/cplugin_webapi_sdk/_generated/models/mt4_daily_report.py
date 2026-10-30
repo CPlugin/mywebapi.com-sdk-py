@@ -23,7 +23,7 @@ T = TypeVar("T", bound="MT4DailyReport")
 
 @_attrs_define
 class MT4DailyReport:
-    """ v2 DTO mirroring the wrapper's `DailyReport`: one end-of-day
+    """ v2 DTO mirroring the platform's `DailyReport`: one end-of-day
     balance/equity/PnL snapshot for a single account. Used by the broker
     daily-report family (per-login query, bulk pull, incremental sync).
     Internal underscore-prefixed unix-time field, the `Next` pointer
@@ -34,7 +34,7 @@ class MT4DailyReport:
 
         Attributes:
             login (int | Unset): Account login the report belongs to
-            ctm (datetime.datetime | Unset): Day boundary timestamp (wrapper internal: __time32_t, server-local time)
+            ctm (datetime.datetime | Unset): Day boundary timestamp (platform internal: __time32_t, server-local time)
             group (None | str | Unset): Trading group the account was in on that day
             bank (None | str | Unset): Free-form bank/payment identifier recorded with the day's deposits
             balance_prev (float | Unset): Balance at the start of the reporting day

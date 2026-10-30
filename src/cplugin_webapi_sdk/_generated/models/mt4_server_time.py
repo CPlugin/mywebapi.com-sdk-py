@@ -22,14 +22,14 @@ T = TypeVar("T", bound="MT4ServerTime")
 
 @_attrs_define
 class MT4ServerTime:
-    """ v2 DTO for the MT4 server's per-hour access matrix (wrapper's
+    """ v2 DTO for the MT4 server's per-hour access matrix (the platform's
     `ConTime.Days` field). 168-element flat array; each element
     is `0` (denied) or `1` (allowed) for one hour of the
     week. Layout: `index = day * 24 + hour`, day-of-week 0..6
     matches MT4's native convention where day 0 = Sunday.
     <br>
     Example: `AccessHours[24..47]` covers Monday's 24 hours.
-    Internal `DaysControl` and `Reserved` wrapper fields
+    Internal `DaysControl` and `Reserved` platform fields
     are not part of the v2 contract.
 
         Attributes:

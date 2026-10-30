@@ -24,7 +24,7 @@ T = TypeVar("T", bound="MT4Feeder")
 @_attrs_define
 class MT4Feeder:
     """ v2 DTO for a single MT4 quote/news feeder configuration. Curated
-    subset of the wrapper's ConFeeder — drops the wrapper's Unused
+    subset of the platform's ConFeeder — drops the platform's Unused
     reserved blob AND the `Password` field (datafeed credentials).
 
         Attributes:
@@ -33,7 +33,7 @@ class MT4Feeder:
             server (None | str | Unset): Upstream feeder server address
             login (None | str | Unset): Datafeed login (upstream credential identifier)
             keywords (None | str | Unset): Keywords for news filtering
-            enable (int | Unset): Enable flag (0 = disabled, 1 = enabled — raw wrapper int)
+            enable (int | Unset): Enable flag (0 = disabled, 1 = enabled — raw platform int)
             data_feed_mode (DataFeedMode | Unset):
             timeout (int | Unset): Maximum freeze time in seconds before considered stalled (default ~120)
             timeout_reconnect (int | Unset): Reconnect delay before "sleep" attempts threshold (default ~5s)

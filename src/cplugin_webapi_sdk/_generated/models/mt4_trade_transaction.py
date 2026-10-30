@@ -24,23 +24,28 @@ T = TypeVar("T", bound="MT4TradeTransaction")
 @_attrs_define
 class MT4TradeTransaction:
     """ v2 DTO for a trade transaction — input AND output of `TradeTransaction`.
-    The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+    The platform's `TradeTransInfo` is in/out: the caller fills the request
     fields (operation type, command, symbol, volume, price), submits via POST,
     and the server populates the resulting `Order` id (for Open) or
     echoes the modified record (for Modify/Close).
 
     Enum fields (`TradeTransactionType`, `TradeCommand`,
-    `TradeRequestFlags`) are exposed as plain strings. Clients submit
-    the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-    echoes the names back. This dodges the leaf-enum nested-generic STJ
-    source-gen quirk documented in feedback-stj-enum-leaf-nested.
+    `TradeRequestFlags`) are plain strings. Clients submit the name
+    (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+    back. Each field lists its valid names.
 
         Attributes:
-            trade_transaction_type (None | str | Unset): Transaction type: OpenPending, OpenMarket, ModifyPending,
-                ModifyTrade, DeletePending, CloseMarket, BalanceAdd, CreditAdd, etc.
-            trade_command (None | str | Unset): Trade command: Buy, Sell, BuyLimit, SellLimit, BuyStop, SellStop, Balance,
-                Credit
-            trade_request_flags (None | str | Unset): Request flags: None, MarketOpen, Partial, NoExpiration, etc.
+            trade_transaction_type (None | str | Unset): Transaction type (required). Manager-side operations use the `Br*`
+                types, e.g. `BrBalance` with trade command `Balance` or `Credit` for a balance or credit operation.<br/>One of:
+                PricesGet, PricesRequote, OpenInstant, OpenRequest, OpenMarket, PendingOpen, CloseInstant, CloseRequest,
+                CloseMarket, Modify, Delete, CloseBy, CloseAll, BrOpen, BrClose, BrDelete, BrCloseBy, BrCloseAll, BrModify,
+                BrActivate, BrComment, BrBalance. Case-insensitive; the numeric value is accepted too. Any other value is
+                refused with error code Validation.
+            trade_command (None | str | Unset): Trade command. Empty means `Buy`.<br/>One of: Buy, Sell, BuyLimit,
+                SellLimit, BuyStop, SellStop, Balance, Credit. Case-insensitive; the numeric value is accepted too. Any other
+                value is refused with error code Validation.
+            trade_request_flags (None | str | Unset): Request flags (who placed the request). Empty means `None`.<br/>Flags,
+                names joined by ", ": None, Signal, Expert, Gateway, Mobile, Web, API. Case-insensitive; numbers are accepted.
             expiration (datetime.datetime | Unset): Pending order expiration time. Default value means GTC.
             order (int | Unset): Order ticket. 0 on Open requests; server fills this on success.
             order_by (int | Unset): Login (account number). Required for Balance/Credit operations.

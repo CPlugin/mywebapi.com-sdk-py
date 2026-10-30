@@ -86,11 +86,8 @@ def sync_detailed(
 ) -> Response[BooleanApiResponse]:
     """ Reorder plugin entry
 
-     Reorders an entry in the plugins table by relative displacement.
-
-    Unlike the deferred `CfgRequestPlugin` read endpoint, the shift
-    call does not dereference `ConPluginParam.Params` — it only
-    reorders existing rows by index. Safe under wine x64.
+     Reorders an entry in the plugins table by relative displacement. Only
+    the order of the rows changes; plugin parameters are not touched.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -136,11 +133,8 @@ def sync(
 ) -> BooleanApiResponse | None:
     """ Reorder plugin entry
 
-     Reorders an entry in the plugins table by relative displacement.
-
-    Unlike the deferred `CfgRequestPlugin` read endpoint, the shift
-    call does not dereference `ConPluginParam.Params` — it only
-    reorders existing rows by index. Safe under wine x64.
+     Reorders an entry in the plugins table by relative displacement. Only
+    the order of the rows changes; plugin parameters are not touched.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -181,11 +175,8 @@ async def asyncio_detailed(
 ) -> Response[BooleanApiResponse]:
     """ Reorder plugin entry
 
-     Reorders an entry in the plugins table by relative displacement.
-
-    Unlike the deferred `CfgRequestPlugin` read endpoint, the shift
-    call does not dereference `ConPluginParam.Params` — it only
-    reorders existing rows by index. Safe under wine x64.
+     Reorders an entry in the plugins table by relative displacement. Only
+    the order of the rows changes; plugin parameters are not touched.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -231,11 +222,8 @@ async def asyncio(
 ) -> BooleanApiResponse | None:
     """ Reorder plugin entry
 
-     Reorders an entry in the plugins table by relative displacement.
-
-    Unlike the deferred `CfgRequestPlugin` read endpoint, the shift
-    call does not dereference `ConPluginParam.Params` — it only
-    reorders existing rows by index. Safe under wine x64.
+     Reorders an entry in the plugins table by relative displacement. Only
+    the order of the rows changes; plugin parameters are not touched.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server

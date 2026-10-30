@@ -112,13 +112,13 @@ def sync_detailed(
         trade_platform (UUID):
         x_request_timeout (float | Unset):
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
 
     Raises:
@@ -169,13 +169,13 @@ def sync(
         trade_platform (UUID):
         x_request_timeout (float | Unset):
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
 
     Raises:
@@ -221,13 +221,13 @@ async def asyncio_detailed(
         trade_platform (UUID):
         x_request_timeout (float | Unset):
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
 
     Raises:
@@ -278,13 +278,13 @@ async def asyncio(
         trade_platform (UUID):
         x_request_timeout (float | Unset):
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
         body (MT4Feeder | Unset): v2 DTO for a single MT4 quote/news feeder configuration. Curated
-            subset of the wrapper's ConFeeder — drops the wrapper's Unused
+            subset of the platform's ConFeeder — drops the platform's Unused
             reserved blob AND the `Password` field (datafeed credentials).
 
     Raises:

@@ -80,7 +80,7 @@ def sync_detailed(
      Security-group entries (`SecGroups[32]`) for one trading group.
 
     Pump-cached read. Returns the full 32-element array; entries whose
-    `Trade` and `Show` are both 0 are placeholders (the wrapper
+    `Trade` and `Show` are both 0 are placeholders (the platform
     reserves the slot for the symbol-group regardless of whether the
     group is configured to trade it). Filter on the client side.
 
@@ -127,7 +127,7 @@ def sync(
      Security-group entries (`SecGroups[32]`) for one trading group.
 
     Pump-cached read. Returns the full 32-element array; entries whose
-    `Trade` and `Show` are both 0 are placeholders (the wrapper
+    `Trade` and `Show` are both 0 are placeholders (the platform
     reserves the slot for the symbol-group regardless of whether the
     group is configured to trade it). Filter on the client side.
 
@@ -169,7 +169,7 @@ async def asyncio_detailed(
      Security-group entries (`SecGroups[32]`) for one trading group.
 
     Pump-cached read. Returns the full 32-element array; entries whose
-    `Trade` and `Show` are both 0 are placeholders (the wrapper
+    `Trade` and `Show` are both 0 are placeholders (the platform
     reserves the slot for the symbol-group regardless of whether the
     group is configured to trade it). Filter on the client side.
 
@@ -216,7 +216,7 @@ async def asyncio(
      Security-group entries (`SecGroups[32]`) for one trading group.
 
     Pump-cached read. Returns the full 32-element array; entries whose
-    `Trade` and `Show` are both 0 are placeholders (the wrapper
+    `Trade` and `Show` are both 0 are placeholders (the platform
     reserves the slot for the symbol-group regardless of whether the
     group is configured to trade it). Filter on the client side.
 

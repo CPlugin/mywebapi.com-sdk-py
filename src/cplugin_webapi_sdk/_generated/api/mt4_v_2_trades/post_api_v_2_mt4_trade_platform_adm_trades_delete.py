@@ -92,7 +92,7 @@ def sync_detailed(
      Bulk-deletes a list of trade tickets (administrative scope). Used for cleanup after reconciliation
     mistakes, simulator state reset, or compliance-mandated removal.
 
-    Manager-live POST. The wrapper accepts a flat `int[]` of order
+    Manager-live POST. The platform accepts a flat `int[]` of order
     tickets and a count; we mirror the existing batched-int pattern
     (repeat `?orders=` per ticket — same convention as
     `UserRecordsRequest`'s `?logins=`). Empty arrays are
@@ -147,7 +147,7 @@ def sync(
      Bulk-deletes a list of trade tickets (administrative scope). Used for cleanup after reconciliation
     mistakes, simulator state reset, or compliance-mandated removal.
 
-    Manager-live POST. The wrapper accepts a flat `int[]` of order
+    Manager-live POST. The platform accepts a flat `int[]` of order
     tickets and a count; we mirror the existing batched-int pattern
     (repeat `?orders=` per ticket — same convention as
     `UserRecordsRequest`'s `?logins=`). Empty arrays are
@@ -197,7 +197,7 @@ async def asyncio_detailed(
      Bulk-deletes a list of trade tickets (administrative scope). Used for cleanup after reconciliation
     mistakes, simulator state reset, or compliance-mandated removal.
 
-    Manager-live POST. The wrapper accepts a flat `int[]` of order
+    Manager-live POST. The platform accepts a flat `int[]` of order
     tickets and a count; we mirror the existing batched-int pattern
     (repeat `?orders=` per ticket — same convention as
     `UserRecordsRequest`'s `?logins=`). Empty arrays are
@@ -252,7 +252,7 @@ async def asyncio(
      Bulk-deletes a list of trade tickets (administrative scope). Used for cleanup after reconciliation
     mistakes, simulator state reset, or compliance-mandated removal.
 
-    Manager-live POST. The wrapper accepts a flat `int[]` of order
+    Manager-live POST. The platform accepts a flat `int[]` of order
     tickets and a count; we mirror the existing batched-int pattern
     (repeat `?orders=` per ticket — same convention as
     `UserRecordsRequest`'s `?logins=`). Empty arrays are

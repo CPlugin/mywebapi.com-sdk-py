@@ -228,8 +228,9 @@ class MT4RealtimeClient(_BaseRealtimeClient):
 
     Server method names mirror the TypeScript SDK verbatim::
 
-        Callbacks:  OnTick, OnConnectionStatus
-        Invokes:    SubscribeToTicks, UnsubscribeFromTicks
+        Callbacks:  OnTick, OnTicksBatch, OnConnectionStatus
+        Invokes:    SubscribeToTicks, UnsubscribeFromTicks,
+                    SubscribeToTicksBatch, UnsubscribeFromTicksBatch
         Streams:    StreamTicks, StreamTrades, StreamUserUpdates,
                     StreamSymbolUpdates, StreamMarginCallUpdates
     """
@@ -249,6 +250,21 @@ class MT4RealtimeClient(_BaseRealtimeClient):
         # ! Register before start() — signalrcore may drop late handlers.
         self._conn.on("OnTick", handler)
 
+    def on_ticks_batch(self, handler: Callable[[Any], None]) -> None:
+        """Register a callback for ``OnTicksBatch`` events broadcast by the hub.
+
+        ! Register before ``start()`` — see lifecycle ordering note.
+
+        The payload is ``{"symbol": str, "ticks": [tick, ...]}``, where each
+        tick is ``symbol``, ``bid``, ``ask``, ``last``, ``lastTime``,
+        ``volumeExt`` and ``flags``.
+
+        Args:
+            handler: Callable invoked with the raw batch payload per event.
+        """
+        # ! Register before start() — signalrcore may drop late handlers.
+        self._conn.on("OnTicksBatch", handler)
+
     # * --- invocations ------------------------------------------------------
 
     def subscribe_to_ticks(self, symbol: str) -> None:
@@ -266,6 +282,39 @@ class MT4RealtimeClient(_BaseRealtimeClient):
             symbol: Instrument name (e.g. ``"EURUSD"``).
         """
         self._conn.send("UnsubscribeFromTicks", [symbol])
+
+    def subscribe_to_ticks_batch(
+        self,
+        symbol: str,
+        interval_ms: int = 200,
+        max_batch_size: int = 200,
+    ) -> None:
+        """Ask the server to start pushing ``OnTicksBatch`` events for ``symbol``.
+
+        Ticks arrive in batches instead of one ``OnTick`` event per tick, so a
+        busy symbol costs far fewer messages. A symbol subscribed this way
+        receives no per-tick ``OnTick`` events until it is subscribed again the
+        plain way. Subscriptions live until the connection closes.
+
+        Args:
+            symbol: Instrument name (e.g. ``"EURUSD"``).
+            interval_ms: Flush interval in milliseconds, 20–60000
+                         (default 200).
+            max_batch_size: Flush a batch early after this many ticks,
+                            1–10000 (default 200).
+        """
+        self._conn.send(
+            "SubscribeToTicksBatch",
+            [symbol, interval_ms, max_batch_size],
+        )
+
+    def unsubscribe_from_ticks_batch(self, symbol: str) -> None:
+        """Ask the server to stop pushing ``OnTicksBatch`` events for ``symbol``.
+
+        Args:
+            symbol: Instrument name (e.g. ``"EURUSD"``).
+        """
+        self._conn.send("UnsubscribeFromTicksBatch", [symbol])
 
     # * --- server-streaming methods -----------------------------------------
     # * Call .subscribe({"next": cb, "complete": cb, "error": cb}) on each.
@@ -329,13 +378,107 @@ class MT5RealtimeClient(_BaseRealtimeClient):
 
     Server method names mirror the TypeScript SDK verbatim::
 
-        Callbacks:  OnConnectionStatus
-        Streams:    StreamMarginCallUpdates
+        Callbacks:  OnTick, OnTicksBatch, OnConnectionStatus
+        Invokes:    SubscribeToTicks, UnsubscribeFromTicks,
+                    SubscribeToTicksBatch, UnsubscribeFromTicksBatch
+        Streams:    StreamTicks, StreamMarginCallUpdates
     """
 
     _PLATFORM = "mt5"
 
+    # * --- callbacks --------------------------------------------------------
+
+    def on_tick(self, handler: Callable[[Any], None]) -> None:
+        """Register a callback for ``OnTick`` events broadcast by the hub.
+
+        ! Register before ``start()`` — see lifecycle ordering note.
+
+        Args:
+            handler: Callable invoked with the raw tick payload per event.
+        """
+        # ! Register before start() — signalrcore may drop late handlers.
+        self._conn.on("OnTick", handler)
+
+    def on_ticks_batch(self, handler: Callable[[Any], None]) -> None:
+        """Register a callback for ``OnTicksBatch`` events broadcast by the hub.
+
+        ! Register before ``start()`` — see lifecycle ordering note.
+
+        The payload is ``{"symbol": str, "ticks": [tick, ...]}``, where each
+        tick is ``symbol``, ``bid``, ``ask``, ``last``, ``lastTime``,
+        ``volumeExt`` and ``flags``.
+
+        Args:
+            handler: Callable invoked with the raw batch payload per event.
+        """
+        # ! Register before start() — signalrcore may drop late handlers.
+        self._conn.on("OnTicksBatch", handler)
+
+    # * --- invocations ------------------------------------------------------
+
+    def subscribe_to_ticks(self, symbol: str) -> None:
+        """Ask the server to start pushing ``OnTick`` events for ``symbol``.
+
+        Args:
+            symbol: Instrument name (e.g. ``"EURUSD"``).
+        """
+        self._conn.send("SubscribeToTicks", [symbol])
+
+    def unsubscribe_from_ticks(self, symbol: str) -> None:
+        """Ask the server to stop pushing ``OnTick`` events for ``symbol``.
+
+        Args:
+            symbol: Instrument name (e.g. ``"EURUSD"``).
+        """
+        self._conn.send("UnsubscribeFromTicks", [symbol])
+
+    def subscribe_to_ticks_batch(
+        self,
+        symbol: str,
+        interval_ms: int = 200,
+        max_batch_size: int = 200,
+    ) -> None:
+        """Ask the server to start pushing ``OnTicksBatch`` events for ``symbol``.
+
+        Ticks arrive in batches instead of one ``OnTick`` event per tick, so a
+        busy symbol costs far fewer messages. A symbol subscribed this way
+        receives no per-tick ``OnTick`` events until it is subscribed again the
+        plain way. Subscriptions live until the connection closes.
+
+        Args:
+            symbol: Instrument name (e.g. ``"EURUSD"``).
+            interval_ms: Flush interval in milliseconds, 20–60000
+                         (default 200).
+            max_batch_size: Flush a batch early after this many ticks,
+                            1–10000 (default 200).
+        """
+        self._conn.send(
+            "SubscribeToTicksBatch",
+            [symbol, interval_ms, max_batch_size],
+        )
+
+    def unsubscribe_from_ticks_batch(self, symbol: str) -> None:
+        """Ask the server to stop pushing ``OnTicksBatch`` events for ``symbol``.
+
+        Args:
+            symbol: Instrument name (e.g. ``"EURUSD"``).
+        """
+        self._conn.send("UnsubscribeFromTicksBatch", [symbol])
+
     # * --- server-streaming methods -----------------------------------------
+    # * Call .subscribe({"next": cb, "complete": cb, "error": cb}) on each.
+
+    def stream_ticks(self, symbol: Optional[str] = None):
+        """Stream server-side tick data.
+
+        Args:
+            symbol: Instrument name (e.g. ``"EURUSD"``); omit to stream every
+                    symbol subscribed on this connection.
+
+        Returns:
+            ``signalrcore.hub.handlers.StreamHandler`` — call ``.subscribe()``.
+        """
+        return self._stream("StreamTicks", [symbol] if symbol else None)
 
     def stream_margin_call_updates(self):
         """Stream margin-call status events from the MT5 hub.

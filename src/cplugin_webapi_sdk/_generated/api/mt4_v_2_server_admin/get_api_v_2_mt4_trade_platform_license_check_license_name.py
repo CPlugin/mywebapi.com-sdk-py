@@ -79,8 +79,8 @@ def sync_detailed(
 
      Check a license name against the MT4 server's license registry — admin-only read.
 
-    Manager (live) call to the wrapper's `LicenseCheck(name)`.
-    Returns a bare `bool` payload: `true` when the wrapper's
+    Manager (live) call to the platform's `LicenseCheck(name)`.
+    Returns a bare `bool` payload: `true` when the platform's
     result code is `Ok`, indicating the license is recognized;
     `false` on any non-Ok code (covers both \"license not found\"
     and \"manager lacks permission to query the license registry\").
@@ -127,8 +127,8 @@ def sync(
 
      Check a license name against the MT4 server's license registry — admin-only read.
 
-    Manager (live) call to the wrapper's `LicenseCheck(name)`.
-    Returns a bare `bool` payload: `true` when the wrapper's
+    Manager (live) call to the platform's `LicenseCheck(name)`.
+    Returns a bare `bool` payload: `true` when the platform's
     result code is `Ok`, indicating the license is recognized;
     `false` on any non-Ok code (covers both \"license not found\"
     and \"manager lacks permission to query the license registry\").
@@ -170,8 +170,8 @@ async def asyncio_detailed(
 
      Check a license name against the MT4 server's license registry — admin-only read.
 
-    Manager (live) call to the wrapper's `LicenseCheck(name)`.
-    Returns a bare `bool` payload: `true` when the wrapper's
+    Manager (live) call to the platform's `LicenseCheck(name)`.
+    Returns a bare `bool` payload: `true` when the platform's
     result code is `Ok`, indicating the license is recognized;
     `false` on any non-Ok code (covers both \"license not found\"
     and \"manager lacks permission to query the license registry\").
@@ -218,8 +218,8 @@ async def asyncio(
 
      Check a license name against the MT4 server's license registry — admin-only read.
 
-    Manager (live) call to the wrapper's `LicenseCheck(name)`.
-    Returns a bare `bool` payload: `true` when the wrapper's
+    Manager (live) call to the platform's `LicenseCheck(name)`.
+    Returns a bare `bool` payload: `true` when the platform's
     result code is `Ok`, indicating the license is recognized;
     `false` on any non-Ok code (covers both \"license not found\"
     and \"manager lacks permission to query the license registry\").

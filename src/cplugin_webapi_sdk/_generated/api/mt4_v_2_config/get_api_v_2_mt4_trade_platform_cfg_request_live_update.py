@@ -92,7 +92,7 @@ def sync_detailed(
 
     Manager-live read (round-trip). Each entry: Company (cursor key),
     Path, Version/Build, MaxConnect, current Connections (read-only),
-    Type, Enable flag, TotalFiles. The wrapper's 128-element
+    Type, Enable flag, TotalFiles. The platform's 128-element
     per-file Files descriptor table is dropped from this payload
     for tractability; a dedicated per-file endpoint will follow.
 
@@ -143,7 +143,7 @@ def sync(
 
     Manager-live read (round-trip). Each entry: Company (cursor key),
     Path, Version/Build, MaxConnect, current Connections (read-only),
-    Type, Enable flag, TotalFiles. The wrapper's 128-element
+    Type, Enable flag, TotalFiles. The platform's 128-element
     per-file Files descriptor table is dropped from this payload
     for tractability; a dedicated per-file endpoint will follow.
 
@@ -189,7 +189,7 @@ async def asyncio_detailed(
 
     Manager-live read (round-trip). Each entry: Company (cursor key),
     Path, Version/Build, MaxConnect, current Connections (read-only),
-    Type, Enable flag, TotalFiles. The wrapper's 128-element
+    Type, Enable flag, TotalFiles. The platform's 128-element
     per-file Files descriptor table is dropped from this payload
     for tractability; a dedicated per-file endpoint will follow.
 
@@ -240,7 +240,7 @@ async def asyncio(
 
     Manager-live read (round-trip). Each entry: Company (cursor key),
     Path, Version/Build, MaxConnect, current Connections (read-only),
-    Type, Enable flag, TotalFiles. The wrapper's 128-element
+    Type, Enable flag, TotalFiles. The platform's 128-element
     per-file Files descriptor table is dropped from this payload
     for tractability; a dedicated per-file endpoint will follow.
 

@@ -102,7 +102,7 @@ def sync_detailed(
     `CfgRequestGatewayMarkup`); the v2 contract identifies a rule
     by the composite key `(Source, Symbol)` (same cursor key the
     read endpoint uses). Same read-modify-write flow as
-    `CfgUpdateGatewayAccount`; the wrapper's 16-int reserved
+    `CfgUpdateGatewayAccount`; the platform's 16-int reserved
     padding is preserved.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -114,19 +114,19 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.
@@ -169,7 +169,7 @@ def sync(
     `CfgRequestGatewayMarkup`); the v2 contract identifies a rule
     by the composite key `(Source, Symbol)` (same cursor key the
     read endpoint uses). Same read-modify-write flow as
-    `CfgUpdateGatewayAccount`; the wrapper's 16-int reserved
+    `CfgUpdateGatewayAccount`; the platform's 16-int reserved
     padding is preserved.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -181,19 +181,19 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.
@@ -231,7 +231,7 @@ async def asyncio_detailed(
     `CfgRequestGatewayMarkup`); the v2 contract identifies a rule
     by the composite key `(Source, Symbol)` (same cursor key the
     read endpoint uses). Same read-modify-write flow as
-    `CfgUpdateGatewayAccount`; the wrapper's 16-int reserved
+    `CfgUpdateGatewayAccount`; the platform's 16-int reserved
     padding is preserved.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -243,19 +243,19 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.
@@ -298,7 +298,7 @@ async def asyncio(
     `CfgRequestGatewayMarkup`); the v2 contract identifies a rule
     by the composite key `(Source, Symbol)` (same cursor key the
     read endpoint uses). Same read-modify-write flow as
-    `CfgUpdateGatewayAccount`; the wrapper's 16-int reserved
+    `CfgUpdateGatewayAccount`; the platform's 16-int reserved
     padding is preserved.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -310,19 +310,19 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.
         body (MT4GatewayMarkup | Unset): v2 DTO for a single MT4 gateway markup rule. Curated
             subset of the
-            wrapper's ConGatewayMarkup — drops the 16-int Reserved padding.
+            the platform's ConGatewayMarkup — drops the 16-int Reserved padding.
             Source describes the external symbol (or a wildcard/group mask)
             being mapped onto Symbol on this server, with per-side spread
             adjustments BidMarkup and AskMarkup expressed in pips.

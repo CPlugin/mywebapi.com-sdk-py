@@ -102,7 +102,7 @@ def sync_detailed(
     the fields in `MT4Backup` onto it, and writes back via
     `CfgUpdateBackup`. Two classes of preserved fields:
     <list type=\"bullet\"><item><b>Slave-server credential</b> — `WatchPassword` stays
-            whatever the wrapper read live. It is unreachable from the
+            whatever the platform read live. It is unreachable from the
             v2 request body (DTO does not expose it).</item><item><b>Last-completion timestamps</b> —
     `FullBackupLastTime`,
             `ArchiveLastTime`, `ExportLastTime`, `WatchTimestamp`.
@@ -116,24 +116,15 @@ def sync_detailed(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -173,7 +164,7 @@ def sync(
     the fields in `MT4Backup` onto it, and writes back via
     `CfgUpdateBackup`. Two classes of preserved fields:
     <list type=\"bullet\"><item><b>Slave-server credential</b> — `WatchPassword` stays
-            whatever the wrapper read live. It is unreachable from the
+            whatever the platform read live. It is unreachable from the
             v2 request body (DTO does not expose it).</item><item><b>Last-completion timestamps</b> —
     `FullBackupLastTime`,
             `ArchiveLastTime`, `ExportLastTime`, `WatchTimestamp`.
@@ -187,24 +178,15 @@ def sync(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -239,7 +221,7 @@ async def asyncio_detailed(
     the fields in `MT4Backup` onto it, and writes back via
     `CfgUpdateBackup`. Two classes of preserved fields:
     <list type=\"bullet\"><item><b>Slave-server credential</b> — `WatchPassword` stays
-            whatever the wrapper read live. It is unreachable from the
+            whatever the platform read live. It is unreachable from the
             v2 request body (DTO does not expose it).</item><item><b>Last-completion timestamps</b> —
     `FullBackupLastTime`,
             `ArchiveLastTime`, `ExportLastTime`, `WatchTimestamp`.
@@ -253,24 +235,15 @@ async def asyncio_detailed(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -310,7 +283,7 @@ async def asyncio(
     the fields in `MT4Backup` onto it, and writes back via
     `CfgUpdateBackup`. Two classes of preserved fields:
     <list type=\"bullet\"><item><b>Slave-server credential</b> — `WatchPassword` stays
-            whatever the wrapper read live. It is unreachable from the
+            whatever the platform read live. It is unreachable from the
             v2 request body (DTO does not expose it).</item><item><b>Last-completion timestamps</b> —
     `FullBackupLastTime`,
             `ArchiveLastTime`, `ExportLastTime`, `WatchTimestamp`.
@@ -324,24 +297,15 @@ async def asyncio(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
-        body (MT4Backup | Unset): v2 DTO for the MT4 server's backup configuration (wrapper's
-            ConBackup).
-            Curated subset — drops the WatchPassword field (slave-server credential)
-            for security. All other wrapper public fields are preserved, enums are
-            surfaced as enum types (V2JsonContext serializes them as strings via
-            UseStringEnumConverter=true).
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
+        body (MT4Backup | Unset): Backup configuration of the MT4 server. All fields except the
+            slave-server password, which is never
+            returned. Enumerations are returned as their names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

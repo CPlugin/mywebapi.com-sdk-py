@@ -111,7 +111,7 @@ def sync_detailed(
     (and, for pending orders, the open price) sit at least
     `stops_level` away from the current market and that pending
     expiration is at least ten minutes in the future. Returns a bare
-    boolean envelope: `true` when the wrapper's `ResultCode`
+    boolean envelope: `true` when the platform's `ResultCode`
     is `Ok`.
 
     Useful for client-side pre-flight before submitting a real
@@ -128,40 +128,37 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -203,7 +200,7 @@ def sync(
     (and, for pending orders, the open price) sit at least
     `stops_level` away from the current market and that pending
     expiration is at least ten minutes in the future. Returns a bare
-    boolean envelope: `true` when the wrapper's `ResultCode`
+    boolean envelope: `true` when the platform's `ResultCode`
     is `Ok`.
 
     Useful for client-side pre-flight before submitting a real
@@ -220,40 +217,37 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -290,7 +284,7 @@ async def asyncio_detailed(
     (and, for pending orders, the open price) sit at least
     `stops_level` away from the current market and that pending
     expiration is at least ten minutes in the future. Returns a bare
-    boolean envelope: `true` when the wrapper's `ResultCode`
+    boolean envelope: `true` when the platform's `ResultCode`
     is `Ok`.
 
     Useful for client-side pre-flight before submitting a real
@@ -307,40 +301,37 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -382,7 +373,7 @@ async def asyncio(
     (and, for pending orders, the open price) sit at least
     `stops_level` away from the current market and that pending
     expiration is at least ten minutes in the future. Returns a bare
-    boolean envelope: `true` when the wrapper's `ResultCode`
+    boolean envelope: `true` when the platform's `ResultCode`
     is `Ok`.
 
     Useful for client-side pre-flight before submitting a real
@@ -399,40 +390,37 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
         body (MT4TradeTransaction | Unset): v2 DTO for a trade transaction — input AND output of
             `TradeTransaction`.
-            The wrapper's `TradeTransInfo` is in/out: the caller fills the request
+            The platform's `TradeTransInfo` is in/out: the caller fills the request
             fields (operation type, command, symbol, volume, price), submits via POST,
             and the server populates the resulting `Order` id (for Open) or
             echoes the modified record (for Modify/Close).
 
             Enum fields (`TradeTransactionType`, `TradeCommand`,
-            `TradeRequestFlags`) are exposed as plain strings. Clients submit
-            the enum name (e.g. `"Buy"`, `"OpenPending"`); the response
-            echoes the names back. This dodges the leaf-enum nested-generic STJ
-            source-gen quirk documented in feedback-stj-enum-leaf-nested.
+            `TradeRequestFlags`) are plain strings. Clients submit the name
+            (e.g. `"Buy"`, `"PendingOpen"`); the response echoes the names
+            back. Each field lists its valid names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

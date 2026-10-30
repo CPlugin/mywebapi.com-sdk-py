@@ -26,8 +26,8 @@ class MT4UsersGroupOp:
     enable-disable / delete operation across a list of account logins.
 
         Attributes:
-            command (None | str | Unset): Bulk operation: `"Delete"`, `"Enable"`, `"Disable"`, `"Leverage"`, or
-                `"SetGroup"`.
+            command (None | str | Unset): Bulk operation.<br/>One of: Delete, Enable, Disable, Leverage, SetGroup. Case-
+                insensitive; the numeric value is accepted too. Any other value is refused with error code Validation.
             new_group (None | str | Unset): Target group name (max 15 chars + NUL). Only used by `SetGroup`.
             leverage (int | Unset): New leverage value (e.g. 100, 200, 500). Only used by `Leverage`.
             logins (list[int] | None | Unset): List of account logins (account numbers) to apply the operation to. Must be

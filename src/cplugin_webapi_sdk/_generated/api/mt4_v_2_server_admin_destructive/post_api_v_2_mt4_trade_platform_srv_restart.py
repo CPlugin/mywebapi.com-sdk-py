@@ -86,10 +86,10 @@ def sync_detailed(
 
      Soft-restart of the MT4 server process. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvRestart()`. The current
+    Manager (live) call to the platform's `SrvRestart()`. The current
     manager connection is dropped during the restart cycle — clients
     should expect the next request to surface a fresh login. Audit lines
-    are emitted on both sides of the wrapper call (independently of the
+    are emitted on both sides of the platform call (independently of the
     HTTP response).
     <br>
     The `?confirm=true` guard rejects calls without the literal
@@ -140,10 +140,10 @@ def sync(
 
      Soft-restart of the MT4 server process. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvRestart()`. The current
+    Manager (live) call to the platform's `SrvRestart()`. The current
     manager connection is dropped during the restart cycle — clients
     should expect the next request to surface a fresh login. Audit lines
-    are emitted on both sides of the wrapper call (independently of the
+    are emitted on both sides of the platform call (independently of the
     HTTP response).
     <br>
     The `?confirm=true` guard rejects calls without the literal
@@ -189,10 +189,10 @@ async def asyncio_detailed(
 
      Soft-restart of the MT4 server process. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvRestart()`. The current
+    Manager (live) call to the platform's `SrvRestart()`. The current
     manager connection is dropped during the restart cycle — clients
     should expect the next request to surface a fresh login. Audit lines
-    are emitted on both sides of the wrapper call (independently of the
+    are emitted on both sides of the platform call (independently of the
     HTTP response).
     <br>
     The `?confirm=true` guard rejects calls without the literal
@@ -243,10 +243,10 @@ async def asyncio(
 
      Soft-restart of the MT4 server process. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvRestart()`. The current
+    Manager (live) call to the platform's `SrvRestart()`. The current
     manager connection is dropped during the restart cycle — clients
     should expect the next request to surface a fresh login. Audit lines
-    are emitted on both sides of the wrapper call (independently of the
+    are emitted on both sides of the platform call (independently of the
     HTTP response).
     <br>
     The `?confirm=true` guard rejects calls without the literal

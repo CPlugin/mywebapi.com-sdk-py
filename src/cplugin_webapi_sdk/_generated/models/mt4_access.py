@@ -23,13 +23,13 @@ T = TypeVar("T", bound="MT4Access")
 @_attrs_define
 class MT4Access:
     """ v2 DTO for a single MT4 firewall (access) rule. Curated subset of
-    the wrapper's ConAccess struct — drops the 17-int Reserved padding.
+    the platform's ConAccess struct — drops the 17-int Reserved padding.
     IpFrom/IpTo are widened from uint to long so the JSON-serialized
     numeric value fits inside JS Number safely (no precision loss).
 
         Attributes:
             action (int | Unset): Firewall rule action — raw MT4 value preserved (FW_BLOCK / FW_PERMIT
-                per the wrapper's enum encoding; surfaced as int because the wrapper
+                per the platform's enum encoding; surfaced as int because the platform
                 itself surfaces it as int).
             ip_from (int | Unset): IP range start (uint widened to long for JSON safety)
             ip_to (int | Unset): IP range end (uint widened to long for JSON safety)

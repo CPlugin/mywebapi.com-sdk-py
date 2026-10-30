@@ -100,7 +100,7 @@ def sync_detailed(
 
      Update a holiday-calendar entry at a given list position — Type 1 mutator.
 
-    Position-based read-modify-write. The wrapper stores `Enable`
+    Position-based read-modify-write. The platform stores `Enable`
     as `int` (0/1) — the DTO surfaces it as `bool`; the
     mapper bridges with a `BoolToInt` helper. The 13-int
     `Reserved` padding and `Next` pointer are preserved.
@@ -115,21 +115,21 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
 
     Raises:
@@ -168,7 +168,7 @@ def sync(
 
      Update a holiday-calendar entry at a given list position — Type 1 mutator.
 
-    Position-based read-modify-write. The wrapper stores `Enable`
+    Position-based read-modify-write. The platform stores `Enable`
     as `int` (0/1) — the DTO surfaces it as `bool`; the
     mapper bridges with a `BoolToInt` helper. The 13-int
     `Reserved` padding and `Next` pointer are preserved.
@@ -183,21 +183,21 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
 
     Raises:
@@ -231,7 +231,7 @@ async def asyncio_detailed(
 
      Update a holiday-calendar entry at a given list position — Type 1 mutator.
 
-    Position-based read-modify-write. The wrapper stores `Enable`
+    Position-based read-modify-write. The platform stores `Enable`
     as `int` (0/1) — the DTO surfaces it as `bool`; the
     mapper bridges with a `BoolToInt` helper. The 13-int
     `Reserved` padding and `Next` pointer are preserved.
@@ -246,21 +246,21 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
 
     Raises:
@@ -299,7 +299,7 @@ async def asyncio(
 
      Update a holiday-calendar entry at a given list position — Type 1 mutator.
 
-    Position-based read-modify-write. The wrapper stores `Enable`
+    Position-based read-modify-write. The platform stores `Enable`
     as `int` (0/1) — the DTO surfaces it as `bool`; the
     mapper bridges with a `BoolToInt` helper. The 13-int
     `Reserved` padding and `Next` pointer are preserved.
@@ -314,21 +314,21 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
         body (MT4Holiday | Unset): v2 DTO for a single MT4 holiday-calendar entry. Curated subset
             of the
-            wrapper's ConHoliday struct — exposes the broker-facing fields and
+            the platform's ConHoliday struct — exposes the broker-facing fields and
             drops the internal Reserved/Next pointer block. Date is split into
-            Year/Month/Day ints (wire-compatible with the wrapper, no DateTime
+            Year/Month/Day ints (wire-compatible with the platform, no DateTime
             conversion to avoid timezone ambiguity for date-only entries).
 
     Raises:

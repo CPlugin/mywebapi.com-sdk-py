@@ -30,7 +30,7 @@ class ApiError:
 
         Attributes:
             code (WebApiErrorCode | Unset): Transport-level error classification for v2 responses. Stable across MT4
-                wrapper versions — clients can branch on this without knowing MT-specific
+                platform versions — clients can branch on this without knowing MT-specific
                 codes. When ErrorCode == MT4Error, see ManagerCode for the underlying
                 MT4 ResultCode value.
             manager_code (None | ResultCode | Unset): Raw MT4/MT5 manager result code, when the error came from the trading

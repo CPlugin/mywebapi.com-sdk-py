@@ -51,26 +51,26 @@ class MT5Symbol:
             source (None | str | Unset): source symbol name
             page (None | str | Unset): symbol specification page URL
             currency_base (None | str | Unset): symbol base currency
-            currency_base_digits (int | None | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
-                value.</strong>
+            currency_base_digits (int | None | Unset): <strong>Read-only: the trade server does not let this value be
+                changed.</strong>
                 <br />
                 <br />
             currency_profit (None | str | Unset): symbol profit currency
-            currency_profit_digits (int | None | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
-                value.</strong>
+            currency_profit_digits (int | None | Unset): <strong>Read-only: the trade server does not let this value be
+                changed.</strong>
                 <br />
                 <br />
             currency_margin (None | str | Unset): symbol margin currency
-            currency_margin_digits (int | None | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
-                value.</strong>
+            currency_margin_digits (int | None | Unset): <strong>Read-only: the trade server does not let this value be
+                changed.</strong>
                 <br />
                 <br />
             color (int | None | Unset): symbol color
             color_background (int | None | Unset): symbol background color
             digits (int | None | Unset): symbol digits
             point (float | None | Unset):
-            multiply (float | None | Unset): <strong>Has No Setter In ManagerAPI, so all you can is to read this
-                value.</strong>
+            multiply (float | None | Unset): <strong>Read-only: the trade server does not let this value be
+                changed.</strong>
                 <br />
                 <br />
             tick_flags (None | str | Unset): EnTickFlags

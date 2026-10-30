@@ -115,27 +115,27 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate
             `CfgRequestLiveUpdateFiles` in a later slice.
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate
             `CfgRequestLiveUpdateFiles` in a later slice.
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate
@@ -192,27 +192,27 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate
             `CfgRequestLiveUpdateFiles` in a later slice.
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate
             `CfgRequestLiveUpdateFiles` in a later slice.
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate
@@ -264,27 +264,27 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate
             `CfgRequestLiveUpdateFiles` in a later slice.
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate
             `CfgRequestLiveUpdateFiles` in a later slice.
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate
@@ -341,27 +341,27 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate
             `CfgRequestLiveUpdateFiles` in a later slice.
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate
             `CfgRequestLiveUpdateFiles` in a later slice.
         body (MT4LiveUpdate | Unset): v2 DTO for a single MT4 LiveUpdate configuration entry.
             Curated
-            subset of the wrapper's ConLiveUpdate — exposes the metadata
+            subset of the platform's ConLiveUpdate — exposes the metadata
             (Company, Path, Version/Build, connection limits and counters,
-            Type, Enable, TotalFiles). The wrapper's `Files` array
+            Type, Enable, TotalFiles). The platform's `Files` array
             (128-element LiveInfoFile descriptor table) is intentionally
             deferred to a future endpoint to keep this payload tractable; v2
             callers needing per-file detail will get a separate

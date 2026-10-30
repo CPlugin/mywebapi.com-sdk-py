@@ -21,9 +21,9 @@ T = TypeVar("T", bound="MT4SymbolSession")
 
 @_attrs_define
 class MT4SymbolSession:
-    """ v2 DTO for one open/close session window. The wrapper stores three of these
-    per direction (Quote/Trade) per weekday — see CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4SymbolDaySessions.
-    All four time components are server-local (the wrapper itself has no
+    """ v2 DTO for one open/close session window. The platform stores three of these
+    per direction (Quote/Trade) per weekday — see MT4SymbolDaySessions.
+    All four time components are server-local (the platform itself has no
     timezone — the trading server's clock is the reference frame).
 
         Attributes:

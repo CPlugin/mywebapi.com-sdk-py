@@ -94,7 +94,23 @@ def sync_detailed(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
-    """  **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    r""" Send push notification
+
+     Send a push notification to one or more MT4 mobile clients — admin write.
+
+    Manager (live) call to the platform's
+    `NotificationsSend2(int[] logins, string message)`. The MT4
+    server fans the message out to each login's registered mobile
+    device via the MetaQuotes push channel.
+    <br>
+    Validation rules:
+    <list type=\"bullet\"><item>`Logins` must contain at least one positive value.</item><item>`Message`
+    must be non-empty and at most 1024 characters.</item></list>
+    Returns a bare `bool` envelope: `true` when the platform
+    reports the dispatch succeeded.
+
+
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
     (`X-Request-Outcome: unknown`): check its result before repeating it.
 
@@ -104,17 +120,17 @@ def sync_detailed(
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
 
     Raises:
@@ -147,7 +163,23 @@ def sync(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
-    """  **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    r""" Send push notification
+
+     Send a push notification to one or more MT4 mobile clients — admin write.
+
+    Manager (live) call to the platform's
+    `NotificationsSend2(int[] logins, string message)`. The MT4
+    server fans the message out to each login's registered mobile
+    device via the MetaQuotes push channel.
+    <br>
+    Validation rules:
+    <list type=\"bullet\"><item>`Logins` must contain at least one positive value.</item><item>`Message`
+    must be non-empty and at most 1024 characters.</item></list>
+    Returns a bare `bool` envelope: `true` when the platform
+    reports the dispatch succeeded.
+
+
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
     (`X-Request-Outcome: unknown`): check its result before repeating it.
 
@@ -157,17 +189,17 @@ def sync(
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
 
     Raises:
@@ -195,7 +227,23 @@ async def asyncio_detailed(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[BooleanApiResponse]:
-    """  **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    r""" Send push notification
+
+     Send a push notification to one or more MT4 mobile clients — admin write.
+
+    Manager (live) call to the platform's
+    `NotificationsSend2(int[] logins, string message)`. The MT4
+    server fans the message out to each login's registered mobile
+    device via the MetaQuotes push channel.
+    <br>
+    Validation rules:
+    <list type=\"bullet\"><item>`Logins` must contain at least one positive value.</item><item>`Message`
+    must be non-empty and at most 1024 characters.</item></list>
+    Returns a bare `bool` envelope: `true` when the platform
+    reports the dispatch succeeded.
+
+
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
     (`X-Request-Outcome: unknown`): check its result before repeating it.
 
@@ -205,17 +253,17 @@ async def asyncio_detailed(
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
 
     Raises:
@@ -248,7 +296,23 @@ async def asyncio(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> BooleanApiResponse | None:
-    """  **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    r""" Send push notification
+
+     Send a push notification to one or more MT4 mobile clients — admin write.
+
+    Manager (live) call to the platform's
+    `NotificationsSend2(int[] logins, string message)`. The MT4
+    server fans the message out to each login's registered mobile
+    device via the MetaQuotes push channel.
+    <br>
+    Validation rules:
+    <list type=\"bullet\"><item>`Logins` must contain at least one positive value.</item><item>`Message`
+    must be non-empty and at most 1024 characters.</item></list>
+    Returns a bare `bool` envelope: `true` when the platform
+    reports the dispatch succeeded.
+
+
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
     (`X-Request-Outcome: unknown`): check its result before repeating it.
 
@@ -258,17 +322,17 @@ async def asyncio(
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
         body (MT4NotificationsSendRequest | Unset): Request body for the v2 `NotificationsSend`
             admin endpoint —
             pushes a single message to one or more MT4 clients identified by
-            account login. Maps onto the wrapper's
+            account login. Maps onto the platform's
             `NotificationsSend2(int[] logins, string message)`.
 
     Raises:

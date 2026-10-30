@@ -85,7 +85,7 @@ def sync_detailed(
     non-zero → admin tooling can run `AdmBalanceFix` to recompute
     (forthcoming Wave 3 endpoint).
 
-    Read-only operation despite the wrapper's \"Adm\" prefix (the prefix
+    Read-only operation despite the platform's \"Adm\" prefix (the prefix
     signals the elevated authorization requirement, not a write side
     effect).
 
@@ -137,7 +137,7 @@ def sync(
     non-zero → admin tooling can run `AdmBalanceFix` to recompute
     (forthcoming Wave 3 endpoint).
 
-    Read-only operation despite the wrapper's \"Adm\" prefix (the prefix
+    Read-only operation despite the platform's \"Adm\" prefix (the prefix
     signals the elevated authorization requirement, not a write side
     effect).
 
@@ -184,7 +184,7 @@ async def asyncio_detailed(
     non-zero → admin tooling can run `AdmBalanceFix` to recompute
     (forthcoming Wave 3 endpoint).
 
-    Read-only operation despite the wrapper's \"Adm\" prefix (the prefix
+    Read-only operation despite the platform's \"Adm\" prefix (the prefix
     signals the elevated authorization requirement, not a write side
     effect).
 
@@ -236,7 +236,7 @@ async def asyncio(
     non-zero → admin tooling can run `AdmBalanceFix` to recompute
     (forthcoming Wave 3 endpoint).
 
-    Read-only operation despite the wrapper's \"Adm\" prefix (the prefix
+    Read-only operation despite the platform's \"Adm\" prefix (the prefix
     signals the elevated authorization requirement, not a write side
     effect).
 

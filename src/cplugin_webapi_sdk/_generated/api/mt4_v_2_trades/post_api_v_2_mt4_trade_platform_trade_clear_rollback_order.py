@@ -83,7 +83,7 @@ def sync_detailed(
     MT4 server is still holding in the rollback buffer (e.g. an
     instant-execution requote that has not yet been confirmed). Has
     no effect once the transaction has been committed; returns the
-    wrapper's `ResultCode` as part of the envelope on failure.
+    the platform's `ResultCode` as part of the envelope on failure.
 
     Idempotent on already-committed/already-rolled-back tickets.
 
@@ -134,7 +134,7 @@ def sync(
     MT4 server is still holding in the rollback buffer (e.g. an
     instant-execution requote that has not yet been confirmed). Has
     no effect once the transaction has been committed; returns the
-    wrapper's `ResultCode` as part of the envelope on failure.
+    the platform's `ResultCode` as part of the envelope on failure.
 
     Idempotent on already-committed/already-rolled-back tickets.
 
@@ -180,7 +180,7 @@ async def asyncio_detailed(
     MT4 server is still holding in the rollback buffer (e.g. an
     instant-execution requote that has not yet been confirmed). Has
     no effect once the transaction has been committed; returns the
-    wrapper's `ResultCode` as part of the envelope on failure.
+    the platform's `ResultCode` as part of the envelope on failure.
 
     Idempotent on already-committed/already-rolled-back tickets.
 
@@ -231,7 +231,7 @@ async def asyncio(
     MT4 server is still holding in the rollback buffer (e.g. an
     instant-execution requote that has not yet been confirmed). Has
     no effect once the transaction has been committed; returns the
-    wrapper's `ResultCode` as part of the envelope on failure.
+    the platform's `ResultCode` as part of the envelope on failure.
 
     Idempotent on already-committed/already-rolled-back tickets.
 

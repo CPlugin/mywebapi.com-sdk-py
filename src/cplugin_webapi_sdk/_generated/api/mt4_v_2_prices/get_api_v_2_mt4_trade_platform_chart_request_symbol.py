@@ -118,7 +118,7 @@ def sync_detailed(
      OHLC chart bars for a symbol over a date range.
 
     Manager (live) call. Resolves the symbol's `ConSymbol` first
-    (needed by the wrapper to set scale/digits), then asks for bars of
+    (needed by the platform to set scale/digits), then asks for bars of
     the given `period` in the date window. `mode` defaults to
     `RangeInExcludeOutOfRage` — bars whose time falls strictly
     inside the window.
@@ -178,7 +178,7 @@ def sync(
      OHLC chart bars for a symbol over a date range.
 
     Manager (live) call. Resolves the symbol's `ConSymbol` first
-    (needed by the wrapper to set scale/digits), then asks for bars of
+    (needed by the platform to set scale/digits), then asks for bars of
     the given `period` in the date window. `mode` defaults to
     `RangeInExcludeOutOfRage` — bars whose time falls strictly
     inside the window.
@@ -233,7 +233,7 @@ async def asyncio_detailed(
      OHLC chart bars for a symbol over a date range.
 
     Manager (live) call. Resolves the symbol's `ConSymbol` first
-    (needed by the wrapper to set scale/digits), then asks for bars of
+    (needed by the platform to set scale/digits), then asks for bars of
     the given `period` in the date window. `mode` defaults to
     `RangeInExcludeOutOfRage` — bars whose time falls strictly
     inside the window.
@@ -293,7 +293,7 @@ async def asyncio(
      OHLC chart bars for a symbol over a date range.
 
     Manager (live) call. Resolves the symbol's `ConSymbol` first
-    (needed by the wrapper to set scale/digits), then asks for bars of
+    (needed by the platform to set scale/digits), then asks for bars of
     the given `period` in the date window. `mode` defaults to
     `RangeInExcludeOutOfRage` — bars whose time falls strictly
     inside the window.

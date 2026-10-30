@@ -209,7 +209,7 @@ rt.stream_ticks("EURUSD").subscribe({
 rt.stop()
 ```
 
-The `mt4` hubs stream ticks, trades, margin-call events, user updates, and symbol config changes; the `mt5` hubs stream connection status and margin-call updates.
+The `mt4` hubs stream ticks, trades, margin-call events, user updates, and symbol config changes; the `mt5` hubs stream ticks and margin-call updates (plus connection status). `stream_ticks()` on MT5 takes the symbol optionally: omit it to receive every symbol subscribed on the connection.
 
 > **Note:** The `realtime` namespace requires `signalrcore` to be installed. The REST surface (`mt4`, `mt5`, `list_trade_platforms`) works without it.
 
@@ -223,6 +223,10 @@ pip install -e ".[codegen]"
 
 # Refresh the vendored spec from staging (main service and x86 sidecar, merged)
 python scripts/fetch_spec.py
+
+# Offline: use a local main-service document; the previous vendored file supplies
+# the x86 sidecar routes that build does not expose
+WEBAPI_SPEC_FILE=/path/to/swagger-v2.json python scripts/fetch_spec.py
 
 # Regenerate the generated client layer
 python scripts/generate_client.py

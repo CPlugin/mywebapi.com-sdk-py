@@ -102,14 +102,13 @@ def sync_detailed(
     side (see `CfgRequestManager`); the v2 contract identifies an
     entry by `Login`. Flow: read live list → match by Login →
     overlay (19 permission flags + IP filter + MailBox/Groups/InfoDepth)
-    → write back. The wrapper's `Name` (read-only — server sets
+    → write back. The platform's `Name` (read-only — server sets
     it), `SecGroups` (32-entry permission table), `ExpTime`,
     `Unused`, and `Reserved` are preserved.
     <br>`IpFrom`/`IpTo` in the body are `long` (DTO widens
-    the wrapper's `uint` for safe JSON numerics) — values outside
+    the platform's `uint` for safe JSON numerics) — values outside
     `[0, uint.MaxValue]` are rejected with
-    `errorCode=Validation` before `ApplyTo`, to avoid a
-    runtime `OverflowException` from Mapperly's checked cast.
+    `errorCode=Validation` before anything is written.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -121,21 +120,21 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value
             fits inside JS Number safely (no precision loss).
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value
             fits inside JS Number safely (no precision loss).
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value
@@ -179,14 +178,13 @@ def sync(
     side (see `CfgRequestManager`); the v2 contract identifies an
     entry by `Login`. Flow: read live list → match by Login →
     overlay (19 permission flags + IP filter + MailBox/Groups/InfoDepth)
-    → write back. The wrapper's `Name` (read-only — server sets
+    → write back. The platform's `Name` (read-only — server sets
     it), `SecGroups` (32-entry permission table), `ExpTime`,
     `Unused`, and `Reserved` are preserved.
     <br>`IpFrom`/`IpTo` in the body are `long` (DTO widens
-    the wrapper's `uint` for safe JSON numerics) — values outside
+    the platform's `uint` for safe JSON numerics) — values outside
     `[0, uint.MaxValue]` are rejected with
-    `errorCode=Validation` before `ApplyTo`, to avoid a
-    runtime `OverflowException` from Mapperly's checked cast.
+    `errorCode=Validation` before anything is written.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -198,21 +196,21 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value
             fits inside JS Number safely (no precision loss).
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value
             fits inside JS Number safely (no precision loss).
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value
@@ -251,14 +249,13 @@ async def asyncio_detailed(
     side (see `CfgRequestManager`); the v2 contract identifies an
     entry by `Login`. Flow: read live list → match by Login →
     overlay (19 permission flags + IP filter + MailBox/Groups/InfoDepth)
-    → write back. The wrapper's `Name` (read-only — server sets
+    → write back. The platform's `Name` (read-only — server sets
     it), `SecGroups` (32-entry permission table), `ExpTime`,
     `Unused`, and `Reserved` are preserved.
     <br>`IpFrom`/`IpTo` in the body are `long` (DTO widens
-    the wrapper's `uint` for safe JSON numerics) — values outside
+    the platform's `uint` for safe JSON numerics) — values outside
     `[0, uint.MaxValue]` are rejected with
-    `errorCode=Validation` before `ApplyTo`, to avoid a
-    runtime `OverflowException` from Mapperly's checked cast.
+    `errorCode=Validation` before anything is written.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -270,21 +267,21 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value
             fits inside JS Number safely (no precision loss).
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value
             fits inside JS Number safely (no precision loss).
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value
@@ -328,14 +325,13 @@ async def asyncio(
     side (see `CfgRequestManager`); the v2 contract identifies an
     entry by `Login`. Flow: read live list → match by Login →
     overlay (19 permission flags + IP filter + MailBox/Groups/InfoDepth)
-    → write back. The wrapper's `Name` (read-only — server sets
+    → write back. The platform's `Name` (read-only — server sets
     it), `SecGroups` (32-entry permission table), `ExpTime`,
     `Unused`, and `Reserved` are preserved.
     <br>`IpFrom`/`IpTo` in the body are `long` (DTO widens
-    the wrapper's `uint` for safe JSON numerics) — values outside
+    the platform's `uint` for safe JSON numerics) — values outside
     `[0, uint.MaxValue]` are rejected with
-    `errorCode=Validation` before `ApplyTo`, to avoid a
-    runtime `OverflowException` from Mapperly's checked cast.
+    `errorCode=Validation` before anything is written.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -347,21 +343,21 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value
             fits inside JS Number safely (no precision loss).
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value
             fits inside JS Number safely (no precision loss).
         body (MT4ManagerRights | Unset): v2 DTO for an MT4 manager-account configuration entry.
             Curated subset
-            of the wrapper's ConManager struct — exposes Login/Name/Groups/MailBox,
+            of the platform's ConManager struct — exposes Login/Name/Groups/MailBox,
             the 19 boolean permission rights, IP-filter fields, and InfoDepth.
             Drops internal fields: SecGroups, ExpTime, Unused, Reserved blocks.
             IPFrom/IPTo are widened from uint to long so the JSON-serialized value

@@ -24,10 +24,10 @@ T = TypeVar("T", bound="MT4GatewayAccount")
 @_attrs_define
 class MT4GatewayAccount:
     """ v2 DTO for a single MT4 STP gateway-account configuration entry.
-    Curated subset of the wrapper's ConGatewayAccount — drops the
+    Curated subset of the platform's ConGatewayAccount — drops the
     23-int Reserved block AND the `Password` field (STP MT4
     credential to the external server). NotifyLogins is preserved
-    as int[8] because the wrapper exposes a fixed-size 8-slot array.
+    as int[8] because the platform exposes a fixed-size 8-slot array.
 
         Attributes:
             enable (bool | Unset): Whether the gateway-account entry is active

@@ -79,7 +79,7 @@ def sync_detailed(
 
      List backup user files available on the MT4 server for a given mode.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupInfoUsers(int mode)`. Returns the catalog of backup
     files (filename, size, mtime) — does NOT touch the files themselves.
     Read-only operation: safe to call repeatedly.
@@ -130,7 +130,7 @@ def sync(
 
      List backup user files available on the MT4 server for a given mode.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupInfoUsers(int mode)`. Returns the catalog of backup
     files (filename, size, mtime) — does NOT touch the files themselves.
     Read-only operation: safe to call repeatedly.
@@ -176,7 +176,7 @@ async def asyncio_detailed(
 
      List backup user files available on the MT4 server for a given mode.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupInfoUsers(int mode)`. Returns the catalog of backup
     files (filename, size, mtime) — does NOT touch the files themselves.
     Read-only operation: safe to call repeatedly.
@@ -227,7 +227,7 @@ async def asyncio(
 
      List backup user files available on the MT4 server for a given mode.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupInfoUsers(int mode)`. Returns the catalog of backup
     files (filename, size, mtime) — does NOT touch the files themselves.
     Read-only operation: safe to call repeatedly.

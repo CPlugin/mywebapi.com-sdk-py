@@ -85,8 +85,8 @@ def sync_detailed(
 
     v1 exposes this as `GET /api/MT4/{tp}/SymbolAdd/{symbol}` — that
     is a historical REST violation (GET should be safe/idempotent). v2
-    corrects the verb to POST without changing the wrapper behaviour. The
-    path stays the same to keep traceability with the underlying wrapper
+    corrects the verb to POST without changing the platform behaviour. The
+    path stays the same to keep traceability with the underlying platform
     method name; only the HTTP verb changes.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -138,8 +138,8 @@ def sync(
 
     v1 exposes this as `GET /api/MT4/{tp}/SymbolAdd/{symbol}` — that
     is a historical REST violation (GET should be safe/idempotent). v2
-    corrects the verb to POST without changing the wrapper behaviour. The
-    path stays the same to keep traceability with the underlying wrapper
+    corrects the verb to POST without changing the platform behaviour. The
+    path stays the same to keep traceability with the underlying platform
     method name; only the HTTP verb changes.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -186,8 +186,8 @@ async def asyncio_detailed(
 
     v1 exposes this as `GET /api/MT4/{tp}/SymbolAdd/{symbol}` — that
     is a historical REST violation (GET should be safe/idempotent). v2
-    corrects the verb to POST without changing the wrapper behaviour. The
-    path stays the same to keep traceability with the underlying wrapper
+    corrects the verb to POST without changing the platform behaviour. The
+    path stays the same to keep traceability with the underlying platform
     method name; only the HTTP verb changes.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -239,8 +239,8 @@ async def asyncio(
 
     v1 exposes this as `GET /api/MT4/{tp}/SymbolAdd/{symbol}` — that
     is a historical REST violation (GET should be safe/idempotent). v2
-    corrects the verb to POST without changing the wrapper behaviour. The
-    path stays the same to keep traceability with the underlying wrapper
+    corrects the verb to POST without changing the platform behaviour. The
+    path stays the same to keep traceability with the underlying platform
     method name; only the HTTP verb changes.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the

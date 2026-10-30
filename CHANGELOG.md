@@ -2,6 +2,29 @@
 
 All notable changes to `mywebapi-sdk` (import name `cplugin_webapi_sdk`). The package follows [semver](https://semver.org/); while it is at `0.x`, a minor release may contain breaking changes.
 
+## 0.3.2
+
+Batched ticks on the MT4 and MT5 realtime hubs. Versions move together with the JavaScript, .NET and PowerShell SDKs.
+
+### Added
+
+- MT5 realtime (`/hubs/mt5/v2`): `on_ticks_batch()` (`OnTicksBatch` events), `subscribe_to_ticks_batch(symbol, interval_ms=200, max_batch_size=200)` and `unsubscribe_from_ticks_batch(symbol)`. The payload is `symbol` plus a `ticks` list, where each tick is `symbol`, `bid`, `ask`, `last`, `lastTime`, `volumeExt` and `flags`. `interval_ms` is 20–60000 and `max_batch_size` is 1–10000; out-of-range values are rejected by the server. A symbol subscribed to batches receives no per-tick `OnTick` events; subscriptions last until the connection closes.
+- MT4 realtime (`/hubs/mt4/v2`): the same `on_ticks_batch()`, `subscribe_to_ticks_batch()` and `unsubscribe_from_ticks_batch()`.
+
+## 0.3.1
+
+MT5 chart and tick history, and ticks on the MT5 realtime hub. Versions move together with the JavaScript, .NET and PowerShell SDKs.
+
+### Added
+
+- Generated MT5 history calls: `GET /api/v2/MT5/{tradePlatform}/ChartRequest/{symbol}` (`period` M1, M5, M15, M30, H1, H4, D1, W1, MN1; optional `from`/`to`; `limit` 0 = no limit) returning `MT5ChartBarPage` (`bars`, `total`, `truncated`) and `GET /api/v2/MT5/{tradePlatform}/TicksHistory/{symbol}` (optional `from`/`to`, `limit`) returning `MT5TickPage` (`ticks`, `total`, `truncated`), with the `MT5ChartBarV2`, `MT5TickV2`, `MT5ChartPeriod` models and their `ApiResponse` wrappers.
+- MT5 realtime (`/hubs/mt5/v2`): `on_tick()` (`OnTick` events), `subscribe_to_ticks(symbol)` / `unsubscribe_from_ticks(symbol)` and `stream_ticks(symbol=None)`. The stream's symbol is optional — omit it to receive every symbol subscribed on the connection. The payload is `symbol`, `bid`, `ask`, `last`, `lastTime`, `volumeExt` and `flags`. `stream_margin_call_updates()` is unchanged.
+
+### Changed
+
+- Regenerated from the current server spec (174 paths): the MT5 history operations above plus the unchanged MT4 x86 sidecar routes, which the x64 build does not expose.
+- `scripts/fetch_spec.py` accepts `WEBAPI_SPEC_FILE` to read a local main-service document without a network call; the previous vendored file supplies the x86 sidecar routes in that mode.
+
 ## 0.3.0
 
 First release on PyPI. The version continues the numbering of the JavaScript, .NET and PowerShell SDKs, which ship the same features as 0.3.0. Request timeouts need a server that answers with `X-Request-Outcome`; older servers ignore the new header and keep working.

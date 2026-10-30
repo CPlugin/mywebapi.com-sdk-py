@@ -23,24 +23,21 @@ T = TypeVar("T", bound="MT4NewsTopic")
 
 @_attrs_define
 class MT4NewsTopic:
-    r""" v2 DTO describing a single news topic header as held in the wrapper's
-    pumping cache. Curated subset of the wrapper's NewsTopic: enough to render
+    r""" v2 DTO describing a single news topic header as held in the platform's
+    pumping cache. Curated subset of the platform's NewsTopic: enough to render
     a list / browse view of broker-distributed news (Key for follow-up
     NewsBodyGet / NewsBodyRequest, Time, Topic, Category, Keywords, Priority,
-    LangId). The wrapper's `Body` property is intentionally excluded —
-    it is x86-only at the unmanaged layer (the MT4 ManagerAPI lays out the
-    body pointer as a 32-bit field and the wrapper throws
-    System.PlatformNotSupportedException on x64) and is fetched
-    separately via `NewsBodyGet(key)`.
+    LangId). The news body is not part of the topic; fetch it with
+    `NewsBodyGet(key)`.
 
         Attributes:
             key (int | Unset): News key — the identifier used by `NewsBodyGet` and
                 `NewsBodyRequest` to fetch the body for this topic.
             time (datetime.datetime | Unset): Published time of the news topic (UTC).
-            topic (None | str | Unset): News headline / subject (max 256 chars at the wrapper layer).
-            category (None | str | Unset): News category. Slash-separated path on the wrapper side (e.g.
+            topic (None | str | Unset): News headline / subject (max 256 chars at the platform layer).
+            category (None | str | Unset): News category. Slash-separated path on the platform side (e.g.
                 "Markets\Asian Markets News") used by the MT4 client terminal to
-                build a tree view. Max 64 chars at the wrapper layer.
+                build a tree view. Max 64 chars at the platform layer.
             keywords (None | str | Unset): Comma-separated keyword list (max 256 chars). Used by quote-feed
                 brokers as a symbol filter — for example `"!EURUSD, EUR*"`
                 selects all EUR pairs except EURUSD.

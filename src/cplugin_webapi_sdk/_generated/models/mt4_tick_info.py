@@ -25,9 +25,9 @@ T = TypeVar("T", bound="MT4TickInfo")
 class MT4TickInfo:
     """ v2 DTO describing the last known tick for a trading symbol. Pump-cached
     snapshot of bid/ask quote — for sub-second updates, prefer the SignalR
-    tick stream over polling this endpoint. The wrapper's `TickInfo`
+    tick stream over polling this endpoint. The platform's `TickInfo`
     has no additional fields; the curated DTO is 1:1 on field semantics
-    with the wrapper, only the timestamp source field is renamed for
+    with the platform, only the timestamp source field is renamed for
     readability (`Ctm` → `Time`).
 
         Attributes:

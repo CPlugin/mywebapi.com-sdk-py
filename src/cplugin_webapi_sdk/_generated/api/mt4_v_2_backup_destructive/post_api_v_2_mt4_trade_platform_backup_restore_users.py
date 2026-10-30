@@ -122,7 +122,7 @@ def sync_detailed(
 
      Restore user records into the live MT4 database. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRestoreUsers(UserRecord[] users)`. Each input
     `MT4UserRestoreInput` is mapped to a fresh `UserRecord`
     with the narrow restore field set — secrets, OTP, server-managed
@@ -183,7 +183,7 @@ def sync(
 
      Restore user records into the live MT4 database. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRestoreUsers(UserRecord[] users)`. Each input
     `MT4UserRestoreInput` is mapped to a fresh `UserRecord`
     with the narrow restore field set — secrets, OTP, server-managed
@@ -239,7 +239,7 @@ async def asyncio_detailed(
 
      Restore user records into the live MT4 database. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRestoreUsers(UserRecord[] users)`. Each input
     `MT4UserRestoreInput` is mapped to a fresh `UserRecord`
     with the narrow restore field set — secrets, OTP, server-managed
@@ -300,7 +300,7 @@ async def asyncio(
 
      Restore user records into the live MT4 database. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRestoreUsers(UserRecord[] users)`. Each input
     `MT4UserRestoreInput` is mapped to a fresh `UserRecord`
     with the narrow restore field set — secrets, OTP, server-managed

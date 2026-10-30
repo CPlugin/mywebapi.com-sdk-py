@@ -92,7 +92,7 @@ def sync_detailed(
 
      Read trade records out of a backup file (does NOT restore — read-only).
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRequestOrders(string file, string request)`. Order-side
     counterpart of `BackupRequestUsers`. Same caveats:
     read-only, full file loaded server-side regardless of `limit`,
@@ -146,7 +146,7 @@ def sync(
 
      Read trade records out of a backup file (does NOT restore — read-only).
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRequestOrders(string file, string request)`. Order-side
     counterpart of `BackupRequestUsers`. Same caveats:
     read-only, full file loaded server-side regardless of `limit`,
@@ -195,7 +195,7 @@ async def asyncio_detailed(
 
      Read trade records out of a backup file (does NOT restore — read-only).
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRequestOrders(string file, string request)`. Order-side
     counterpart of `BackupRequestUsers`. Same caveats:
     read-only, full file loaded server-side regardless of `limit`,
@@ -249,7 +249,7 @@ async def asyncio(
 
      Read trade records out of a backup file (does NOT restore — read-only).
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRequestOrders(string file, string request)`. Order-side
     counterpart of `BackupRequestUsers`. Same caveats:
     read-only, full file loaded server-side regardless of `limit`,

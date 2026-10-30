@@ -79,10 +79,10 @@ def sync_detailed(
 
      Server log for a single feeder by name (admin-only read).
 
-    Manager (live) call to the wrapper's `SrvFeederLog(name)`. Returns
+    Manager (live) call to the platform's `SrvFeederLog(name)`. Returns
     the feeder's log buffer as a string (empty when the feeder is unknown
     or has no recent log activity). Payload is the raw log text — not an
-    array of lines — to preserve formatting at the wrapper boundary.
+    array of lines — to preserve formatting at the platform boundary.
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -126,10 +126,10 @@ def sync(
 
      Server log for a single feeder by name (admin-only read).
 
-    Manager (live) call to the wrapper's `SrvFeederLog(name)`. Returns
+    Manager (live) call to the platform's `SrvFeederLog(name)`. Returns
     the feeder's log buffer as a string (empty when the feeder is unknown
     or has no recent log activity). Payload is the raw log text — not an
-    array of lines — to preserve formatting at the wrapper boundary.
+    array of lines — to preserve formatting at the platform boundary.
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -168,10 +168,10 @@ async def asyncio_detailed(
 
      Server log for a single feeder by name (admin-only read).
 
-    Manager (live) call to the wrapper's `SrvFeederLog(name)`. Returns
+    Manager (live) call to the platform's `SrvFeederLog(name)`. Returns
     the feeder's log buffer as a string (empty when the feeder is unknown
     or has no recent log activity). Payload is the raw log text — not an
-    array of lines — to preserve formatting at the wrapper boundary.
+    array of lines — to preserve formatting at the platform boundary.
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -215,10 +215,10 @@ async def asyncio(
 
      Server log for a single feeder by name (admin-only read).
 
-    Manager (live) call to the wrapper's `SrvFeederLog(name)`. Returns
+    Manager (live) call to the platform's `SrvFeederLog(name)`. Returns
     the feeder's log buffer as a string (empty when the feeder is unknown
     or has no recent log activity). Payload is the raw log text — not an
-    array of lines — to preserve formatting at the wrapper boundary.
+    array of lines — to preserve formatting at the platform boundary.
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.

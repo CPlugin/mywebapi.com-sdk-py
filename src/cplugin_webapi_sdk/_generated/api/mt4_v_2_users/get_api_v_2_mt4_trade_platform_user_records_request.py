@@ -97,7 +97,7 @@ def sync_detailed(
     prefer batch over a loop of single-login calls.
 
     Order in the response is **not** guaranteed to match the request — the
-    wrapper returns a dictionary. Missing logins are silently omitted; the
+    platform returns a dictionary. Missing logins are silently omitted; the
     envelope is not an error envelope in that case.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -148,7 +148,7 @@ def sync(
     prefer batch over a loop of single-login calls.
 
     Order in the response is **not** guaranteed to match the request — the
-    wrapper returns a dictionary. Missing logins are silently omitted; the
+    platform returns a dictionary. Missing logins are silently omitted; the
     envelope is not an error envelope in that case.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -194,7 +194,7 @@ async def asyncio_detailed(
     prefer batch over a loop of single-login calls.
 
     Order in the response is **not** guaranteed to match the request — the
-    wrapper returns a dictionary. Missing logins are silently omitted; the
+    platform returns a dictionary. Missing logins are silently omitted; the
     envelope is not an error envelope in that case.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -245,7 +245,7 @@ async def asyncio(
     prefer batch over a loop of single-login calls.
 
     Order in the response is **not** guaranteed to match the request — the
-    wrapper returns a dictionary. Missing logins are silently omitted; the
+    platform returns a dictionary. Missing logins are silently omitted; the
     envelope is not an error envelope in that case.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the

@@ -23,7 +23,7 @@ T = TypeVar("T", bound="MT4SymbolGroup")
 @_attrs_define
 class MT4SymbolGroup:
     """ v2 DTO describing a single MT4 symbol group (security category).
-    Mirrors the wrapper's ConSymbolGroup — which only carries Name and
+    Mirrors the platform's ConSymbolGroup — which only carries Name and
     Description as fixed-size ANSI fields. There is no ProfitCurrency on
     the MT4-side group struct (that lives on per-symbol settings, not on
     the group level), so the DTO faithfully exposes only what exists.

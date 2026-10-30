@@ -94,7 +94,7 @@ def sync_detailed(
     path), Server (upstream), Login, Keywords (news filter),
     Enable flag, DataFeedMode (quotes/news/both), connection timeouts
     (Timeout, TimeoutReconnect, TimeoutSleep, AttempsSleep),
-    NewsLangId. The wrapper's `Password` (datafeed credentials)
+    NewsLangId. The platform's `Password` (datafeed credentials)
     is intentionally excluded from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -146,7 +146,7 @@ def sync(
     path), Server (upstream), Login, Keywords (news filter),
     Enable flag, DataFeedMode (quotes/news/both), connection timeouts
     (Timeout, TimeoutReconnect, TimeoutSleep, AttempsSleep),
-    NewsLangId. The wrapper's `Password` (datafeed credentials)
+    NewsLangId. The platform's `Password` (datafeed credentials)
     is intentionally excluded from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -193,7 +193,7 @@ async def asyncio_detailed(
     path), Server (upstream), Login, Keywords (news filter),
     Enable flag, DataFeedMode (quotes/news/both), connection timeouts
     (Timeout, TimeoutReconnect, TimeoutSleep, AttempsSleep),
-    NewsLangId. The wrapper's `Password` (datafeed credentials)
+    NewsLangId. The platform's `Password` (datafeed credentials)
     is intentionally excluded from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -245,7 +245,7 @@ async def asyncio(
     path), Server (upstream), Login, Keywords (news filter),
     Enable flag, DataFeedMode (quotes/news/both), connection timeouts
     (Timeout, TimeoutReconnect, TimeoutSleep, AttempsSleep),
-    NewsLangId. The wrapper's `Password` (datafeed credentials)
+    NewsLangId. The platform's `Password` (datafeed credentials)
     is intentionally excluded from the v2 contract.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the

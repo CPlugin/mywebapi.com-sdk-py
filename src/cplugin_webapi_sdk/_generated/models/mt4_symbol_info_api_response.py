@@ -32,7 +32,7 @@ class MT4SymbolInfoApiResponse:
 
         Attributes:
             data (MT4SymbolInfo | None | Unset): v2 DTO describing a single symbol's market data and metadata as held in
-                the wrapper's pumping cache. Curated subset of the wrapper's SymbolInfo:
+                the platform's pumping cache. Curated subset of the platform's SymbolInfo:
                 covers what clients monitoring tick feeds / building a quote panel
                 actually need — current Bid/Ask, session High/Low, tick precision
                 (Digits, Point), current Spread (in points), last-tick direction, and
@@ -44,10 +44,9 @@ class MT4SymbolInfoApiResponse:
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4SymbolInfo | None | Unset = UNSET

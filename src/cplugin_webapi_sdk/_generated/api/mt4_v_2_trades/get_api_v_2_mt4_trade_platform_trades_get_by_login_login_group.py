@@ -82,7 +82,7 @@ def sync_detailed(
      Open trades for a single account from the pump cache.
 
     Pump-cached lookup, keyed by login + group. The group parameter is
-    required because the wrapper organises trades by group internally —
+    required because the platform organises trades by group internally —
     callers can fetch the group via `UserRecordGet/{login}` first.
     Empty list when the account has no open trades.
 
@@ -132,7 +132,7 @@ def sync(
      Open trades for a single account from the pump cache.
 
     Pump-cached lookup, keyed by login + group. The group parameter is
-    required because the wrapper organises trades by group internally —
+    required because the platform organises trades by group internally —
     callers can fetch the group via `UserRecordGet/{login}` first.
     Empty list when the account has no open trades.
 
@@ -177,7 +177,7 @@ async def asyncio_detailed(
      Open trades for a single account from the pump cache.
 
     Pump-cached lookup, keyed by login + group. The group parameter is
-    required because the wrapper organises trades by group internally —
+    required because the platform organises trades by group internally —
     callers can fetch the group via `UserRecordGet/{login}` first.
     Empty list when the account has no open trades.
 
@@ -227,7 +227,7 @@ async def asyncio(
      Open trades for a single account from the pump cache.
 
     Pump-cached lookup, keyed by login + group. The group parameter is
-    required because the wrapper organises trades by group internally —
+    required because the platform organises trades by group internally —
     callers can fetch the group via `UserRecordGet/{login}` first.
     Empty list when the account has no open trades.
 

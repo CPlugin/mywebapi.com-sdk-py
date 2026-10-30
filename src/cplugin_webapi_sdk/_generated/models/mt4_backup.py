@@ -31,11 +31,8 @@ T = TypeVar("T", bound="MT4Backup")
 
 @_attrs_define
 class MT4Backup:
-    """ v2 DTO for the MT4 server's backup configuration (wrapper's ConBackup).
-    Curated subset — drops the WatchPassword field (slave-server credential)
-    for security. All other wrapper public fields are preserved, enums are
-    surfaced as enum types (V2JsonContext serializes them as strings via
-    UseStringEnumConverter=true).
+    """ Backup configuration of the MT4 server. All fields except the slave-server password, which is never
+    returned. Enumerations are returned as their names.
 
         Attributes:
             full_backup_path (None | str | Unset): Filesystem path where full backups are written
@@ -54,12 +51,12 @@ class MT4Backup:
             export_last_time (datetime.datetime | Unset): Last export completion timestamp (UTC)
             watch_role (ServerRole | Unset):
             watch_opposite (None | str | Unset): Opposite server's IP:port string (not secret)
-            watch_ip (int | Unset): Watchdog IP (32-bit, raw wrapper representation)
+            watch_ip (int | Unset): Watchdog IP (32-bit, raw platform representation)
             watch_state (WatchdogState | Unset):
             watch_failover (WatchdogFailoverMode | Unset):
             watch_timeout (int | Unset): Watchdog response timeout, seconds
             watch_login (int | Unset): Watchdog login
-            watch_timestamp (int | Unset): Watchdog last-seen timestamp (raw int — wrapper does not auto-convert)
+            watch_timestamp (int | Unset): Watchdog last-seen timestamp (raw int — platform does not auto-convert)
      """
 
     full_backup_path: None | str | Unset = UNSET

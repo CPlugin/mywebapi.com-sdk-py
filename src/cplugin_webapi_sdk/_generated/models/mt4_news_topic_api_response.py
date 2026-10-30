@@ -31,23 +31,19 @@ class MT4NewsTopicApiResponse:
     (activityId and optional paging). HTTP status is always 200.
 
         Attributes:
-            data (MT4NewsTopic | None | Unset): v2 DTO describing a single news topic header as held in the wrapper's
-                pumping cache. Curated subset of the wrapper's NewsTopic: enough to render
+            data (MT4NewsTopic | None | Unset): v2 DTO describing a single news topic header as held in the platform's
+                pumping cache. Curated subset of the platform's NewsTopic: enough to render
                 a list / browse view of broker-distributed news (Key for follow-up
                 NewsBodyGet / NewsBodyRequest, Time, Topic, Category, Keywords, Priority,
-                LangId). The wrapper's `Body` property is intentionally excluded —
-                it is x86-only at the unmanaged layer (the MT4 ManagerAPI lays out the
-                body pointer as a 32-bit field and the wrapper throws
-                System.PlatformNotSupportedException on x64) and is fetched
-                separately via `NewsBodyGet(key)`.
+                LangId). The news body is not part of the topic; fetch it with
+                `NewsBodyGet(key)`.
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4NewsTopic | None | Unset = UNSET

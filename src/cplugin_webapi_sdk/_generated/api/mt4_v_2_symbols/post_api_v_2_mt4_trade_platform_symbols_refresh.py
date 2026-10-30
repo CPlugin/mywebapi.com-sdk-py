@@ -77,9 +77,9 @@ def sync_detailed(
 
      Refresh the symbol catalog from MT4 server — Type 1 mutator (no body).
 
-    Forces the wrapper to reload its symbol catalog. Useful after admin
+    Forces the platform to reload its symbol catalog. Useful after admin
     tooling has added/edited symbols on the MT4 server side. v1 exposes
-    this as GET — v2 fixes to POST (mutation of the wrapper's local state).
+    this as GET — v2 fixes to POST (mutation of the platform's local state).
 
     **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -121,9 +121,9 @@ def sync(
 
      Refresh the symbol catalog from MT4 server — Type 1 mutator (no body).
 
-    Forces the wrapper to reload its symbol catalog. Useful after admin
+    Forces the platform to reload its symbol catalog. Useful after admin
     tooling has added/edited symbols on the MT4 server side. v1 exposes
-    this as GET — v2 fixes to POST (mutation of the wrapper's local state).
+    this as GET — v2 fixes to POST (mutation of the platform's local state).
 
     **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -160,9 +160,9 @@ async def asyncio_detailed(
 
      Refresh the symbol catalog from MT4 server — Type 1 mutator (no body).
 
-    Forces the wrapper to reload its symbol catalog. Useful after admin
+    Forces the platform to reload its symbol catalog. Useful after admin
     tooling has added/edited symbols on the MT4 server side. v1 exposes
-    this as GET — v2 fixes to POST (mutation of the wrapper's local state).
+    this as GET — v2 fixes to POST (mutation of the platform's local state).
 
     **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -204,9 +204,9 @@ async def asyncio(
 
      Refresh the symbol catalog from MT4 server — Type 1 mutator (no body).
 
-    Forces the wrapper to reload its symbol catalog. Useful after admin
+    Forces the platform to reload its symbol catalog. Useful after admin
     tooling has added/edited symbols on the MT4 server side. v1 exposes
-    this as GET — v2 fixes to POST (mutation of the wrapper's local state).
+    this as GET — v2 fixes to POST (mutation of the platform's local state).
 
     **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server

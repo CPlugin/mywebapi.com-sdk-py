@@ -116,19 +116,19 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.
@@ -185,19 +185,19 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.
@@ -249,19 +249,19 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.
@@ -318,19 +318,19 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.
         body (MT4DataServer | Unset): v2 DTO for a single MT4 access-server (DataServer)
             configuration entry.
-            Curated subset of the wrapper's ConDataServer — drops the internal
+            Curated subset of the platform's ConDataServer — drops the internal
             Reserved1/Reserved2 padding and the Next pointer chain. Loading and
             IpInternal are widened from uint to long for JSON-safe numeric
             serialization.

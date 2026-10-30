@@ -80,7 +80,7 @@ def sync_detailed(
      Open trade by ticket from the pump cache (dictionary lookup variant).
 
     Counterpart to `TradeRecordGet/{order}` — both are pump reads,
-    but the wrapper exposes two distinct call paths: `TradeRecordGet`
+    but the platform exposes two distinct call paths: `TradeRecordGet`
     uses a dedicated single-record method, while this endpoint looks the
     trade up in the open-trades dictionary. Behaviourally equivalent for
     open trades; `TradeRecordGet` can also resolve recently closed
@@ -129,7 +129,7 @@ def sync(
      Open trade by ticket from the pump cache (dictionary lookup variant).
 
     Counterpart to `TradeRecordGet/{order}` — both are pump reads,
-    but the wrapper exposes two distinct call paths: `TradeRecordGet`
+    but the platform exposes two distinct call paths: `TradeRecordGet`
     uses a dedicated single-record method, while this endpoint looks the
     trade up in the open-trades dictionary. Behaviourally equivalent for
     open trades; `TradeRecordGet` can also resolve recently closed
@@ -173,7 +173,7 @@ async def asyncio_detailed(
      Open trade by ticket from the pump cache (dictionary lookup variant).
 
     Counterpart to `TradeRecordGet/{order}` — both are pump reads,
-    but the wrapper exposes two distinct call paths: `TradeRecordGet`
+    but the platform exposes two distinct call paths: `TradeRecordGet`
     uses a dedicated single-record method, while this endpoint looks the
     trade up in the open-trades dictionary. Behaviourally equivalent for
     open trades; `TradeRecordGet` can also resolve recently closed
@@ -222,7 +222,7 @@ async def asyncio(
      Open trade by ticket from the pump cache (dictionary lookup variant).
 
     Counterpart to `TradeRecordGet/{order}` — both are pump reads,
-    but the wrapper exposes two distinct call paths: `TradeRecordGet`
+    but the platform exposes two distinct call paths: `TradeRecordGet`
     uses a dedicated single-record method, while this endpoint looks the
     trade up in the open-trades dictionary. Behaviourally equivalent for
     open trades; `TradeRecordGet` can also resolve recently closed

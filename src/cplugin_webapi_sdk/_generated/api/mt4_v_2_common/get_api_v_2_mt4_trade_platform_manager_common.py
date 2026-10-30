@@ -78,7 +78,7 @@ def sync_detailed(
      Server-wide MT4 trade server settings (curated subset).
 
     Returns MT4Common DTO — server name, broker, server version/build,
-    time zone. Schema is decoupled from the wrapper's ConCommon: v2
+    time zone. Schema is decoupled from the platform's ConCommon: v2
     clients are protected from MetaQuotes schema changes.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -121,7 +121,7 @@ def sync(
      Server-wide MT4 trade server settings (curated subset).
 
     Returns MT4Common DTO — server name, broker, server version/build,
-    time zone. Schema is decoupled from the wrapper's ConCommon: v2
+    time zone. Schema is decoupled from the platform's ConCommon: v2
     clients are protected from MetaQuotes schema changes.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -159,7 +159,7 @@ async def asyncio_detailed(
      Server-wide MT4 trade server settings (curated subset).
 
     Returns MT4Common DTO — server name, broker, server version/build,
-    time zone. Schema is decoupled from the wrapper's ConCommon: v2
+    time zone. Schema is decoupled from the platform's ConCommon: v2
     clients are protected from MetaQuotes schema changes.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -202,7 +202,7 @@ async def asyncio(
      Server-wide MT4 trade server settings (curated subset).
 
     Returns MT4Common DTO — server name, broker, server version/build,
-    time zone. Schema is decoupled from the wrapper's ConCommon: v2
+    time zone. Schema is decoupled from the platform's ConCommon: v2
     clients are protected from MetaQuotes schema changes.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the

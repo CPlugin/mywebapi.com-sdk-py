@@ -122,7 +122,7 @@ def sync_detailed(
 
      Restore order records into the live MT4 database. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRestoreOrders(TradeRecord[] trades)`. Returns
     `MT4TradeRestoreResult[]` — one entry per input trade, with
     `Order` (ticket) and `Res` (0 = error, 1 = restored).
@@ -180,7 +180,7 @@ def sync(
 
      Restore order records into the live MT4 database. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRestoreOrders(TradeRecord[] trades)`. Returns
     `MT4TradeRestoreResult[]` — one entry per input trade, with
     `Order` (ticket) and `Res` (0 = error, 1 = restored).
@@ -233,7 +233,7 @@ async def asyncio_detailed(
 
      Restore order records into the live MT4 database. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRestoreOrders(TradeRecord[] trades)`. Returns
     `MT4TradeRestoreResult[]` — one entry per input trade, with
     `Order` (ticket) and `Res` (0 = error, 1 = restored).
@@ -291,7 +291,7 @@ async def asyncio(
 
      Restore order records into the live MT4 database. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's
+    Manager (live) call to the platform's
     `BackupRestoreOrders(TradeRecord[] trades)`. Returns
     `MT4TradeRestoreResult[]` — one entry per input trade, with
     `Order` (ticket) and `Res` (0 = error, 1 = restored).

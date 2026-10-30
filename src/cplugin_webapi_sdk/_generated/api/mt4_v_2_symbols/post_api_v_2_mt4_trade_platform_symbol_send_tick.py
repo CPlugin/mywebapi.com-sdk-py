@@ -95,7 +95,7 @@ def sync_detailed(
      Injects a synthetic tick into the MT4 server for the given symbol — used to keep the feed alive on
     instruments where the upstream datafeed is paused, or to drive simulator tooling.
 
-    Manager-live POST. The wrapper requires the manager account to hold
+    Manager-live POST. The platform requires the manager account to hold
     the `Market Watch` permission; without it the server typically
     drops the connection rather than returning an error. The API-side
     `ResourceAccessAuthorize` on this endpoint guards against API
@@ -157,7 +157,7 @@ def sync(
      Injects a synthetic tick into the MT4 server for the given symbol — used to keep the feed alive on
     instruments where the upstream datafeed is paused, or to drive simulator tooling.
 
-    Manager-live POST. The wrapper requires the manager account to hold
+    Manager-live POST. The platform requires the manager account to hold
     the `Market Watch` permission; without it the server typically
     drops the connection rather than returning an error. The API-side
     `ResourceAccessAuthorize` on this endpoint guards against API
@@ -214,7 +214,7 @@ async def asyncio_detailed(
      Injects a synthetic tick into the MT4 server for the given symbol — used to keep the feed alive on
     instruments where the upstream datafeed is paused, or to drive simulator tooling.
 
-    Manager-live POST. The wrapper requires the manager account to hold
+    Manager-live POST. The platform requires the manager account to hold
     the `Market Watch` permission; without it the server typically
     drops the connection rather than returning an error. The API-side
     `ResourceAccessAuthorize` on this endpoint guards against API
@@ -276,7 +276,7 @@ async def asyncio(
      Injects a synthetic tick into the MT4 server for the given symbol — used to keep the feed alive on
     instruments where the upstream datafeed is paused, or to drive simulator tooling.
 
-    Manager-live POST. The wrapper requires the manager account to hold
+    Manager-live POST. The platform requires the manager account to hold
     the `Market Watch` permission; without it the server typically
     drops the connection rather than returning an error. The API-side
     `ResourceAccessAuthorize` on this endpoint guards against API

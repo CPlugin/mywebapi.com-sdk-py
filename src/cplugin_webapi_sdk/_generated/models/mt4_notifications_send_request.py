@@ -24,12 +24,12 @@ T = TypeVar("T", bound="MT4NotificationsSendRequest")
 class MT4NotificationsSendRequest:
     """ Request body for the v2 `NotificationsSend` admin endpoint —
     pushes a single message to one or more MT4 clients identified by
-    account login. Maps onto the wrapper's
+    account login. Maps onto the platform's
     `NotificationsSend2(int[] logins, string message)`.
 
         Attributes:
             logins (list[int] | None | Unset): Account logins to deliver the notification to (server-side fan-out
-                — the wrapper sends one notification per recipient in a single
+                — the platform sends one notification per recipient in a single
                 Manager-API call).
             message (None | str | Unset): Notification text. Single-line; the MT4 mobile client displays it
                 as the push body. Controller enforces a length cap to keep the

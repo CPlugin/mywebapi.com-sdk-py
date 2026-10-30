@@ -24,7 +24,7 @@ T = TypeVar("T", bound="MT4SymbolChangeRequest")
 @_attrs_define
 class MT4SymbolChangeRequest:
     """ POST body for the Manager-live `SymbolChange` endpoint. Maps 1:1 to the
-    wrapper's `SymbolProperties` struct (the public properties, not the
+    the platform's `SymbolProperties` struct (the public properties, not the
     underscore-prefixed backing fields). The struct's 8-int `Reserved`
     padding is dropped from the v2 contract.
 
@@ -34,7 +34,7 @@ class MT4SymbolChangeRequest:
     margin, swap) live on the separate `CfgUpdateSymbol` Type 1 mutator.
 
         Attributes:
-            symbol (None | str | Unset): Symbol name (max 12 chars — wrapper's fixed slot)
+            symbol (None | str | Unset): Symbol name (max 12 chars — the platform's fixed slot)
             color (int | Unset): Quote display color (raw int; broker UI convention)
             spread (int | Unset): Spread (in points; 0 = market spread)
             spread_balance (int | Unset): Spread imbalance offset (in points)

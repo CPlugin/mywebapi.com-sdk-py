@@ -23,9 +23,9 @@ T = TypeVar("T", bound="MT4LiveUpdate")
 @_attrs_define
 class MT4LiveUpdate:
     """ v2 DTO for a single MT4 LiveUpdate configuration entry. Curated
-    subset of the wrapper's ConLiveUpdate — exposes the metadata
+    subset of the platform's ConLiveUpdate — exposes the metadata
     (Company, Path, Version/Build, connection limits and counters,
-    Type, Enable, TotalFiles). The wrapper's `Files` array
+    Type, Enable, TotalFiles). The platform's `Files` array
     (128-element LiveInfoFile descriptor table) is intentionally
     deferred to a future endpoint to keep this payload tractable; v2
     callers needing per-file detail will get a separate
@@ -38,8 +38,8 @@ class MT4LiveUpdate:
             build (int | Unset): Service build number
             max_connect (int | Unset): Maximum simultaneous client connections allowed
             connections (int | Unset): Currently active client connections (read-only counter)
-            type_ (int | Unset): LiveUpdate kind/type (raw wrapper int — LIVE_UPDATE_* constants)
-            enable (int | Unset): Enable flag (0 = disabled, 1 = enabled — raw wrapper int)
+            type_ (int | Unset): LiveUpdate kind/type (raw platform int — LIVE_UPDATE_* constants)
+            enable (int | Unset): Enable flag (0 = disabled, 1 = enabled — raw platform int)
             total_files (int | Unset): Total files served
      """
 

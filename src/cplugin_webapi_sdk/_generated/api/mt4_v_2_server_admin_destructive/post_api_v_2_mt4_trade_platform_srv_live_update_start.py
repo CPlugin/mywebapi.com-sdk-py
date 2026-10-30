@@ -86,7 +86,7 @@ def sync_detailed(
 
      Kick the LiveUpdate distributor. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvLiveUpdateStart()`.
+    Manager (live) call to the platform's `SrvLiveUpdateStart()`.
     Starts (or restarts) the server's outbound LiveUpdate broadcast.
     Affects connected client terminals — they may receive an update prompt.
 
@@ -133,7 +133,7 @@ def sync(
 
      Kick the LiveUpdate distributor. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvLiveUpdateStart()`.
+    Manager (live) call to the platform's `SrvLiveUpdateStart()`.
     Starts (or restarts) the server's outbound LiveUpdate broadcast.
     Affects connected client terminals — they may receive an update prompt.
 
@@ -175,7 +175,7 @@ async def asyncio_detailed(
 
      Kick the LiveUpdate distributor. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvLiveUpdateStart()`.
+    Manager (live) call to the platform's `SrvLiveUpdateStart()`.
     Starts (or restarts) the server's outbound LiveUpdate broadcast.
     Affects connected client terminals — they may receive an update prompt.
 
@@ -222,7 +222,7 @@ async def asyncio(
 
      Kick the LiveUpdate distributor. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvLiveUpdateStart()`.
+    Manager (live) call to the platform's `SrvLiveUpdateStart()`.
     Starts (or restarts) the server's outbound LiveUpdate broadcast.
     Affects connected client terminals — they may receive an update prompt.
 

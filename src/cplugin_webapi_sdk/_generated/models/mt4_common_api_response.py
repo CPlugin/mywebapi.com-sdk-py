@@ -32,16 +32,15 @@ class MT4CommonApiResponse:
 
         Attributes:
             data (MT4Common | None | Unset): v2 DTO for MT4 server-wide common settings. Curated subset of the
-                wrapper's ConCommon struct — exposes fields useful to clients while
+                the platform's ConCommon struct — exposes fields useful to clients while
                 shielding the v2 contract from MetaQuotes schema drift.
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4Common | None | Unset = UNSET

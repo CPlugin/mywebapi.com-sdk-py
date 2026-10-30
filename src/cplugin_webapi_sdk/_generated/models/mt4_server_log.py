@@ -24,22 +24,12 @@ T = TypeVar("T", bound="MT4ServerLog")
 class MT4ServerLog:
     """ v2 DTO for one MT4 server journal entry. Returned by `JournalRequest`
     when querying server-side logs for a date window. Same field set as the
-    wrapper's `ServerLog` — the wrapper struct is already minimal, no
-    secrets to drop. `Code` serialises as a string via
-    CPlugin.SaaSWebApps.WebAPI.Code.Json.V2JsonContext's `UseStringEnumConverter`.
+    the platform's `ServerLog` — the platform struct is already minimal, no
+    secrets to drop. `Code` is returned as its name.
 
         Attributes:
             code (None | str | Unset): Log level / message category (Ok / Trade / Login / Warn / Err / Att).
-                <br>
-                Exposed as a plain string instead of an enum because STJ source-gen's
-                global `UseStringEnumConverter` doesn't consistently apply to
-                leaf-enum fields reachable only via nested generics
-                (`List<MT4ServerLog>.Code`). Property-level
-                `[JsonConverter(typeof(JsonStringEnumConverter<T>))]` also
-                failed for the same reason — the source generator does not bind the
-                attribute at the leaf. Mapping at the mapper level (enum.ToString())
-                is the most reliable path that survives the source generator.
-            time (None | str | Unset): Server-side timestamp as the wrapper formats it (string, not DateTime — preserved
+            time (None | str | Unset): Server-side timestamp as the platform formats it (string, not DateTime — preserved
                 verbatim)
             ip (None | str | Unset): Client IP recorded for the event (empty for server-internal events)
             message (None | str | Unset): Free-text log message

@@ -103,7 +103,7 @@ def sync_detailed(
     request a specific id by setting `Login > 0` (the server
     rejects collisions with an MT4 error envelope).
 
-    The wrapper accepts the account with empty password bytes; clients
+    The platform accepts the account with empty password bytes; clients
     MUST follow up with `POST UserPasswordSet/{login}` before the
     account is usable.
 
@@ -120,44 +120,41 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
 
@@ -200,7 +197,7 @@ def sync(
     request a specific id by setting `Login > 0` (the server
     rejects collisions with an MT4 error envelope).
 
-    The wrapper accepts the account with empty password bytes; clients
+    The platform accepts the account with empty password bytes; clients
     MUST follow up with `POST UserPasswordSet/{login}` before the
     account is usable.
 
@@ -217,44 +214,41 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
 
@@ -292,7 +286,7 @@ async def asyncio_detailed(
     request a specific id by setting `Login > 0` (the server
     rejects collisions with an MT4 error envelope).
 
-    The wrapper accepts the account with empty password bytes; clients
+    The platform accepts the account with empty password bytes; clients
     MUST follow up with `POST UserPasswordSet/{login}` before the
     account is usable.
 
@@ -309,44 +303,41 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
 
@@ -389,7 +380,7 @@ async def asyncio(
     request a specific id by setting `Login > 0` (the server
     rejects collisions with an MT4 error envelope).
 
-    The wrapper accepts the account with empty password bytes; clients
+    The platform accepts the account with empty password bytes; clients
     MUST follow up with `POST UserPasswordSet/{login}` before the
     account is usable.
 
@@ -406,44 +397,41 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
         body (MT4UserCreate | Unset): Type 1 mutator input — full create shape for
             `UserRecordNew`.
-            Same writable fields as CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4UserUpdate minus the
-            explicit
+            Same writable fields as MT4UserUpdate minus the explicit
             `Balance`/`Credit` (those should come through dedicated balance
-            operations after the account exists). The wrapper allocates the next free
+            operations after the account exists). The platform allocates the next free
             login id when `Login = 0`; clients may also request a specific id by
             setting `Login > 0` (the server rejects collisions).
 
             Password / OTP / API-data fields are NOT on this DTO. After successful
             creation, set the initial password via a separate
-            `POST UserPasswordSet/{login}` call. The wrapper accepts the new
+            `POST UserPasswordSet/{login}` call. The platform accepts the new
             account with empty password bytes; the password endpoint lifts it to
             usable credentials.
 

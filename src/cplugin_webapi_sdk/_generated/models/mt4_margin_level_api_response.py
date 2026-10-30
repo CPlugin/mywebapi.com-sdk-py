@@ -31,19 +31,17 @@ class MT4MarginLevelApiResponse:
     (activityId and optional paging). HTTP status is always 200.
 
         Attributes:
-            data (MT4MarginLevel | None | Unset): v2 DTO mirroring the wrapper's MarginLevel record. All fields are kept
+            data (MT4MarginLevel | None | Unset): v2 DTO mirroring the platform's MarginLevel record. All fields are kept
                 because clients monitoring margin call / stop-out conditions need the
-                complete state. ControllingType and LevelType remain as MT4 enums and
-                serialize as string names via the V2JsonContext UseStringEnumConverter
-                option (e.g. "Percent" rather than 0).
+                complete state. ControllingType and LevelType are returned as their names
+                (e.g. "Percent" rather than 0).
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an
                 unrecognised value returned by MT4); Message is a human-readable description.
-            meta (ApiMeta | None | Unset): Response metadata. ActivityId is the W3C trace-id for correlation in Seq/SigNoz.
-                Paging is present only on paginated list responses; otherwise it is omitted —
-                the global JSON context policy serialises null fields, so we override that here
-                with System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull.
+            meta (ApiMeta | None | Unset): Response metadata. ActivityId identifies the request — quote it when you contact
+                support.
+                Paging is present only on paginated list responses; otherwise it is omitted.
      """
 
     data: MT4MarginLevel | None | Unset = UNSET

@@ -118,17 +118,17 @@ def sync_detailed(
         x_request_timeout (float | Unset):
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
 
@@ -186,17 +186,17 @@ def sync(
         x_request_timeout (float | Unset):
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
 
@@ -249,17 +249,17 @@ async def asyncio_detailed(
         x_request_timeout (float | Unset):
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
 
@@ -317,17 +317,17 @@ async def asyncio(
         x_request_timeout (float | Unset):
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
         body (MT4Sync | Unset): v2 DTO for a single MT4 chart-history synchronization rule.
             Curated
-            subset of the wrapper's ConSync — drops the Reserved padding, the
+            subset of the platform's ConSync — drops the Reserved padding, the
             Next pointer chain, the unused port slot, AND the `Password`
             field (replication credentials to the upstream sync source).
 

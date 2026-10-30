@@ -23,7 +23,7 @@ T = TypeVar("T", bound="MT4User")
 
 @_attrs_define
 class MT4User:
-    """ v2 DTO describing a trading account. Curated subset of the wrapper's
+    """ v2 DTO describing a trading account. Curated subset of the platform's
     `UserRecord` — exposes identity, contact, financial and flag fields
     that callers actually need.
 
@@ -31,11 +31,11 @@ class MT4User:
       * Password / PasswordInvestor / PasswordPhone / OtpSecret / ApiData /
         SecureReserved — credentials and secrets must never cross the v2
         boundary regardless of access level.
-      * Unused / Reserved2 / EnableReserved / TimeStamp — wrapper bookkeeping
+      * Unused / Reserved2 / EnableReserved / TimeStamp — platform bookkeeping
         with no caller-visible semantics.
 
-    Account flags are exposed as a single CPlugin.SaaSWebApps.WebAPI.DTOs.MT4.v2.MT4User.EnableFlags bitfield
-    (the wrapper's native representation). Bit semantics are documented under
+    Account flags are exposed as a single MT4User.EnableFlags bitfield
+    (the platform's native representation). Bit semantics are documented under
     that property — splitting it into separate booleans would hide the fact
     that MetaQuotes occasionally reuses bit positions across builds.
 
@@ -45,7 +45,7 @@ class MT4User:
             name (None | str | Unset): Display name of the account holder
             registration_date (datetime.datetime | Unset): UTC timestamp when the account was created
             last_date (datetime.datetime | Unset): UTC timestamp of the last MT4 server interaction
-            external_id (None | str | Unset): External customer identifier (e.g. CRM/KYC link). Wrapper's `Id` field.
+            external_id (None | str | Unset): External customer identifier (e.g. CRM/KYC link). The platform's `Id` field.
             status (None | str | Unset): MT4-internal status string (e.g. live/demo state)
             country (None | str | Unset): Country (free text per broker's enrolment workflow)
             city (None | str | Unset): City
@@ -67,7 +67,7 @@ class MT4User:
             prev_equity (float | Unset): Equity at the previous reporting close
             interest_rate (float | Unset): Interest rate (broker-defined, often used for swaps)
             taxes (float | Unset): Tax rate applied to the account
-            enable_flags (int | Unset): Account flag bitfield (wrapper's `EnableFlags`). Documented bits:
+            enable_flags (int | Unset): Account flag bitfield (the platform's `EnableFlags`). Documented bits:
                   * 0x01 = account enabled (login allowed)
                   * 0x02 = client may change password
                   * 0x04 = account is read-only (no trading)
@@ -77,7 +77,7 @@ class MT4User:
             send_reports (int | Unset): 0 = no reports, non-zero = nightly email reports enabled
             mqid (int | Unset): MetaQuotes ID for mobile push notifications (0 if not linked).
                 Typed as `long` in v2 even though current builds store it in
-                32 bits — the wrapper exposes a wider underlying type and a checked
+                32 bits — the platform exposes a wider underlying type and a checked
                 narrowing cast would crash for accounts whose mqid sits above
                 Int32.MaxValue. Future-proofs the contract against MQ widening.
             user_color (int | Unset): UI tint color in terminal client lists

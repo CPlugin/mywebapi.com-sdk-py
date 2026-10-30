@@ -86,7 +86,7 @@ def sync_detailed(
 
      Restart all running data feeders. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvFeedsRestart()`.
+    Manager (live) call to the platform's `SrvFeedsRestart()`.
     Cycles all running quote/news feeders. May cause a brief gap in
     the tick stream — typically a second or two. Idempotent.
 
@@ -133,7 +133,7 @@ def sync(
 
      Restart all running data feeders. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvFeedsRestart()`.
+    Manager (live) call to the platform's `SrvFeedsRestart()`.
     Cycles all running quote/news feeders. May cause a brief gap in
     the tick stream — typically a second or two. Idempotent.
 
@@ -175,7 +175,7 @@ async def asyncio_detailed(
 
      Restart all running data feeders. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvFeedsRestart()`.
+    Manager (live) call to the platform's `SrvFeedsRestart()`.
     Cycles all running quote/news feeders. May cause a brief gap in
     the tick stream — typically a second or two. Idempotent.
 
@@ -222,7 +222,7 @@ async def asyncio(
 
      Restart all running data feeders. Destructive — requires `?confirm=true`.
 
-    Manager (live) call to the wrapper's `SrvFeedsRestart()`.
+    Manager (live) call to the platform's `SrvFeedsRestart()`.
     Cycles all running quote/news feeders. May cause a brief gap in
     the tick stream — typically a second or two. Idempotent.
 
