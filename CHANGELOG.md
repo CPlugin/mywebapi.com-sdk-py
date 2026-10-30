@@ -2,6 +2,24 @@
 
 All notable changes to `mywebapi-sdk` (import name `cplugin_webapi_sdk`). The package follows [semver](https://semver.org/); while it is at `0.x`, a minor release may contain breaking changes.
 
+## 0.3.4
+
+MT5 chart and tick history, ticks on the MT5 real-time hub, and batched ticks on both real-time hubs. Versions move together with the JavaScript, .NET and PowerShell SDKs.
+
+### Added
+
+- Generated MT5 history calls, from the new tag `MT5 v2 :: History Data`:
+  - `GET /api/v2/MT5/{tradePlatform}/ChartRequest/{symbol}` — OHLC bars of a symbol for a time window, ordered by time ascending. `period` is one of `M1`, `M5`, `M15`, `M30`, `H1`, `H4`, `D1`, `W1`, `MN1` (default `M1`); `from` and `to` are trading times of the trade server, both optional — the beginning of the history and the current server time respectively; `limit` caps the number of bars, `0` (the default) returns the whole window. The answer is `MT5ChartBarPage` — `bars`, `total`, `truncated`.
+  - `GET /api/v2/MT5/{tradePlatform}/TicksHistory/{symbol}` — historical ticks of a symbol for a time window, filtered by the symbol's tick filters, ordered by time ascending. `from` and `to` are optional in the same way, `limit` works as it does for bars. The answer is `MT5TickPage` — `ticks`, `total`, `truncated`; there is no pagination, so read further by moving `from` past the last returned tick.
+  - Models `MT5ChartBarV2`, `MT5ChartBarPage`, `MT5ChartBarPageApiResponse`, `MT5ChartPeriod`, `MT5TickV2`, `MT5TickPage`, `MT5TickPageApiResponse`.
+- MT5 real-time (`/hubs/mt5/v2`): `on_tick()` (`OnTick` events), `subscribe_to_ticks(symbol)` / `unsubscribe_from_ticks(symbol)` and `stream_ticks(symbol=None)`, where the symbol of the stream is optional — omit it to receive every symbol subscribed on the connection. Each tick carries `symbol`, `bid`, `ask`, `last`, `lastTime`, `volumeExt` and `flags`.
+- Batched ticks on both real-time hubs: `on_ticks_batch()` (`OnTicksBatch` events), `subscribe_to_ticks_batch(symbol, interval_ms=200, max_batch_size=200)` and `unsubscribe_from_ticks_batch(symbol)`. The payload is `{"symbol": …, "ticks": [...]}`. `interval_ms` is 20–60000 and `max_batch_size` is 1–10000; out-of-range values are refused by the server. A symbol subscribed to batches receives no per-tick `OnTick` events until it is subscribed the plain way again, and the subscriptions last until the connection closes.
+
+### Changed
+
+- The vendored `spec/v2.json` is the specification of 30.10.2026 (174 paths): the two MT5 history operations above are added to the previous document, and every operation it already had is unchanged.
+- `scripts/fetch_spec.py` reads a local main-service document when `WEBAPI_SPEC_FILE` is set, without a network call; in that mode the previous vendored file supplies the MT4 x86 sidecar routes, which the x64 document does not contain. The merge keeps the document-level keys of that previous union as well.
+
 ## 0.3.3
 
 Regenerated from the WebAPI v2 specification of 05.10.2026; no change to the API surface or to the generated models' fields and types.

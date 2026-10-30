@@ -170,6 +170,8 @@ DEFAULTS: dict[str, float] = {
     "mt5_v_2_common.get_api_v_2_mt5_trade_platform_time_get": 10.0,
     "mt5_v_2_groups.get_api_v_2_mt5_trade_platform_group_get_group": 10.0,
     "mt5_v_2_groups.patch_api_v_2_mt5_trade_platform_group_record_group": 15.0,
+    "mt5_v_2_history_data.get_api_v_2_mt5_trade_platform_chart_request_symbol": 30.0,
+    "mt5_v_2_history_data.get_api_v_2_mt5_trade_platform_ticks_history_symbol": 30.0,
     "mt5_v_2_managers.get_api_v_2_mt5_trade_platform_manager_current": 10.0,
     "mt5_v_2_symbols.get_api_v_2_mt5_trade_platform_symbol_get_symbol": 10.0,
     "mt5_v_2_symbols.patch_api_v_2_mt5_trade_platform_symbol_record_symbol": 15.0,

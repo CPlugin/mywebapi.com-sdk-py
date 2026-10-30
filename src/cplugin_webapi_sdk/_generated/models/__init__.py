@@ -178,6 +178,10 @@ from .mt4_user_list_api_response import MT4UserListApiResponse
 from .mt4_user_restore_input import MT4UserRestoreInput
 from .mt4_user_update import MT4UserUpdate
 from .mt4_users_group_op import MT4UsersGroupOp
+from .mt5_chart_bar_page import MT5ChartBarPage
+from .mt5_chart_bar_page_api_response import MT5ChartBarPageApiResponse
+from .mt5_chart_bar_v2 import MT5ChartBarV2
+from .mt5_chart_period import MT5ChartPeriod
 from .mt5_con_comm_tier import MT5ConCommTier
 from .mt5_con_commission import MT5ConCommission
 from .mt5_con_group import MT5ConGroup
@@ -196,6 +200,9 @@ from .mt5_symbol_api_response import MT5SymbolApiResponse
 from .mt5_symbol_margin_rate_initial_type_0 import MT5SymbolMarginRateInitialType0
 from .mt5_symbol_margin_rate_maintenance_type_0 import MT5SymbolMarginRateMaintenanceType0
 from .mt5_symbol_session import MT5SymbolSession
+from .mt5_tick_page import MT5TickPage
+from .mt5_tick_page_api_response import MT5TickPageApiResponse
+from .mt5_tick_v2 import MT5TickV2
 from .mt5_time import MT5Time
 from .mt5_time_api_response import MT5TimeApiResponse
 from .mt5_user import MT5User
@@ -412,6 +419,10 @@ __all__ = (
     "MT4UserRestoreInput",
     "MT4UsersGroupOp",
     "MT4UserUpdate",
+    "MT5ChartBarPage",
+    "MT5ChartBarPageApiResponse",
+    "MT5ChartBarV2",
+    "MT5ChartPeriod",
     "MT5ConCommission",
     "MT5ConCommTier",
     "MT5ConGroup",
@@ -430,6 +441,9 @@ __all__ = (
     "MT5SymbolMarginRateInitialType0",
     "MT5SymbolMarginRateMaintenanceType0",
     "MT5SymbolSession",
+    "MT5TickPage",
+    "MT5TickPageApiResponse",
+    "MT5TickV2",
     "MT5Time",
     "MT5TimeApiResponse",
     "MT5User",
