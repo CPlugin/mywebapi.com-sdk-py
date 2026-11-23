@@ -20,7 +20,7 @@ def _get_kwargs(
     trade_platform: UUID,
     symbol: str,
     *,
-    from_: datetime.datetime | Unset = UNSET,
+    from_: datetime.datetime,
     to: datetime.datetime | Unset = UNSET,
     limit: int | Unset = 0,
     x_request_timeout: float | Unset = UNSET,
@@ -37,9 +37,7 @@ def _get_kwargs(
 
     params: dict[str, Any] = {}
 
-    json_from_: str | Unset = UNSET
-    if not isinstance(from_, Unset):
-        json_from_ = from_.isoformat()
+    json_from_ = from_.isoformat()
     params["from"] = json_from_
 
     json_to: str | Unset = UNSET
@@ -93,7 +91,7 @@ def sync_detailed(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
-    from_: datetime.datetime | Unset = UNSET,
+    from_: datetime.datetime,
     to: datetime.datetime | Unset = UNSET,
     limit: int | Unset = 0,
     x_request_timeout: float | Unset = UNSET,
@@ -113,11 +111,12 @@ def sync_detailed(
                 tick kind, the same way the streaming events do.
 
     <br>
-      `from` and `to` are optional: without `from` the window starts at
-                the beginning of the history, without `to` it ends at the current server
-                time. `limit` is 0 by default and returns the whole window; a positive value
-                caps the returned ticks and sets `truncated`. There is no pagination: to read
-                further, repeat the request with `from` moved past the last returned tick.
+      `from` is required — ticks are far denser than bars, and a window without a
+                start would scan the whole stored history. `to` is optional and defaults to
+                the current server time. `limit` is 0 by default and returns the whole window;
+                a positive value caps the returned ticks and sets `truncated`. There is no
+                pagination: to read further, repeat the request with `from` moved past the last
+                returned tick.
 
     <br>
                 The call only reads and changes nothing. When the platform has not received the
@@ -132,7 +131,7 @@ def sync_detailed(
     Args:
         trade_platform (UUID):
         symbol (str):
-        from_ (datetime.datetime | Unset):
+        from_ (datetime.datetime):
         to (datetime.datetime | Unset):
         limit (int | Unset):  Default: 0.
         x_request_timeout (float | Unset):
@@ -167,7 +166,7 @@ def sync(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
-    from_: datetime.datetime | Unset = UNSET,
+    from_: datetime.datetime,
     to: datetime.datetime | Unset = UNSET,
     limit: int | Unset = 0,
     x_request_timeout: float | Unset = UNSET,
@@ -187,11 +186,12 @@ def sync(
                 tick kind, the same way the streaming events do.
 
     <br>
-      `from` and `to` are optional: without `from` the window starts at
-                the beginning of the history, without `to` it ends at the current server
-                time. `limit` is 0 by default and returns the whole window; a positive value
-                caps the returned ticks and sets `truncated`. There is no pagination: to read
-                further, repeat the request with `from` moved past the last returned tick.
+      `from` is required — ticks are far denser than bars, and a window without a
+                start would scan the whole stored history. `to` is optional and defaults to
+                the current server time. `limit` is 0 by default and returns the whole window;
+                a positive value caps the returned ticks and sets `truncated`. There is no
+                pagination: to read further, repeat the request with `from` moved past the last
+                returned tick.
 
     <br>
                 The call only reads and changes nothing. When the platform has not received the
@@ -206,7 +206,7 @@ def sync(
     Args:
         trade_platform (UUID):
         symbol (str):
-        from_ (datetime.datetime | Unset):
+        from_ (datetime.datetime):
         to (datetime.datetime | Unset):
         limit (int | Unset):  Default: 0.
         x_request_timeout (float | Unset):
@@ -236,7 +236,7 @@ async def asyncio_detailed(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
-    from_: datetime.datetime | Unset = UNSET,
+    from_: datetime.datetime,
     to: datetime.datetime | Unset = UNSET,
     limit: int | Unset = 0,
     x_request_timeout: float | Unset = UNSET,
@@ -256,11 +256,12 @@ async def asyncio_detailed(
                 tick kind, the same way the streaming events do.
 
     <br>
-      `from` and `to` are optional: without `from` the window starts at
-                the beginning of the history, without `to` it ends at the current server
-                time. `limit` is 0 by default and returns the whole window; a positive value
-                caps the returned ticks and sets `truncated`. There is no pagination: to read
-                further, repeat the request with `from` moved past the last returned tick.
+      `from` is required — ticks are far denser than bars, and a window without a
+                start would scan the whole stored history. `to` is optional and defaults to
+                the current server time. `limit` is 0 by default and returns the whole window;
+                a positive value caps the returned ticks and sets `truncated`. There is no
+                pagination: to read further, repeat the request with `from` moved past the last
+                returned tick.
 
     <br>
                 The call only reads and changes nothing. When the platform has not received the
@@ -275,7 +276,7 @@ async def asyncio_detailed(
     Args:
         trade_platform (UUID):
         symbol (str):
-        from_ (datetime.datetime | Unset):
+        from_ (datetime.datetime):
         to (datetime.datetime | Unset):
         limit (int | Unset):  Default: 0.
         x_request_timeout (float | Unset):
@@ -310,7 +311,7 @@ async def asyncio(
     symbol: str,
     *,
     client: AuthenticatedClient | Client,
-    from_: datetime.datetime | Unset = UNSET,
+    from_: datetime.datetime,
     to: datetime.datetime | Unset = UNSET,
     limit: int | Unset = 0,
     x_request_timeout: float | Unset = UNSET,
@@ -330,11 +331,12 @@ async def asyncio(
                 tick kind, the same way the streaming events do.
 
     <br>
-      `from` and `to` are optional: without `from` the window starts at
-                the beginning of the history, without `to` it ends at the current server
-                time. `limit` is 0 by default and returns the whole window; a positive value
-                caps the returned ticks and sets `truncated`. There is no pagination: to read
-                further, repeat the request with `from` moved past the last returned tick.
+      `from` is required — ticks are far denser than bars, and a window without a
+                start would scan the whole stored history. `to` is optional and defaults to
+                the current server time. `limit` is 0 by default and returns the whole window;
+                a positive value caps the returned ticks and sets `truncated`. There is no
+                pagination: to read further, repeat the request with `from` moved past the last
+                returned tick.
 
     <br>
                 The call only reads and changes nothing. When the platform has not received the
@@ -349,7 +351,7 @@ async def asyncio(
     Args:
         trade_platform (UUID):
         symbol (str):
-        from_ (datetime.datetime | Unset):
+        from_ (datetime.datetime):
         to (datetime.datetime | Unset):
         limit (int | Unset):  Default: 0.
         x_request_timeout (float | Unset):

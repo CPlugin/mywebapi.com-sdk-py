@@ -75,11 +75,11 @@ def sync_detailed(
 ) -> Response[BooleanApiResponse]:
     """ Refresh symbol catalog
 
-     Refresh the symbol catalog from MT4 server — Type 1 mutator (no body).
+     Reload the platform's symbol catalog from the MT4 server.
 
-    Forces the platform to reload its symbol catalog. Useful after admin
-    tooling has added/edited symbols on the MT4 server side. v1 exposes
-    this as GET — v2 fixes to POST (mutation of the platform's local state).
+    Useful after administrative tooling has added or edited symbols on the
+    trade server itself. The call changes the platform's local state, so it
+    is a POST.
 
     **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -119,11 +119,11 @@ def sync(
 ) -> BooleanApiResponse | None:
     """ Refresh symbol catalog
 
-     Refresh the symbol catalog from MT4 server — Type 1 mutator (no body).
+     Reload the platform's symbol catalog from the MT4 server.
 
-    Forces the platform to reload its symbol catalog. Useful after admin
-    tooling has added/edited symbols on the MT4 server side. v1 exposes
-    this as GET — v2 fixes to POST (mutation of the platform's local state).
+    Useful after administrative tooling has added or edited symbols on the
+    trade server itself. The call changes the platform's local state, so it
+    is a POST.
 
     **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -158,11 +158,11 @@ async def asyncio_detailed(
 ) -> Response[BooleanApiResponse]:
     """ Refresh symbol catalog
 
-     Refresh the symbol catalog from MT4 server — Type 1 mutator (no body).
+     Reload the platform's symbol catalog from the MT4 server.
 
-    Forces the platform to reload its symbol catalog. Useful after admin
-    tooling has added/edited symbols on the MT4 server side. v1 exposes
-    this as GET — v2 fixes to POST (mutation of the platform's local state).
+    Useful after administrative tooling has added or edited symbols on the
+    trade server itself. The call changes the platform's local state, so it
+    is a POST.
 
     **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -202,11 +202,11 @@ async def asyncio(
 ) -> BooleanApiResponse | None:
     """ Refresh symbol catalog
 
-     Refresh the symbol catalog from MT4 server — Type 1 mutator (no body).
+     Reload the platform's symbol catalog from the MT4 server.
 
-    Forces the platform to reload its symbol catalog. Useful after admin
-    tooling has added/edited symbols on the MT4 server side. v1 exposes
-    this as GET — v2 fixes to POST (mutation of the platform's local state).
+    Useful after administrative tooling has added or edited symbols on the
+    trade server itself. The call changes the platform's local state, so it
+    is a POST.
 
     **Timeout:** 60 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server

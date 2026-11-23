@@ -15,7 +15,7 @@ from cplugin_webapi_sdk._generated.api.mt4_v_2_common import (
     get_api_v_2_mt4_trade_platform_server_time as mt4_server_time,
 )
 from cplugin_webapi_sdk._generated.api.mt5_v_2_common import (
-    get_api_v_2_mt5_trade_platform_server_time as mt5_server_time,
+    get_api_v_2_mt5_trade_platform_time_server as mt5_server_time,
 )
 
 
@@ -75,4 +75,4 @@ class TestMt5ServerTimeKwargs:
     def test_url_contains_server_time_segment(self) -> None:
         platform_id = uuid.uuid4()
         kwargs = mt5_server_time._get_kwargs(trade_platform=platform_id)
-        assert "ServerTime" in kwargs["url"]
+        assert "TimeServer" in kwargs["url"]

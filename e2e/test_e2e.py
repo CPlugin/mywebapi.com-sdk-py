@@ -89,7 +89,7 @@ def test_mt4_realtime_connect_live() -> None:
     with _client() as c:
         rt = c.realtime.mt4(tp)
         statuses: list = []
-        rt.on_connection_status(lambda *args: statuses.append(args))
+        rt.on_mt4_connection_status(lambda *args: statuses.append(args))
 
         rt.start()
         try:

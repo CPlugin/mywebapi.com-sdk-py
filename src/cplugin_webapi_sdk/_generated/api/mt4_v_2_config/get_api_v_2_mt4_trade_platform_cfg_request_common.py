@@ -73,15 +73,17 @@ def sync_detailed(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4CommonApiResponse]:
-    """ Get common config (live)
+    """ Get common server configuration
 
-     Server-wide MT4 common configuration via the platform's `CfgRequestCommon` Manager-live read.
+     The common server record as the configuration system returns it, read live from
+    the trade server on every call.
 
-    Manager-live read (round-trip to MT4 server) — sibling of
-    `ManagerCommon`. Returns the same curated `MT4Common` DTO
-    (Name/Owner/Build/Version/TimeZone), but sourced via the
-    configuration-system entry point rather than the manager-context one.
-    Pump cache is NOT consulted; data reflects the live server state.
+    Same fields as `ManagerCommonEx`; the difference is the source: this call
+    goes through the configuration interface rather than the manager connection, and
+    is the read that `CfgUpdateCommon` writes back.
+
+    Requires the settings permission, not the sensitive one — a client that may
+    change common settings but not read the server's infrastructure can still use it.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -118,15 +120,17 @@ def sync(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4CommonApiResponse | None:
-    """ Get common config (live)
+    """ Get common server configuration
 
-     Server-wide MT4 common configuration via the platform's `CfgRequestCommon` Manager-live read.
+     The common server record as the configuration system returns it, read live from
+    the trade server on every call.
 
-    Manager-live read (round-trip to MT4 server) — sibling of
-    `ManagerCommon`. Returns the same curated `MT4Common` DTO
-    (Name/Owner/Build/Version/TimeZone), but sourced via the
-    configuration-system entry point rather than the manager-context one.
-    Pump cache is NOT consulted; data reflects the live server state.
+    Same fields as `ManagerCommonEx`; the difference is the source: this call
+    goes through the configuration interface rather than the manager connection, and
+    is the read that `CfgUpdateCommon` writes back.
+
+    Requires the settings permission, not the sensitive one — a client that may
+    change common settings but not read the server's infrastructure can still use it.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -158,15 +162,17 @@ async def asyncio_detailed(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT4CommonApiResponse]:
-    """ Get common config (live)
+    """ Get common server configuration
 
-     Server-wide MT4 common configuration via the platform's `CfgRequestCommon` Manager-live read.
+     The common server record as the configuration system returns it, read live from
+    the trade server on every call.
 
-    Manager-live read (round-trip to MT4 server) — sibling of
-    `ManagerCommon`. Returns the same curated `MT4Common` DTO
-    (Name/Owner/Build/Version/TimeZone), but sourced via the
-    configuration-system entry point rather than the manager-context one.
-    Pump cache is NOT consulted; data reflects the live server state.
+    Same fields as `ManagerCommonEx`; the difference is the source: this call
+    goes through the configuration interface rather than the manager connection, and
+    is the read that `CfgUpdateCommon` writes back.
+
+    Requires the settings permission, not the sensitive one — a client that may
+    change common settings but not read the server's infrastructure can still use it.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -203,15 +209,17 @@ async def asyncio(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> MT4CommonApiResponse | None:
-    """ Get common config (live)
+    """ Get common server configuration
 
-     Server-wide MT4 common configuration via the platform's `CfgRequestCommon` Manager-live read.
+     The common server record as the configuration system returns it, read live from
+    the trade server on every call.
 
-    Manager-live read (round-trip to MT4 server) — sibling of
-    `ManagerCommon`. Returns the same curated `MT4Common` DTO
-    (Name/Owner/Build/Version/TimeZone), but sourced via the
-    configuration-system entry point rather than the manager-context one.
-    Pump cache is NOT consulted; data reflects the live server state.
+    Same fields as `ManagerCommonEx`; the difference is the source: this call
+    goes through the configuration interface rather than the manager connection, and
+    is the read that `CfgUpdateCommon` writes back.
+
+    Requires the settings permission, not the sensitive one — a client that may
+    change common settings but not read the server's infrastructure can still use it.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.

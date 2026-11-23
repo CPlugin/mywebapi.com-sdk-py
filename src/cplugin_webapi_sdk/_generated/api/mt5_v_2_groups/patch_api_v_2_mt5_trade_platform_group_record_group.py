@@ -85,6 +85,8 @@ def sync_detailed(
 
      Send only the fields you want to change (JSON Merge Patch, RFC 7386);
     omitted fields keep their current values. Returns the updated record.
+    The SMTP credentials of the mail reports server (`ReportsSMTPLogin`,
+    `ReportsSMTPPass`) are never returned: both fields are always empty.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -133,6 +135,8 @@ def sync(
 
      Send only the fields you want to change (JSON Merge Patch, RFC 7386);
     omitted fields keep their current values. Returns the updated record.
+    The SMTP credentials of the mail reports server (`ReportsSMTPLogin`,
+    `ReportsSMTPPass`) are never returned: both fields are always empty.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -176,6 +180,8 @@ async def asyncio_detailed(
 
      Send only the fields you want to change (JSON Merge Patch, RFC 7386);
     omitted fields keep their current values. Returns the updated record.
+    The SMTP credentials of the mail reports server (`ReportsSMTPLogin`,
+    `ReportsSMTPPass`) are never returned: both fields are always empty.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -224,6 +230,8 @@ async def asyncio(
 
      Send only the fields you want to change (JSON Merge Patch, RFC 7386);
     omitted fields keep their current values. Returns the updated record.
+    The SMTP credentials of the mail reports server (`ReportsSMTPLogin`,
+    `ReportsSMTPPass`) are never returned: both fields are always empty.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server

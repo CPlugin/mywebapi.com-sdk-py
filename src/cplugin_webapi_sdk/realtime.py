@@ -20,7 +20,7 @@ Usage::
 
     with CPluginWebApiClient(env="staging", client_id=..., client_secret=...) as c:
         rt = c.realtime.mt4("my-trade-platform-id")
-        rt.on_connection_status(lambda *args: print("status", args))
+        rt.on_mt4_connection_status(lambda *args: print("status", args))
         rt.on_tick(lambda *args: print("tick", args))
 
         with rt:  # calls start() / stop()
@@ -107,6 +107,8 @@ class _BaseRealtimeClient:
 
     # * Overridden by MT4RealtimeClient / MT5RealtimeClient.
     _PLATFORM: str = ""
+    # * Hub event name of the connection-status push, set by each subclass.
+    _CONNECTION_STATUS_EVENT: str = ""
 
     def __init__(
         self,
@@ -155,19 +157,12 @@ class _BaseRealtimeClient:
 
     # * --- lifecycle ---------------------------------------------------------
 
-    def on_connection_status(self, handler: Callable[[Any], None]) -> None:
-        """Register a callback for ``OnConnectionStatus`` events from the hub.
+    def _register_connection_status(self, handler: Callable[[Any], None]) -> None:
+        """Bind ``handler`` to this platform's connection-status event.
 
-        ! Register all callbacks BEFORE ``start()`` — ``signalrcore`` may drop
-        !   handlers registered after the connection is already open. Same race
-        !   the TS client guards against with a pending-handler queue.
-
-        Args:
-            handler: Callable invoked with the raw event payload when the hub
-                     broadcasts a connection status change.
+        ! Register before ``start()`` — ``signalrcore`` may drop late handlers.
         """
-        # ! Register before start() — signalrcore may drop late handlers.
-        self._conn.on("OnConnectionStatus", handler)
+        self._conn.on(self._CONNECTION_STATUS_EVENT, handler)
 
     def start(self) -> None:
         """Open the WebSocket connection to the hub.
@@ -228,7 +223,7 @@ class MT4RealtimeClient(_BaseRealtimeClient):
 
     Server method names mirror the TypeScript SDK verbatim::
 
-        Callbacks:  OnTick, OnTicksBatch, OnConnectionStatus
+        Callbacks:  OnTick, OnTicksBatch, OnMT4ConnectionStatus
         Invokes:    SubscribeToTicks, UnsubscribeFromTicks,
                     SubscribeToTicksBatch, UnsubscribeFromTicksBatch
         Streams:    StreamTicks, StreamTrades, StreamUserUpdates,
@@ -236,8 +231,23 @@ class MT4RealtimeClient(_BaseRealtimeClient):
     """
 
     _PLATFORM = "mt4"
+    _CONNECTION_STATUS_EVENT = "OnMT4ConnectionStatus"
 
     # * --- callbacks --------------------------------------------------------
+
+    def on_mt4_connection_status(self, handler: Callable[[Any], None]) -> None:
+        """Register a callback for ``OnMT4ConnectionStatus`` events from the hub.
+
+        ! Register all callbacks BEFORE ``start()`` — ``signalrcore`` may drop
+        !   handlers registered after the connection is already open. Same race
+        !   the TS client guards against with a pending-handler queue.
+
+        Args:
+            handler: Callable invoked with the raw event payload when the hub
+                     broadcasts a connection status change.
+        """
+        # ! Register before start() — signalrcore may drop late handlers.
+        self._register_connection_status(handler)
 
     def on_tick(self, handler: Callable[[Any], None]) -> None:
         """Register a callback for ``OnTick`` events broadcast by the hub.
@@ -378,15 +388,29 @@ class MT5RealtimeClient(_BaseRealtimeClient):
 
     Server method names mirror the TypeScript SDK verbatim::
 
-        Callbacks:  OnTick, OnTicksBatch, OnConnectionStatus
+        Callbacks:  OnTick, OnTicksBatch, OnMT5ConnectionStatus
         Invokes:    SubscribeToTicks, UnsubscribeFromTicks,
                     SubscribeToTicksBatch, UnsubscribeFromTicksBatch
         Streams:    StreamTicks, StreamMarginCallUpdates
     """
 
     _PLATFORM = "mt5"
+    _CONNECTION_STATUS_EVENT = "OnMT5ConnectionStatus"
 
     # * --- callbacks --------------------------------------------------------
+
+    def on_mt5_connection_status(self, handler: Callable[[Any], None]) -> None:
+        """Register a callback for ``OnMT5ConnectionStatus`` events from the hub.
+
+        ! Register all callbacks BEFORE ``start()`` — ``signalrcore`` may drop
+        !   handlers registered after the connection is already open.
+
+        Args:
+            handler: Callable invoked with the raw event payload when the hub
+                     broadcasts a connection status change.
+        """
+        # ! Register before start() — signalrcore may drop late handlers.
+        self._register_connection_status(handler)
 
     def on_tick(self, handler: Callable[[Any], None]) -> None:
         """Register a callback for ``OnTick`` events broadcast by the hub.

@@ -22,34 +22,10 @@ T = TypeVar("T", bound="MT4UserUpdate")
 
 @_attrs_define
 class MT4UserUpdate:
-    """ Type 1 mutator input — full-replace shape for `UserRecordUpdate`.
-    Client submits every non-secret, non-read-only, non-computed field; the
-    handler reads the current record from MT4 server, copies the secrets and
-    read-only fields off it, applies this DTO over the rest, and writes the
-    modified structure back.
-
-    Read-only fields that do NOT appear here (preserved by the server-side
-    read step):
-      * `Login` — passed as a path parameter, immutable identity.
-      * `RegistrationDate` — set once on creation, never updated.
-      * `LastDate`, `LastIP` — assigned by MT4 server during login.
-      * `PrevMonthBalance`, `PrevBalance`, `PrevMonthEquity`,
-        `PrevEquity` — derived server-side at reporting close.
-
-    Secret fields that do NOT appear here (preserved by the server-side
-    read step; use dedicated endpoints to change them):
-      * `Password`, `PasswordInvestor`, `PasswordPhone` —
-        change via `POST UserPasswordSet`.
-      * `OTPSecret` — provisioned via separate admin flow.
-      * `APIData` — platform-internal blob, never client-controlled.
-
-    <br><b>Note on Balance/Credit:</b> these fields ARE accepted here because the
-    platform `UserRecordUpdate` writes them directly. However, the audit-
-    trail-preserving way to move money is the dedicated balance operation
-    endpoints (forthcoming) — submitting Balance via this DTO bypasses the
-    audit log on MT4 server side.
+    """ Input shape for `UserRecordUpdate`: the editable part of an MT4 account record.
 
         Attributes:
+            login (int | Unset): Login of the account to update (required identity; never changed by this call)
             group (None | str | Unset): Group name the account belongs to
             name (None | str | Unset): Display name of the account holder
             external_id (None | str | Unset): External customer identifier (CRM/KYC link)
@@ -63,18 +39,19 @@ class MT4UserUpdate:
             phone (None | str | Unset): Contact phone
             email (None | str | Unset): Contact email
             comment (None | str | Unset): Free-form back-office comment
-            leverage (int | Unset): Account leverage (e.g. 100 means 1:100)
-            agent_account (int | Unset): IB / agent account number that referred this client
-            balance (float | Unset): Current balance (prefer dedicated balance ops for audit trail)
-            credit (float | Unset): Credit on the account
-            interest_rate (float | Unset): Interest rate
-            taxes (float | Unset): Tax rate
-            enable_flags (int | Unset): Account flag bitfield — see MT4User.EnableFlags for bit semantics
-            send_reports (int | Unset): 0 = no reports, non-zero = nightly email reports enabled
-            mqid (int | Unset): MetaQuotes ID for mobile push notifications
-            user_color (int | Unset): UI tint color in terminal client lists
+            leverage (int | None | Unset): Account leverage (e.g. 100 means 1:100)
+            agent_account (int | None | Unset): IB / agent account number that referred this client
+            balance (float | None | Unset): Current balance (prefer dedicated balance ops for audit trail)
+            credit (float | None | Unset): Credit on the account
+            interest_rate (float | None | Unset): Interest rate
+            taxes (float | None | Unset): Tax rate
+            enable_flags (int | None | Unset): Account flag bitfield — see MT4User.EnableFlags for bit semantics
+            send_reports (int | None | Unset): 0 = no reports, non-zero = nightly email reports enabled
+            mqid (int | None | Unset): MetaQuotes ID for mobile push notifications
+            user_color (int | None | Unset): UI tint color in terminal client lists
      """
 
+    login: int | Unset = UNSET
     group: None | str | Unset = UNSET
     name: None | str | Unset = UNSET
     external_id: None | str | Unset = UNSET
@@ -88,22 +65,24 @@ class MT4UserUpdate:
     phone: None | str | Unset = UNSET
     email: None | str | Unset = UNSET
     comment: None | str | Unset = UNSET
-    leverage: int | Unset = UNSET
-    agent_account: int | Unset = UNSET
-    balance: float | Unset = UNSET
-    credit: float | Unset = UNSET
-    interest_rate: float | Unset = UNSET
-    taxes: float | Unset = UNSET
-    enable_flags: int | Unset = UNSET
-    send_reports: int | Unset = UNSET
-    mqid: int | Unset = UNSET
-    user_color: int | Unset = UNSET
+    leverage: int | None | Unset = UNSET
+    agent_account: int | None | Unset = UNSET
+    balance: float | None | Unset = UNSET
+    credit: float | None | Unset = UNSET
+    interest_rate: float | None | Unset = UNSET
+    taxes: float | None | Unset = UNSET
+    enable_flags: int | None | Unset = UNSET
+    send_reports: int | None | Unset = UNSET
+    mqid: int | None | Unset = UNSET
+    user_color: int | None | Unset = UNSET
 
 
 
 
 
     def to_dict(self) -> dict[str, Any]:
+        login = self.login
+
         group: None | str | Unset
         if isinstance(self.group, Unset):
             group = UNSET
@@ -182,31 +161,73 @@ class MT4UserUpdate:
         else:
             comment = self.comment
 
-        leverage = self.leverage
+        leverage: int | None | Unset
+        if isinstance(self.leverage, Unset):
+            leverage = UNSET
+        else:
+            leverage = self.leverage
 
-        agent_account = self.agent_account
+        agent_account: int | None | Unset
+        if isinstance(self.agent_account, Unset):
+            agent_account = UNSET
+        else:
+            agent_account = self.agent_account
 
-        balance = self.balance
+        balance: float | None | Unset
+        if isinstance(self.balance, Unset):
+            balance = UNSET
+        else:
+            balance = self.balance
 
-        credit = self.credit
+        credit: float | None | Unset
+        if isinstance(self.credit, Unset):
+            credit = UNSET
+        else:
+            credit = self.credit
 
-        interest_rate = self.interest_rate
+        interest_rate: float | None | Unset
+        if isinstance(self.interest_rate, Unset):
+            interest_rate = UNSET
+        else:
+            interest_rate = self.interest_rate
 
-        taxes = self.taxes
+        taxes: float | None | Unset
+        if isinstance(self.taxes, Unset):
+            taxes = UNSET
+        else:
+            taxes = self.taxes
 
-        enable_flags = self.enable_flags
+        enable_flags: int | None | Unset
+        if isinstance(self.enable_flags, Unset):
+            enable_flags = UNSET
+        else:
+            enable_flags = self.enable_flags
 
-        send_reports = self.send_reports
+        send_reports: int | None | Unset
+        if isinstance(self.send_reports, Unset):
+            send_reports = UNSET
+        else:
+            send_reports = self.send_reports
 
-        mqid = self.mqid
+        mqid: int | None | Unset
+        if isinstance(self.mqid, Unset):
+            mqid = UNSET
+        else:
+            mqid = self.mqid
 
-        user_color = self.user_color
+        user_color: int | None | Unset
+        if isinstance(self.user_color, Unset):
+            user_color = UNSET
+        else:
+            user_color = self.user_color
 
 
         field_dict: dict[str, Any] = {}
 
         field_dict.update({
         })
+        if login is not UNSET:
+            field_dict["login"] = login
         if group is not UNSET:
             field_dict["group"] = group
         if name is not UNSET:
@@ -261,6 +282,8 @@ class MT4UserUpdate:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        login = d.pop("login", UNSET)
+
         def _parse_group(data: object) -> None | str | Unset:
             if data is None:
                 return data
@@ -391,27 +414,108 @@ class MT4UserUpdate:
         comment = _parse_comment(d.pop("comment", UNSET))
 
 
-        leverage = d.pop("leverage", UNSET)
+        def _parse_leverage(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
 
-        agent_account = d.pop("agentAccount", UNSET)
+        leverage = _parse_leverage(d.pop("leverage", UNSET))
 
-        balance = d.pop("balance", UNSET)
 
-        credit = d.pop("credit", UNSET)
+        def _parse_agent_account(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
 
-        interest_rate = d.pop("interestRate", UNSET)
+        agent_account = _parse_agent_account(d.pop("agentAccount", UNSET))
 
-        taxes = d.pop("taxes", UNSET)
 
-        enable_flags = d.pop("enableFlags", UNSET)
+        def _parse_balance(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
 
-        send_reports = d.pop("sendReports", UNSET)
+        balance = _parse_balance(d.pop("balance", UNSET))
 
-        mqid = d.pop("mqid", UNSET)
 
-        user_color = d.pop("userColor", UNSET)
+        def _parse_credit(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        credit = _parse_credit(d.pop("credit", UNSET))
+
+
+        def _parse_interest_rate(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        interest_rate = _parse_interest_rate(d.pop("interestRate", UNSET))
+
+
+        def _parse_taxes(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        taxes = _parse_taxes(d.pop("taxes", UNSET))
+
+
+        def _parse_enable_flags(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        enable_flags = _parse_enable_flags(d.pop("enableFlags", UNSET))
+
+
+        def _parse_send_reports(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        send_reports = _parse_send_reports(d.pop("sendReports", UNSET))
+
+
+        def _parse_mqid(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        mqid = _parse_mqid(d.pop("mqid", UNSET))
+
+
+        def _parse_user_color(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        user_color = _parse_user_color(d.pop("userColor", UNSET))
+
 
         mt4_user_update = cls(
+            login=login,
             group=group,
             name=name,
             external_id=external_id,

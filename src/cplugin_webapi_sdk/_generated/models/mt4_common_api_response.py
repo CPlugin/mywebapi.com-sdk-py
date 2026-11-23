@@ -31,9 +31,10 @@ class MT4CommonApiResponse:
     (activityId and optional paging). HTTP status is always 200.
 
         Attributes:
-            data (MT4Common | None | Unset): v2 DTO for MT4 server-wide common settings. Curated subset of the
-                the platform's ConCommon struct — exposes fields useful to clients while
-                shielding the v2 contract from MetaQuotes schema drift.
+            data (MT4Common | None | Unset): Full server-wide common configuration of an MT4 trade server: identity,
+                protocol version, bind and web address lists, storage paths, runtime
+                counters and the operational subsystems (demo accounts, rollover,
+                statements, live update).
             error (ApiError | None | Unset): v2 error body. Code is the stable transport error code; ManagerCode is the raw
                 MT4
                 ResultCode (serialized as a string for a known enum member, or as a number for an

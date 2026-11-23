@@ -106,9 +106,8 @@ def sync_detailed(
     is supported but rarely useful — pin if your retry policy expects the
     same answer across attempts.
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: The operation may still be completed by the server
-    (`X-Request-Outcome: unknown`): check its result before repeating it.
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
@@ -164,9 +163,8 @@ def sync(
     is supported but rarely useful — pin if your retry policy expects the
     same answer across attempts.
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: The operation may still be completed by the server
-    (`X-Request-Outcome: unknown`): check its result before repeating it.
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
@@ -217,9 +215,8 @@ async def asyncio_detailed(
     is supported but rarely useful — pin if your retry policy expects the
     same answer across attempts.
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: The operation may still be completed by the server
-    (`X-Request-Outcome: unknown`): check its result before repeating it.
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
@@ -275,9 +272,8 @@ async def asyncio(
     is supported but rarely useful — pin if your retry policy expects the
     same answer across attempts.
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: The operation may still be completed by the server
-    (`X-Request-Outcome: unknown`): check its result before repeating it.
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):

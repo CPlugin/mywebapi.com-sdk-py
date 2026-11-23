@@ -85,9 +85,8 @@ def sync_detailed(
     see the body once the pump has retrieved it. The payload is a sentinel
     `true` meaning \"request dispatched\".
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: The operation may still be completed by the server
-    (`X-Request-Outcome: unknown`): check its result before repeating it.
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
@@ -134,9 +133,8 @@ def sync(
     see the body once the pump has retrieved it. The payload is a sentinel
     `true` meaning \"request dispatched\".
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: The operation may still be completed by the server
-    (`X-Request-Outcome: unknown`): check its result before repeating it.
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
@@ -178,9 +176,8 @@ async def asyncio_detailed(
     see the body once the pump has retrieved it. The payload is a sentinel
     `true` meaning \"request dispatched\".
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: The operation may still be completed by the server
-    (`X-Request-Outcome: unknown`): check its result before repeating it.
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
@@ -227,9 +224,8 @@ async def asyncio(
     see the body once the pump has retrieved it. The payload is a sentinel
     `true` meaning \"request dispatched\".
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: The operation may still be completed by the server
-    (`X-Request-Outcome: unknown`): check its result before repeating it.
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):

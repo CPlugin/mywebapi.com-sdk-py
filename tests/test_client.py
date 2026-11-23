@@ -188,7 +188,7 @@ def test_mt5_get_server_time_unwraps_data():
     """MT5 namespace: successful response unwraps correctly."""
     respx.get(DISCOVERY).mock(return_value=httpx.Response(200, json=_oidc_doc()))
     respx.post(TOKEN_EP).mock(return_value=httpx.Response(200, json=token_body()))
-    respx.get(f"{API}/api/v2/MT5/{TP}/ServerTime").mock(
+    respx.get(f"{API}/api/v2/MT5/{TP}/TimeServer").mock(
         return_value=httpx.Response(200, json=envelope_ok("2026-06-26T08:00:00Z"))
     )
     c = _mock_client()
@@ -417,7 +417,7 @@ async def test_async_mt5_get_server_time():
     """Async MT5 namespace: successful response unwraps correctly."""
     respx.get(DISCOVERY).mock(return_value=httpx.Response(200, json=_oidc_doc()))
     respx.post(TOKEN_EP).mock(return_value=httpx.Response(200, json=token_body()))
-    respx.get(f"{API}/api/v2/MT5/{TP}/ServerTime").mock(
+    respx.get(f"{API}/api/v2/MT5/{TP}/TimeServer").mock(
         return_value=httpx.Response(200, json=envelope_ok("2026-06-26T09:00:00Z"))
     )
     async with _mock_async_client() as c:

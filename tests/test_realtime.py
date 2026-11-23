@@ -58,6 +58,71 @@ def test_build_hub_url_empty_trade_platform():
     assert url.endswith("?tradePlatform=")
 
 
+def _fake_signalr_capturing(events: list):
+    """Builder class whose connection records every ``on(event, handler)`` call."""
+
+    class _FakeConn:
+        def on(self, event, handler):
+            events.append(event)
+
+        def send(self, *a):
+            pass
+
+        def stream(self, *a):
+            pass
+
+        def start(self):
+            pass
+
+        def stop(self):
+            pass
+
+    class _FakeBuilder:
+        def with_url(self, url, options=None):
+            return self
+
+        def build(self):
+            return _FakeConn()
+
+    return _FakeBuilder
+
+
+def test_mt4_connection_status_uses_hub_event_name(monkeypatch):
+    """The MT4 v2 hub broadcasts OnMT4ConnectionStatus; the callback binds that name."""
+    events: list = []
+    monkeypatch.setattr(realtime, "_import_signalr", lambda: _fake_signalr_capturing(events))
+
+    rt = MT4RealtimeClient(
+        base_url="https://api.example.com",
+        token_factory=lambda: "t",
+        trade_platform="tp",
+    )
+    rt.on_mt4_connection_status(lambda *args: None)
+
+    assert events == ["OnMT4ConnectionStatus"]
+
+
+def test_mt5_connection_status_uses_hub_event_name(monkeypatch):
+    """The MT5 v2 hub broadcasts OnMT5ConnectionStatus; the callback binds that name."""
+    events: list = []
+    monkeypatch.setattr(realtime, "_import_signalr", lambda: _fake_signalr_capturing(events))
+
+    rt = MT5RealtimeClient(
+        base_url="https://api.example.com",
+        token_factory=lambda: "t",
+        trade_platform="tp",
+    )
+    rt.on_mt5_connection_status(lambda *args: None)
+
+    assert events == ["OnMT5ConnectionStatus"]
+
+
+def test_no_platform_agnostic_connection_status_callback():
+    """Neither v2 hub broadcasts a generic OnConnectionStatus event."""
+    assert not hasattr(MT4RealtimeClient, "on_connection_status")
+    assert not hasattr(MT5RealtimeClient, "on_connection_status")
+
+
 # ---------------------------------------------------------------------------
 # SignalRNotInstalledError — absence of signalrcore
 # ---------------------------------------------------------------------------

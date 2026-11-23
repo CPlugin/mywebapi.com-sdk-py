@@ -75,9 +75,15 @@ def sync_detailed(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT5ConGroupApiResponse]:
-    """ Get a group by name
+    """ Get a group from the pump cache
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     The configuration of the group as the service already holds it, without a round trip
+    to the trade server: cheap, and as fresh as the last update the connection applied.
+
+    Use `GroupRequest` when the answer has to come from the server. The SMTP
+    credentials of the mail reports server are never returned here either.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -115,9 +121,15 @@ def sync(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> MT5ConGroupApiResponse | None:
-    """ Get a group by name
+    """ Get a group from the pump cache
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     The configuration of the group as the service already holds it, without a round trip
+    to the trade server: cheap, and as fresh as the last update the connection applied.
+
+    Use `GroupRequest` when the answer has to come from the server. The SMTP
+    credentials of the mail reports server are never returned here either.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -150,9 +162,15 @@ async def asyncio_detailed(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> Response[MT5ConGroupApiResponse]:
-    """ Get a group by name
+    """ Get a group from the pump cache
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     The configuration of the group as the service already holds it, without a round trip
+    to the trade server: cheap, and as fresh as the last update the connection applied.
+
+    Use `GroupRequest` when the answer has to come from the server. The SMTP
+    credentials of the mail reports server are never returned here either.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -190,9 +208,15 @@ async def asyncio(
     x_request_timeout: float | Unset = UNSET,
 
 ) -> MT5ConGroupApiResponse | None:
-    """ Get a group by name
+    """ Get a group from the pump cache
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     The configuration of the group as the service already holds it, without a round trip
+    to the trade server: cheap, and as fresh as the last update the connection applied.
+
+    Use `GroupRequest` when the answer has to come from the server. The SMTP
+    credentials of the mail reports server are never returned here either.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:

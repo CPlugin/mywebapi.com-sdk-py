@@ -77,11 +77,11 @@ def sync_detailed(
 ) -> Response[BooleanApiResponse]:
     """ Hide symbol
 
-     Hide a symbol from the platform's active set — Type 1 mutator.
+     Hide a symbol from the platform's active set.
 
     Removes the symbol from the active subscription set; ticks stop flowing
     and orders are no longer accepted for that symbol. Reversible via
-    `SymbolAdd`. v1 exposes this as a GET — v2 fixes to POST.
+    `SymbolAdd`.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -124,11 +124,11 @@ def sync(
 ) -> BooleanApiResponse | None:
     """ Hide symbol
 
-     Hide a symbol from the platform's active set — Type 1 mutator.
+     Hide a symbol from the platform's active set.
 
     Removes the symbol from the active subscription set; ticks stop flowing
     and orders are no longer accepted for that symbol. Reversible via
-    `SymbolAdd`. v1 exposes this as a GET — v2 fixes to POST.
+    `SymbolAdd`.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -166,11 +166,11 @@ async def asyncio_detailed(
 ) -> Response[BooleanApiResponse]:
     """ Hide symbol
 
-     Hide a symbol from the platform's active set — Type 1 mutator.
+     Hide a symbol from the platform's active set.
 
     Removes the symbol from the active subscription set; ticks stop flowing
     and orders are no longer accepted for that symbol. Reversible via
-    `SymbolAdd`. v1 exposes this as a GET — v2 fixes to POST.
+    `SymbolAdd`.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -213,11 +213,11 @@ async def asyncio(
 ) -> BooleanApiResponse | None:
     """ Hide symbol
 
-     Hide a symbol from the platform's active set — Type 1 mutator.
+     Hide a symbol from the platform's active set.
 
     Removes the symbol from the active subscription set; ticks stop flowing
     and orders are no longer accepted for that symbol. Reversible via
-    `SymbolAdd`. v1 exposes this as a GET — v2 fixes to POST.
+    `SymbolAdd`.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
