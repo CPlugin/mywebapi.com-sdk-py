@@ -115,6 +115,7 @@ def sync_detailed(
     validation as the single add. Every record receives the identifier the server assigned to it,
     which is returned per entry together with its result code. A partial failure answers one entry
     per client, so inspect each result instead of trusting the batch as a whole.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -163,6 +164,7 @@ def sync(
     validation as the single add. Every record receives the identifier the server assigned to it,
     which is returned per entry together with its result code. A partial failure answers one entry
     per client, so inspect each result instead of trusting the batch as a whole.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -206,6 +208,7 @@ async def asyncio_detailed(
     validation as the single add. Every record receives the identifier the server assigned to it,
     which is returned per entry together with its result code. A partial failure answers one entry
     per client, so inspect each result instead of trusting the batch as a whole.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -254,6 +257,7 @@ async def asyncio(
     validation as the single add. Every record receives the identifier the server assigned to it,
     which is returned per entry together with its result code. A partial failure answers one entry
     per client, so inspect each result instead of trusting the batch as a whole.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server

@@ -96,7 +96,7 @@ def sync_detailed(
     value) and `!` (exclude). Both bounds are seconds since 1970-01-01 and are
     inclusive; the range is required.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -148,7 +148,7 @@ def sync(
     value) and `!` (exclude). Both bounds are seconds since 1970-01-01 and are
     inclusive; the range is required.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -195,7 +195,7 @@ async def asyncio_detailed(
     value) and `!` (exclude). Both bounds are seconds since 1970-01-01 and are
     inclusive; the range is required.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -247,7 +247,7 @@ async def asyncio(
     value) and `!` (exclude). Both bounds are seconds since 1970-01-01 and are
     inclusive; the range is required.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:

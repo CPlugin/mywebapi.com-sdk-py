@@ -80,7 +80,7 @@ def sync_detailed(
      Returns the action record with the given identifier. An unknown identifier is answered
     with the platform error `MT_RET_ERR_NOTFOUND` rather than with an empty record.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -123,7 +123,7 @@ def sync(
      Returns the action record with the given identifier. An unknown identifier is answered
     with the platform error `MT_RET_ERR_NOTFOUND` rather than with an empty record.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -161,7 +161,7 @@ async def asyncio_detailed(
      Returns the action record with the given identifier. An unknown identifier is answered
     with the platform error `MT_RET_ERR_NOTFOUND` rather than with an empty record.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -204,7 +204,7 @@ async def asyncio(
      Returns the action record with the given identifier. An unknown identifier is answered
     with the platform error `MT_RET_ERR_NOTFOUND` rather than with an empty record.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:

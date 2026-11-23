@@ -335,16 +335,24 @@ from .mt5_selected_shift_request import MT5SelectedShiftRequest
 from .mt5_setting_file import MT5SettingFile
 from .mt5_setting_file_api_response import MT5SettingFileApiResponse
 from .mt5_subscription import MT5Subscription
+from .mt5_subscription_action import MT5SubscriptionAction
 from .mt5_subscription_action_result import MT5SubscriptionActionResult
 from .mt5_subscription_action_result_api_response import MT5SubscriptionActionResultApiResponse
 from .mt5_subscription_api_response import MT5SubscriptionApiResponse
 from .mt5_subscription_batch_result import MT5SubscriptionBatchResult
 from .mt5_subscription_batch_result_api_response import MT5SubscriptionBatchResultApiResponse
+from .mt5_subscription_control_mode import MT5SubscriptionControlMode
+from .mt5_subscription_free_period import MT5SubscriptionFreePeriod
 from .mt5_subscription_history import MT5SubscriptionHistory
 from .mt5_subscription_history_api_response import MT5SubscriptionHistoryApiResponse
 from .mt5_subscription_history_list_api_response import MT5SubscriptionHistoryListApiResponse
 from .mt5_subscription_list_api_response import MT5SubscriptionListApiResponse
+from .mt5_subscription_period import MT5SubscriptionPeriod
+from .mt5_subscription_status import MT5SubscriptionStatus
+from .mt5_subscription_symbol_level import MT5SubscriptionSymbolLevel
 from .mt5_subscription_target import MT5SubscriptionTarget
+from .mt5_subscription_tick_history import MT5SubscriptionTickHistory
+from .mt5_subscription_type import MT5SubscriptionType
 from .mt5_summary import MT5Summary
 from .mt5_summary_api_response import MT5SummaryApiResponse
 from .mt5_summary_list_api_response import MT5SummaryListApiResponse
@@ -767,16 +775,24 @@ __all__ = (
     "MT5SettingFile",
     "MT5SettingFileApiResponse",
     "MT5Subscription",
+    "MT5SubscriptionAction",
     "MT5SubscriptionActionResult",
     "MT5SubscriptionActionResultApiResponse",
     "MT5SubscriptionApiResponse",
     "MT5SubscriptionBatchResult",
     "MT5SubscriptionBatchResultApiResponse",
+    "MT5SubscriptionControlMode",
+    "MT5SubscriptionFreePeriod",
     "MT5SubscriptionHistory",
     "MT5SubscriptionHistoryApiResponse",
     "MT5SubscriptionHistoryListApiResponse",
     "MT5SubscriptionListApiResponse",
+    "MT5SubscriptionPeriod",
+    "MT5SubscriptionStatus",
+    "MT5SubscriptionSymbolLevel",
     "MT5SubscriptionTarget",
+    "MT5SubscriptionTickHistory",
+    "MT5SubscriptionType",
     "MT5Summary",
     "MT5SummaryApiResponse",
     "MT5SummaryListApiResponse",

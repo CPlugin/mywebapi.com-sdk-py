@@ -100,6 +100,7 @@ def sync_detailed(
     identifier it was assigned. The client must be identified; otherwise the record is refused.
     A document can only be added from the server that holds the client. Files are attached to the
     document separately, by the attachment routes.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -151,6 +152,7 @@ def sync(
     identifier it was assigned. The client must be identified; otherwise the record is refused.
     A document can only be added from the server that holds the client. Files are attached to the
     document separately, by the attachment routes.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -197,6 +199,7 @@ async def asyncio_detailed(
     identifier it was assigned. The client must be identified; otherwise the record is refused.
     A document can only be added from the server that holds the client. Files are attached to the
     document separately, by the attachment routes.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -248,6 +251,7 @@ async def asyncio(
     identifier it was assigned. The client must be identified; otherwise the record is refused.
     A document can only be added from the server that holds the client. Files are attached to the
     document separately, by the attachment routes.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server

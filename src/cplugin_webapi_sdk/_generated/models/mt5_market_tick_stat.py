@@ -57,6 +57,13 @@ class MT5MarketTickStat:
             price_aw (float | Unset): Average weighted price of the session.
             price_volatility (float | Unset): Price volatility of the session.
             price_theoretical (float | Unset): Theoretical option price.
+            price_greeks_delta (float | Unset): Option delta — sensitivity of the theoretical price to the underlying price.
+            price_greeks_theta (float | Unset): Option theta — sensitivity of the theoretical price to the time to expiry.
+            price_greeks_gamma (float | Unset): Option gamma — sensitivity of delta to the underlying price.
+            price_greeks_vega (float | Unset): Option vega — sensitivity of the theoretical price to volatility.
+            price_greeks_rho (float | Unset): Option rho — sensitivity of the theoretical price to the interest rate.
+            price_greeks_omega (float | Unset): Option omega — elasticity of the theoretical price to the underlying price.
+            price_sensitivity (float | Unset): Sensitivity of the theoretical price used by the pricing model of the server.
      """
 
     symbol: None | str | Unset = UNSET
@@ -89,6 +96,13 @@ class MT5MarketTickStat:
     price_aw: float | Unset = UNSET
     price_volatility: float | Unset = UNSET
     price_theoretical: float | Unset = UNSET
+    price_greeks_delta: float | Unset = UNSET
+    price_greeks_theta: float | Unset = UNSET
+    price_greeks_gamma: float | Unset = UNSET
+    price_greeks_vega: float | Unset = UNSET
+    price_greeks_rho: float | Unset = UNSET
+    price_greeks_omega: float | Unset = UNSET
+    price_sensitivity: float | Unset = UNSET
 
 
 
@@ -161,6 +175,20 @@ class MT5MarketTickStat:
 
         price_theoretical = self.price_theoretical
 
+        price_greeks_delta = self.price_greeks_delta
+
+        price_greeks_theta = self.price_greeks_theta
+
+        price_greeks_gamma = self.price_greeks_gamma
+
+        price_greeks_vega = self.price_greeks_vega
+
+        price_greeks_rho = self.price_greeks_rho
+
+        price_greeks_omega = self.price_greeks_omega
+
+        price_sensitivity = self.price_sensitivity
+
 
         field_dict: dict[str, Any] = {}
 
@@ -226,6 +254,20 @@ class MT5MarketTickStat:
             field_dict["priceVolatility"] = price_volatility
         if price_theoretical is not UNSET:
             field_dict["priceTheoretical"] = price_theoretical
+        if price_greeks_delta is not UNSET:
+            field_dict["priceGreeksDelta"] = price_greeks_delta
+        if price_greeks_theta is not UNSET:
+            field_dict["priceGreeksTheta"] = price_greeks_theta
+        if price_greeks_gamma is not UNSET:
+            field_dict["priceGreeksGamma"] = price_greeks_gamma
+        if price_greeks_vega is not UNSET:
+            field_dict["priceGreeksVega"] = price_greeks_vega
+        if price_greeks_rho is not UNSET:
+            field_dict["priceGreeksRho"] = price_greeks_rho
+        if price_greeks_omega is not UNSET:
+            field_dict["priceGreeksOmega"] = price_greeks_omega
+        if price_sensitivity is not UNSET:
+            field_dict["priceSensitivity"] = price_sensitivity
 
         return field_dict
 
@@ -310,6 +352,20 @@ class MT5MarketTickStat:
 
         price_theoretical = d.pop("priceTheoretical", UNSET)
 
+        price_greeks_delta = d.pop("priceGreeksDelta", UNSET)
+
+        price_greeks_theta = d.pop("priceGreeksTheta", UNSET)
+
+        price_greeks_gamma = d.pop("priceGreeksGamma", UNSET)
+
+        price_greeks_vega = d.pop("priceGreeksVega", UNSET)
+
+        price_greeks_rho = d.pop("priceGreeksRho", UNSET)
+
+        price_greeks_omega = d.pop("priceGreeksOmega", UNSET)
+
+        price_sensitivity = d.pop("priceSensitivity", UNSET)
+
         mt5_market_tick_stat = cls(
             symbol=symbol,
             time=time,
@@ -341,6 +397,13 @@ class MT5MarketTickStat:
             price_aw=price_aw,
             price_volatility=price_volatility,
             price_theoretical=price_theoretical,
+            price_greeks_delta=price_greeks_delta,
+            price_greeks_theta=price_greeks_theta,
+            price_greeks_gamma=price_greeks_gamma,
+            price_greeks_vega=price_greeks_vega,
+            price_greeks_rho=price_greeks_rho,
+            price_greeks_omega=price_greeks_omega,
+            price_sensitivity=price_sensitivity,
         )
 
         return mt5_market_tick_stat

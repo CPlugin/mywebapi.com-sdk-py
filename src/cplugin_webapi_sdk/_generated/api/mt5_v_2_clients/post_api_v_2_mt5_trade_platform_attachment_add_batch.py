@@ -115,6 +115,7 @@ def sync_detailed(
     entry. Every entry follows the rules of the single store: one owner client, at most one link
     target, and the file content in the body. One entry per file is returned with the identifier the
     server assigned; a failure of the link is reported in the entry of that file.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -163,6 +164,7 @@ def sync(
     entry. Every entry follows the rules of the single store: one owner client, at most one link
     target, and the file content in the body. One entry per file is returned with the identifier the
     server assigned; a failure of the link is reported in the entry of that file.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -206,6 +208,7 @@ async def asyncio_detailed(
     entry. Every entry follows the rules of the single store: one owner client, at most one link
     target, and the file content in the body. One entry per file is returned with the identifier the
     server assigned; a failure of the link is reported in the entry of that file.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -254,6 +257,7 @@ async def asyncio(
     entry. Every entry follows the rules of the single store: one owner client, at most one link
     target, and the file content in the body. One entry per file is returned with the identifier the
     server assigned; a failure of the link is reported in the entry of that file.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server

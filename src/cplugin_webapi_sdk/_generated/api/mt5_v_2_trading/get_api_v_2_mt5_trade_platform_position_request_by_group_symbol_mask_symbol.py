@@ -83,7 +83,7 @@ def sync_detailed(
     mask, read from the trade server. The result is not paginated: the whole set is returned
     at once.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -130,7 +130,7 @@ def sync(
     mask, read from the trade server. The result is not paginated: the whole set is returned
     at once.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -172,7 +172,7 @@ async def asyncio_detailed(
     mask, read from the trade server. The result is not paginated: the whole set is returned
     at once.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -219,7 +219,7 @@ async def asyncio(
     mask, read from the trade server. The result is not paginated: the whole set is returned
     at once.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:

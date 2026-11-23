@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
+from ..models.mt5_subscription_control_mode import MT5SubscriptionControlMode
+from ..models.mt5_subscription_free_period import MT5SubscriptionFreePeriod
+from ..models.mt5_subscription_period import MT5SubscriptionPeriod
+from ..models.mt5_subscription_type import MT5SubscriptionType
 from ..types import UNSET, Unset
 from typing import cast
 
@@ -32,20 +36,26 @@ class MT5ConSubscription:
                 directory.
             depends_id (int | None | Unset): Identifier of the configuration this one depends on; zero means no dependency.
             name (None | str | Unset): Configuration name.
-            type_ (int | None | Unset): Subscription type code.
-            image (int | None | Unset): Logo identifier shown for the subscription.
+            type_ (MT5SubscriptionType | None | Unset): Subscription type.<br/>One of: Subscription, Folder. Case-
+                insensitive; the numeric value is accepted too. Any other value is refused with error code Validation.
+            image (int | None | Unset): Logo shown for the subscription.
             description (None | str | Unset): Description of the subscription.
             url_description (None | str | Unset): Link to an additional description of the subscription.
             url_agreement (None | str | Unset): Link to the subscription agreement.
-            control_mode (int | None | Unset): Code of the actions the client terminals are allowed to perform with the
-                subscription.
-            period_mode (int | None | Unset): Subscription period code.
+            control_mode (MT5SubscriptionControlMode | None | Unset): Actions the client terminals are allowed to perform
+                with the subscription.<br/>One of: Full, Unsubscribe, View, Hidden. Case-insensitive; the numeric value is
+                accepted too. Any other value is refused with error code Validation.
+            period_mode (MT5SubscriptionPeriod | None | Unset): Subscription period.<br/>One of: Once, Daily, Weekly,
+                Monthly, Quarterly, Annual, Custom. Case-insensitive; the numeric value is accepted too. Any other value is
+                refused with error code Validation.
             period_custom (int | None | Unset): Custom subscription period in days, used when `periodMode` selects a custom
                 period.
-            period_free_mode (int | None | Unset): Trial (free) period code.
+            period_free_mode (MT5SubscriptionFreePeriod | None | Unset): Trial (free) period.<br/>One of: None, Day, Week,
+                Month, Quarter, Year, Custom. Case-insensitive; the numeric value is accepted too. Any other value is refused
+                with error code Validation.
             period_free_custom (int | None | Unset): Custom trial period value, used when `periodFreeMode` selects a custom
                 trial period.
-            flags (int | None | Unset): Additional subscription property flags.
+            flags (None | str | Unset): Additional subscription property flags.
             price (float | None | Unset): Subscription price for non-professional traders.
             price_pro (float | None | Unset): Subscription price for professional traders.
             price_currency (None | str | Unset): Currency of the subscription price.
@@ -58,17 +68,17 @@ class MT5ConSubscription:
     parent_id: int | None | Unset = UNSET
     depends_id: int | None | Unset = UNSET
     name: None | str | Unset = UNSET
-    type_: int | None | Unset = UNSET
+    type_: MT5SubscriptionType | None | Unset = UNSET
     image: int | None | Unset = UNSET
     description: None | str | Unset = UNSET
     url_description: None | str | Unset = UNSET
     url_agreement: None | str | Unset = UNSET
-    control_mode: int | None | Unset = UNSET
-    period_mode: int | None | Unset = UNSET
+    control_mode: MT5SubscriptionControlMode | None | Unset = UNSET
+    period_mode: MT5SubscriptionPeriod | None | Unset = UNSET
     period_custom: int | None | Unset = UNSET
-    period_free_mode: int | None | Unset = UNSET
+    period_free_mode: MT5SubscriptionFreePeriod | None | Unset = UNSET
     period_free_custom: int | None | Unset = UNSET
-    flags: int | None | Unset = UNSET
+    flags: None | str | Unset = UNSET
     price: float | None | Unset = UNSET
     price_pro: float | None | Unset = UNSET
     price_currency: None | str | Unset = UNSET
@@ -106,9 +116,11 @@ class MT5ConSubscription:
         else:
             name = self.name
 
-        type_: int | None | Unset
+        type_: None | str | Unset
         if isinstance(self.type_, Unset):
             type_ = UNSET
+        elif isinstance(self.type_, MT5SubscriptionType):
+            type_ = self.type_.value
         else:
             type_ = self.type_
 
@@ -136,15 +148,19 @@ class MT5ConSubscription:
         else:
             url_agreement = self.url_agreement
 
-        control_mode: int | None | Unset
+        control_mode: None | str | Unset
         if isinstance(self.control_mode, Unset):
             control_mode = UNSET
+        elif isinstance(self.control_mode, MT5SubscriptionControlMode):
+            control_mode = self.control_mode.value
         else:
             control_mode = self.control_mode
 
-        period_mode: int | None | Unset
+        period_mode: None | str | Unset
         if isinstance(self.period_mode, Unset):
             period_mode = UNSET
+        elif isinstance(self.period_mode, MT5SubscriptionPeriod):
+            period_mode = self.period_mode.value
         else:
             period_mode = self.period_mode
 
@@ -154,9 +170,11 @@ class MT5ConSubscription:
         else:
             period_custom = self.period_custom
 
-        period_free_mode: int | None | Unset
+        period_free_mode: None | str | Unset
         if isinstance(self.period_free_mode, Unset):
             period_free_mode = UNSET
+        elif isinstance(self.period_free_mode, MT5SubscriptionFreePeriod):
+            period_free_mode = self.period_free_mode.value
         else:
             period_free_mode = self.period_free_mode
 
@@ -166,7 +184,7 @@ class MT5ConSubscription:
         else:
             period_free_custom = self.period_free_custom
 
-        flags: int | None | Unset
+        flags: None | str | Unset
         if isinstance(self.flags, Unset):
             flags = UNSET
         else:
@@ -319,12 +337,22 @@ class MT5ConSubscription:
         name = _parse_name(d.pop("name", UNSET))
 
 
-        def _parse_type_(data: object) -> int | None | Unset:
+        def _parse_type_(data: object) -> MT5SubscriptionType | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                type_type_1 = MT5SubscriptionType(data)
+
+
+
+                return type_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(MT5SubscriptionType | None | Unset, data)
 
         type_ = _parse_type_(d.pop("type", UNSET))
 
@@ -369,22 +397,42 @@ class MT5ConSubscription:
         url_agreement = _parse_url_agreement(d.pop("urlAgreement", UNSET))
 
 
-        def _parse_control_mode(data: object) -> int | None | Unset:
+        def _parse_control_mode(data: object) -> MT5SubscriptionControlMode | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                control_mode_type_1 = MT5SubscriptionControlMode(data)
+
+
+
+                return control_mode_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(MT5SubscriptionControlMode | None | Unset, data)
 
         control_mode = _parse_control_mode(d.pop("controlMode", UNSET))
 
 
-        def _parse_period_mode(data: object) -> int | None | Unset:
+        def _parse_period_mode(data: object) -> MT5SubscriptionPeriod | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                period_mode_type_1 = MT5SubscriptionPeriod(data)
+
+
+
+                return period_mode_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(MT5SubscriptionPeriod | None | Unset, data)
 
         period_mode = _parse_period_mode(d.pop("periodMode", UNSET))
 
@@ -399,12 +447,22 @@ class MT5ConSubscription:
         period_custom = _parse_period_custom(d.pop("periodCustom", UNSET))
 
 
-        def _parse_period_free_mode(data: object) -> int | None | Unset:
+        def _parse_period_free_mode(data: object) -> MT5SubscriptionFreePeriod | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                period_free_mode_type_1 = MT5SubscriptionFreePeriod(data)
+
+
+
+                return period_free_mode_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(MT5SubscriptionFreePeriod | None | Unset, data)
 
         period_free_mode = _parse_period_free_mode(d.pop("periodFreeMode", UNSET))
 
@@ -419,12 +477,12 @@ class MT5ConSubscription:
         period_free_custom = _parse_period_free_custom(d.pop("periodFreeCustom", UNSET))
 
 
-        def _parse_flags(data: object) -> int | None | Unset:
+        def _parse_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         flags = _parse_flags(d.pop("flags", UNSET))
 

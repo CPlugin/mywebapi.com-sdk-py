@@ -109,6 +109,10 @@ def sync_detailed(
                 provides trading-state synchronization and the account is linked to the external system;
                 otherwise the platform error is returned and nothing changes.
 
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome may create the
+                correcting operations a second time.
+
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -170,6 +174,10 @@ def sync(
                 provides trading-state synchronization and the account is linked to the external system;
                 otherwise the platform error is returned and nothing changes.
 
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome may create the
+                correcting operations a second time.
+
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -225,6 +233,10 @@ async def asyncio_detailed(
                 the open positions or the pending orders. The call works only when the gateway in use
                 provides trading-state synchronization and the account is linked to the external system;
                 otherwise the platform error is returned and nothing changes.
+
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome may create the
+                correcting operations a second time.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -286,6 +298,10 @@ async def asyncio(
                 the open positions or the pending orders. The call works only when the gateway in use
                 provides trading-state synchronization and the account is linked to the external system;
                 otherwise the platform error is returned and nothing changes.
+
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome may create the
+                correcting operations a second time.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the

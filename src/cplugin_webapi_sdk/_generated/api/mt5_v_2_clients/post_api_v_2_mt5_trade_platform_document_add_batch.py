@@ -114,6 +114,7 @@ def sync_detailed(
      Stores the listed documents in one call with the same rules as the single add. One entry per
     document is returned with the identifier the server assigned, so a partial failure names the
     documents that were refused.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -161,6 +162,7 @@ def sync(
      Stores the listed documents in one call with the same rules as the single add. One entry per
     document is returned with the identifier the server assigned, so a partial failure names the
     documents that were refused.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -203,6 +205,7 @@ async def asyncio_detailed(
      Stores the listed documents in one call with the same rules as the single add. One entry per
     document is returned with the identifier the server assigned, so a partial failure names the
     documents that were refused.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -250,6 +253,7 @@ async def asyncio(
      Stores the listed documents in one call with the same rules as the single add. One entry per
     document is returned with the identifier the server assigned, so a partial failure names the
     documents that were refused.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server

@@ -81,7 +81,7 @@ def sync_detailed(
     group name is given in full, including the path. The call only reads and changes nothing,
     and requires the pumping connection of users.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -125,7 +125,7 @@ def sync(
     group name is given in full, including the path. The call only reads and changes nothing,
     and requires the pumping connection of users.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -164,7 +164,7 @@ async def asyncio_detailed(
     group name is given in full, including the path. The call only reads and changes nothing,
     and requires the pumping connection of users.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -208,7 +208,7 @@ async def asyncio(
     group name is given in full, including the path. The call only reads and changes nothing,
     and requires the pumping connection of users.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:

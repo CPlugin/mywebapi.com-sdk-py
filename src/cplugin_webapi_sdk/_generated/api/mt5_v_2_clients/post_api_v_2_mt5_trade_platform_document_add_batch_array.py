@@ -113,6 +113,7 @@ def sync_detailed(
 
      Same operation as `DocumentAddBatch` with the same rules: one entry per document is
     returned together with the identifier the server assigned.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -159,6 +160,7 @@ def sync(
 
      Same operation as `DocumentAddBatch` with the same rules: one entry per document is
     returned together with the identifier the server assigned.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -200,6 +202,7 @@ async def asyncio_detailed(
 
      Same operation as `DocumentAddBatch` with the same rules: one entry per document is
     returned together with the identifier the server assigned.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -246,6 +249,7 @@ async def asyncio(
 
      Same operation as `DocumentAddBatch` with the same rules: one entry per document is
     returned together with the identifier the server assigned.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server

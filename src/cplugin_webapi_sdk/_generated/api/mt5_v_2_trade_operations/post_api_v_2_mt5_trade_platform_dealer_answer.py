@@ -109,7 +109,7 @@ def sync_detailed(
                 for the platform to expire.
 
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
     (`X-Request-Outcome: unknown`): check its result before repeating it.
 
@@ -165,7 +165,7 @@ def sync(
                 for the platform to expire.
 
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
     (`X-Request-Outcome: unknown`): check its result before repeating it.
 
@@ -216,7 +216,7 @@ async def asyncio_detailed(
                 for the platform to expire.
 
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
     (`X-Request-Outcome: unknown`): check its result before repeating it.
 
@@ -272,7 +272,7 @@ async def asyncio(
                 for the platform to expire.
 
 
-    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 5 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
     (`X-Request-Outcome: unknown`): check its result before repeating it.
 

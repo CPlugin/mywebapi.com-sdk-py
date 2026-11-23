@@ -28,8 +28,9 @@ class MT5NewsSendRequest:
         Attributes:
             subject (None | str | Unset): Subject of the news item.
             category (None | str | Unset): Category of the news item.
-            time (datetime.datetime | None | Unset): Publication time, in UTC. Omitted uses the current time of the trade
-                server.
+            time (datetime.datetime | None | Unset): Publication time, in the time zone of the trade server. Omitted uses
+                the current time of
+                the trade server.
             language (int | None | Unset): Language identifier of the news item.
             flags (int | None | Unset): News item flags as a bit mask: priority, read state, absence of a body, economic
                 calendar.

@@ -111,6 +111,10 @@ def sync_detailed(
     identifier
                 before sending large files.
 
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome creates a second
+    record.
+
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -170,6 +174,10 @@ def sync(
     identifier
                 before sending large files.
 
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome creates a second
+    record.
+
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -223,6 +231,10 @@ async def asyncio_detailed(
                 without an owner and cannot be removed through the API — check the document or comment
     identifier
                 before sending large files.
+
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome creates a second
+    record.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -282,6 +294,10 @@ async def asyncio(
                 without an owner and cannot be removed through the API — check the document or comment
     identifier
                 before sending large files.
+
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome creates a second
+    record.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the

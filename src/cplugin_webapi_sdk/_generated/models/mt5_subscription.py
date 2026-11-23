@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
+from ..models.mt5_subscription_status import MT5SubscriptionStatus
 from ..types import UNSET, Unset
 from typing import cast
 
@@ -28,8 +29,9 @@ class MT5Subscription:
             id (int | None | Unset): Identifier of the subscription record. Required when an existing record is updated.
             login (int | None | Unset): Login of the account the subscription belongs to.
             subscription (int | None | Unset): Identifier of the subscription configuration the account is subscribed to.
-            status (int | None | Unset): Subscription state code.
-            flags (int | None | Unset): Additional subscription property flags.
+            status (MT5SubscriptionStatus | None | Unset): Subscription state.<br/>One of: Active, Suspended, Canceled.
+                Case-insensitive; the numeric value is accepted too. Any other value is refused with error code Validation.
+            flags (None | str | Unset): Additional subscription property flags.
             time_subscribe (int | None | Unset): Start of the subscription, in seconds since 1970-01-01.
             time_renewal (int | None | Unset): Time of the last subscription renewal, in seconds since 1970-01-01.
             time_expire (int | None | Unset): End of the subscription, in seconds since 1970-01-01.
@@ -38,8 +40,8 @@ class MT5Subscription:
     id: int | None | Unset = UNSET
     login: int | None | Unset = UNSET
     subscription: int | None | Unset = UNSET
-    status: int | None | Unset = UNSET
-    flags: int | None | Unset = UNSET
+    status: MT5SubscriptionStatus | None | Unset = UNSET
+    flags: None | str | Unset = UNSET
     time_subscribe: int | None | Unset = UNSET
     time_renewal: int | None | Unset = UNSET
     time_expire: int | None | Unset = UNSET
@@ -67,13 +69,15 @@ class MT5Subscription:
         else:
             subscription = self.subscription
 
-        status: int | None | Unset
+        status: None | str | Unset
         if isinstance(self.status, Unset):
             status = UNSET
+        elif isinstance(self.status, MT5SubscriptionStatus):
+            status = self.status.value
         else:
             status = self.status
 
-        flags: int | None | Unset
+        flags: None | str | Unset
         if isinstance(self.flags, Unset):
             flags = UNSET
         else:
@@ -156,22 +160,32 @@ class MT5Subscription:
         subscription = _parse_subscription(d.pop("subscription", UNSET))
 
 
-        def _parse_status(data: object) -> int | None | Unset:
+        def _parse_status(data: object) -> MT5SubscriptionStatus | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                status_type_1 = MT5SubscriptionStatus(data)
+
+
+
+                return status_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(MT5SubscriptionStatus | None | Unset, data)
 
         status = _parse_status(d.pop("status", UNSET))
 
 
-        def _parse_flags(data: object) -> int | None | Unset:
+        def _parse_flags(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(None | str | Unset, data)
 
         flags = _parse_flags(d.pop("flags", UNSET))
 

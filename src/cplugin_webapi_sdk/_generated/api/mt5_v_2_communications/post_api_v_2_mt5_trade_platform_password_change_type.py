@@ -96,7 +96,8 @@ def sync_detailed(
     """ Change the password of the manager account used by the connection
 
      Replaces the stored password of the account the API uses to connect to the trade server. The
-    change is made by the account itself and applies to the password type given in the route.
+    change is made by the account itself and applies to the password type given in the route:
+    `Main`, `Investor`, `API` or `Trader`. Any other value is refused.
 
     <br>
     The connection settings kept by this API are not updated by this call: the next connection
@@ -155,7 +156,8 @@ def sync(
     """ Change the password of the manager account used by the connection
 
      Replaces the stored password of the account the API uses to connect to the trade server. The
-    change is made by the account itself and applies to the password type given in the route.
+    change is made by the account itself and applies to the password type given in the route:
+    `Main`, `Investor`, `API` or `Trader`. Any other value is refused.
 
     <br>
     The connection settings kept by this API are not updated by this call: the next connection
@@ -209,7 +211,8 @@ async def asyncio_detailed(
     """ Change the password of the manager account used by the connection
 
      Replaces the stored password of the account the API uses to connect to the trade server. The
-    change is made by the account itself and applies to the password type given in the route.
+    change is made by the account itself and applies to the password type given in the route:
+    `Main`, `Investor`, `API` or `Trader`. Any other value is refused.
 
     <br>
     The connection settings kept by this API are not updated by this call: the next connection
@@ -268,7 +271,8 @@ async def asyncio(
     """ Change the password of the manager account used by the connection
 
      Replaces the stored password of the account the API uses to connect to the trade server. The
-    change is made by the account itself and applies to the password type given in the route.
+    change is made by the account itself and applies to the password type given in the route:
+    `Main`, `Investor`, `API` or `Trader`. Any other value is refused.
 
     <br>
     The connection settings kept by this API are not updated by this call: the next connection

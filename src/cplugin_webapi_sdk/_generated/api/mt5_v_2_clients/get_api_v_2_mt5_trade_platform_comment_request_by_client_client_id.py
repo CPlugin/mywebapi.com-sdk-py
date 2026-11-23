@@ -94,7 +94,7 @@ def sync_detailed(
     The slice is set by `position` (zero-based index of the first comment) and `total`
     (number of comments to return), so a long thread is read page by page. Reading changes nothing.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -144,7 +144,7 @@ def sync(
     The slice is set by `position` (zero-based index of the first comment) and `total`
     (number of comments to return), so a long thread is read page by page. Reading changes nothing.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -189,7 +189,7 @@ async def asyncio_detailed(
     The slice is set by `position` (zero-based index of the first comment) and `total`
     (number of comments to return), so a long thread is read page by page. Reading changes nothing.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -239,7 +239,7 @@ async def asyncio(
     The slice is set by `position` (zero-based index of the first comment) and `total`
     (number of comments to return), so a long thread is read page by page. Reading changes nothing.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:

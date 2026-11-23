@@ -104,11 +104,15 @@ def sync_detailed(
     The window is given in seconds elapsed since 01.01.1970; the optional keyword narrows the
     entries the way the journal search of the platform does.
 
-    The request mode and the event type are platform values: an unknown combination is answered
-    by the server with the error that explains it. The whole window is returned in one answer,
-    so a wide window over a busy server is a large response.
+    <br>`mode` accepts 0 (standard entries), 1 (errors only) or 2 (full journal); `type`
+    accepts 0 (all events), 1–8 (configuration, system, network, history, users, trades, API
+    calls, notifications) or 16–17 (live update, outgoing mail). Any other value is refused.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+
+    The whole window is returned in one answer, so a wide window over a busy server is a large
+    response.
+
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -164,11 +168,15 @@ def sync(
     The window is given in seconds elapsed since 01.01.1970; the optional keyword narrows the
     entries the way the journal search of the platform does.
 
-    The request mode and the event type are platform values: an unknown combination is answered
-    by the server with the error that explains it. The whole window is returned in one answer,
-    so a wide window over a busy server is a large response.
+    <br>`mode` accepts 0 (standard entries), 1 (errors only) or 2 (full journal); `type`
+    accepts 0 (all events), 1–8 (configuration, system, network, history, users, trades, API
+    calls, notifications) or 16–17 (live update, outgoing mail). Any other value is refused.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+
+    The whole window is returned in one answer, so a wide window over a busy server is a large
+    response.
+
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -219,11 +227,15 @@ async def asyncio_detailed(
     The window is given in seconds elapsed since 01.01.1970; the optional keyword narrows the
     entries the way the journal search of the platform does.
 
-    The request mode and the event type are platform values: an unknown combination is answered
-    by the server with the error that explains it. The whole window is returned in one answer,
-    so a wide window over a busy server is a large response.
+    <br>`mode` accepts 0 (standard entries), 1 (errors only) or 2 (full journal); `type`
+    accepts 0 (all events), 1–8 (configuration, system, network, history, users, trades, API
+    calls, notifications) or 16–17 (live update, outgoing mail). Any other value is refused.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+
+    The whole window is returned in one answer, so a wide window over a busy server is a large
+    response.
+
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -279,11 +291,15 @@ async def asyncio(
     The window is given in seconds elapsed since 01.01.1970; the optional keyword narrows the
     entries the way the journal search of the platform does.
 
-    The request mode and the event type are platform values: an unknown combination is answered
-    by the server with the error that explains it. The whole window is returned in one answer,
-    so a wide window over a busy server is a large response.
+    <br>`mode` accepts 0 (standard entries), 1 (errors only) or 2 (full journal); `type`
+    accepts 0 (all events), 1–8 (configuration, system, network, history, users, trades, API
+    calls, notifications) or 16–17 (live update, outgoing mail). Any other value is refused.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+
+    The whole window is returned in one answer, so a wide window over a busy server is a large
+    response.
+
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:

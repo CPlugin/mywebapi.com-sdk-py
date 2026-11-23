@@ -2,6 +2,23 @@
 
 All notable changes to `mywebapi-sdk` (import name `cplugin_webapi_sdk`). The package follows [semver](https://semver.org/); while it is at `0.x`, a minor release may contain breaking changes.
 
+## 0.5.1
+
+Regenerated from the WebAPI v2 specification of 23.11.2026: 453 paths and 456 operations, 452 schemas. The vendored document is the union of the main service and the MT4 x86 sidecar, as before. Contains no new operations. Versions move together with the JavaScript, .NET and PowerShell SDKs.
+
+### Added
+
+- Tick statistics (`MT5MarketTickStat`) carry the option pricing fields of the trade server: `price_greeks_delta`, `price_greeks_theta`, `price_greeks_gamma`, `price_greeks_vega`, `price_greeks_rho`, `price_greeks_omega` and `price_sensitivity`, sent as `priceGreeksDelta`, `priceGreeksTheta`, `priceGreeksGamma`, `priceGreeksVega`, `priceGreeksRho`, `priceGreeksOmega` and `priceSensitivity`.
+- Named subscription enumerations: `MT5SubscriptionType`, `MT5SubscriptionPeriod`, `MT5SubscriptionStatus`, `MT5SubscriptionFreePeriod`, `MT5SubscriptionControlMode`, `MT5SubscriptionAction`, `MT5SubscriptionSymbolLevel` and `MT5SubscriptionTickHistory`. A configuration or a subscription now reads `cfg.type_ is MT5SubscriptionType.FOLDER`, `sub.period_mode is MT5SubscriptionPeriod.MONTHLY` and so on; every value is the name the API sends (`"Folder"`, `"Monthly"`, `"Cancel"`).
+
+### Changed
+
+- Subscription and subscription-history fields that used to be integer codes are now these enumerations: `MT5ConSubscription.type_`, `control_mode`, `period_mode`, `period_free_mode`; `MT5Subscription.status`; `MT5SubscriptionHistory.action`; `MT5ConSubscriptionSymbol.level`, `tick_history`. Reading code that compared them to numbers needs the enumeration members. A numeric value still decodes unchanged, so a mixed document does not fail.
+- `flags` of a subscription configuration (`MT5ConSubscription.flags`) and of a subscription (`MT5Subscription.flags`) is a string of the names of the set bits (`"FreePeriod"`, `"None"`) instead of a bit mask. `parse_flags` / `format_flags` work on it like on the other flag fields.
+- `MT5News.time` and `MT5NewsSendRequest` publication time are the wall-clock time of the trade server, not UTC: the value carries no zone, so a naive `datetime` is returned. Convert it with the server offset of the platform before showing it to a user.
+- Default read timeouts follow the specification: the client and group read operations (`OnlineGet`, `OnlineRequest`, `ClientRequest*`, `CommentRequest*`, `DocumentRequest*`, `NewsRequest` and the other communication reads) now document 30 s instead of 10 s. Passing `request_timeout=` still overrides them.
+- `tests/test_generated_smoke.py` covers the named subscription codes, the subscription flags string, the option greek fields and the zone-less news time.
+
 ## 0.5.0
 
 Regenerated from the WebAPI v2 specification of 23.11.2026 that carries the full Manager API surface: 453 paths and 456 operations (was 223 paths and 224 operations), 442 schemas. The vendored document is the union of the main service and the MT4 x86 sidecar, as before. Versions move together with the JavaScript, .NET and PowerShell SDKs.

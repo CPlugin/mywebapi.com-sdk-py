@@ -126,7 +126,7 @@ pip install mywebapi-sdk            # REST client
 pip install "mywebapi-sdk[signalr]" # plus the experimental real-time client
 ```
 
-The package is on [PyPI](https://pypi.org/project/mywebapi-sdk/) and needs Python 3.10 or later. The distribution is `mywebapi-sdk`; the import name is `cplugin_webapi_sdk`. While it is at `0.x`, a minor release may break compatibility, so pin an exact version (`mywebapi-sdk==0.5.0`).
+The package is on [PyPI](https://pypi.org/project/mywebapi-sdk/) and needs Python 3.10 or later. The distribution is `mywebapi-sdk`; the import name is `cplugin_webapi_sdk`. While it is at `0.x`, a minor release may break compatibility, so pin an exact version (`mywebapi-sdk==0.5.1`).
 
 To work on the SDK itself, install from a checkout of this repository:
 

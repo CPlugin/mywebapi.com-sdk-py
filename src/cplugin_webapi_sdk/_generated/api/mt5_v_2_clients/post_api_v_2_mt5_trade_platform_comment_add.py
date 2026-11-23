@@ -100,6 +100,7 @@ def sync_detailed(
     The client must be identified; a document identifier is optional and, when given, makes the
     comment belong to that document instead of the client. A comment can only be added from the
     server that holds the client. Files are attached to the comment separately.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -151,6 +152,7 @@ def sync(
     The client must be identified; a document identifier is optional and, when given, makes the
     comment belong to that document instead of the client. A comment can only be added from the
     server that holds the client. Files are attached to the comment separately.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -197,6 +199,7 @@ async def asyncio_detailed(
     The client must be identified; a document identifier is optional and, when given, makes the
     comment belong to that document instead of the client. A comment can only be added from the
     server that holds the client. Files are attached to the comment separately.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -248,6 +251,7 @@ async def asyncio(
     The client must be identified; a document identifier is optional and, when given, makes the
     comment belong to that document instead of the client. A comment can only be added from the
     server that holds the client. Files are attached to the comment separately.
+    The operation is not idempotent — a repeat after an unclear outcome creates a second record.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server

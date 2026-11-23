@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
+from ..models.mt5_subscription_action import MT5SubscriptionAction
 from ..types import UNSET, Unset
 from typing import cast
 
@@ -29,7 +30,9 @@ class MT5SubscriptionHistory:
             login (int | None | Unset): Login of the account the subscription belongs to.
             subscription (int | None | Unset): Identifier of the subscription configuration the action was performed with.
             record (int | None | Unset): Identifier of the subscription record the action was performed on.
-            action (int | None | Unset): Action type code.
+            action (MT5SubscriptionAction | None | Unset): Action performed with the subscription.<br/>One of: Subscribe,
+                Renewal, Suspend, Cancel, Deleted. Case-insensitive; the numeric value is accepted too. Any other value is
+                refused with error code Validation.
             amount (float | None | Unset): Amount charged or returned by the action.
             amount_digits (int | None | Unset): Number of decimal places in `amount`.
             amount_deal (int | None | Unset): Ticket of the balance deal through which the payment was made; zero when there
@@ -40,7 +43,7 @@ class MT5SubscriptionHistory:
     login: int | None | Unset = UNSET
     subscription: int | None | Unset = UNSET
     record: int | None | Unset = UNSET
-    action: int | None | Unset = UNSET
+    action: MT5SubscriptionAction | None | Unset = UNSET
     amount: float | None | Unset = UNSET
     amount_digits: int | None | Unset = UNSET
     amount_deal: int | None | Unset = UNSET
@@ -74,9 +77,11 @@ class MT5SubscriptionHistory:
         else:
             record = self.record
 
-        action: int | None | Unset
+        action: None | str | Unset
         if isinstance(self.action, Unset):
             action = UNSET
+        elif isinstance(self.action, MT5SubscriptionAction):
+            action = self.action.value
         else:
             action = self.action
 
@@ -167,12 +172,22 @@ class MT5SubscriptionHistory:
         record = _parse_record(d.pop("record", UNSET))
 
 
-        def _parse_action(data: object) -> int | None | Unset:
+        def _parse_action(data: object) -> MT5SubscriptionAction | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                action_type_1 = MT5SubscriptionAction(data)
+
+
+
+                return action_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(MT5SubscriptionAction | None | Unset, data)
 
         action = _parse_action(d.pop("action", UNSET))
 

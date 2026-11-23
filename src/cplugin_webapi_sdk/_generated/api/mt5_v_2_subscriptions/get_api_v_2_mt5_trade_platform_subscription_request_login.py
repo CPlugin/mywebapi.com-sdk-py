@@ -81,7 +81,7 @@ def sync_detailed(
     that the server still keeps. The result is not paginated. An unknown login is answered
     with the platform error rather than with an empty list.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -125,7 +125,7 @@ def sync(
     that the server still keeps. The result is not paginated. An unknown login is answered
     with the platform error rather than with an empty list.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -164,7 +164,7 @@ async def asyncio_detailed(
     that the server still keeps. The result is not paginated. An unknown login is answered
     with the platform error rather than with an empty list.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -208,7 +208,7 @@ async def asyncio(
     that the server still keeps. The result is not paginated. An unknown login is answered
     with the platform error rather than with an empty list.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:

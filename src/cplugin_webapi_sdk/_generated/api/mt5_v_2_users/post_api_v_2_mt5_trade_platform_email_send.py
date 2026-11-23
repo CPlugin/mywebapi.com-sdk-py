@@ -110,6 +110,10 @@ def sync_detailed(
     logged by
                 the service.
 
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome delivers a second
+    message.
+
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -171,6 +175,10 @@ def sync(
     logged by
                 the service.
 
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome delivers a second
+    message.
+
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -226,6 +234,10 @@ async def asyncio_detailed(
                 for sending, not that it was delivered. The subject and the body are not stored or
     logged by
                 the service.
+
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome delivers a second
+    message.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -287,6 +299,10 @@ async def asyncio(
                 for sending, not that it was delivered. The subject and the body are not stored or
     logged by
                 the service.
+
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome delivers a second
+    message.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the

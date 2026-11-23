@@ -110,6 +110,10 @@ def sync_detailed(
     The
                 message text is not stored or logged by the service.
 
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome delivers a second
+    message.
+
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -171,6 +175,10 @@ def sync(
     The
                 message text is not stored or logged by the service.
 
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome delivers a second
+    message.
+
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -226,6 +234,10 @@ async def asyncio_detailed(
                 or non-mobile number is answered with its own platform error, which names the reason.
     The
                 message text is not stored or logged by the service.
+
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome delivers a second
+    message.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -287,6 +299,10 @@ async def asyncio(
                 or non-mobile number is answered with its own platform error, which names the reason.
     The
                 message text is not stored or logged by the service.
+
+    <br>
+                The operation is not idempotent — a repeat after an unclear outcome delivers a second
+    message.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the

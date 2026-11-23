@@ -108,6 +108,11 @@ def sync_detailed(
                 platform does not hand the individual results back to the caller in that case. Accounts
                 that do not exist make the call fail as a whole.
 
+    <br>
+                The operation is not idempotent — a repeated delete reports the record as absent instead
+    of
+                deleting twice.
+
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -167,6 +172,11 @@ def sync(
                 platform does not hand the individual results back to the caller in that case. Accounts
                 that do not exist make the call fail as a whole.
 
+    <br>
+                The operation is not idempotent — a repeated delete reports the record as absent instead
+    of
+                deleting twice.
+
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -220,6 +230,11 @@ async def asyncio_detailed(
     the
                 platform does not hand the individual results back to the caller in that case. Accounts
                 that do not exist make the call fail as a whole.
+
+    <br>
+                The operation is not idempotent — a repeated delete reports the record as absent instead
+    of
+                deleting twice.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -279,6 +294,11 @@ async def asyncio(
     the
                 platform does not hand the individual results back to the caller in that case. Accounts
                 that do not exist make the call fail as a whole.
+
+    <br>
+                The operation is not idempotent — a repeated delete reports the record as absent instead
+    of
+                deleting twice.
 
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the

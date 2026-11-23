@@ -29,7 +29,9 @@ class MT5News:
             id (int | Unset): News item identifier.
             subject (None | str | Unset): Subject of the news item.
             category (None | str | Unset): Category of the news item, as set by the sender.
-            time (datetime.datetime | None | Unset): Time the news item was sent, in UTC.
+            time (datetime.datetime | None | Unset): Time the news item was sent, in the time zone of the trade server. The
+                platform stores the
+                value without a zone, so it is returned as a wall-clock time.
             language (int | Unset): Language identifier of the news item.
             flags (int | Unset): News item flags as a bit mask: priority, read state, absence of a body, economic calendar.
             body_size (int | Unset): Size of the body in bytes.
