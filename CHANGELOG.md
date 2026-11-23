@@ -2,6 +2,28 @@
 
 All notable changes to `mywebapi-sdk` (import name `cplugin_webapi_sdk`). The package follows [semver](https://semver.org/); while it is at `0.x`, a minor release may contain breaking changes.
 
+## 0.5.0
+
+Regenerated from the WebAPI v2 specification of 23.11.2026 that carries the full Manager API surface: 453 paths and 456 operations (was 223 paths and 224 operations), 442 schemas. The vendored document is the union of the main service and the MT4 x86 sidecar, as before. Versions move together with the JavaScript, .NET and PowerShell SDKs.
+
+### Added
+
+- **Generated layer covers every new v2 group** — `MT4 v2 :: Dealer`; `MT5 v2 :: Clients`, `Communications`, `Configuration`, `Market Data`, `Market Insight`, `Reports`, `Subscriptions`, `Trade Operations`, `Trading` and the extended `Users`. Each operation is its own module and reaches the SDK without a hand-written wrapper.
+- **MT4 dealer facade**: `mt4.summary_get_all()`, `summary_get(symbol)`, `summary_currency()`, `exposure_get()`, `exposure_value(currency)`, `trade_calc_profit(body)`.
+- **MT5 reports facade**: `mt5.summary_get_all()`, `summary_get(symbol)`, `summary_currency()`, `exposure_get_all()`, `exposure_get(symbol)`, `daily_request(login)`, `daily_request_light(login)`.
+- **MT5 subscriptions facade**: `subscription_cfg_request(name)`, `subscription_cfg_get(name)`, `subscription_request(login)`, `subscription_history_request(login)`.
+- **MT5 users facade**: `user_cert_get(login)`, `user_account_get(login)`, `user_get_by_logins(logins)`, `user_group(login)`, `user_logins(group)`, `user_cert_confirm(login)`.
+- **MT5 trading and dealer facade**: `request_get_all(from_, count)`, `request_get(id)`, `trade_profit(body)`, `order_get(ticket)`, `order_add(body)`, `order_cancel(ticket)`, `deal_request(login, from_, to)`, `history_request(login, from_, to)`, plus `time_get()`.
+- **MT5 market data and insight facade**: `tick_last(symbol)`, `tick_stat(symbol)`, `book_get(symbol)`, `online_request(from_, count)`.
+- **MT5 configuration, communications and clients facade**: `symbol_request(symbol, group)`, `symbol_exist(symbol, group)`, `leverage_get(name)`, `mail_request()`, `news_request()`, `setting_get(section, key)`, `mail_send(body)`, `client_user_request(client_id)`, `document_request(document_id)`, `client_update(body)`.
+- Request-body methods accept a plain mapping with wire (camelCase) names as well as a ready generated model; the mapping is turned into the generated request model.
+- `tests/test_v2_operations.py` — route, verb, optional-filter, body-mapping and async-mirror tests for the new groups.
+
+### Changed
+
+- The generated tree is rebuilt from the merged document: 456 operation modules and 430 model modules. `operation_timeouts.py` now maps 456 operations to their server default timeout.
+- No existing facade method changed its name, signature or behaviour; the previous release's methods keep working.
+
 ## 0.4.0
 
 Regenerated from the WebAPI v2 specification of 23.11.2026 (223 paths, 293 schemas). The v2 routes now carry the names of v1 and the duplicates are gone, and the MT5 area covers the manager surface v1 had. Versions move together with the JavaScript, .NET and PowerShell SDKs.

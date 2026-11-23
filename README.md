@@ -81,6 +81,32 @@ margins = unwrap(client.mt4.raw(margins_get, trade_platform=tp))
 at_risk = [m for m in margins if 0 < m["level"] < 100]
 ```
 
+**Read the dealer summary and the broker's currency exposure** (`SummaryGetAll`, `ExposureGetAll`):
+
+```python
+summary = client.mt5.summary_get_all(tp)          # MT4: client.mt4.summary_get_all(tp)
+exposure = client.mt5.exposure_get_all(tp)        # MT4: client.mt4.exposure_get(tp)
+gold = client.mt5.summary_get(tp, "XAUUSD")
+```
+
+**Work with subscriptions and user certificates** (`SubscriptionCfgRequest`, `UserCertGet`):
+
+```python
+subscription = client.mt5.subscription_cfg_request(tp, "Gold")   # read from the trade server
+active = client.mt5.subscription_request(tp, 1001)               # subscriptions of one account
+cert = client.mt5.user_cert_get(tp, 1001)                        # export the account certificate
+client.mt5.user_cert_confirm(tp, 1001, idempotency_key=req_id)   # confirm the pending certificate
+```
+
+**Answer dealer requests** (`RequestGetAll`, `OrderAdd`, `DealRequest`):
+
+```python
+for req in client.mt5.request_get_all(tp):          # trade requests awaiting a dealer
+    print(req["id"], req["login"], req["symbol"])
+client.mt5.order_add(tp, {"login": 1001, "symbol": "EURUSD", "type": "OrderTypeBuy"}, idempotency_key=req_id)
+deals = client.mt5.deal_request(tp, 1001)           # deals of one account
+```
+
 **Change symbol settings, for example swaps** (`SymbolConfig`, JSON Merge Patch):
 
 ```python
@@ -100,7 +126,7 @@ pip install mywebapi-sdk            # REST client
 pip install "mywebapi-sdk[signalr]" # plus the experimental real-time client
 ```
 
-The package is on [PyPI](https://pypi.org/project/mywebapi-sdk/) and needs Python 3.10 or later. The distribution is `mywebapi-sdk`; the import name is `cplugin_webapi_sdk`. While it is at `0.x`, a minor release may break compatibility, so pin an exact version (`mywebapi-sdk==0.3.3`).
+The package is on [PyPI](https://pypi.org/project/mywebapi-sdk/) and needs Python 3.10 or later. The distribution is `mywebapi-sdk`; the import name is `cplugin_webapi_sdk`. While it is at `0.x`, a minor release may break compatibility, so pin an exact version (`mywebapi-sdk==0.5.0`).
 
 To work on the SDK itself, install from a checkout of this repository:
 
