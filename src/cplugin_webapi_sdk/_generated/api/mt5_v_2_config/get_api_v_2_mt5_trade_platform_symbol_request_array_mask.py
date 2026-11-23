@@ -8,7 +8,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response, UNSET
 from ... import errors
 
-from ...models.mt5_position_list_api_response import MT5PositionListApiResponse
+from ...models.mt5_symbol_list_api_response import MT5SymbolListApiResponse
 from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
@@ -19,8 +19,7 @@ def _get_kwargs(
     trade_platform: UUID,
     mask: str,
     *,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
+    group: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
@@ -35,9 +34,7 @@ def _get_kwargs(
 
     params: dict[str, Any] = {}
 
-    params["limit"] = limit
-
-    params["cursor"] = cursor
+    params["group"] = group
 
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
@@ -45,7 +42,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/v2/MT5/{trade_platform}/PositionByGroup/{mask}".format(trade_platform=quote(str(trade_platform), safe=""),mask=quote(str(mask), safe=""),),
+        "url": "/api/v2/MT5/{trade_platform}/SymbolRequestArray/{mask}".format(trade_platform=quote(str(trade_platform), safe=""),mask=quote(str(mask), safe=""),),
         "params": params,
     }
 
@@ -55,9 +52,9 @@ def _get_kwargs(
 
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT5PositionListApiResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT5SymbolListApiResponse | None:
     if response.status_code == 200:
-        response_200 = MT5PositionListApiResponse.from_dict(response.json())
+        response_200 = MT5SymbolListApiResponse.from_dict(response.json())
 
 
 
@@ -69,7 +66,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT5PositionListApiResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT5SymbolListApiResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -83,15 +80,22 @@ def sync_detailed(
     mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
+    group: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[MT5PositionListApiResponse]:
-    """ List positions by group
+) -> Response[MT5SymbolListApiResponse]:
+    r""" Symbols by mask
 
-     Returns open positions for all logins in groups matching the mask,
-    ordered by Position ID ascending. Use the cursor for the next page.
+     <br>
+                Returns the symbol configuration of every symbol matching the mask. The mask takes full
+                symbol names including the path (`Forex\EURUSD`), several names separated by commas,
+                and the wildcards `*` (any value) and `!` (exclude), for example
+                `Forex\*,!Forex\EURUSD` — every symbol of the `Forex` subgroup except EURUSD.
+
+    <br>
+                When a group is given, the symbol settings are returned as they are redefined for that
+                group; without it the base symbol settings are returned.
+
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -99,8 +103,7 @@ def sync_detailed(
     Args:
         trade_platform (UUID):
         mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
+        group (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -108,15 +111,14 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MT5PositionListApiResponse]
+        Response[MT5SymbolListApiResponse]
      """
 
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 mask=mask,
-limit=limit,
-cursor=cursor,
+group=group,
 x_request_timeout=x_request_timeout,
 
     )
@@ -132,15 +134,22 @@ def sync(
     mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
+    group: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> MT5PositionListApiResponse | None:
-    """ List positions by group
+) -> MT5SymbolListApiResponse | None:
+    r""" Symbols by mask
 
-     Returns open positions for all logins in groups matching the mask,
-    ordered by Position ID ascending. Use the cursor for the next page.
+     <br>
+                Returns the symbol configuration of every symbol matching the mask. The mask takes full
+                symbol names including the path (`Forex\EURUSD`), several names separated by commas,
+                and the wildcards `*` (any value) and `!` (exclude), for example
+                `Forex\*,!Forex\EURUSD` — every symbol of the `Forex` subgroup except EURUSD.
+
+    <br>
+                When a group is given, the symbol settings are returned as they are redefined for that
+                group; without it the base symbol settings are returned.
+
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -148,8 +157,7 @@ def sync(
     Args:
         trade_platform (UUID):
         mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
+        group (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -157,7 +165,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MT5PositionListApiResponse
+        MT5SymbolListApiResponse
      """
 
 
@@ -165,8 +173,7 @@ def sync(
         trade_platform=trade_platform,
 mask=mask,
 client=client,
-limit=limit,
-cursor=cursor,
+group=group,
 x_request_timeout=x_request_timeout,
 
     ).parsed
@@ -176,15 +183,22 @@ async def asyncio_detailed(
     mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
+    group: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[MT5PositionListApiResponse]:
-    """ List positions by group
+) -> Response[MT5SymbolListApiResponse]:
+    r""" Symbols by mask
 
-     Returns open positions for all logins in groups matching the mask,
-    ordered by Position ID ascending. Use the cursor for the next page.
+     <br>
+                Returns the symbol configuration of every symbol matching the mask. The mask takes full
+                symbol names including the path (`Forex\EURUSD`), several names separated by commas,
+                and the wildcards `*` (any value) and `!` (exclude), for example
+                `Forex\*,!Forex\EURUSD` — every symbol of the `Forex` subgroup except EURUSD.
+
+    <br>
+                When a group is given, the symbol settings are returned as they are redefined for that
+                group; without it the base symbol settings are returned.
+
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -192,8 +206,7 @@ async def asyncio_detailed(
     Args:
         trade_platform (UUID):
         mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
+        group (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -201,15 +214,14 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MT5PositionListApiResponse]
+        Response[MT5SymbolListApiResponse]
      """
 
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 mask=mask,
-limit=limit,
-cursor=cursor,
+group=group,
 x_request_timeout=x_request_timeout,
 
     )
@@ -225,15 +237,22 @@ async def asyncio(
     mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
+    group: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> MT5PositionListApiResponse | None:
-    """ List positions by group
+) -> MT5SymbolListApiResponse | None:
+    r""" Symbols by mask
 
-     Returns open positions for all logins in groups matching the mask,
-    ordered by Position ID ascending. Use the cursor for the next page.
+     <br>
+                Returns the symbol configuration of every symbol matching the mask. The mask takes full
+                symbol names including the path (`Forex\EURUSD`), several names separated by commas,
+                and the wildcards `*` (any value) and `!` (exclude), for example
+                `Forex\*,!Forex\EURUSD` — every symbol of the `Forex` subgroup except EURUSD.
+
+    <br>
+                When a group is given, the symbol settings are returned as they are redefined for that
+                group; without it the base symbol settings are returned.
+
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -241,8 +260,7 @@ async def asyncio(
     Args:
         trade_platform (UUID):
         mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
+        group (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -250,7 +268,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MT5PositionListApiResponse
+        MT5SymbolListApiResponse
      """
 
 
@@ -258,8 +276,7 @@ async def asyncio(
         trade_platform=trade_platform,
 mask=mask,
 client=client,
-limit=limit,
-cursor=cursor,
+group=group,
 x_request_timeout=x_request_timeout,
 
     )).parsed

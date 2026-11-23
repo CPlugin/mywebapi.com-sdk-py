@@ -2,6 +2,31 @@
 
 All notable changes to `mywebapi-sdk` (import name `cplugin_webapi_sdk`). The package follows [semver](https://semver.org/); while it is at `0.x`, a minor release may contain breaking changes.
 
+## 0.4.0
+
+Regenerated from the WebAPI v2 specification of 23.11.2026 (223 paths, 293 schemas). The v2 routes now carry the names of v1 and the duplicates are gone, and the MT5 area covers the manager surface v1 had. Versions move together with the JavaScript, .NET and PowerShell SDKs.
+
+### Added
+
+- MT5 client operations and models: `GET ClientRequest/{clientId}`, `POST ClientAdd`, `POST ClientDelete/{clientId}`, `POST ClientUserAdd/{clientId}/{login}`; `MT5Client`, `MT5ClientApiResponse`, `ClientTypes`, `ClientStatuses`, `ClientOrigins`.
+- MT5 account operations: `GET UserRequest/{login}`, `GET UserAccountRequest/{login}`, `GET UserAccountGet/{login}`, `GET UserGetByGroup/{mask}`, `GET UserGetByLogins`, `POST UserAdd`, `POST UserUpdate`, `POST UserDelete/{login}`, `POST UserPasswordCheck/{login}/{type}`, `POST UserPasswordChange/{login}/{type}`; `MT5UserAddRequest`, `MT5UserAddResult`, `MT5UserUpdate`, `MT5Account`, `MT5UserListApiResponse`.
+- MT5 deal and trade-history operations: `GET DealRequest/{login}`, `GET DealRequestByGroup/{mask}`, `GET DealRequestByGroupSymbol/{mask}/{symbol}`, `GET DealRequestByLogins`, `GET DealRequestByTicket/{ticket}`, `GET` and `POST DealRequestByTickets`, `POST DealDeleteBatch`, `POST DealUpdate`, `POST DealerBalance`, `POST DealerBalanceRaw`, `POST DealerSend`; `GET HistoryRequest/{login}`, `GET HistoryRequestByGroup/{mask}`, `GET` and `POST HistoryRequestByTickets`; `MT5DealApiResponse`, `MT5Request`, `MT5Result`, `DealerBalanceRequest`, `EnDealAction`.
+- MT5 order operations: `GET OrderGet/{ticket}`, `GET OrderGetByGroup/{mask}`, `GET OrderGetByLogins`, `GET OrderGetBySymbol/{mask}/{symbol}`, `GET OrderGetByTickets`, `GET OrderRequestByGroup/{mask}`, `GET OrderRequestByGroupSymbol/{mask}/{symbol}`, `POST OrderRequestByTickets`, `POST OrderDeleteBatch`; `MT5OrderApiResponse`.
+- MT5 position operations: `GET PositionGet/{login}`, `GET PositionGetByLogins`, `GET PositionGetBySymbol/{mask}/{symbol}`, `GET PositionGetByTickets`, `POST PositionDeleteBatch`.
+- MT5 group and symbol reads: `GET GroupRequest/{group}`, `GET GroupRequestArray/{mask}`, `GET SymbolRequestArray/{mask}`, `POST SymbolUpdate/{symbol}`; `MT5ConGroupListApiResponse`, `MT5SymbolListApiResponse`, `MT5SymbolUpdate`.
+- MT4 operations: `GET CfgRequestGroup`, `GET CfgRequestSymbolGroup`, `GET ManagerCommonEx`, `GET SymbolsGetAll`, `GET SymbolsGetAll/{symbol}`, `GET UsersGet`, `POST CfgUpdateGroup`, `POST UserRecordUpdate`; body models `MT4GroupUpdate` and `MT4UserUpdate`, and `MT4CommonShort`.
+- Generated models for the MT5 request enums: `DemoAccountType`, `EducationLevel`, `Employment`, `EmploymentIndustry`, `Genders`, `KYCStatuses`, `LiveUpdateMode`, `MonthlyStatementMode`, `PreferredCommunication`, `RolloverMode`, `ServerStopReason`, `SoActivation`, `StatementMode`.
+- Real-time: the connection-status callback is now per platform — `on_mt4_connection_status()` binds `OnMT4ConnectionStatus` and `on_mt5_connection_status()` binds `OnMT5ConnectionStatus`, the names the v2 hubs actually broadcast.
+
+### Changed
+
+- **Breaking — MT5 routes renamed to their v1 names:** `ServerTime` → `TimeServer`, `PositionByGroup/{mask}` → `PositionRequestByGroup/{mask}`, `OrderByGroup/{mask}` → `OrderGetByGroup/{mask}`, `DealByGroup/{mask}` → `DealRequestByGroup/{mask}`. `GroupGet` is again offered next to `GroupRequest`. The facade methods (`mt5.get_server_time()`, `mt5.positions_by_group()`) keep their names; only code that imports a generated operation module by its old name is affected.
+- **Breaking — duplicate routes removed:** MT4 `GET SymbolsGroupsGet`, `POST GroupRecordUpdate/{group}`, `POST UserRecordUpdate/{login}`; use `SymbolsGetAll`, `PATCH GroupRecord` and `PATCH UserRecord` or `POST UserRecordUpdate`. The MT4 module `get_api_v_2_mt4_trade_platform_symbols_groups_get` no longer exists.
+- **Breaking — the real-time callback `on_connection_status()` is gone**; register `on_mt4_connection_status()` or `on_mt5_connection_status()` on the platform client instead.
+- Update operations accept only the fields the caller sends; omitted fields keep their server value, and an empty body is refused. `CfgUpdateCommon` additionally accepts a plain `application/json` body next to `application/json-patch+json`.
+- Trade-platform permissions are checked by the effect of the operation: `AdmBalanceFix`, `SymbolAdd`, `SymbolHide` and `SymbolsRefresh` require `Update` rather than `Request`, and `TradeTransaction` requires `Update` rather than `Create`; MT5 `DealRequestByTicket` is checked against the order permission. The behaviour belongs to the server and applies to every SDK version — check the rights of the accounts your script runs under.
+- The vendored `spec/v2.json` is the specification of 23.11.2026. `UsersRights` is replaced by `MT5UserRights`, a flag field that stays `str` — the names of the set bits joined by `, `.
+
 ## 0.3.4
 
 MT5 chart and tick history, ticks on the MT5 real-time hub, and batched ticks on both real-time hubs. Versions move together with the JavaScript, .NET and PowerShell SDKs.

@@ -8,7 +8,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response, UNSET
 from ... import errors
 
-from ...models.date_time_api_response import DateTimeApiResponse
+from ...models.mt5_deal_api_response import MT5DealApiResponse
 from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
@@ -17,6 +17,7 @@ from uuid import UUID
 
 def _get_kwargs(
     trade_platform: UUID,
+    ticket: int,
     *,
     x_request_timeout: float | Unset = UNSET,
 
@@ -34,7 +35,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/v2/MT5/{trade_platform}/ServerTime".format(trade_platform=quote(str(trade_platform), safe=""),),
+        "url": "/api/v2/MT5/{trade_platform}/DealRequestByTicket/{ticket}".format(trade_platform=quote(str(trade_platform), safe=""),ticket=quote(str(ticket), safe=""),),
     }
 
 
@@ -43,9 +44,9 @@ def _get_kwargs(
 
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> DateTimeApiResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT5DealApiResponse | None:
     if response.status_code == 200:
-        response_200 = DateTimeApiResponse.from_dict(response.json())
+        response_200 = MT5DealApiResponse.from_dict(response.json())
 
 
 
@@ -57,7 +58,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[DateTimeApiResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT5DealApiResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,18 +69,22 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def sync_detailed(
     trade_platform: UUID,
+    ticket: int,
     *,
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[DateTimeApiResponse]:
-    """ Get server time
+) -> Response[MT5DealApiResponse]:
+    """ Deal by a ticket
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     Reads a single deal from the server history by its ticket number.
+
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
+        ticket (int):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -87,12 +92,13 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DateTimeApiResponse]
+        Response[MT5DealApiResponse]
      """
 
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
+ticket=ticket,
 x_request_timeout=x_request_timeout,
 
     )
@@ -105,18 +111,22 @@ x_request_timeout=x_request_timeout,
 
 def sync(
     trade_platform: UUID,
+    ticket: int,
     *,
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> DateTimeApiResponse | None:
-    """ Get server time
+) -> MT5DealApiResponse | None:
+    """ Deal by a ticket
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     Reads a single deal from the server history by its ticket number.
+
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
+        ticket (int):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -124,12 +134,13 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DateTimeApiResponse
+        MT5DealApiResponse
      """
 
 
     return sync_detailed(
         trade_platform=trade_platform,
+ticket=ticket,
 client=client,
 x_request_timeout=x_request_timeout,
 
@@ -137,18 +148,22 @@ x_request_timeout=x_request_timeout,
 
 async def asyncio_detailed(
     trade_platform: UUID,
+    ticket: int,
     *,
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[DateTimeApiResponse]:
-    """ Get server time
+) -> Response[MT5DealApiResponse]:
+    """ Deal by a ticket
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     Reads a single deal from the server history by its ticket number.
+
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
+        ticket (int):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -156,12 +171,13 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DateTimeApiResponse]
+        Response[MT5DealApiResponse]
      """
 
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
+ticket=ticket,
 x_request_timeout=x_request_timeout,
 
     )
@@ -174,18 +190,22 @@ x_request_timeout=x_request_timeout,
 
 async def asyncio(
     trade_platform: UUID,
+    ticket: int,
     *,
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> DateTimeApiResponse | None:
-    """ Get server time
+) -> MT5DealApiResponse | None:
+    """ Deal by a ticket
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     Reads a single deal from the server history by its ticket number.
+
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
+        ticket (int):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -193,12 +213,13 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DateTimeApiResponse
+        MT5DealApiResponse
      """
 
 
     return (await asyncio_detailed(
         trade_platform=trade_platform,
+ticket=ticket,
 client=client,
 x_request_timeout=x_request_timeout,
 

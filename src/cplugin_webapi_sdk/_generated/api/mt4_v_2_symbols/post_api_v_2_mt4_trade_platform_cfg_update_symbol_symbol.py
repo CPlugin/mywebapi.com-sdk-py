@@ -101,7 +101,7 @@ def sync_detailed(
      Update a symbol's full configuration — Type 1 mutator with secret-preservation read.
 
     Completes the User/Group/Symbol Type 1 mutator triad. Same flow as
-    `UserRecordUpdate` and `GroupRecordUpdate`: read the existing
+    `UserRecordUpdate` and `CfgUpdateGroup`: read the existing
     `ConSymbol` from MT4 server, overlay the
     `MT4SymbolConfigUpdate` DTO over it, write the merged structure
     back. Preserves the `Sessions` nested array, reserved/unused
@@ -208,7 +208,7 @@ def sync(
      Update a symbol's full configuration — Type 1 mutator with secret-preservation read.
 
     Completes the User/Group/Symbol Type 1 mutator triad. Same flow as
-    `UserRecordUpdate` and `GroupRecordUpdate`: read the existing
+    `UserRecordUpdate` and `CfgUpdateGroup`: read the existing
     `ConSymbol` from MT4 server, overlay the
     `MT4SymbolConfigUpdate` DTO over it, write the merged structure
     back. Preserves the `Sessions` nested array, reserved/unused
@@ -310,7 +310,7 @@ async def asyncio_detailed(
      Update a symbol's full configuration — Type 1 mutator with secret-preservation read.
 
     Completes the User/Group/Symbol Type 1 mutator triad. Same flow as
-    `UserRecordUpdate` and `GroupRecordUpdate`: read the existing
+    `UserRecordUpdate` and `CfgUpdateGroup`: read the existing
     `ConSymbol` from MT4 server, overlay the
     `MT4SymbolConfigUpdate` DTO over it, write the merged structure
     back. Preserves the `Sessions` nested array, reserved/unused
@@ -417,7 +417,7 @@ async def asyncio(
      Update a symbol's full configuration — Type 1 mutator with secret-preservation read.
 
     Completes the User/Group/Symbol Type 1 mutator triad. Same flow as
-    `UserRecordUpdate` and `GroupRecordUpdate`: read the existing
+    `UserRecordUpdate` and `CfgUpdateGroup`: read the existing
     `ConSymbol` from MT4 server, overlay the
     `MT4SymbolConfigUpdate` DTO over it, write the merged structure
     back. Preserves the `Sessions` nested array, reserved/unused

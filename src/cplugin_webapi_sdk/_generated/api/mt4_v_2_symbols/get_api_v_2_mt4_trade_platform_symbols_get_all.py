@@ -8,7 +8,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response, UNSET
 from ... import errors
 
-from ...models.mt5_deal_list_api_response import MT5DealListApiResponse
+from ...models.mt4_symbol_config_list_api_response import MT4SymbolConfigListApiResponse
 from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
@@ -17,10 +17,7 @@ from uuid import UUID
 
 def _get_kwargs(
     trade_platform: UUID,
-    mask: str,
     *,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
@@ -33,20 +30,11 @@ def _get_kwargs(
 
     
 
-    params: dict[str, Any] = {}
-
-    params["limit"] = limit
-
-    params["cursor"] = cursor
-
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
+    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/v2/MT5/{trade_platform}/DealByGroup/{mask}".format(trade_platform=quote(str(trade_platform), safe=""),mask=quote(str(mask), safe=""),),
-        "params": params,
+        "url": "/api/v2/MT4/{trade_platform}/SymbolsGetAll".format(trade_platform=quote(str(trade_platform), safe=""),),
     }
 
 
@@ -55,9 +43,9 @@ def _get_kwargs(
 
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT5DealListApiResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT4SymbolConfigListApiResponse | None:
     if response.status_code == 200:
-        response_200 = MT5DealListApiResponse.from_dict(response.json())
+        response_200 = MT4SymbolConfigListApiResponse.from_dict(response.json())
 
 
 
@@ -69,7 +57,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT5DealListApiResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT4SymbolConfigListApiResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -80,27 +68,27 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def sync_detailed(
     trade_platform: UUID,
-    mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[MT5DealListApiResponse]:
-    """ List deals by group
+) -> Response[MT4SymbolConfigListApiResponse]:
+    """ List symbols (pumping)
 
-     Returns deals for all logins in groups matching the mask, ordered by Deal ID ascending.
-    Returns the full history by default. Use the cursor for the next page.
+     Every symbol configured on the MT4 server, read through the pumping
+    connection and mapped to the same configuration shape as
+    `CfgRequestSymbol`.
 
-    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    Uses the streaming (pumping) manager object rather than the request
+    manager, so it works while the platform is streamed by this instance.
+    The data itself is a full server-side read — typical platforms have
+    dozens to hundreds of symbols with 50+ fields each.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
-        mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -108,15 +96,12 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MT5DealListApiResponse]
+        Response[MT4SymbolConfigListApiResponse]
      """
 
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
-mask=mask,
-limit=limit,
-cursor=cursor,
 x_request_timeout=x_request_timeout,
 
     )
@@ -129,27 +114,27 @@ x_request_timeout=x_request_timeout,
 
 def sync(
     trade_platform: UUID,
-    mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> MT5DealListApiResponse | None:
-    """ List deals by group
+) -> MT4SymbolConfigListApiResponse | None:
+    """ List symbols (pumping)
 
-     Returns deals for all logins in groups matching the mask, ordered by Deal ID ascending.
-    Returns the full history by default. Use the cursor for the next page.
+     Every symbol configured on the MT4 server, read through the pumping
+    connection and mapped to the same configuration shape as
+    `CfgRequestSymbol`.
 
-    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    Uses the streaming (pumping) manager object rather than the request
+    manager, so it works while the platform is streamed by this instance.
+    The data itself is a full server-side read — typical platforms have
+    dozens to hundreds of symbols with 50+ fields each.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
-        mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -157,43 +142,40 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MT5DealListApiResponse
+        MT4SymbolConfigListApiResponse
      """
 
 
     return sync_detailed(
         trade_platform=trade_platform,
-mask=mask,
 client=client,
-limit=limit,
-cursor=cursor,
 x_request_timeout=x_request_timeout,
 
     ).parsed
 
 async def asyncio_detailed(
     trade_platform: UUID,
-    mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[MT5DealListApiResponse]:
-    """ List deals by group
+) -> Response[MT4SymbolConfigListApiResponse]:
+    """ List symbols (pumping)
 
-     Returns deals for all logins in groups matching the mask, ordered by Deal ID ascending.
-    Returns the full history by default. Use the cursor for the next page.
+     Every symbol configured on the MT4 server, read through the pumping
+    connection and mapped to the same configuration shape as
+    `CfgRequestSymbol`.
 
-    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    Uses the streaming (pumping) manager object rather than the request
+    manager, so it works while the platform is streamed by this instance.
+    The data itself is a full server-side read — typical platforms have
+    dozens to hundreds of symbols with 50+ fields each.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
-        mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -201,15 +183,12 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MT5DealListApiResponse]
+        Response[MT4SymbolConfigListApiResponse]
      """
 
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
-mask=mask,
-limit=limit,
-cursor=cursor,
 x_request_timeout=x_request_timeout,
 
     )
@@ -222,27 +201,27 @@ x_request_timeout=x_request_timeout,
 
 async def asyncio(
     trade_platform: UUID,
-    mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> MT5DealListApiResponse | None:
-    """ List deals by group
+) -> MT4SymbolConfigListApiResponse | None:
+    """ List symbols (pumping)
 
-     Returns deals for all logins in groups matching the mask, ordered by Deal ID ascending.
-    Returns the full history by default. Use the cursor for the next page.
+     Every symbol configured on the MT4 server, read through the pumping
+    connection and mapped to the same configuration shape as
+    `CfgRequestSymbol`.
 
-    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    Uses the streaming (pumping) manager object rather than the request
+    manager, so it works while the platform is streamed by this instance.
+    The data itself is a full server-side read — typical platforms have
+    dozens to hundreds of symbols with 50+ fields each.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
         trade_platform (UUID):
-        mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -250,16 +229,13 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MT5DealListApiResponse
+        MT4SymbolConfigListApiResponse
      """
 
 
     return (await asyncio_detailed(
         trade_platform=trade_platform,
-mask=mask,
 client=client,
-limit=limit,
-cursor=cursor,
 x_request_timeout=x_request_timeout,
 
     )).parsed

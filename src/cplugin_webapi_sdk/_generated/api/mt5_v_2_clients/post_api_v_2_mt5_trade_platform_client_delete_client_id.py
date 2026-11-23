@@ -8,7 +8,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response, UNSET
 from ... import errors
 
-from ...models.mt4_symbol_group_list_api_response import MT4SymbolGroupListApiResponse
+from ...models.mt5_result_api_response import MT5ResultApiResponse
 from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
@@ -17,6 +17,7 @@ from uuid import UUID
 
 def _get_kwargs(
     trade_platform: UUID,
+    client_id: int,
     *,
     x_request_timeout: float | Unset = UNSET,
 
@@ -33,8 +34,8 @@ def _get_kwargs(
     
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": "/api/v2/MT4/{trade_platform}/SymbolsGroupsGet".format(trade_platform=quote(str(trade_platform), safe=""),),
+        "method": "post",
+        "url": "/api/v2/MT5/{trade_platform}/ClientDelete/{client_id}".format(trade_platform=quote(str(trade_platform), safe=""),client_id=quote(str(client_id), safe=""),),
     }
 
 
@@ -43,9 +44,9 @@ def _get_kwargs(
 
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT4SymbolGroupListApiResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT5ResultApiResponse | None:
     if response.status_code == 200:
-        response_200 = MT4SymbolGroupListApiResponse.from_dict(response.json())
+        response_200 = MT5ResultApiResponse.from_dict(response.json())
 
 
 
@@ -57,7 +58,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT4SymbolGroupListApiResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT5ResultApiResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,25 +69,26 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def sync_detailed(
     trade_platform: UUID,
+    client_id: int,
     *,
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[MT4SymbolGroupListApiResponse]:
-    r""" List symbol groups (cached)
+) -> Response[MT5ResultApiResponse]:
+    """ Delete a client
 
-     All configured symbol groups (security categories) from the pump cache.
+     Removes the client record with the given identifier from the server database. The
+    operation is not reversible. Accounts attached to the client are not deleted by this
+    call and stay on the server. The response carries the platform result code of the
+    operation.
 
-    Pump-cached read — returns the broker-configured security groups
-    (e.g. \"Forex\", \"CFD\", \"Metals\"). Each entry only carries Name and
-    Description; ConSymbolGroup has no additional fields on the
-    MT4-side struct.
-
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
 
     Args:
         trade_platform (UUID):
+        client_id (int):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -94,12 +96,13 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MT4SymbolGroupListApiResponse]
+        Response[MT5ResultApiResponse]
      """
 
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
+client_id=client_id,
 x_request_timeout=x_request_timeout,
 
     )
@@ -112,25 +115,26 @@ x_request_timeout=x_request_timeout,
 
 def sync(
     trade_platform: UUID,
+    client_id: int,
     *,
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> MT4SymbolGroupListApiResponse | None:
-    r""" List symbol groups (cached)
+) -> MT5ResultApiResponse | None:
+    """ Delete a client
 
-     All configured symbol groups (security categories) from the pump cache.
+     Removes the client record with the given identifier from the server database. The
+    operation is not reversible. Accounts attached to the client are not deleted by this
+    call and stay on the server. The response carries the platform result code of the
+    operation.
 
-    Pump-cached read — returns the broker-configured security groups
-    (e.g. \"Forex\", \"CFD\", \"Metals\"). Each entry only carries Name and
-    Description; ConSymbolGroup has no additional fields on the
-    MT4-side struct.
-
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
 
     Args:
         trade_platform (UUID):
+        client_id (int):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -138,12 +142,13 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MT4SymbolGroupListApiResponse
+        MT5ResultApiResponse
      """
 
 
     return sync_detailed(
         trade_platform=trade_platform,
+client_id=client_id,
 client=client,
 x_request_timeout=x_request_timeout,
 
@@ -151,25 +156,26 @@ x_request_timeout=x_request_timeout,
 
 async def asyncio_detailed(
     trade_platform: UUID,
+    client_id: int,
     *,
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[MT4SymbolGroupListApiResponse]:
-    r""" List symbol groups (cached)
+) -> Response[MT5ResultApiResponse]:
+    """ Delete a client
 
-     All configured symbol groups (security categories) from the pump cache.
+     Removes the client record with the given identifier from the server database. The
+    operation is not reversible. Accounts attached to the client are not deleted by this
+    call and stay on the server. The response carries the platform result code of the
+    operation.
 
-    Pump-cached read — returns the broker-configured security groups
-    (e.g. \"Forex\", \"CFD\", \"Metals\"). Each entry only carries Name and
-    Description; ConSymbolGroup has no additional fields on the
-    MT4-side struct.
-
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
 
     Args:
         trade_platform (UUID):
+        client_id (int):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -177,12 +183,13 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MT4SymbolGroupListApiResponse]
+        Response[MT5ResultApiResponse]
      """
 
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
+client_id=client_id,
 x_request_timeout=x_request_timeout,
 
     )
@@ -195,25 +202,26 @@ x_request_timeout=x_request_timeout,
 
 async def asyncio(
     trade_platform: UUID,
+    client_id: int,
     *,
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> MT4SymbolGroupListApiResponse | None:
-    r""" List symbol groups (cached)
+) -> MT5ResultApiResponse | None:
+    """ Delete a client
 
-     All configured symbol groups (security categories) from the pump cache.
+     Removes the client record with the given identifier from the server database. The
+    operation is not reversible. Accounts attached to the client are not deleted by this
+    call and stay on the server. The response carries the platform result code of the
+    operation.
 
-    Pump-cached read — returns the broker-configured security groups
-    (e.g. \"Forex\", \"CFD\", \"Metals\"). Each entry only carries Name and
-    Description; ConSymbolGroup has no additional fields on the
-    MT4-side struct.
-
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
-    trade server does not answer in time: Nothing was changed; the request is safe to repeat.
+    **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    trade server does not answer in time: The operation may still be completed by the server
+    (`X-Request-Outcome: unknown`): check its result before repeating it.
 
     Args:
         trade_platform (UUID):
+        client_id (int):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -221,12 +229,13 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MT4SymbolGroupListApiResponse
+        MT5ResultApiResponse
      """
 
 
     return (await asyncio_detailed(
         trade_platform=trade_platform,
+client_id=client_id,
 client=client,
 x_request_timeout=x_request_timeout,
 

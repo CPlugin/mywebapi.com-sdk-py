@@ -26,107 +26,109 @@ T = TypeVar("T", bound="MT4GroupUpdate")
 
 @_attrs_define
 class MT4GroupUpdate:
-    """ Type 1 mutator input — full-replace shape for `GroupRecordUpdate`.
-    Same field set as the read DTO MT4Group minus the immutable
-    group name (path parameter) and the derived `SecMarginsTotal`
-    (computed from SecMargins length).
-
-    Fields preserved by the server-side read step (NOT on this DTO):
-      * `Group` — path param, immutable identity.
-      * `SmtpServer`, `SmtpLogin`, `SmtpPassword` — SMTP creds,
-        never client-controlled.
-      * `Templates` — server-side filesystem path.
-      * `SecuritiesHash` — opaque platform bookkeeping.
-      * `Reserved`, `UnusedRights` — reserved arrays.
-      * `SecGroups[32]`, `SecMargins[128]` — nested arrays, planned
-        as dedicated v2 endpoints.
-      * `NewsLanguages`, `NewsLanguagesTotal` — separate management.
-      * `SecMarginsTotal` — derived from SecMargins length.
+    """ Input shape for `CfgUpdateGroup`: the editable part of an MT4 trading group.
 
         Attributes:
-            enable (int | Unset): 0 = group disabled, non-zero = enabled
-            timeout (int | Unset): Trade confirmation timeout, seconds
-            otp_mode (OTPMode | Unset):
+            group (None | str | Unset): Group name to update (required identity; never changed by this call)
+            enable (int | None | Unset): 0 = group disabled, non-zero = enabled
+            timeout (int | None | Unset): Trade confirmation timeout, seconds
+            otp_mode (None | OTPMode | Unset): One-time password requirement mode
             company (None | str | Unset): Company name shown on statements
             signature (None | str | Unset): Statement signature line
             support_page (None | str | Unset): Support page URL
             support_email (None | str | Unset): Support email
-            copies (int | Unset): Statement copy count
-            reports (int | Unset): 0 = statements disabled, non-zero = enabled
-            default_leverage (int | Unset): Default leverage when accounts omit their own
-            default_deposit (float | Unset): Default deposit when accounts omit their own balance
-            max_securities (int | Unset): Max simultaneously open securities
+            copies (int | None | Unset): Statement copy count
+            reports (int | None | Unset): 0 = statements disabled, non-zero = enabled
+            default_leverage (int | None | Unset): Default leverage when accounts omit their own
+            default_deposit (float | None | Unset): Default deposit when accounts omit their own balance
+            max_securities (int | None | Unset): Max simultaneously open securities
             currency (None | str | Unset): Deposit currency
-            credit (float | Unset): Virtual credit applied to group's accounts
-            margin_call (int | Unset): Margin call threshold (percent)
-            margin_mode (MarginMode | Unset):
-            margin_stopout (int | Unset): Stop-out threshold
-            interest_rate (float | Unset): Annual interest rate (percent)
-            use_swap (int | Unset): 0 = no rollovers, non-zero = use them
-            news_mode (NewsMode | Unset):
-            group_rights (str | Unset): Flags: names of the set bits joined by ", " ("Signals, Trailing"), "None" when none
-                is set; a set bit without a name is "Bit<n>" (bit number). Bits: Signals = 0x1, Trailing = 0x2, Advisor = 0x4,
-                Expiration = 0x8, SignalAll = 0x10, SignalsOwn = 0x20, RiskWarning = 0x40, ForcedOTPUsage = 0x80. Example:
-                Signals, Trailing.
-            check_ie_prices (int | Unset): 0 = no IE check, non-zero = check IE prices
-            max_positions (int | Unset): Maximum simultaneous orders and open positions
-            close_reopen (int | Unset): 0 = standard, non-zero = close-and-reopen mode
-            hedge_prohibited (int | Unset): 0 = hedging allowed, non-zero = prohibited
-            close_fifo (int | Unset): 0 = LIFO, non-zero = FIFO close rule
-            hedge_large_leg (int | Unset): 0 = standard, non-zero = treat large hedged leg specially
-            margin_controlling_type (MarginControllingType | Unset):
-            archive_period (int | Unset): Inactivity period (days) before account archival
-            archive_max_balance (int | Unset): Max balance under which an account becomes archivable
-            stopout_skip_hedged (int | Unset): 0 = include hedged in stop-out checks, non-zero = skip them
-            archive_pending_period (int | Unset): Pending orders clean-up period (days)
+            credit (float | None | Unset): Virtual credit applied to group's accounts
+            margin_call (int | None | Unset): Margin call threshold (percent)
+            margin_mode (MarginMode | None | Unset): Margin calculation mode
+            margin_stopout (int | None | Unset): Stop-out threshold
+            interest_rate (float | None | Unset): Annual interest rate (percent)
+            use_swap (int | None | Unset): 0 = no rollovers, non-zero = use them
+            news_mode (NewsMode | None | Unset): News delivery mode
+            group_rights (None | str | Unset): Permissions bit mask
+            check_ie_prices (int | None | Unset): 0 = no IE check, non-zero = check IE prices
+            max_positions (int | None | Unset): Maximum simultaneous orders and open positions
+            close_reopen (int | None | Unset): 0 = standard, non-zero = close-and-reopen mode
+            hedge_prohibited (int | None | Unset): 0 = hedging allowed, non-zero = prohibited
+            close_fifo (int | None | Unset): 0 = LIFO, non-zero = FIFO close rule
+            hedge_large_leg (int | None | Unset): 0 = standard, non-zero = treat large hedged leg specially
+            margin_controlling_type (MarginControllingType | None | Unset): Margin controlling unit (percent vs deposit
+                currency)
+            archive_period (int | None | Unset): Inactivity period (days) before account archival
+            archive_max_balance (int | None | Unset): Max balance under which an account becomes archivable
+            stopout_skip_hedged (int | None | Unset): 0 = include hedged in stop-out checks, non-zero = skip them
+            archive_pending_period (int | None | Unset): Pending orders clean-up period (days)
      """
 
-    enable: int | Unset = UNSET
-    timeout: int | Unset = UNSET
-    otp_mode: OTPMode | Unset = UNSET
+    group: None | str | Unset = UNSET
+    enable: int | None | Unset = UNSET
+    timeout: int | None | Unset = UNSET
+    otp_mode: None | OTPMode | Unset = UNSET
     company: None | str | Unset = UNSET
     signature: None | str | Unset = UNSET
     support_page: None | str | Unset = UNSET
     support_email: None | str | Unset = UNSET
-    copies: int | Unset = UNSET
-    reports: int | Unset = UNSET
-    default_leverage: int | Unset = UNSET
-    default_deposit: float | Unset = UNSET
-    max_securities: int | Unset = UNSET
+    copies: int | None | Unset = UNSET
+    reports: int | None | Unset = UNSET
+    default_leverage: int | None | Unset = UNSET
+    default_deposit: float | None | Unset = UNSET
+    max_securities: int | None | Unset = UNSET
     currency: None | str | Unset = UNSET
-    credit: float | Unset = UNSET
-    margin_call: int | Unset = UNSET
-    margin_mode: MarginMode | Unset = UNSET
-    margin_stopout: int | Unset = UNSET
-    interest_rate: float | Unset = UNSET
-    use_swap: int | Unset = UNSET
-    news_mode: NewsMode | Unset = UNSET
-    group_rights: str | Unset = UNSET
-    check_ie_prices: int | Unset = UNSET
-    max_positions: int | Unset = UNSET
-    close_reopen: int | Unset = UNSET
-    hedge_prohibited: int | Unset = UNSET
-    close_fifo: int | Unset = UNSET
-    hedge_large_leg: int | Unset = UNSET
-    margin_controlling_type: MarginControllingType | Unset = UNSET
-    archive_period: int | Unset = UNSET
-    archive_max_balance: int | Unset = UNSET
-    stopout_skip_hedged: int | Unset = UNSET
-    archive_pending_period: int | Unset = UNSET
+    credit: float | None | Unset = UNSET
+    margin_call: int | None | Unset = UNSET
+    margin_mode: MarginMode | None | Unset = UNSET
+    margin_stopout: int | None | Unset = UNSET
+    interest_rate: float | None | Unset = UNSET
+    use_swap: int | None | Unset = UNSET
+    news_mode: NewsMode | None | Unset = UNSET
+    group_rights: None | str | Unset = UNSET
+    check_ie_prices: int | None | Unset = UNSET
+    max_positions: int | None | Unset = UNSET
+    close_reopen: int | None | Unset = UNSET
+    hedge_prohibited: int | None | Unset = UNSET
+    close_fifo: int | None | Unset = UNSET
+    hedge_large_leg: int | None | Unset = UNSET
+    margin_controlling_type: MarginControllingType | None | Unset = UNSET
+    archive_period: int | None | Unset = UNSET
+    archive_max_balance: int | None | Unset = UNSET
+    stopout_skip_hedged: int | None | Unset = UNSET
+    archive_pending_period: int | None | Unset = UNSET
 
 
 
 
 
     def to_dict(self) -> dict[str, Any]:
-        enable = self.enable
+        group: None | str | Unset
+        if isinstance(self.group, Unset):
+            group = UNSET
+        else:
+            group = self.group
 
-        timeout = self.timeout
+        enable: int | None | Unset
+        if isinstance(self.enable, Unset):
+            enable = UNSET
+        else:
+            enable = self.enable
 
-        otp_mode: str | Unset = UNSET
-        if not isinstance(self.otp_mode, Unset):
+        timeout: int | None | Unset
+        if isinstance(self.timeout, Unset):
+            timeout = UNSET
+        else:
+            timeout = self.timeout
+
+        otp_mode: None | str | Unset
+        if isinstance(self.otp_mode, Unset):
+            otp_mode = UNSET
+        elif isinstance(self.otp_mode, OTPMode):
             otp_mode = self.otp_mode.value
-
+        else:
+            otp_mode = self.otp_mode
 
         company: None | str | Unset
         if isinstance(self.company, Unset):
@@ -152,15 +154,35 @@ class MT4GroupUpdate:
         else:
             support_email = self.support_email
 
-        copies = self.copies
+        copies: int | None | Unset
+        if isinstance(self.copies, Unset):
+            copies = UNSET
+        else:
+            copies = self.copies
 
-        reports = self.reports
+        reports: int | None | Unset
+        if isinstance(self.reports, Unset):
+            reports = UNSET
+        else:
+            reports = self.reports
 
-        default_leverage = self.default_leverage
+        default_leverage: int | None | Unset
+        if isinstance(self.default_leverage, Unset):
+            default_leverage = UNSET
+        else:
+            default_leverage = self.default_leverage
 
-        default_deposit = self.default_deposit
+        default_deposit: float | None | Unset
+        if isinstance(self.default_deposit, Unset):
+            default_deposit = UNSET
+        else:
+            default_deposit = self.default_deposit
 
-        max_securities = self.max_securities
+        max_securities: int | None | Unset
+        if isinstance(self.max_securities, Unset):
+            max_securities = UNSET
+        else:
+            max_securities = self.max_securities
 
         currency: None | str | Unset
         if isinstance(self.currency, Unset):
@@ -168,58 +190,133 @@ class MT4GroupUpdate:
         else:
             currency = self.currency
 
-        credit = self.credit
+        credit: float | None | Unset
+        if isinstance(self.credit, Unset):
+            credit = UNSET
+        else:
+            credit = self.credit
 
-        margin_call = self.margin_call
+        margin_call: int | None | Unset
+        if isinstance(self.margin_call, Unset):
+            margin_call = UNSET
+        else:
+            margin_call = self.margin_call
 
-        margin_mode: str | Unset = UNSET
-        if not isinstance(self.margin_mode, Unset):
+        margin_mode: None | str | Unset
+        if isinstance(self.margin_mode, Unset):
+            margin_mode = UNSET
+        elif isinstance(self.margin_mode, MarginMode):
             margin_mode = self.margin_mode.value
+        else:
+            margin_mode = self.margin_mode
 
+        margin_stopout: int | None | Unset
+        if isinstance(self.margin_stopout, Unset):
+            margin_stopout = UNSET
+        else:
+            margin_stopout = self.margin_stopout
 
-        margin_stopout = self.margin_stopout
+        interest_rate: float | None | Unset
+        if isinstance(self.interest_rate, Unset):
+            interest_rate = UNSET
+        else:
+            interest_rate = self.interest_rate
 
-        interest_rate = self.interest_rate
+        use_swap: int | None | Unset
+        if isinstance(self.use_swap, Unset):
+            use_swap = UNSET
+        else:
+            use_swap = self.use_swap
 
-        use_swap = self.use_swap
-
-        news_mode: str | Unset = UNSET
-        if not isinstance(self.news_mode, Unset):
+        news_mode: None | str | Unset
+        if isinstance(self.news_mode, Unset):
+            news_mode = UNSET
+        elif isinstance(self.news_mode, NewsMode):
             news_mode = self.news_mode.value
+        else:
+            news_mode = self.news_mode
 
+        group_rights: None | str | Unset
+        if isinstance(self.group_rights, Unset):
+            group_rights = UNSET
+        else:
+            group_rights = self.group_rights
 
-        group_rights = self.group_rights
+        check_ie_prices: int | None | Unset
+        if isinstance(self.check_ie_prices, Unset):
+            check_ie_prices = UNSET
+        else:
+            check_ie_prices = self.check_ie_prices
 
-        check_ie_prices = self.check_ie_prices
+        max_positions: int | None | Unset
+        if isinstance(self.max_positions, Unset):
+            max_positions = UNSET
+        else:
+            max_positions = self.max_positions
 
-        max_positions = self.max_positions
+        close_reopen: int | None | Unset
+        if isinstance(self.close_reopen, Unset):
+            close_reopen = UNSET
+        else:
+            close_reopen = self.close_reopen
 
-        close_reopen = self.close_reopen
+        hedge_prohibited: int | None | Unset
+        if isinstance(self.hedge_prohibited, Unset):
+            hedge_prohibited = UNSET
+        else:
+            hedge_prohibited = self.hedge_prohibited
 
-        hedge_prohibited = self.hedge_prohibited
+        close_fifo: int | None | Unset
+        if isinstance(self.close_fifo, Unset):
+            close_fifo = UNSET
+        else:
+            close_fifo = self.close_fifo
 
-        close_fifo = self.close_fifo
+        hedge_large_leg: int | None | Unset
+        if isinstance(self.hedge_large_leg, Unset):
+            hedge_large_leg = UNSET
+        else:
+            hedge_large_leg = self.hedge_large_leg
 
-        hedge_large_leg = self.hedge_large_leg
-
-        margin_controlling_type: str | Unset = UNSET
-        if not isinstance(self.margin_controlling_type, Unset):
+        margin_controlling_type: None | str | Unset
+        if isinstance(self.margin_controlling_type, Unset):
+            margin_controlling_type = UNSET
+        elif isinstance(self.margin_controlling_type, MarginControllingType):
             margin_controlling_type = self.margin_controlling_type.value
+        else:
+            margin_controlling_type = self.margin_controlling_type
 
+        archive_period: int | None | Unset
+        if isinstance(self.archive_period, Unset):
+            archive_period = UNSET
+        else:
+            archive_period = self.archive_period
 
-        archive_period = self.archive_period
+        archive_max_balance: int | None | Unset
+        if isinstance(self.archive_max_balance, Unset):
+            archive_max_balance = UNSET
+        else:
+            archive_max_balance = self.archive_max_balance
 
-        archive_max_balance = self.archive_max_balance
+        stopout_skip_hedged: int | None | Unset
+        if isinstance(self.stopout_skip_hedged, Unset):
+            stopout_skip_hedged = UNSET
+        else:
+            stopout_skip_hedged = self.stopout_skip_hedged
 
-        stopout_skip_hedged = self.stopout_skip_hedged
-
-        archive_pending_period = self.archive_pending_period
+        archive_pending_period: int | None | Unset
+        if isinstance(self.archive_pending_period, Unset):
+            archive_pending_period = UNSET
+        else:
+            archive_pending_period = self.archive_pending_period
 
 
         field_dict: dict[str, Any] = {}
 
         field_dict.update({
         })
+        if group is not UNSET:
+            field_dict["group"] = group
         if enable is not UNSET:
             field_dict["enable"] = enable
         if timeout is not UNSET:
@@ -292,18 +389,54 @@ class MT4GroupUpdate:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        enable = d.pop("enable", UNSET)
+        def _parse_group(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
 
-        timeout = d.pop("timeout", UNSET)
-
-        _otp_mode = d.pop("otpMode", UNSET)
-        otp_mode: OTPMode | Unset
-        if isinstance(_otp_mode,  Unset):
-            otp_mode = UNSET
-        else:
-            otp_mode = OTPMode(_otp_mode)
+        group = _parse_group(d.pop("group", UNSET))
 
 
+        def _parse_enable(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        enable = _parse_enable(d.pop("enable", UNSET))
+
+
+        def _parse_timeout(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        timeout = _parse_timeout(d.pop("timeout", UNSET))
+
+
+        def _parse_otp_mode(data: object) -> None | OTPMode | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                otp_mode_type_1 = OTPMode(data)
+
+
+
+                return otp_mode_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | OTPMode | Unset, data)
+
+        otp_mode = _parse_otp_mode(d.pop("otpMode", UNSET))
 
 
         def _parse_company(data: object) -> None | str | Unset:
@@ -346,15 +479,55 @@ class MT4GroupUpdate:
         support_email = _parse_support_email(d.pop("supportEmail", UNSET))
 
 
-        copies = d.pop("copies", UNSET)
+        def _parse_copies(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
 
-        reports = d.pop("reports", UNSET)
+        copies = _parse_copies(d.pop("copies", UNSET))
 
-        default_leverage = d.pop("defaultLeverage", UNSET)
 
-        default_deposit = d.pop("defaultDeposit", UNSET)
+        def _parse_reports(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
 
-        max_securities = d.pop("maxSecurities", UNSET)
+        reports = _parse_reports(d.pop("reports", UNSET))
+
+
+        def _parse_default_leverage(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        default_leverage = _parse_default_leverage(d.pop("defaultLeverage", UNSET))
+
+
+        def _parse_default_deposit(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        default_deposit = _parse_default_deposit(d.pop("defaultDeposit", UNSET))
+
+
+        def _parse_max_securities(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        max_securities = _parse_max_securities(d.pop("maxSecurities", UNSET))
+
 
         def _parse_currency(data: object) -> None | str | Unset:
             if data is None:
@@ -366,69 +539,228 @@ class MT4GroupUpdate:
         currency = _parse_currency(d.pop("currency", UNSET))
 
 
-        credit = d.pop("credit", UNSET)
+        def _parse_credit(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
 
-        margin_call = d.pop("marginCall", UNSET)
-
-        _margin_mode = d.pop("marginMode", UNSET)
-        margin_mode: MarginMode | Unset
-        if isinstance(_margin_mode,  Unset):
-            margin_mode = UNSET
-        else:
-            margin_mode = MarginMode(_margin_mode)
+        credit = _parse_credit(d.pop("credit", UNSET))
 
 
+        def _parse_margin_call(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        margin_call = _parse_margin_call(d.pop("marginCall", UNSET))
 
 
-        margin_stopout = d.pop("marginStopout", UNSET)
-
-        interest_rate = d.pop("interestRate", UNSET)
-
-        use_swap = d.pop("useSwap", UNSET)
-
-        _news_mode = d.pop("newsMode", UNSET)
-        news_mode: NewsMode | Unset
-        if isinstance(_news_mode,  Unset):
-            news_mode = UNSET
-        else:
-            news_mode = NewsMode(_news_mode)
-
-
-
-
-        group_rights = d.pop("groupRights", UNSET)
-
-        check_ie_prices = d.pop("checkIEPrices", UNSET)
-
-        max_positions = d.pop("maxPositions", UNSET)
-
-        close_reopen = d.pop("closeReopen", UNSET)
-
-        hedge_prohibited = d.pop("hedgeProhibited", UNSET)
-
-        close_fifo = d.pop("closeFIFO", UNSET)
-
-        hedge_large_leg = d.pop("hedgeLargeLeg", UNSET)
-
-        _margin_controlling_type = d.pop("marginControllingType", UNSET)
-        margin_controlling_type: MarginControllingType | Unset
-        if isinstance(_margin_controlling_type,  Unset):
-            margin_controlling_type = UNSET
-        else:
-            margin_controlling_type = MarginControllingType(_margin_controlling_type)
+        def _parse_margin_mode(data: object) -> MarginMode | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                margin_mode_type_1 = MarginMode(data)
 
 
 
+                return margin_mode_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(MarginMode | None | Unset, data)
 
-        archive_period = d.pop("archivePeriod", UNSET)
+        margin_mode = _parse_margin_mode(d.pop("marginMode", UNSET))
 
-        archive_max_balance = d.pop("archiveMaxBalance", UNSET)
 
-        stopout_skip_hedged = d.pop("stopoutSkipHedged", UNSET)
+        def _parse_margin_stopout(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
 
-        archive_pending_period = d.pop("archivePendingPeriod", UNSET)
+        margin_stopout = _parse_margin_stopout(d.pop("marginStopout", UNSET))
+
+
+        def _parse_interest_rate(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        interest_rate = _parse_interest_rate(d.pop("interestRate", UNSET))
+
+
+        def _parse_use_swap(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        use_swap = _parse_use_swap(d.pop("useSwap", UNSET))
+
+
+        def _parse_news_mode(data: object) -> NewsMode | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                news_mode_type_1 = NewsMode(data)
+
+
+
+                return news_mode_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(NewsMode | None | Unset, data)
+
+        news_mode = _parse_news_mode(d.pop("newsMode", UNSET))
+
+
+        def _parse_group_rights(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        group_rights = _parse_group_rights(d.pop("groupRights", UNSET))
+
+
+        def _parse_check_ie_prices(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        check_ie_prices = _parse_check_ie_prices(d.pop("checkIEPrices", UNSET))
+
+
+        def _parse_max_positions(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        max_positions = _parse_max_positions(d.pop("maxPositions", UNSET))
+
+
+        def _parse_close_reopen(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        close_reopen = _parse_close_reopen(d.pop("closeReopen", UNSET))
+
+
+        def _parse_hedge_prohibited(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        hedge_prohibited = _parse_hedge_prohibited(d.pop("hedgeProhibited", UNSET))
+
+
+        def _parse_close_fifo(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        close_fifo = _parse_close_fifo(d.pop("closeFIFO", UNSET))
+
+
+        def _parse_hedge_large_leg(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        hedge_large_leg = _parse_hedge_large_leg(d.pop("hedgeLargeLeg", UNSET))
+
+
+        def _parse_margin_controlling_type(data: object) -> MarginControllingType | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                margin_controlling_type_type_1 = MarginControllingType(data)
+
+
+
+                return margin_controlling_type_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(MarginControllingType | None | Unset, data)
+
+        margin_controlling_type = _parse_margin_controlling_type(d.pop("marginControllingType", UNSET))
+
+
+        def _parse_archive_period(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        archive_period = _parse_archive_period(d.pop("archivePeriod", UNSET))
+
+
+        def _parse_archive_max_balance(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        archive_max_balance = _parse_archive_max_balance(d.pop("archiveMaxBalance", UNSET))
+
+
+        def _parse_stopout_skip_hedged(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        stopout_skip_hedged = _parse_stopout_skip_hedged(d.pop("stopoutSkipHedged", UNSET))
+
+
+        def _parse_archive_pending_period(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        archive_pending_period = _parse_archive_pending_period(d.pop("archivePendingPeriod", UNSET))
+
 
         mt4_group_update = cls(
+            group=group,
             enable=enable,
             timeout=timeout,
             otp_mode=otp_mode,

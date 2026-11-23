@@ -96,13 +96,11 @@ def sync_detailed(
 ) -> Response[MT4CommonApiResponse]:
     r""" Update common config
 
-     Update server-wide common settings — Type 1 mutator.
-
-    Manager (live) call. Reads the current `ConCommon` from the
-    MT4 server, overlays the fields in `MT4CommonUpdate` onto it
-    (secret-preservation: fields not in the DTO keep their server
-    value), and writes the merged struct back via
-    `CfgUpdateCommon`.
+     Change server-wide common settings. Only the fields present in the body are written: the
+    current record is read from the trade server, the body is applied over it, and the merged
+    record is written back. A field that is left out keeps its server value; for the string
+    fields, omitting the key keeps the value while sending `\"\"` clears it. A body without
+    any field is rejected.
 
     Preserved fields the DTO does not touch:
     <list type=\"bullet\"><item>Runtime counters (LastOrder, LastLogin, LostLogin,
@@ -122,24 +120,15 @@ def sync_detailed(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -173,13 +162,11 @@ def sync(
 ) -> MT4CommonApiResponse | None:
     r""" Update common config
 
-     Update server-wide common settings — Type 1 mutator.
-
-    Manager (live) call. Reads the current `ConCommon` from the
-    MT4 server, overlays the fields in `MT4CommonUpdate` onto it
-    (secret-preservation: fields not in the DTO keep their server
-    value), and writes the merged struct back via
-    `CfgUpdateCommon`.
+     Change server-wide common settings. Only the fields present in the body are written: the
+    current record is read from the trade server, the body is applied over it, and the merged
+    record is written back. A field that is left out keeps its server value; for the string
+    fields, omitting the key keeps the value while sending `\"\"` clears it. A body without
+    any field is rejected.
 
     Preserved fields the DTO does not touch:
     <list type=\"bullet\"><item>Runtime counters (LastOrder, LastLogin, LostLogin,
@@ -199,24 +186,15 @@ def sync(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -245,13 +223,11 @@ async def asyncio_detailed(
 ) -> Response[MT4CommonApiResponse]:
     r""" Update common config
 
-     Update server-wide common settings — Type 1 mutator.
-
-    Manager (live) call. Reads the current `ConCommon` from the
-    MT4 server, overlays the fields in `MT4CommonUpdate` onto it
-    (secret-preservation: fields not in the DTO keep their server
-    value), and writes the merged struct back via
-    `CfgUpdateCommon`.
+     Change server-wide common settings. Only the fields present in the body are written: the
+    current record is read from the trade server, the body is applied over it, and the merged
+    record is written back. A field that is left out keeps its server value; for the string
+    fields, omitting the key keeps the value while sending `\"\"` clears it. A body without
+    any field is rejected.
 
     Preserved fields the DTO does not touch:
     <list type=\"bullet\"><item>Runtime counters (LastOrder, LastLogin, LostLogin,
@@ -271,24 +247,15 @@ async def asyncio_detailed(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -322,13 +289,11 @@ async def asyncio(
 ) -> MT4CommonApiResponse | None:
     r""" Update common config
 
-     Update server-wide common settings — Type 1 mutator.
-
-    Manager (live) call. Reads the current `ConCommon` from the
-    MT4 server, overlays the fields in `MT4CommonUpdate` onto it
-    (secret-preservation: fields not in the DTO keep their server
-    value), and writes the merged struct back via
-    `CfgUpdateCommon`.
+     Change server-wide common settings. Only the fields present in the body are written: the
+    current record is read from the trade server, the body is applied over it, and the merged
+    record is written back. A field that is left out keeps its server value; for the string
+    fields, omitting the key keeps the value while sending `\"\"` clears it. A body without
+    any field is rejected.
 
     Preserved fields the DTO does not touch:
     <list type=\"bullet\"><item>Runtime counters (LastOrder, LastLogin, LostLogin,
@@ -348,24 +313,15 @@ async def asyncio(
     Args:
         trade_platform (UUID):
         x_request_timeout (float | Unset):
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
-        body (MT4CommonUpdate | Unset): v2 Type 1 mutator DTO for MT4 server-wide common settings.
-            Curated
-            subset of the platform's `ConCommon` struct — exposes the fields
-            most likely to need adjustment from a SaaS surface while leaving
-            runtime counters, derived state, and the platform's internal arrays
-            to the secret-preservation overlay on the controller side.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
+        body (MT4CommonUpdate | Unset): v2 mutator DTO for MT4 server-wide common settings: a
+            partial record over the platform's
+            `ConCommon` struct.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

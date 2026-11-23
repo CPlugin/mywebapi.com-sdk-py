@@ -12,7 +12,7 @@ The WebAPI works with MetaTrader 4 and MetaTrader 5 servers, so a Python script 
 
 Typical back-office tasks, each with the SDK call that performs it. `client` is created as in [Quick start](#quick-start) and `tp` is the trade platform id. Endpoints without a convenience method are called through `raw()` with the generated operation module; `unwrap()` returns the response data.
 
-**List open positions of a group** (MT4 `TradesRequest`, MT5 `PositionByGroup`):
+**List open positions of a group** (MT4 `TradesRequest`, MT5 `PositionRequestByGroup`):
 
 ```python
 trades, meta = client.mt4.trades_request(tp, group="real-usd")
@@ -300,7 +300,12 @@ rt.stream_ticks("EURUSD").subscribe({
 rt.stop()
 ```
 
-The `mt4` hubs stream ticks, trades, margin-call events, user updates, and symbol config changes; the `mt5` hubs stream connection status and margin-call updates.
+Both hubs stream ticks and margin-call updates; the `mt4` hub also streams trades, user updates and symbol config changes.
+
+Push callbacks are registered per platform — `rt.on_mt4_connection_status(handler)` for the MT4 hub
+(`OnMT4ConnectionStatus` events) and `rt.on_mt5_connection_status(handler)` for the MT5 hub
+(`OnMT5ConnectionStatus` events). The server sends one event right after the handshake, so register
+the callback before `rt.start()`.
 
 > **Note:** The `realtime` namespace requires `signalrcore` to be installed. The REST surface (`mt4`, `mt5`, `list_trade_platforms`) works without it.
 

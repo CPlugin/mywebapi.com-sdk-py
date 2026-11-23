@@ -8,7 +8,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response, UNSET
 from ... import errors
 
-from ...models.mt5_order_list_api_response import MT5OrderListApiResponse
+from ...models.mt5_user_list_api_response import MT5UserListApiResponse
 from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
@@ -19,8 +19,6 @@ def _get_kwargs(
     trade_platform: UUID,
     mask: str,
     *,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
 ) -> dict[str, Any]:
@@ -33,20 +31,11 @@ def _get_kwargs(
 
     
 
-    params: dict[str, Any] = {}
-
-    params["limit"] = limit
-
-    params["cursor"] = cursor
-
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
+    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/v2/MT5/{trade_platform}/OrderByGroup/{mask}".format(trade_platform=quote(str(trade_platform), safe=""),mask=quote(str(mask), safe=""),),
-        "params": params,
+        "url": "/api/v2/MT5/{trade_platform}/UserGetByGroup/{mask}".format(trade_platform=quote(str(trade_platform), safe=""),mask=quote(str(mask), safe=""),),
     }
 
 
@@ -55,9 +44,9 @@ def _get_kwargs(
 
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT5OrderListApiResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT5UserListApiResponse | None:
     if response.status_code == 200:
-        response_200 = MT5OrderListApiResponse.from_dict(response.json())
+        response_200 = MT5UserListApiResponse.from_dict(response.json())
 
 
 
@@ -69,7 +58,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT5OrderListApiResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT5UserListApiResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -83,15 +72,15 @@ def sync_detailed(
     mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[MT5OrderListApiResponse]:
-    """ List orders by group
+) -> Response[MT5UserListApiResponse]:
+    """ Read users of a group mask from the pump cache
 
-     Returns active and pending orders for all logins in groups matching the mask,
-    ordered by Order ID ascending. Use the cursor for the next page.
+     Returns the cached records of all accounts that match the group mask. The mask accepts
+    one group, several groups separated by commas, and the `*` (any value) and `!`
+    (exception) characters, for example `demo*,!demoforex`. The call only reads and
+    changes nothing. It requires the pumping connection of users.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -99,8 +88,6 @@ def sync_detailed(
     Args:
         trade_platform (UUID):
         mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -108,15 +95,13 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MT5OrderListApiResponse]
+        Response[MT5UserListApiResponse]
      """
 
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 mask=mask,
-limit=limit,
-cursor=cursor,
 x_request_timeout=x_request_timeout,
 
     )
@@ -132,15 +117,15 @@ def sync(
     mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> MT5OrderListApiResponse | None:
-    """ List orders by group
+) -> MT5UserListApiResponse | None:
+    """ Read users of a group mask from the pump cache
 
-     Returns active and pending orders for all logins in groups matching the mask,
-    ordered by Order ID ascending. Use the cursor for the next page.
+     Returns the cached records of all accounts that match the group mask. The mask accepts
+    one group, several groups separated by commas, and the `*` (any value) and `!`
+    (exception) characters, for example `demo*,!demoforex`. The call only reads and
+    changes nothing. It requires the pumping connection of users.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -148,8 +133,6 @@ def sync(
     Args:
         trade_platform (UUID):
         mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -157,7 +140,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MT5OrderListApiResponse
+        MT5UserListApiResponse
      """
 
 
@@ -165,8 +148,6 @@ def sync(
         trade_platform=trade_platform,
 mask=mask,
 client=client,
-limit=limit,
-cursor=cursor,
 x_request_timeout=x_request_timeout,
 
     ).parsed
@@ -176,15 +157,15 @@ async def asyncio_detailed(
     mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[MT5OrderListApiResponse]:
-    """ List orders by group
+) -> Response[MT5UserListApiResponse]:
+    """ Read users of a group mask from the pump cache
 
-     Returns active and pending orders for all logins in groups matching the mask,
-    ordered by Order ID ascending. Use the cursor for the next page.
+     Returns the cached records of all accounts that match the group mask. The mask accepts
+    one group, several groups separated by commas, and the `*` (any value) and `!`
+    (exception) characters, for example `demo*,!demoforex`. The call only reads and
+    changes nothing. It requires the pumping connection of users.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -192,8 +173,6 @@ async def asyncio_detailed(
     Args:
         trade_platform (UUID):
         mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -201,15 +180,13 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MT5OrderListApiResponse]
+        Response[MT5UserListApiResponse]
      """
 
 
     kwargs = _get_kwargs(
         trade_platform=trade_platform,
 mask=mask,
-limit=limit,
-cursor=cursor,
 x_request_timeout=x_request_timeout,
 
     )
@@ -225,15 +202,15 @@ async def asyncio(
     mask: str,
     *,
     client: AuthenticatedClient | Client,
-    limit: int | Unset = UNSET,
-    cursor: str | Unset = UNSET,
     x_request_timeout: float | Unset = UNSET,
 
-) -> MT5OrderListApiResponse | None:
-    """ List orders by group
+) -> MT5UserListApiResponse | None:
+    """ Read users of a group mask from the pump cache
 
-     Returns active and pending orders for all logins in groups matching the mask,
-    ordered by Order ID ascending. Use the cursor for the next page.
+     Returns the cached records of all accounts that match the group mask. The mask accepts
+    one group, several groups separated by commas, and the `*` (any value) and `!`
+    (exception) characters, for example `demo*,!demoforex`. The call only reads and
+    changes nothing. It requires the pumping connection of users.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -241,8 +218,6 @@ async def asyncio(
     Args:
         trade_platform (UUID):
         mask (str):
-        limit (int | Unset):
-        cursor (str | Unset):
         x_request_timeout (float | Unset):
 
     Raises:
@@ -250,7 +225,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MT5OrderListApiResponse
+        MT5UserListApiResponse
      """
 
 
@@ -258,8 +233,6 @@ async def asyncio(
         trade_platform=trade_platform,
 mask=mask,
 client=client,
-limit=limit,
-cursor=cursor,
 x_request_timeout=x_request_timeout,
 
     )).parsed

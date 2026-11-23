@@ -67,7 +67,7 @@ from ._generated.api.mt4_v_2_trades import (
     get_api_v_2_mt4_trade_platform_trades_request as _mt4_trades_request,
 )
 from ._generated.api.mt5_v_2_common import (
-    get_api_v_2_mt5_trade_platform_server_time as _mt5_server_time,
+    get_api_v_2_mt5_trade_platform_time_server as _mt5_server_time,
 )
 from ._generated.api.mt5_v_2_managers import (
     get_api_v_2_mt5_trade_platform_manager_current as _mt5_manager_current,
@@ -82,7 +82,7 @@ from ._generated.api.mt5_v_2_symbols import (
     get_api_v_2_mt5_trade_platform_symbol_get_symbol as _mt5_symbol_get,
 )
 from ._generated.api.mt5_v_2_trades import (
-    get_api_v_2_mt5_trade_platform_position_by_group_mask as _mt5_positions_by_group,
+    get_api_v_2_mt5_trade_platform_position_request_by_group_mask as _mt5_positions_by_group,
 )
 
 
@@ -1156,7 +1156,7 @@ class CPluginWebApiAsyncClient:
         Example::
 
             rt = client.realtime.mt5("my-trade-platform-id")
-            rt.on_connection_status(lambda *args: print(args))
+            rt.on_mt5_connection_status(lambda *args: print(args))
             with rt:
                 import asyncio; await asyncio.sleep(5)
         """

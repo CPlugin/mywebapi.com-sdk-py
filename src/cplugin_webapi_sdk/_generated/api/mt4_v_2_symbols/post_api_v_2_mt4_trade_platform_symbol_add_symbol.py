@@ -77,17 +77,12 @@ def sync_detailed(
 ) -> Response[BooleanApiResponse]:
     """ Add symbol
 
-     Add a symbol to the platform's active set — Type 1 mutator.
+     Add a symbol to the platform's active set.
 
     Promotes a configured symbol into the platform's currently-pumping
     set so it starts receiving ticks and accepting orders. Reversible via
-    `SymbolHide`.
-
-    v1 exposes this as `GET /api/MT4/{tp}/SymbolAdd/{symbol}` — that
-    is a historical REST violation (GET should be safe/idempotent). v2
-    corrects the verb to POST without changing the platform behaviour. The
-    path stays the same to keep traceability with the underlying platform
-    method name; only the HTTP verb changes.
+    `SymbolHide`. The call changes server state, so it is a POST and
+    is safe to retry only with an `Idempotency-Key`.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -130,17 +125,12 @@ def sync(
 ) -> BooleanApiResponse | None:
     """ Add symbol
 
-     Add a symbol to the platform's active set — Type 1 mutator.
+     Add a symbol to the platform's active set.
 
     Promotes a configured symbol into the platform's currently-pumping
     set so it starts receiving ticks and accepting orders. Reversible via
-    `SymbolHide`.
-
-    v1 exposes this as `GET /api/MT4/{tp}/SymbolAdd/{symbol}` — that
-    is a historical REST violation (GET should be safe/idempotent). v2
-    corrects the verb to POST without changing the platform behaviour. The
-    path stays the same to keep traceability with the underlying platform
-    method name; only the HTTP verb changes.
+    `SymbolHide`. The call changes server state, so it is a POST and
+    is safe to retry only with an `Idempotency-Key`.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -178,17 +168,12 @@ async def asyncio_detailed(
 ) -> Response[BooleanApiResponse]:
     """ Add symbol
 
-     Add a symbol to the platform's active set — Type 1 mutator.
+     Add a symbol to the platform's active set.
 
     Promotes a configured symbol into the platform's currently-pumping
     set so it starts receiving ticks and accepting orders. Reversible via
-    `SymbolHide`.
-
-    v1 exposes this as `GET /api/MT4/{tp}/SymbolAdd/{symbol}` — that
-    is a historical REST violation (GET should be safe/idempotent). v2
-    corrects the verb to POST without changing the platform behaviour. The
-    path stays the same to keep traceability with the underlying platform
-    method name; only the HTTP verb changes.
+    `SymbolHide`. The call changes server state, so it is a POST and
+    is safe to retry only with an `Idempotency-Key`.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server
@@ -231,17 +216,12 @@ async def asyncio(
 ) -> BooleanApiResponse | None:
     """ Add symbol
 
-     Add a symbol to the platform's active set — Type 1 mutator.
+     Add a symbol to the platform's active set.
 
     Promotes a configured symbol into the platform's currently-pumping
     set so it starts receiving ticks and accepting orders. Reversible via
-    `SymbolHide`.
-
-    v1 exposes this as `GET /api/MT4/{tp}/SymbolAdd/{symbol}` — that
-    is a historical REST violation (GET should be safe/idempotent). v2
-    corrects the verb to POST without changing the platform behaviour. The
-    path stays the same to keep traceability with the underlying platform
-    method name; only the HTTP verb changes.
+    `SymbolHide`. The call changes server state, so it is a POST and
+    is safe to retry only with an `Idempotency-Key`.
 
     **Timeout:** 15 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: The operation may still be completed by the server

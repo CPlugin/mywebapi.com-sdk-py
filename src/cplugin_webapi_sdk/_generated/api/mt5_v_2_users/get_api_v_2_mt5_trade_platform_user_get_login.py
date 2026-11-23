@@ -77,7 +77,12 @@ def sync_detailed(
 ) -> Response[MT5UserApiResponse]:
     """ Get a user by login
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     Returns the user record as held by the local pump cache. The data is as fresh as the
+    last update delivered by the server, so it can lag behind a direct server request.
+    The call only reads and changes nothing. It requires the pumping connection of users;
+    without it the platform answers with an error.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -117,7 +122,12 @@ def sync(
 ) -> MT5UserApiResponse | None:
     """ Get a user by login
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     Returns the user record as held by the local pump cache. The data is as fresh as the
+    last update delivered by the server, so it can lag behind a direct server request.
+    The call only reads and changes nothing. It requires the pumping connection of users;
+    without it the platform answers with an error.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -152,7 +162,12 @@ async def asyncio_detailed(
 ) -> Response[MT5UserApiResponse]:
     """ Get a user by login
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     Returns the user record as held by the local pump cache. The data is as fresh as the
+    last update delivered by the server, so it can lag behind a direct server request.
+    The call only reads and changes nothing. It requires the pumping connection of users;
+    without it the platform answers with an error.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -192,7 +207,12 @@ async def asyncio(
 ) -> MT5UserApiResponse | None:
     """ Get a user by login
 
-     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+     Returns the user record as held by the local pump cache. The data is as fresh as the
+    last update delivered by the server, so it can lag behind a direct server request.
+    The call only reads and changes nothing. It requires the pumping connection of users;
+    without it the platform answers with an error.
+
+    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:

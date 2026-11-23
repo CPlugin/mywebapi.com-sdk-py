@@ -39,7 +39,7 @@ from tests.conftest import API, AUTH, envelope_err, envelope_ok
 
 TP = "57e1d286-0000-0000-0000-000000000001"
 MT4_TIME = f"{API}/api/v2/MT4/{TP}/ServerTime"
-MT5_TIME = f"{API}/api/v2/MT5/{TP}/ServerTime"
+MT5_TIME = f"{API}/api/v2/MT5/{TP}/TimeServer"
 MT4_PATCH = f"{API}/api/v2/MT4/{TP}/UserRecord/1001"
 
 
@@ -481,7 +481,7 @@ async def test_async_request_timeout_and_outcome():
 async def test_async_raw_with_idempotency_key():
     route = respx.get(MT5_TIME).mock(return_value=httpx.Response(200, json=envelope_ok("t")))
     from cplugin_webapi_sdk._generated.api.mt5_v_2_common import (
-        get_api_v_2_mt5_trade_platform_server_time as mt5_time_op,
+        get_api_v_2_mt5_trade_platform_time_server as mt5_time_op,
     )
     async with _async_client() as c:
         resp = await c.mt5.raw(mt5_time_op, trade_platform=TP, request_timeout=9, idempotency_key="k-1")

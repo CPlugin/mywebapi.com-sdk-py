@@ -10,10 +10,18 @@ from .backup_execution_period import BackupExecutionPeriod
 from .backup_store_period import BackupStorePeriod
 from .boolean_api_response import BooleanApiResponse
 from .chart_period import ChartPeriod
+from .client_origins import ClientOrigins
+from .client_statuses import ClientStatuses
+from .client_types import ClientTypes
 from .data_feed_mode import DataFeedMode
 from .date_time_api_response import DateTimeApiResponse
 from .deal_action import DealAction
 from .deal_reason import DealReason
+from .dealer_balance_request import DealerBalanceRequest
+from .demo_account_type import DemoAccountType
+from .education_level import EducationLevel
+from .employment import Employment
+from .employment_industry import EmploymentIndustry
 from .en_auth_mode import EnAuthMode
 from .en_auth_otp_mode import EnAuthOTPMode
 from .en_calc_mode import EnCalcMode
@@ -26,6 +34,7 @@ from .en_comm_profit_mode import EnCommProfitMode
 from .en_comm_range_mode import EnCommRangeMode
 from .en_commission_mode import EnCommissionMode
 from .en_commission_volume_type import EnCommissionVolumeType
+from .en_deal_action import EnDealAction
 from .en_execution_mode import EnExecutionMode
 from .en_free_margin_mode import EnFreeMarginMode
 from .en_gateway_account_flags import EnGatewayAccountFlags
@@ -51,6 +60,7 @@ from .en_trade_mode import EnTradeMode
 from .en_transfer_mode import EnTransferMode
 from .entry_flag import EntryFlag
 from .export_execution_period import ExportExecutionPeriod
+from .genders import Genders
 from .gtc_mode import GTCMode
 from .int_32_api_response import Int32ApiResponse
 from .int_32mt4_daily_report_list_dictionary_api_response import Int32MT4DailyReportListDictionaryApiResponse
@@ -58,10 +68,13 @@ from .int_32mt4_daily_report_list_dictionary_api_response_data_type_0 import Int
 from .json_node import JsonNode
 from .json_node_api_response import JsonNodeApiResponse
 from .json_node_options import JsonNodeOptions
+from .kyc_statuses import KYCStatuses
+from .live_update_mode import LiveUpdateMode
 from .margin_calculation_mode import MarginCalculationMode
 from .margin_controlling_type import MarginControllingType
 from .margin_level_type import MarginLevelType
 from .margin_mode import MarginMode
+from .monthly_statement_mode import MonthlyStatementMode
 from .mt4_access import MT4Access
 from .mt4_access_api_response import MT4AccessApiResponse
 from .mt4_access_list_api_response import MT4AccessListApiResponse
@@ -77,6 +90,8 @@ from .mt4_chart_bar_list_api_response import MT4ChartBarListApiResponse
 from .mt4_chart_write_request import MT4ChartWriteRequest
 from .mt4_common import MT4Common
 from .mt4_common_api_response import MT4CommonApiResponse
+from .mt4_common_short import MT4CommonShort
+from .mt4_common_short_api_response import MT4CommonShortApiResponse
 from .mt4_common_update import MT4CommonUpdate
 from .mt4_daily_report import MT4DailyReport
 from .mt4_daily_report_list_api_response import MT4DailyReportListApiResponse
@@ -178,35 +193,54 @@ from .mt4_user_list_api_response import MT4UserListApiResponse
 from .mt4_user_restore_input import MT4UserRestoreInput
 from .mt4_user_update import MT4UserUpdate
 from .mt4_users_group_op import MT4UsersGroupOp
+from .mt5_account import MT5Account
+from .mt5_account_api_response import MT5AccountApiResponse
 from .mt5_chart_bar_page import MT5ChartBarPage
 from .mt5_chart_bar_page_api_response import MT5ChartBarPageApiResponse
 from .mt5_chart_bar_v2 import MT5ChartBarV2
 from .mt5_chart_period import MT5ChartPeriod
+from .mt5_client import MT5Client
+from .mt5_client_api_response import MT5ClientApiResponse
 from .mt5_con_comm_tier import MT5ConCommTier
 from .mt5_con_commission import MT5ConCommission
 from .mt5_con_group import MT5ConGroup
 from .mt5_con_group_api_response import MT5ConGroupApiResponse
 from .mt5_con_group_commissions_type_0 import MT5ConGroupCommissionsType0
+from .mt5_con_group_list_api_response import MT5ConGroupListApiResponse
 from .mt5_con_manager import MT5ConManager
 from .mt5_con_manager_api_response import MT5ConManagerApiResponse
 from .mt5_deal import MT5Deal
+from .mt5_deal_api_response import MT5DealApiResponse
 from .mt5_deal_list_api_response import MT5DealListApiResponse
 from .mt5_order import MT5Order
+from .mt5_order_api_response import MT5OrderApiResponse
 from .mt5_order_list_api_response import MT5OrderListApiResponse
 from .mt5_position import MT5Position
 from .mt5_position_list_api_response import MT5PositionListApiResponse
+from .mt5_request import MT5Request
+from .mt5_request_api_response import MT5RequestApiResponse
+from .mt5_result import MT5Result
+from .mt5_result_api_response import MT5ResultApiResponse
+from .mt5_result_list_api_response import MT5ResultListApiResponse
 from .mt5_symbol import MT5Symbol
 from .mt5_symbol_api_response import MT5SymbolApiResponse
+from .mt5_symbol_list_api_response import MT5SymbolListApiResponse
 from .mt5_symbol_margin_rate_initial_type_0 import MT5SymbolMarginRateInitialType0
 from .mt5_symbol_margin_rate_maintenance_type_0 import MT5SymbolMarginRateMaintenanceType0
 from .mt5_symbol_session import MT5SymbolSession
+from .mt5_symbol_update import MT5SymbolUpdate
 from .mt5_tick_page import MT5TickPage
 from .mt5_tick_page_api_response import MT5TickPageApiResponse
 from .mt5_tick_v2 import MT5TickV2
 from .mt5_time import MT5Time
 from .mt5_time_api_response import MT5TimeApiResponse
 from .mt5_user import MT5User
+from .mt5_user_add_request import MT5UserAddRequest
+from .mt5_user_add_result import MT5UserAddResult
+from .mt5_user_add_result_api_response import MT5UserAddResultApiResponse
 from .mt5_user_api_response import MT5UserApiResponse
+from .mt5_user_list_api_response import MT5UserListApiResponse
+from .mt5_user_update import MT5UserUpdate
 from .news_mode import NewsMode
 from .order_filling import OrderFilling
 from .order_reason import OrderReason
@@ -223,21 +257,31 @@ from .patch_api_v2mt5_trade_platform_symbol_record_symbol_json_body import Patch
 from .patch_api_v2mt5_trade_platform_user_record_login_json_body import PatchApiV2MT5TradePlatformUserRecordLoginJsonBody
 from .position_actions import PositionActions
 from .position_reasons import PositionReasons
+from .preferred_communication import PreferredCommunication
 from .profit_calculation_mode import ProfitCalculationMode
 from .request_mode import RequestMode
 from .result_code import ResultCode
+from .rollover_mode import RolloverMode
 from .server_role import ServerRole
+from .server_stop_reason import ServerStopReason
+from .so_activation import SoActivation
+from .statement_mode import StatementMode
 from .string_api_response import StringApiResponse
 from .swap_type import SwapType
 from .symbol_exec_mode import SymbolExecMode
 from .symbol_price_direction import SymbolPriceDirection
 from .synchronization_mode import SynchronizationMode
+from .trade_actions import TradeActions
 from .trade_command import TradeCommand
 from .trade_mode import TradeMode
 from .trade_record_reason import TradeRecordReason
 from .trade_record_state import TradeRecordState
+from .trading_experience import TradingExperience
+from .u_int_64_api_response import UInt64ApiResponse
+from .users_passwords import UsersPasswords
 from .watchdog_failover_mode import WatchdogFailoverMode
 from .watchdog_state import WatchdogState
+from .wealth_source import WealthSource
 from .web_api_error_code import WebApiErrorCode
 
 __all__ = (
@@ -251,10 +295,18 @@ __all__ = (
     "BackupStorePeriod",
     "BooleanApiResponse",
     "ChartPeriod",
+    "ClientOrigins",
+    "ClientStatuses",
+    "ClientTypes",
     "DataFeedMode",
     "DateTimeApiResponse",
     "DealAction",
+    "DealerBalanceRequest",
     "DealReason",
+    "DemoAccountType",
+    "EducationLevel",
+    "Employment",
+    "EmploymentIndustry",
     "EnAuthMode",
     "EnAuthOTPMode",
     "EnCalcMode",
@@ -267,6 +319,7 @@ __all__ = (
     "EnCommMode",
     "EnCommProfitMode",
     "EnCommRangeMode",
+    "EnDealAction",
     "EnExecutionMode",
     "EnFreeMarginMode",
     "EnGatewayAccountFlags",
@@ -292,6 +345,7 @@ __all__ = (
     "EnTransferMode",
     "EntryFlag",
     "ExportExecutionPeriod",
+    "Genders",
     "GTCMode",
     "Int32ApiResponse",
     "Int32MT4DailyReportListDictionaryApiResponse",
@@ -299,10 +353,13 @@ __all__ = (
     "JsonNode",
     "JsonNodeApiResponse",
     "JsonNodeOptions",
+    "KYCStatuses",
+    "LiveUpdateMode",
     "MarginCalculationMode",
     "MarginControllingType",
     "MarginLevelType",
     "MarginMode",
+    "MonthlyStatementMode",
     "MT4Access",
     "MT4AccessApiResponse",
     "MT4AccessListApiResponse",
@@ -318,6 +375,8 @@ __all__ = (
     "MT4ChartWriteRequest",
     "MT4Common",
     "MT4CommonApiResponse",
+    "MT4CommonShort",
+    "MT4CommonShortApiResponse",
     "MT4CommonUpdate",
     "MT4DailyReport",
     "MT4DailyReportListApiResponse",
@@ -419,35 +478,54 @@ __all__ = (
     "MT4UserRestoreInput",
     "MT4UsersGroupOp",
     "MT4UserUpdate",
+    "MT5Account",
+    "MT5AccountApiResponse",
     "MT5ChartBarPage",
     "MT5ChartBarPageApiResponse",
     "MT5ChartBarV2",
     "MT5ChartPeriod",
+    "MT5Client",
+    "MT5ClientApiResponse",
     "MT5ConCommission",
     "MT5ConCommTier",
     "MT5ConGroup",
     "MT5ConGroupApiResponse",
     "MT5ConGroupCommissionsType0",
+    "MT5ConGroupListApiResponse",
     "MT5ConManager",
     "MT5ConManagerApiResponse",
     "MT5Deal",
+    "MT5DealApiResponse",
     "MT5DealListApiResponse",
     "MT5Order",
+    "MT5OrderApiResponse",
     "MT5OrderListApiResponse",
     "MT5Position",
     "MT5PositionListApiResponse",
+    "MT5Request",
+    "MT5RequestApiResponse",
+    "MT5Result",
+    "MT5ResultApiResponse",
+    "MT5ResultListApiResponse",
     "MT5Symbol",
     "MT5SymbolApiResponse",
+    "MT5SymbolListApiResponse",
     "MT5SymbolMarginRateInitialType0",
     "MT5SymbolMarginRateMaintenanceType0",
     "MT5SymbolSession",
+    "MT5SymbolUpdate",
     "MT5TickPage",
     "MT5TickPageApiResponse",
     "MT5TickV2",
     "MT5Time",
     "MT5TimeApiResponse",
     "MT5User",
+    "MT5UserAddRequest",
+    "MT5UserAddResult",
+    "MT5UserAddResultApiResponse",
     "MT5UserApiResponse",
+    "MT5UserListApiResponse",
+    "MT5UserUpdate",
     "NewsMode",
     "OrderFilling",
     "OrderReason",
@@ -464,20 +542,30 @@ __all__ = (
     "PatchApiV2MT5TradePlatformUserRecordLoginJsonBody",
     "PositionActions",
     "PositionReasons",
+    "PreferredCommunication",
     "ProfitCalculationMode",
     "RequestMode",
     "ResultCode",
+    "RolloverMode",
     "ServerRole",
+    "ServerStopReason",
+    "SoActivation",
+    "StatementMode",
     "StringApiResponse",
     "SwapType",
     "SymbolExecMode",
     "SymbolPriceDirection",
     "SynchronizationMode",
+    "TradeActions",
     "TradeCommand",
     "TradeMode",
     "TradeRecordReason",
     "TradeRecordState",
+    "TradingExperience",
+    "UInt64ApiResponse",
+    "UsersPasswords",
     "WatchdogFailoverMode",
     "WatchdogState",
+    "WealthSource",
     "WebApiErrorCode",
 )

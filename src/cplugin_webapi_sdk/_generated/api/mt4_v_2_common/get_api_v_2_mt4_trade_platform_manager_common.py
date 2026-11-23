@@ -8,7 +8,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response, UNSET
 from ... import errors
 
-from ...models.mt4_common_api_response import MT4CommonApiResponse
+from ...models.mt4_common_short_api_response import MT4CommonShortApiResponse
 from ...types import UNSET, Unset
 from typing import cast
 from uuid import UUID
@@ -43,9 +43,9 @@ def _get_kwargs(
 
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT4CommonApiResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MT4CommonShortApiResponse | None:
     if response.status_code == 200:
-        response_200 = MT4CommonApiResponse.from_dict(response.json())
+        response_200 = MT4CommonShortApiResponse.from_dict(response.json())
 
 
 
@@ -57,7 +57,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT4CommonApiResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MT4CommonShortApiResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -72,14 +72,16 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[MT4CommonApiResponse]:
-    """ Get manager common settings
+) -> Response[MT4CommonShortApiResponse]:
+    """ Get server common settings
 
-     Server-wide MT4 trade server settings (curated subset).
+     Server name, protocol version and build, time zone, and the state of
+    the operational subsystems — the part of the server record that does
+    not describe the server's infrastructure.
 
-    Returns MT4Common DTO — server name, broker, server version/build,
-    time zone. Schema is decoupled from the platform's ConCommon: v2
-    clients are protected from MetaQuotes schema changes.
+    The administrative fields (storage paths, bind and web addresses,
+    adapter list, reserved block) are not included; use
+    `ManagerCommonEx` when they are needed.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -93,7 +95,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MT4CommonApiResponse]
+        Response[MT4CommonShortApiResponse]
      """
 
 
@@ -115,14 +117,16 @@ def sync(
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> MT4CommonApiResponse | None:
-    """ Get manager common settings
+) -> MT4CommonShortApiResponse | None:
+    """ Get server common settings
 
-     Server-wide MT4 trade server settings (curated subset).
+     Server name, protocol version and build, time zone, and the state of
+    the operational subsystems — the part of the server record that does
+    not describe the server's infrastructure.
 
-    Returns MT4Common DTO — server name, broker, server version/build,
-    time zone. Schema is decoupled from the platform's ConCommon: v2
-    clients are protected from MetaQuotes schema changes.
+    The administrative fields (storage paths, bind and web addresses,
+    adapter list, reserved block) are not included; use
+    `ManagerCommonEx` when they are needed.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -136,7 +140,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MT4CommonApiResponse
+        MT4CommonShortApiResponse
      """
 
 
@@ -153,14 +157,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> Response[MT4CommonApiResponse]:
-    """ Get manager common settings
+) -> Response[MT4CommonShortApiResponse]:
+    """ Get server common settings
 
-     Server-wide MT4 trade server settings (curated subset).
+     Server name, protocol version and build, time zone, and the state of
+    the operational subsystems — the part of the server record that does
+    not describe the server's infrastructure.
 
-    Returns MT4Common DTO — server name, broker, server version/build,
-    time zone. Schema is decoupled from the platform's ConCommon: v2
-    clients are protected from MetaQuotes schema changes.
+    The administrative fields (storage paths, bind and web addresses,
+    adapter list, reserved block) are not included; use
+    `ManagerCommonEx` when they are needed.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -174,7 +180,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MT4CommonApiResponse]
+        Response[MT4CommonShortApiResponse]
      """
 
 
@@ -196,14 +202,16 @@ async def asyncio(
     client: AuthenticatedClient | Client,
     x_request_timeout: float | Unset = UNSET,
 
-) -> MT4CommonApiResponse | None:
-    """ Get manager common settings
+) -> MT4CommonShortApiResponse | None:
+    """ Get server common settings
 
-     Server-wide MT4 trade server settings (curated subset).
+     Server name, protocol version and build, time zone, and the state of
+    the operational subsystems — the part of the server record that does
+    not describe the server's infrastructure.
 
-    Returns MT4Common DTO — server name, broker, server version/build,
-    time zone. Schema is decoupled from the platform's ConCommon: v2
-    clients are protected from MetaQuotes schema changes.
+    The administrative fields (storage paths, bind and web addresses,
+    adapter list, reserved block) are not included; use
+    `ManagerCommonEx` when they are needed.
 
     **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -217,7 +225,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MT4CommonApiResponse
+        MT4CommonShortApiResponse
      """
 
 
