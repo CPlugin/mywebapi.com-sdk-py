@@ -81,7 +81,7 @@ def sync_detailed(
     reads and changes nothing. An identifier that does not exist is answered with a platform
     error rather than an empty record.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -125,7 +125,7 @@ def sync(
     reads and changes nothing. An identifier that does not exist is answered with a platform
     error rather than an empty record.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -164,7 +164,7 @@ async def asyncio_detailed(
     reads and changes nothing. An identifier that does not exist is answered with a platform
     error rather than an empty record.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -208,7 +208,7 @@ async def asyncio(
     reads and changes nothing. An identifier that does not exist is answered with a platform
     error rather than an empty record.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:

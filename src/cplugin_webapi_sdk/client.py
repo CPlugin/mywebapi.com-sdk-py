@@ -66,14 +66,32 @@ from ._generated.api.mt4_v_2_groups import (
 from ._generated.api.mt4_v_2_trades import (
     get_api_v_2_mt4_trade_platform_trades_request as _mt4_trades_request,
 )
+from ._generated.api.mt4_v_2_dealer import (
+    get_api_v_2_mt4_trade_platform_summary_get_all as _mt4_summary_get_all,
+    get_api_v_2_mt4_trade_platform_summary_get_symbol as _mt4_summary_get,
+    get_api_v_2_mt4_trade_platform_summary_currency as _mt4_summary_currency,
+    get_api_v_2_mt4_trade_platform_exposure_get as _mt4_exposure_get,
+    get_api_v_2_mt4_trade_platform_exposure_value_get_currency as _mt4_exposure_value,
+    post_api_v_2_mt4_trade_platform_trade_calc_profit as _mt4_trade_calc_profit,
+)
+from ._generated.models.mt4_trade_calc_profit_request import (
+    MT4TradeCalcProfitRequest as _MT4TradeCalcProfitBody,
+)
 from ._generated.api.mt5_v_2_common import (
     get_api_v_2_mt5_trade_platform_time_server as _mt5_server_time,
+    get_api_v_2_mt5_trade_platform_time_get as _mt5_time_get,
 )
 from ._generated.api.mt5_v_2_managers import (
     get_api_v_2_mt5_trade_platform_manager_current as _mt5_manager_current,
 )
 from ._generated.api.mt5_v_2_users import (
     get_api_v_2_mt5_trade_platform_user_get_login as _mt5_user_get,
+    get_api_v_2_mt5_trade_platform_user_cert_get_login as _mt5_user_cert_get,
+    get_api_v_2_mt5_trade_platform_user_account_get_login as _mt5_user_account_get,
+    get_api_v_2_mt5_trade_platform_user_get_by_logins as _mt5_user_get_by_logins,
+    get_api_v_2_mt5_trade_platform_user_group_login as _mt5_user_group,
+    get_api_v_2_mt5_trade_platform_user_logins_group as _mt5_user_logins,
+    post_api_v_2_mt5_trade_platform_user_cert_confirm_login as _mt5_user_cert_confirm,
 )
 from ._generated.api.mt5_v_2_groups import (
     get_api_v_2_mt5_trade_platform_group_get_group as _mt5_group_get,
@@ -83,7 +101,62 @@ from ._generated.api.mt5_v_2_symbols import (
 )
 from ._generated.api.mt5_v_2_trades import (
     get_api_v_2_mt5_trade_platform_position_request_by_group_mask as _mt5_positions_by_group,
+    get_api_v_2_mt5_trade_platform_order_get_ticket as _mt5_order_get,
+    get_api_v_2_mt5_trade_platform_deal_request_login as _mt5_deal_request,
+    get_api_v_2_mt5_trade_platform_history_request_login as _mt5_history_request,
 )
+from ._generated.api.mt5_v_2_trading import (
+    post_api_v_2_mt5_trade_platform_order_add as _mt5_order_add,
+    post_api_v_2_mt5_trade_platform_order_cancel_ticket as _mt5_order_cancel,
+)
+from ._generated.api.mt5_v_2_trade_operations import (
+    get_api_v_2_mt5_trade_platform_request_get_all as _mt5_request_get_all,
+    get_api_v_2_mt5_trade_platform_request_get_id as _mt5_request_get,
+    post_api_v_2_mt5_trade_platform_trade_profit as _mt5_trade_profit,
+)
+from ._generated.api.mt5_v_2_reports import (
+    get_api_v_2_mt5_trade_platform_summary_get_all as _mt5_summary_get_all,
+    get_api_v_2_mt5_trade_platform_summary_get_symbol as _mt5_summary_get,
+    get_api_v_2_mt5_trade_platform_summary_currency as _mt5_summary_currency,
+    get_api_v_2_mt5_trade_platform_exposure_get_all as _mt5_exposure_get_all,
+    get_api_v_2_mt5_trade_platform_exposure_get_symbol as _mt5_exposure_get,
+    get_api_v_2_mt5_trade_platform_daily_request_login as _mt5_daily_request,
+    get_api_v_2_mt5_trade_platform_daily_request_light_login as _mt5_daily_request_light,
+)
+from ._generated.api.mt5_v_2_subscriptions import (
+    get_api_v_2_mt5_trade_platform_subscription_cfg_request_name as _mt5_subscription_cfg_request,
+    get_api_v_2_mt5_trade_platform_subscription_cfg_get_name as _mt5_subscription_cfg_get,
+    get_api_v_2_mt5_trade_platform_subscription_request_login as _mt5_subscription_request,
+    get_api_v_2_mt5_trade_platform_subscription_history_request_login as _mt5_subscription_history_request,
+)
+from ._generated.api.mt5_v_2_market_data import (
+    get_api_v_2_mt5_trade_platform_tick_last_symbol as _mt5_tick_last,
+    get_api_v_2_mt5_trade_platform_tick_stat_symbol as _mt5_tick_stat,
+)
+from ._generated.api.mt5_v_2_market_insight import (
+    get_api_v_2_mt5_trade_platform_book_get_symbol as _mt5_book_get,
+    get_api_v_2_mt5_trade_platform_online_request as _mt5_online_request,
+)
+from ._generated.api.mt5_v_2_configuration import (
+    get_api_v_2_mt5_trade_platform_symbol_request_symbol as _mt5_symbol_request,
+    get_api_v_2_mt5_trade_platform_symbol_exist_symbol as _mt5_symbol_exist,
+    get_api_v_2_mt5_trade_platform_leverage_get_name as _mt5_leverage_get,
+)
+from ._generated.api.mt5_v_2_communications import (
+    get_api_v_2_mt5_trade_platform_mail_request as _mt5_mail_request,
+    get_api_v_2_mt5_trade_platform_news_request as _mt5_news_request,
+    get_api_v_2_mt5_trade_platform_setting_get as _mt5_setting_get,
+    post_api_v_2_mt5_trade_platform_mail_send as _mt5_mail_send,
+)
+from ._generated.api.mt5_v_2_clients import (
+    get_api_v_2_mt5_trade_platform_client_user_request_client_id as _mt5_client_user_request,
+    get_api_v_2_mt5_trade_platform_document_request_document_id as _mt5_document_request,
+    post_api_v_2_mt5_trade_platform_client_update as _mt5_client_update,
+)
+from ._generated.models.mt5_order import MT5Order as _MT5OrderBody
+from ._generated.models.mt5_mail_send_request import MT5MailSendRequest as _MT5MailSendBody
+from ._generated.models.mt5_client import MT5Client as _MT5ClientBody
+from ._generated.models.trade_profit_request import TradeProfitRequest as _MT5TradeProfitBody
 
 
 # ---------------------------------------------------------------------------
@@ -227,6 +300,13 @@ def _patch_body(changes: Mapping[str, Any]) -> _MT4UserRecordPatchBody:
     if not changes:
         raise ValueError("changes must contain at least one field")
     return _MT4UserRecordPatchBody.from_dict(dict(changes))
+
+
+def _body(model: Any, payload: Mapping[str, Any] | Any) -> Any:
+    """Wrap a mapping into a generated request model; an already-built model passes through."""
+    if isinstance(payload, Mapping):
+        return model.from_dict(dict(payload))
+    return payload
 
 
 def _to_uuid(trade_platform: str | UUID) -> UUID:
@@ -438,6 +518,108 @@ class _MT4Namespace:
             )
         )
 
+    # * ----- dealer (summary and exposure) -----
+
+    def summary_get_all(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's open-interest summary for every symbol."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt4_summary_get_all,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    def summary_get(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's open-interest summary for one symbol."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt4_summary_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    def summary_currency(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's summary expressed in the server base currency."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt4_summary_currency,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    def exposure_get(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the broker's currency exposure over all open client positions."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt4_exposure_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    def exposure_value(
+        self,
+        trade_platform: str | UUID,
+        currency: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the exposure of one currency."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt4_exposure_value,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                currency=currency,
+            )
+        )
+
+    def trade_calc_profit(
+        self,
+        trade_platform: str | UUID,
+        body: Mapping[str, Any] | Any,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Calculate profit for a hypothetical trade without executing it.
+
+        ``body`` holds the trade description with its wire (camelCase) names, or a
+        ready request model.
+        """
+        return unwrap(
+            _call_sync(
+                self._o, _mt4_trade_calc_profit,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                body=_body(_MT4TradeCalcProfitBody, body),
+            )
+        )
+
     # * ----- escape hatch -----
 
     def raw(
@@ -577,6 +759,748 @@ class _MT5Namespace:
                 trade_platform=_to_uuid(trade_platform),
                 request_timeout=request_timeout,
                 mask=mask,
+            )
+        )
+
+    # * ----- common (extended) -----
+
+    def time_get(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the trade server's current time record."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_time_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    # * ----- reports (summary, exposure, daily) -----
+
+    def summary_get_all(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's open-interest summary for every symbol."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_summary_get_all,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    def summary_get(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's open-interest summary for one symbol."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_summary_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    def summary_currency(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's summary expressed in the server base currency."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_summary_currency,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    def exposure_get_all(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the broker's currency exposure over all open client positions."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_exposure_get_all,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    def exposure_get(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the broker's exposure for one symbol."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_exposure_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    def daily_request(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the full daily report of one account."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_daily_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    def daily_request_light(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the compact daily report of one account."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_daily_request_light,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    # * ----- subscriptions -----
+
+    def subscription_cfg_request(
+        self,
+        trade_platform: str | UUID,
+        name: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return a subscription configuration by name, read from the trade server."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_subscription_cfg_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                name=name,
+            )
+        )
+
+    def subscription_cfg_get(
+        self,
+        trade_platform: str | UUID,
+        name: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return a cached subscription configuration by name."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_subscription_cfg_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                name=name,
+            )
+        )
+
+    def subscription_request(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the active subscriptions of one account."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_subscription_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    def subscription_history_request(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the subscription history of one account."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_subscription_history_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    # * ----- users (extended) -----
+
+    def user_cert_get(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the certificate record of one account."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_user_cert_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    def user_account_get(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the trading account of one user (balances, credit, leverage)."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_user_account_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    def user_get_by_logins(
+        self,
+        trade_platform: str | UUID,
+        logins: list[int],
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return user records for several logins in one call."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_user_get_by_logins,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                logins=logins,
+            )
+        )
+
+    def user_group(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the group name of one account."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_user_group,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    def user_logins(
+        self,
+        trade_platform: str | UUID,
+        group: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the logins that belong to one group."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_user_logins,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                group=group,
+            )
+        )
+
+    def user_cert_confirm(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
+        """Confirm the pending certificate of one account."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_user_cert_confirm,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
+                login=login,
+            )
+        )
+
+    # * ----- trade operations -----
+
+    def request_get_all(
+        self,
+        trade_platform: str | UUID,
+        *,
+        from_: int | None = None,
+        count: int | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the trade requests waiting for a dealer answer."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_request_get_all,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                from_=from_ if from_ is not None else UNSET,
+                count=count if count is not None else UNSET,
+            )
+        )
+
+    def request_get(
+        self,
+        trade_platform: str | UUID,
+        id: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return one trade request by its identifier."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_request_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                id=id,
+            )
+        )
+
+    def trade_profit(
+        self,
+        trade_platform: str | UUID,
+        body: Mapping[str, Any] | Any,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Calculate profit for a hypothetical trade without executing it."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_trade_profit,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                body=_body(_MT5TradeProfitBody, body),
+            )
+        )
+
+    # * ----- trading -----
+
+    def order_get(
+        self,
+        trade_platform: str | UUID,
+        ticket: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return one order by ticket."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_order_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                ticket=ticket,
+            )
+        )
+
+    def order_add(
+        self,
+        trade_platform: str | UUID,
+        body: Mapping[str, Any] | Any,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
+        """Place a new order on the trade server."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_order_add,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
+                body=_body(_MT5OrderBody, body),
+            )
+        )
+
+    def order_cancel(
+        self,
+        trade_platform: str | UUID,
+        ticket: int,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
+        """Cancel a pending order by ticket."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_order_cancel,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
+                ticket=ticket,
+            )
+        )
+
+    def deal_request(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        from_: Any = None,
+        to: Any = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the deals of one account, optionally limited to a time window."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_deal_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+                from_=from_ if from_ is not None else UNSET,
+                to=to if to is not None else UNSET,
+            )
+        )
+
+    def history_request(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        from_: Any = None,
+        to: Any = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the closed-order history of one account."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_history_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+                from_=from_ if from_ is not None else UNSET,
+                to=to if to is not None else UNSET,
+            )
+        )
+
+    # * ----- market data and insight -----
+
+    def tick_last(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the last tick of a symbol."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_tick_last,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    def tick_stat(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return tick statistics of a symbol."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_tick_stat,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    def book_get(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the current depth-of-market book of a symbol."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_book_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    def online_request(
+        self,
+        trade_platform: str | UUID,
+        *,
+        from_: int | None = None,
+        count: int | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the accounts currently connected to the trade server."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_online_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                from_=from_ if from_ is not None else UNSET,
+                count=count if count is not None else UNSET,
+            )
+        )
+
+    # * ----- configuration -----
+
+    def symbol_request(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        group: str | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return a symbol configuration, read from the trade server."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_symbol_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+                group=group if group is not None else UNSET,
+            )
+        )
+
+    def symbol_exist(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        group: str | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return whether a symbol exists, optionally inside one group."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_symbol_exist,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+                group=group if group is not None else UNSET,
+            )
+        )
+
+    def leverage_get(
+        self,
+        trade_platform: str | UUID,
+        name: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return a leverage configuration by name."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_leverage_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                name=name,
+            )
+        )
+
+    # * ----- communications -----
+
+    def mail_request(
+        self,
+        trade_platform: str | UUID,
+        *,
+        from_: int | None = None,
+        count: int | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the internal mail queue of the trade server."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_mail_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                from_=from_ if from_ is not None else UNSET,
+                count=count if count is not None else UNSET,
+            )
+        )
+
+    def news_request(
+        self,
+        trade_platform: str | UUID,
+        *,
+        from_: int | None = None,
+        count: int | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the news topics of the trade server."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_news_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                from_=from_ if from_ is not None else UNSET,
+                count=count if count is not None else UNSET,
+            )
+        )
+
+    def setting_get(
+        self,
+        trade_platform: str | UUID,
+        *,
+        section: str | None = None,
+        key: str | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return server settings, optionally narrowed to one section and key."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_setting_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                section=section if section is not None else UNSET,
+                key=key if key is not None else UNSET,
+            )
+        )
+
+    def mail_send(
+        self,
+        trade_platform: str | UUID,
+        body: Mapping[str, Any] | Any,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
+        """Send an internal mail message to accounts."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_mail_send,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
+                body=_body(_MT5MailSendBody, body),
+            )
+        )
+
+    # * ----- clients -----
+
+    def client_user_request(
+        self,
+        trade_platform: str | UUID,
+        client_id: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the users attached to one client record."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_client_user_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                client_id=client_id,
+            )
+        )
+
+    def document_request(
+        self,
+        trade_platform: str | UUID,
+        document_id: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return one KYC document record by its identifier."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_document_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                document_id=document_id,
+            )
+        )
+
+    def client_update(
+        self,
+        trade_platform: str | UUID,
+        body: Mapping[str, Any] | Any,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
+        """Create or update a client record."""
+        return unwrap(
+            _call_sync(
+                self._o, _mt5_client_update,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
+                body=_body(_MT5ClientBody, body),
             )
         )
 
@@ -779,6 +1703,104 @@ class _MT4AsyncNamespace:
             )
         )
 
+    # * ----- dealer (summary and exposure) -----
+
+    async def summary_get_all(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's open-interest summary for every symbol."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt4_summary_get_all,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    async def summary_get(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's open-interest summary for one symbol."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt4_summary_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    async def summary_currency(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's summary expressed in the server base currency."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt4_summary_currency,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    async def exposure_get(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the broker's currency exposure over all open client positions."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt4_exposure_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    async def exposure_value(
+        self,
+        trade_platform: str | UUID,
+        currency: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the exposure of one currency."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt4_exposure_value,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                currency=currency,
+            )
+        )
+
+    async def trade_calc_profit(
+        self,
+        trade_platform: str | UUID,
+        body: Mapping[str, Any] | Any,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Calculate profit for a hypothetical trade; see the sync method."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt4_trade_calc_profit,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                body=_body(_MT4TradeCalcProfitBody, body),
+            )
+        )
+
     async def raw(
         self,
         op_module: Any,
@@ -899,6 +1921,748 @@ class _MT5AsyncNamespace:
                 trade_platform=_to_uuid(trade_platform),
                 request_timeout=request_timeout,
                 mask=mask,
+            )
+        )
+
+    # * ----- common (extended) -----
+
+    async def time_get(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the trade server's current time record."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_time_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    # * ----- reports (summary, exposure, daily) -----
+
+    async def summary_get_all(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's open-interest summary for every symbol."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_summary_get_all,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    async def summary_get(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's open-interest summary for one symbol."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_summary_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    async def summary_currency(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the dealer's summary expressed in the server base currency."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_summary_currency,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    async def exposure_get_all(
+        self,
+        trade_platform: str | UUID,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the broker's currency exposure over all open client positions."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_exposure_get_all,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+            )
+        )
+
+    async def exposure_get(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the broker's exposure for one symbol."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_exposure_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    async def daily_request(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the full daily report of one account."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_daily_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    async def daily_request_light(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the compact daily report of one account."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_daily_request_light,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    # * ----- subscriptions -----
+
+    async def subscription_cfg_request(
+        self,
+        trade_platform: str | UUID,
+        name: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return a subscription configuration by name, read from the trade server."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_subscription_cfg_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                name=name,
+            )
+        )
+
+    async def subscription_cfg_get(
+        self,
+        trade_platform: str | UUID,
+        name: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return a cached subscription configuration by name."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_subscription_cfg_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                name=name,
+            )
+        )
+
+    async def subscription_request(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the active subscriptions of one account."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_subscription_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    async def subscription_history_request(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the subscription history of one account."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_subscription_history_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    # * ----- users (extended) -----
+
+    async def user_cert_get(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the certificate record of one account."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_user_cert_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    async def user_account_get(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the trading account of one user (balances, credit, leverage)."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_user_account_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    async def user_get_by_logins(
+        self,
+        trade_platform: str | UUID,
+        logins: list[int],
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return user records for several logins in one call."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_user_get_by_logins,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                logins=logins,
+            )
+        )
+
+    async def user_group(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the group name of one account."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_user_group,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+            )
+        )
+
+    async def user_logins(
+        self,
+        trade_platform: str | UUID,
+        group: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the logins that belong to one group."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_user_logins,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                group=group,
+            )
+        )
+
+    async def user_cert_confirm(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
+        """Confirm the pending certificate of one account."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_user_cert_confirm,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
+                login=login,
+            )
+        )
+
+    # * ----- trade operations -----
+
+    async def request_get_all(
+        self,
+        trade_platform: str | UUID,
+        *,
+        from_: int | None = None,
+        count: int | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the trade requests waiting for a dealer answer."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_request_get_all,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                from_=from_ if from_ is not None else UNSET,
+                count=count if count is not None else UNSET,
+            )
+        )
+
+    async def request_get(
+        self,
+        trade_platform: str | UUID,
+        id: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return one trade request by its identifier."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_request_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                id=id,
+            )
+        )
+
+    async def trade_profit(
+        self,
+        trade_platform: str | UUID,
+        body: Mapping[str, Any] | Any,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Calculate profit for a hypothetical trade without executing it."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_trade_profit,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                body=_body(_MT5TradeProfitBody, body),
+            )
+        )
+
+    # * ----- trading -----
+
+    async def order_get(
+        self,
+        trade_platform: str | UUID,
+        ticket: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return one order by ticket."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_order_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                ticket=ticket,
+            )
+        )
+
+    async def order_add(
+        self,
+        trade_platform: str | UUID,
+        body: Mapping[str, Any] | Any,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
+        """Place a new order on the trade server."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_order_add,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
+                body=_body(_MT5OrderBody, body),
+            )
+        )
+
+    async def order_cancel(
+        self,
+        trade_platform: str | UUID,
+        ticket: int,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
+        """Cancel a pending order by ticket."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_order_cancel,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
+                ticket=ticket,
+            )
+        )
+
+    async def deal_request(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        from_: Any = None,
+        to: Any = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the deals of one account, optionally limited to a time window."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_deal_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+                from_=from_ if from_ is not None else UNSET,
+                to=to if to is not None else UNSET,
+            )
+        )
+
+    async def history_request(
+        self,
+        trade_platform: str | UUID,
+        login: int,
+        *,
+        from_: Any = None,
+        to: Any = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the closed-order history of one account."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_history_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                login=login,
+                from_=from_ if from_ is not None else UNSET,
+                to=to if to is not None else UNSET,
+            )
+        )
+
+    # * ----- market data and insight -----
+
+    async def tick_last(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the last tick of a symbol."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_tick_last,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    async def tick_stat(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return tick statistics of a symbol."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_tick_stat,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    async def book_get(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the current depth-of-market book of a symbol."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_book_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+            )
+        )
+
+    async def online_request(
+        self,
+        trade_platform: str | UUID,
+        *,
+        from_: int | None = None,
+        count: int | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the accounts currently connected to the trade server."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_online_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                from_=from_ if from_ is not None else UNSET,
+                count=count if count is not None else UNSET,
+            )
+        )
+
+    # * ----- configuration -----
+
+    async def symbol_request(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        group: str | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return a symbol configuration, read from the trade server."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_symbol_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+                group=group if group is not None else UNSET,
+            )
+        )
+
+    async def symbol_exist(
+        self,
+        trade_platform: str | UUID,
+        symbol: str,
+        *,
+        group: str | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return whether a symbol exists, optionally inside one group."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_symbol_exist,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                symbol=symbol,
+                group=group if group is not None else UNSET,
+            )
+        )
+
+    async def leverage_get(
+        self,
+        trade_platform: str | UUID,
+        name: str,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return a leverage configuration by name."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_leverage_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                name=name,
+            )
+        )
+
+    # * ----- communications -----
+
+    async def mail_request(
+        self,
+        trade_platform: str | UUID,
+        *,
+        from_: int | None = None,
+        count: int | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the internal mail queue of the trade server."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_mail_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                from_=from_ if from_ is not None else UNSET,
+                count=count if count is not None else UNSET,
+            )
+        )
+
+    async def news_request(
+        self,
+        trade_platform: str | UUID,
+        *,
+        from_: int | None = None,
+        count: int | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the news topics of the trade server."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_news_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                from_=from_ if from_ is not None else UNSET,
+                count=count if count is not None else UNSET,
+            )
+        )
+
+    async def setting_get(
+        self,
+        trade_platform: str | UUID,
+        *,
+        section: str | None = None,
+        key: str | None = None,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return server settings, optionally narrowed to one section and key."""
+        from ._generated.types import UNSET
+
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_setting_get,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                section=section if section is not None else UNSET,
+                key=key if key is not None else UNSET,
+            )
+        )
+
+    async def mail_send(
+        self,
+        trade_platform: str | UUID,
+        body: Mapping[str, Any] | Any,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
+        """Send an internal mail message to accounts."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_mail_send,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
+                body=_body(_MT5MailSendBody, body),
+            )
+        )
+
+    # * ----- clients -----
+
+    async def client_user_request(
+        self,
+        trade_platform: str | UUID,
+        client_id: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return the users attached to one client record."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_client_user_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                client_id=client_id,
+            )
+        )
+
+    async def document_request(
+        self,
+        trade_platform: str | UUID,
+        document_id: int,
+        *,
+        request_timeout: float | None = None,
+    ) -> Any:
+        """Return one KYC document record by its identifier."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_document_request,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                document_id=document_id,
+            )
+        )
+
+    async def client_update(
+        self,
+        trade_platform: str | UUID,
+        body: Mapping[str, Any] | Any,
+        *,
+        request_timeout: float | None = None,
+        idempotency_key: str | None = None,
+    ) -> Any:
+        """Create or update a client record."""
+        return unwrap(
+            await _call_async(
+                self._o, _mt5_client_update,
+                trade_platform=_to_uuid(trade_platform),
+                request_timeout=request_timeout,
+                idempotency_key=idempotency_key,
+                body=_body(_MT5ClientBody, body),
             )
         )
 

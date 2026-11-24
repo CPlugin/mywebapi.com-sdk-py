@@ -97,7 +97,7 @@ def sync_detailed(
     `OnlineGet`: every call hits the MT4 server. Paged the same way
     for caller symmetry — cursor is the trailing login (ascending).
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -149,7 +149,7 @@ def sync(
     `OnlineGet`: every call hits the MT4 server. Paged the same way
     for caller symmetry — cursor is the trailing login (ascending).
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -196,7 +196,7 @@ async def asyncio_detailed(
     `OnlineGet`: every call hits the MT4 server. Paged the same way
     for caller symmetry — cursor is the trailing login (ascending).
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -248,7 +248,7 @@ async def asyncio(
     `OnlineGet`: every call hits the MT4 server. Paged the same way
     for caller symmetry — cursor is the trailing login (ascending).
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:

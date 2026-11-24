@@ -93,7 +93,7 @@ def sync_detailed(
      Returns open positions for all logins in groups matching the mask,
     ordered by Position ID ascending. Use the cursor for the next page.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -142,7 +142,7 @@ def sync(
      Returns open positions for all logins in groups matching the mask,
     ordered by Position ID ascending. Use the cursor for the next page.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -186,7 +186,7 @@ async def asyncio_detailed(
      Returns open positions for all logins in groups matching the mask,
     ordered by Position ID ascending. Use the cursor for the next page.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
@@ -235,7 +235,7 @@ async def asyncio(
      Returns open positions for all logins in groups matching the mask,
     ordered by Position ID ascending. Use the cursor for the next page.
 
-    **Timeout:** 10 s by default, adjustable per request with the `X-Request-Timeout` header. When the
+    **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
 
     Args:
