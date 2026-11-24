@@ -2,6 +2,12 @@
 
 All notable changes to `mywebapi-sdk` (import name `cplugin_webapi_sdk`). The package follows [semver](https://semver.org/); while it is at `0.x`, a minor release may contain breaking changes.
 
+## [0.6.1]
+
+### Fixed
+
+- Release re-cut: `MyWebApi.Sdk` 0.6.0 did not reach nuget.org while `MyWebApi.Sdk.Models` 0.6.0 did, so the four SDKs move to 0.6.1 together. The API surface is identical to 0.6.0.
+
 ## 0.6.0
 
 Regenerated from the WebAPI v2 specification of 24.11.2026: 453 paths and 456 operations, 452 schemas (438 model modules). The vendored document is the union of the main service and the MT4 x86 sidecar, as before. Contains no new operations. Versions move together with the JavaScript, .NET and PowerShell SDKs.

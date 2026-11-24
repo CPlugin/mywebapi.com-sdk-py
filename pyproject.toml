@@ -8,7 +8,7 @@ build-backend = "hatchling.build"
 #   0.5.0 on 23.11.2026, 0.5.1 on 23.11.2026, 0.6.0 on 24.11.2026; versions move
 #   together with the JS, .NET and PowerShell SDKs.
 name = "mywebapi-sdk"
-version = "0.6.0"
+version = "0.6.1"
 description = "Python SDK for CPlugin WebAPI: REST and WebSocket client that works with MetaTrader 4 and MetaTrader 5 servers - accounts, positions, deposits, trade history, groups and symbols for brokers. MetaTrader is a trademark of MetaQuotes Ltd.; not affiliated with MetaQuotes."
 readme = "README.md"
 requires-python = ">=3.10"
