@@ -33,6 +33,7 @@ class MT5SubscriptionHistory:
             action (MT5SubscriptionAction | None | Unset): Action performed with the subscription.<br/>One of: Subscribe,
                 Renewal, Suspend, Cancel, Deleted. Case-insensitive; the numeric value is accepted too. Any other value is
                 refused with error code Validation.
+            time (int | None | Unset): Time of the action, in seconds since 1970-01-01.
             amount (float | None | Unset): Amount charged or returned by the action.
             amount_digits (int | None | Unset): Number of decimal places in `amount`.
             amount_deal (int | None | Unset): Ticket of the balance deal through which the payment was made; zero when there
@@ -44,6 +45,7 @@ class MT5SubscriptionHistory:
     subscription: int | None | Unset = UNSET
     record: int | None | Unset = UNSET
     action: MT5SubscriptionAction | None | Unset = UNSET
+    time: int | None | Unset = UNSET
     amount: float | None | Unset = UNSET
     amount_digits: int | None | Unset = UNSET
     amount_deal: int | None | Unset = UNSET
@@ -85,6 +87,12 @@ class MT5SubscriptionHistory:
         else:
             action = self.action
 
+        time: int | None | Unset
+        if isinstance(self.time, Unset):
+            time = UNSET
+        else:
+            time = self.time
+
         amount: float | None | Unset
         if isinstance(self.amount, Unset):
             amount = UNSET
@@ -118,6 +126,8 @@ class MT5SubscriptionHistory:
             field_dict["record"] = record
         if action is not UNSET:
             field_dict["action"] = action
+        if time is not UNSET:
+            field_dict["time"] = time
         if amount is not UNSET:
             field_dict["amount"] = amount
         if amount_digits is not UNSET:
@@ -192,6 +202,16 @@ class MT5SubscriptionHistory:
         action = _parse_action(d.pop("action", UNSET))
 
 
+        def _parse_time(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        time = _parse_time(d.pop("time", UNSET))
+
+
         def _parse_amount(data: object) -> float | None | Unset:
             if data is None:
                 return data
@@ -228,6 +248,7 @@ class MT5SubscriptionHistory:
             subscription=subscription,
             record=record,
             action=action,
+            time=time,
             amount=amount,
             amount_digits=amount_digits,
             amount_deal=amount_deal,

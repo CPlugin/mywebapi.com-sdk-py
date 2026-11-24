@@ -58,6 +58,7 @@ class MT5ConSubscription:
             flags (None | str | Unset): Additional subscription property flags.
             price (float | None | Unset): Subscription price for non-professional traders.
             price_pro (float | None | Unset): Subscription price for professional traders.
+            price_cost (float | None | Unset): Real cost of the subscription, the amount the client is actually charged.
             price_currency (None | str | Unset): Currency of the subscription price.
             countries (list[str] | None | Unset): Countries the subscription is available in.
             groups (list[str] | None | Unset): Account groups the subscription is available in.
@@ -81,6 +82,7 @@ class MT5ConSubscription:
     flags: None | str | Unset = UNSET
     price: float | None | Unset = UNSET
     price_pro: float | None | Unset = UNSET
+    price_cost: float | None | Unset = UNSET
     price_currency: None | str | Unset = UNSET
     countries: list[str] | None | Unset = UNSET
     groups: list[str] | None | Unset = UNSET
@@ -202,6 +204,12 @@ class MT5ConSubscription:
         else:
             price_pro = self.price_pro
 
+        price_cost: float | None | Unset
+        if isinstance(self.price_cost, Unset):
+            price_cost = UNSET
+        else:
+            price_cost = self.price_cost
+
         price_currency: None | str | Unset
         if isinstance(self.price_currency, Unset):
             price_currency = UNSET
@@ -280,6 +288,8 @@ class MT5ConSubscription:
             field_dict["price"] = price
         if price_pro is not UNSET:
             field_dict["pricePro"] = price_pro
+        if price_cost is not UNSET:
+            field_dict["priceCost"] = price_cost
         if price_currency is not UNSET:
             field_dict["priceCurrency"] = price_currency
         if countries is not UNSET:
@@ -507,6 +517,16 @@ class MT5ConSubscription:
         price_pro = _parse_price_pro(d.pop("pricePro", UNSET))
 
 
+        def _parse_price_cost(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        price_cost = _parse_price_cost(d.pop("priceCost", UNSET))
+
+
         def _parse_price_currency(data: object) -> None | str | Unset:
             if data is None:
                 return data
@@ -596,6 +616,7 @@ class MT5ConSubscription:
             flags=flags,
             price=price,
             price_pro=price_pro,
+            price_cost=price_cost,
             price_currency=price_currency,
             countries=countries,
             groups=groups,

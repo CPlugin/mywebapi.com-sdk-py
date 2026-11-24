@@ -24,6 +24,7 @@ from cplugin_webapi_sdk._generated.models import (
     MT5SubscriptionAction,
     MT5SubscriptionControlMode,
     MT5SubscriptionFreePeriod,
+    MT5SubscriptionHistory,
     MT5SubscriptionPeriod,
     MT5SubscriptionStatus,
     MT5SubscriptionType,
@@ -158,3 +159,23 @@ class TestOptionGreekFields:
         news = MT5News.from_dict({"id": 7, "subject": "Rates", "time": "2026-11-23T10:00:00"})
         assert news.time.tzinfo is None
         assert news.time.hour == 10
+
+
+class TestSubscriptionPriceAndHistoryTime:
+    """A configuration carries its real cost; history entries carry the action time."""
+
+    def test_configuration_exposes_the_real_cost(self) -> None:
+        cfg = MT5ConSubscription.from_dict(
+            {"id": 12, "name": "Gold", "price": 30.0, "pricePro": 45.0, "priceCost": 21.5}
+        )
+        assert cfg.price_cost == 21.5
+        assert (cfg.price, cfg.price_pro) == (30.0, 45.0)
+        assert cfg.to_dict()["priceCost"] == 21.5
+
+    def test_history_entry_exposes_the_action_time(self) -> None:
+        entry = MT5SubscriptionHistory.from_dict(
+            {"id": 3, "login": 5001, "action": "Renewal", "time": 1795000000, "amount": 21.5}
+        )
+        assert entry.time == 1795000000
+        assert entry.amount == 21.5
+        assert entry.to_dict()["time"] == 1795000000

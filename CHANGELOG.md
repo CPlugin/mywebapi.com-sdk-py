@@ -2,6 +2,21 @@
 
 All notable changes to `mywebapi-sdk` (import name `cplugin_webapi_sdk`). The package follows [semver](https://semver.org/); while it is at `0.x`, a minor release may contain breaking changes.
 
+## 0.6.0
+
+Regenerated from the WebAPI v2 specification of 24.11.2026: 453 paths and 456 operations, 452 schemas (438 model modules). The vendored document is the union of the main service and the MT4 x86 sidecar, as before. Contains no new operations. Versions move together with the JavaScript, .NET and PowerShell SDKs.
+
+### Added
+
+- `MT5ConSubscription.price_cost` — the real cost of a subscription, the amount the client is actually charged, next to the list `price` and `price_pro`. Sent as `priceCost`.
+- `MT5SubscriptionHistory.time` — when the action happened, in seconds since 1970-01-01, next to `amount`. Sent as `time`.
+
+### Changed
+
+- The `limit` parameter of `TickHistoryRequestRaw` describes its cap as applying within the window; `0` still returns the whole window.
+- `servers` of the vendored document list the sandbox and production hosts in that order; the development host of the previous document is gone. No generated code reads it.
+- `tests/test_generated_smoke.py` covers `price_cost` and the history `time`.
+
 ## 0.5.1
 
 Regenerated from the WebAPI v2 specification of 23.11.2026: 453 paths and 456 operations, 452 schemas. The vendored document is the union of the main service and the MT4 x86 sidecar, as before. Contains no new operations. Versions move together with the JavaScript, .NET and PowerShell SDKs.

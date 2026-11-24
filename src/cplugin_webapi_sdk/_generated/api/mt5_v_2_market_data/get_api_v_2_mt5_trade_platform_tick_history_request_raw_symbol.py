@@ -118,6 +118,12 @@ def sync_detailed(
                 history yet, the call fails with the platform code `MT_RET_OK_NONE` and a message
                 saying the history is not synchronized — such a request may be repeated later.
 
+    <br>
+                The window is limited to one day and the answer to one million ticks, because the whole
+                history of that window is materialised by the trade server interface before the
+                `limit` is applied. Ask for a day at a time and continue from the last tick returned;
+                a longer window is refused rather than served at the risk of the service's memory.
+
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -187,6 +193,12 @@ def sync(
                 history yet, the call fails with the platform code `MT_RET_OK_NONE` and a message
                 saying the history is not synchronized — such a request may be repeated later.
 
+    <br>
+                The window is limited to one day and the answer to one million ticks, because the whole
+                history of that window is materialised by the trade server interface before the
+                `limit` is applied. Ask for a day at a time and continue from the last tick returned;
+                a longer window is refused rather than served at the risk of the service's memory.
+
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
     trade server does not answer in time: Nothing was changed; the request is safe to repeat.
@@ -250,6 +262,12 @@ async def asyncio_detailed(
     requested
                 history yet, the call fails with the platform code `MT_RET_OK_NONE` and a message
                 saying the history is not synchronized — such a request may be repeated later.
+
+    <br>
+                The window is limited to one day and the answer to one million ticks, because the whole
+                history of that window is materialised by the trade server interface before the
+                `limit` is applied. Ask for a day at a time and continue from the last tick returned;
+                a longer window is refused rather than served at the risk of the service's memory.
 
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
@@ -319,6 +337,12 @@ async def asyncio(
     requested
                 history yet, the call fails with the platform code `MT_RET_OK_NONE` and a message
                 saying the history is not synchronized — such a request may be repeated later.
+
+    <br>
+                The window is limited to one day and the answer to one million ticks, because the whole
+                history of that window is materialised by the trade server interface before the
+                `limit` is applied. Ask for a day at a time and continue from the last tick returned;
+                a longer window is refused rather than served at the risk of the service's memory.
 
 
     **Timeout:** 30 s by default, adjustable per request with the `X-Request-Timeout` header. When the
